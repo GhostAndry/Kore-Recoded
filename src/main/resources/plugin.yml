@@ -1,0 +1,5 @@
+name: KoreRecoded
+version: '${project.version}'
+main: me.ghostdevelopment.spigotessentials.bukkit.Kore
+load: STARTUP
+

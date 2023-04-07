@@ -1,0 +1,3 @@
+name: KoreRecoded
+version: '${project.version}'
+main: me.ghostdevelopment.spigotessentials.bungee.Kore
