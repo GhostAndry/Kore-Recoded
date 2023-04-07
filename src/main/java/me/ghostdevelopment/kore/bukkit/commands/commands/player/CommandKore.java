@@ -1,8 +1,11 @@
 package me.ghostdevelopment.kore.bukkit.commands.commands.player;
 
+import me.ghostdevelopment.kore.bukkit.Console;
+import me.ghostdevelopment.kore.bukkit.Functions;
 import me.ghostdevelopment.kore.bukkit.Utils;
 import me.ghostdevelopment.kore.bukkit.commands.Command;
 import me.ghostdevelopment.kore.bukkit.commands.CommandInfo;
+import me.ghostdevelopment.kore.bukkit.files.LangFile;
 import org.bukkit.entity.Player;
 
 @CommandInfo(name = "kore", permission = "", onlyPlayers = true)
@@ -23,7 +26,19 @@ public class CommandKore extends Command {
                             "\n"));
                 }
                 case "reload":{
-
+                    if(!player.hasPermission("kore.reload")){
+                        player.sendMessage(Utils.Color(LangFile.getFile().getString("no-permissions")
+                                .replaceAll("%prefix%", LangFile.getFile().getString("prefix%"))
+                        ));
+                        return;
+                    }
+                    try {
+                        Functions.reloadFiles();
+                        player.sendMessage(Utils.Color(LangFile.getFile().getString("reload.success")));
+                    }catch (Exception e){
+                        Console.warning(e.getMessage());
+                        player.sendMessage(Utils.Color(LangFile.getFile().getString("reload.error")));
+                    }
                 }
             }
         }
