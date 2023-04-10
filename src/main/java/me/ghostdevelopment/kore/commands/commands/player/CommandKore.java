@@ -16,10 +16,10 @@ public class CommandKore extends Command {
             player.sendMessage(Utils.Color("\n&aThis server is running Kore."));
         } else if (args.length==1) {
             if(args[0].equalsIgnoreCase("info")) {
-                player.sendMessage(Utils.Color("\n" +
+                player.sendMessage(Utils.Color(
                         "&aKore 1.6 RECODED\n" +
                         "&aAuthor: &7GhostAndry\n" +
-                        "&aGitHub: &b&nhttps://github.com/GhostAndry/Kore\n" +
+                        "&aGitHub: &b&nhttps://github.com/GhostAndry/Kore-Recoded\n" +
                         "\n"));
             } else if (args[0].equalsIgnoreCase("reload")) {
 

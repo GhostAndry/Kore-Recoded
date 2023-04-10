@@ -6,3 +6,5 @@ load: STARTUP
 commands:
   kore:
     description: ""
+  gmc:
+    description: ""
