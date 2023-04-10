@@ -15,7 +15,6 @@ public final class Kore extends JavaPlugin {
     @Override
     public void onEnable() {
         // Plugin startup logic
-        checkForUpdates();
         setupFiles();
         registerCommands();
         registerEvents();
@@ -76,12 +75,4 @@ public final class Kore extends JavaPlugin {
         WarpsFile.save();
     }
 
-    private void checkForUpdates(){
-        new UpdateChecker(this, 107023).getVersion(version -> {
-            if (this.getDescription().getVersion().equals(version)) {
-            } else {
-                getLogger().info("[KoreRecoded] There is a new update available.");
-            }
-        });
-    }
 }
