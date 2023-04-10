@@ -5,6 +5,9 @@ load: STARTUP
 
 commands:
   kore:
-    description: ""
+
+  # Gamemodes
   gmc:
-    description: ""
+  gms:
+  gma:
+  gmsp:
