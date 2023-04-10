@@ -27,7 +27,7 @@ public abstract class Command implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, org.bukkit.command.Command command, String label, String[] args) {
 
-        if(!commandInfo.permission().isEmpty()){
+        if(!(commandInfo.permission().isEmpty())){
             if(!(sender.hasPermission(commandInfo.permission())
                     ||sender.hasPermission(commandInfo.permission2())
                     ||sender.hasPermission(commandInfo.permission3())
