@@ -36,7 +36,6 @@ public final class Kore extends JavaPlugin {
             try {
                 Command command = clazz.getDeclaredConstructor().newInstance();
                 getCommand(command.getCommandInfo().name()).setExecutor(command);
-                Bukkit.getLogger().info(ChatColor.GREEN+"Command %command% has been loaded.".replace("%command%", command.getCommandInfo().name().toUpperCase()));
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
