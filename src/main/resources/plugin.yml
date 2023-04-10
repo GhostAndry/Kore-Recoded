@@ -1,5 +1,9 @@
 name: KoreRecoded
 version: '${project.version}'
-main: me.ghostdevelopment.spigotessentials.bukkit.Kore
+main: me.ghostdevelopment.kore.bukkit.Kore
 load: STARTUP
+
+commands:
+  kore:
+    description: ""
 

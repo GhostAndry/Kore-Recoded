@@ -2,6 +2,8 @@ package me.ghostdevelopment.kore.bukkit;
 
 import me.ghostdevelopment.kore.bukkit.commands.Command;
 import me.ghostdevelopment.kore.bukkit.files.*;
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.reflections.Reflections;
@@ -31,7 +33,7 @@ public final class Kore extends JavaPlugin {
             try {
                 Command command = clazz.getDeclaredConstructor().newInstance();
                 getCommand(command.getCommandInfo().name()).setExecutor(command);
-                Console.info("Command %command% ha been loaded.".replace("%command%", command.getCommandInfo().name()));
+                Bukkit.getLogger().info(ChatColor.GREEN+"Command %command% ha been loaded.".replace("%command%", command.getCommandInfo().name()));
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }

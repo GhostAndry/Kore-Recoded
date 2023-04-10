@@ -15,30 +15,25 @@ public class CommandKore extends Command {
         if(args.length==0){
             player.sendMessage(Utils.Color("\n&aThis server is running Kore."));
         } else if (args.length==1) {
+            if(args[0].equalsIgnoreCase("info")) {
+                player.sendMessage(Utils.Color("\n" +
+                        "&aKore 1.6 RECODED\n" +
+                        "&aAuthor: &7GhostAndry\n" +
+                        "&aGitHub: &b&nhttps://github.com/GhostAndry/Kore\n" +
+                        "\n"));
+            } else if (args[0].equalsIgnoreCase("reload")) {
 
-            switch (args[0]){
-                case "info":{
-                    player.sendMessage(Utils.Color("\n" +
-                            "&aKore 1.6 RECODED" +
-                            "&aAuthor: &7GhostAndry" +
-                            "&aSpigot: &b&nhttps://www.spigotmc.org/resources/kore-1-8-x-1-19-x.107023/" +
-                            "&aGitHub: &b&nhttps://github.com/GhostAndry/Kore" +
-                            "\n"));
+                if (!player.hasPermission("kore.reload")) {
+                    player.sendMessage(Utils.Color(LangFile.getFile().getString("no-permissions").replaceAll("%prefix%", LangFile.getFile().getString("prefix%"))
+                    ));
+                    return;
                 }
-                case "reload":{
-                    if(!player.hasPermission("kore.reload")){
-                        player.sendMessage(Utils.Color(LangFile.getFile().getString("no-permissions")
-                                .replaceAll("%prefix%", LangFile.getFile().getString("prefix%"))
-                        ));
-                        return;
-                    }
-                    try {
-                        Functions.reloadFiles();
-                        player.sendMessage(Utils.Color(LangFile.getFile().getString("reload.success")));
-                    }catch (Exception e){
-                        Console.warning(e.getMessage());
-                        player.sendMessage(Utils.Color(LangFile.getFile().getString("reload.error")));
-                    }
+                try {
+                    Functions.reloadFiles();
+                    player.sendMessage(Utils.Color(LangFile.getFile().getString("reload.success")));
+                } catch (Exception e) {
+                    Console.warning(e.getMessage());
+                    player.sendMessage(Utils.Color(LangFile.getFile().getString("reload.error")));
                 }
             }
         }
