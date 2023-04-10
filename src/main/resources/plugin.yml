@@ -1,6 +1,6 @@
 name: KoreRecoded
 version: '${project.version}'
-main: me.ghostdevelopment.kore.bukkit.Kore
+main: me.ghostdevelopment.kore.Kore
 load: STARTUP
 
 commands:

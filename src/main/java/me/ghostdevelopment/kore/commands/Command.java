@@ -29,6 +29,8 @@ public abstract class Command implements CommandExecutor {
 
         if(!commandInfo.permission().isEmpty()){
             if(!(sender.hasPermission(commandInfo.permission())
+                    ||sender.hasPermission(commandInfo.permission2())
+                    ||sender.hasPermission(commandInfo.permission3())
                     ||sender.hasPermission("kore.*")
             )){
                 sender.sendMessage(Utils.Color(LangFile.getFile().getString("no-permissions")
@@ -40,7 +42,7 @@ public abstract class Command implements CommandExecutor {
 
         if(commandInfo.onlyPlayers()){
             if(!(sender instanceof Player)) {
-                sender.sendMessage(Utils.Color(LangFile.getFile().getString("no-permissions")
+                sender.sendMessage(Utils.Color(LangFile.getFile().getString("only-players")
                         .replaceAll("%prefix%", LangFile.getFile().getString("prefix%"))
                 ));
                 return false;

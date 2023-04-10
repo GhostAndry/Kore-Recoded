@@ -4,10 +4,13 @@ import me.ghostdevelopment.kore.commands.Command;
 import me.ghostdevelopment.kore.files.*;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.reflections.Reflections;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public final class Kore extends JavaPlugin {
@@ -64,6 +67,12 @@ public final class Kore extends JavaPlugin {
 
         LangFile.setUp();
         LangFile.getFile().options().copyDefaults(true);
+        File langfile = new File(Bukkit.getServer().getPluginManager().getPlugin("KoreRecoded").getDataFolder(), "language.yml");
+        try {
+            LangFile.getFile().load(langfile);
+        } catch (IOException | InvalidConfigurationException e) {
+            throw new RuntimeException(e);
+        }
         LangFile.save();
 
         SpawnFile.setUp();

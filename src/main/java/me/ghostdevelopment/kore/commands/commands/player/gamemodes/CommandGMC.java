@@ -6,7 +6,7 @@ import me.ghostdevelopment.kore.commands.Command;
 import me.ghostdevelopment.kore.commands.CommandInfo;
 import org.bukkit.entity.Player;
 
-@CommandInfo(name = "gmc", permission = "kore.gamemode.creative", onlyPlayers = true)
+@CommandInfo(name = "gmc", permission = "kore.gamemode.creative", permission2 =  "kore.gamemode.*", onlyPlayers = true)
 public class CommandGMC extends Command {
     private Kore plugin;
     @Override

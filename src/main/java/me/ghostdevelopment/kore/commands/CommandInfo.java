@@ -11,5 +11,7 @@ import java.lang.annotation.Target;
 public @interface CommandInfo {
     String name();
     String permission() default "";
+    String permission2() default "";
+    String permission3() default "";
     boolean onlyPlayers();
 }
