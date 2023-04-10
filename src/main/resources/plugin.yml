@@ -6,4 +6,3 @@ load: STARTUP
 commands:
   kore:
     description: ""
-

@@ -1,4 +1,4 @@
-package me.ghostdevelopment.kore.bukkit;
+package me.ghostdevelopment.kore;
 
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;

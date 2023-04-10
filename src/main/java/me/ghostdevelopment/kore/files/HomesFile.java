@@ -1,6 +1,6 @@
-package me.ghostdevelopment.kore.bukkit.files;
+package me.ghostdevelopment.kore.files;
 
-import me.ghostdevelopment.kore.bukkit.Console;
+import me.ghostdevelopment.kore.Console;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;

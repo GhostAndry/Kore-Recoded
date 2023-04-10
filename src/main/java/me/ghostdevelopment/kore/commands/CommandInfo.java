@@ -1,4 +1,4 @@
-package me.ghostdevelopment.kore.bukkit.commands;
+package me.ghostdevelopment.kore.commands;
 
 
 import java.lang.annotation.ElementType;

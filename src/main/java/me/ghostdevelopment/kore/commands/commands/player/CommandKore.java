@@ -1,14 +1,14 @@
-package me.ghostdevelopment.kore.bukkit.commands.commands.player;
+package me.ghostdevelopment.kore.commands.commands.player;
 
-import me.ghostdevelopment.kore.bukkit.Console;
-import me.ghostdevelopment.kore.bukkit.Functions;
-import me.ghostdevelopment.kore.bukkit.Utils;
-import me.ghostdevelopment.kore.bukkit.commands.Command;
-import me.ghostdevelopment.kore.bukkit.commands.CommandInfo;
-import me.ghostdevelopment.kore.bukkit.files.LangFile;
+import me.ghostdevelopment.kore.Console;
+import me.ghostdevelopment.kore.Functions;
+import me.ghostdevelopment.kore.Utils;
+import me.ghostdevelopment.kore.commands.Command;
+import me.ghostdevelopment.kore.commands.CommandInfo;
+import me.ghostdevelopment.kore.files.LangFile;
 import org.bukkit.entity.Player;
 
-@CommandInfo(name = "kore", permission = "", onlyPlayers = true)
+@CommandInfo(name = "kore", onlyPlayers = true)
 public class CommandKore extends Command {
     @Override
     public void execute(Player player, String[] args) {

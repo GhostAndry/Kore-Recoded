@@ -1,7 +1,7 @@
-package me.ghostdevelopment.kore.bukkit.commands;
+package me.ghostdevelopment.kore.commands;
 
-import me.ghostdevelopment.kore.bukkit.Utils;
-import me.ghostdevelopment.kore.bukkit.files.LangFile;
+import me.ghostdevelopment.kore.Utils;
+import me.ghostdevelopment.kore.files.LangFile;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;

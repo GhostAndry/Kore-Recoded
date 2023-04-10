@@ -1,7 +1,7 @@
-package me.ghostdevelopment.kore.bukkit;
+package me.ghostdevelopment.kore;
 
-import me.ghostdevelopment.kore.bukkit.commands.Command;
-import me.ghostdevelopment.kore.bukkit.files.*;
+import me.ghostdevelopment.kore.commands.Command;
+import me.ghostdevelopment.kore.files.*;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.event.Listener;

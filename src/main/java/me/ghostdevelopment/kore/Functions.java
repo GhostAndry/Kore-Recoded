@@ -1,6 +1,6 @@
-package me.ghostdevelopment.kore.bukkit;
+package me.ghostdevelopment.kore;
 
-import me.ghostdevelopment.kore.bukkit.files.*;
+import me.ghostdevelopment.kore.files.*;
 
 public class Functions {
 
