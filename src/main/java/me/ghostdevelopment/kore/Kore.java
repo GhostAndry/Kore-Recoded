@@ -66,13 +66,8 @@ public final class Kore extends JavaPlugin {
         HomesFile.save();
 
         LangFile.setUp();
+        Functions.setLangFile();
         LangFile.getFile().options().copyDefaults(true);
-        File langfile = new File(Bukkit.getServer().getPluginManager().getPlugin("KoreRecoded").getDataFolder(), "language.yml");
-        try {
-            LangFile.getFile().load(langfile);
-        } catch (IOException | InvalidConfigurationException e) {
-            throw new RuntimeException(e);
-        }
         LangFile.save();
 
         SpawnFile.setUp();
