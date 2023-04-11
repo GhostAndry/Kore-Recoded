@@ -11,3 +11,6 @@ commands:
   gms:
   gma:
   gmsp:
+  gamemode:
+    aliases:
+      - gm

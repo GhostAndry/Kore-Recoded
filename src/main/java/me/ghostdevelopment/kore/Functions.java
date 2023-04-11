@@ -33,7 +33,7 @@ public class Functions {
         LangFile.getFile().addDefault("gamemode.changed", "%prefix% &aYour gamemode was changed to %gamemode%");
         LangFile.getFile().addDefault("gamemode.changed-other", "%prefix% %player%'s gamemode was changed to %gamemode%");
         LangFile.getFile().addDefault("gamemode.usage.console", "%prefix% &cUsage: /gamemode <gamemode> <player>");
-        LangFile.getFile().addDefault("gamemode.usage.player", "%prefix% &cUsage: /gamemode <gamemode> [player]");
+        LangFile.getFile().addDefault("gamemode.usage.player", "%prefix% &cUsage: /gamemode <gamemode> &7[player]");
 
 
     }
