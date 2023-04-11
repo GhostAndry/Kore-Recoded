@@ -53,6 +53,7 @@ public class Functions {
 
         SettingsFile.getFile().addDefault("gamemode.enabled", true);
         SettingsFile.getFile().addDefault("fly.enabled", true);
+        SettingsFile.getFile().addDefault("teleport.enabled", true);
 
     }
 
