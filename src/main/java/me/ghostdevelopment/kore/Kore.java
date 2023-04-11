@@ -31,6 +31,9 @@ public final class Kore extends JavaPlugin {
             try {
                 Command command = clazz.getDeclaredConstructor().newInstance();
                 getCommand(command.getCommandInfo().name()).setExecutor(command);
+                Console.info("[KoreRecoded] Enabled %module% module"
+                        .replace("%module%", command.getCommandInfo().name())
+                );
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
@@ -52,8 +55,9 @@ public final class Kore extends JavaPlugin {
 
     private void setupFiles(){
         SettingsFile.setUp();
+        Functions.setupSettings();
         SettingsFile.getFile().options().copyDefaults(true);
-        SettingsFile.reload();
+        SettingsFile.save();
 
         FreezeLocFile.setUp();
         FreezeLocFile.getFile().options().copyDefaults(true);

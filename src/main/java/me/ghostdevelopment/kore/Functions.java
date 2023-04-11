@@ -30,10 +30,17 @@ public class Functions {
         LangFile.getFile().addDefault("reload.success", "%prefix% &aSuccessfully reloaded!");
         LangFile.getFile().addDefault("reload.error", "%prefix% &cInternal error. Check the console for more info.");
 
-        LangFile.getFile().addDefault("gamemode.changed", "%prefix% &aYour gamemode was changed to %gamemode%");
-        LangFile.getFile().addDefault("gamemode.changed-other", "%prefix% %player%'s gamemode was changed to %gamemode%");
+        LangFile.getFile().addDefault("gamemode.changed", "%prefix% &aYour gamemode was changed to &e&o%gamemode%");
+        LangFile.getFile().addDefault("gamemode.changed-other", "%prefix% &a%player%'s gamemode was changed to &e&o%gamemode%");
         LangFile.getFile().addDefault("gamemode.usage.console", "%prefix% &cUsage: /gamemode <gamemode> <player>");
         LangFile.getFile().addDefault("gamemode.usage.player", "%prefix% &cUsage: /gamemode <gamemode> &7[player]");
+
+        LangFile.getFile().addDefault("fly.enabled", "%prefix% &aFly enabled.");
+        LangFile.getFile().addDefault("fly.disabled", "%prefix% &aFly disabled.");
+        LangFile.getFile().addDefault("fly.enabled-other", "%prefix% &aFly enabled.");
+        LangFile.getFile().addDefault("fly.disabled-other", "%prefix% &aFly disabled.");
+        LangFile.getFile().addDefault("fly.usage.console", "");
+        LangFile.getFile().addDefault("fly.usage.player", "");
 
     }
 
