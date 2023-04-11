@@ -14,7 +14,7 @@ public class SettingsFile {
     private static FileConfiguration config;
 
     public static void setUp(){
-        file = new File(Bukkit.getServer().getPluginManager().getPlugin("KoreRecoded").getDataFolder(), "settings.yml");
+        file = new File(Bukkit.getServer().getPluginManager().getPlugin("KoreRecoded").getDataFolder(), "config.yml");
         if(!(file.exists())){
             try {
                 file.createNewFile();
@@ -30,7 +30,7 @@ public class SettingsFile {
         try {
             config.save(file);
         }catch (Exception e){
-            Console.warning("&cCould not write on settings.yml file.");
+            Console.warning("&cCould not write on config.yml file.");
         }
     }
 }
