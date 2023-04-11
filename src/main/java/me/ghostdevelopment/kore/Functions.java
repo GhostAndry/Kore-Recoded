@@ -37,10 +37,10 @@ public class Functions {
 
         LangFile.getFile().addDefault("fly.enabled", "%prefix% &aFly enabled.");
         LangFile.getFile().addDefault("fly.disabled", "%prefix% &aFly disabled.");
-        LangFile.getFile().addDefault("fly.enabled-other", "%prefix% &aFly enabled.");
-        LangFile.getFile().addDefault("fly.disabled-other", "%prefix% &aFly disabled.");
-        LangFile.getFile().addDefault("fly.usage.console", "");
-        LangFile.getFile().addDefault("fly.usage.player", "");
+        LangFile.getFile().addDefault("fly.enabled-other", "%prefix% &aFly enabled for %player%.");
+        LangFile.getFile().addDefault("fly.disabled-other", "%prefix% &aFly disabled for %player%.");
+        LangFile.getFile().addDefault("fly.usage.console", "%prefix% &cUsage: /fly <player>");
+        LangFile.getFile().addDefault("fly.usage.player", "%prefix% &cUsage: /fly &7[player]");
 
     }
 
