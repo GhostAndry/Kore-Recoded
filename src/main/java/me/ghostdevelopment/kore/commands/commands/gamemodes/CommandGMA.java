@@ -55,6 +55,7 @@ public class CommandGMA extends Command {
                 sender.sendMessage(Utils.Color(LangFile.getFile().getString("gamemode.usage.console")
                         .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
                 ));
+                return;
             }
             try {
                 Player target = Bukkit.getPlayer(args[0]);

@@ -18,7 +18,7 @@ public class CommandGMC extends Command {
         if(sender instanceof Player) {
             Player player = (Player) sender;
 
-            if (!(plugin.getConfig().getBoolean("gamemode.enabled"))) {
+            if (!plugin.getConfig().getBoolean("gamemode.enabled")) {
                 player.sendMessage(Utils.Color(LangFile.getFile().getString("command-disabled")
                         .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
                 ));
@@ -49,6 +49,9 @@ public class CommandGMC extends Command {
             }
         }else{
             if(!(args.length==1)){
+                sender.sendMessage(Utils.Color(LangFile.getFile().getString("gamemode.usage.console")
+                        .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
+                ));
                 return;
             }
             try {
