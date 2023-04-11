@@ -94,49 +94,49 @@ public class CommandGamemode extends Command {
                         target.setGameMode(GameMode.SURVIVAL);
                         player.sendMessage(Utils.Color(LangFile.getFile().getString("gamemode.changed")
                                 .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                                .replaceAll("%gamemode%", player.getGameMode().name().toUpperCase())
+                                .replaceAll("%gamemode%", target.getGameMode().name().toUpperCase())
                         ));
                     } else if (type.equalsIgnoreCase("1")) {
                         target.setGameMode(GameMode.CREATIVE);
                         player.sendMessage(Utils.Color(LangFile.getFile().getString("gamemode.changed")
                                 .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                                .replaceAll("%gamemode%", player.getGameMode().name().toUpperCase())
+                                .replaceAll("%gamemode%", target.getGameMode().name().toUpperCase())
                         ));
                     } else if (type.equalsIgnoreCase("2")) {
                         target.setGameMode(GameMode.ADVENTURE);
                         player.sendMessage(Utils.Color(LangFile.getFile().getString("gamemode.changed")
                                 .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                                .replaceAll("%gamemode%", player.getGameMode().name().toUpperCase())
+                                .replaceAll("%gamemode%", target.getGameMode().name().toUpperCase())
                         ));
                     } else if (type.equalsIgnoreCase("3")) {
                         target.setGameMode(GameMode.SPECTATOR);
                         player.sendMessage(Utils.Color(LangFile.getFile().getString("gamemode.changed")
                                 .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                                .replaceAll("%gamemode%", player.getGameMode().name().toUpperCase())
+                                .replaceAll("%gamemode%", target.getGameMode().name().toUpperCase())
                         ));
                     } else if (type.equalsIgnoreCase("survival")) {
                         target.setGameMode(GameMode.SURVIVAL);
                         player.sendMessage(Utils.Color(LangFile.getFile().getString("gamemode.changed")
                                 .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                                .replaceAll("%gamemode%", player.getGameMode().name().toUpperCase())
+                                .replaceAll("%gamemode%", target.getGameMode().name().toUpperCase())
                         ));
                     } else if (type.equalsIgnoreCase("creative")) {
                         target.setGameMode(GameMode.CREATIVE);
                         player.sendMessage(Utils.Color(LangFile.getFile().getString("gamemode.changed")
                                 .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                                .replaceAll("%gamemode%", player.getGameMode().name().toUpperCase())
+                                .replaceAll("%gamemode%", target.getGameMode().name().toUpperCase())
                         ));
                     } else if (type.equalsIgnoreCase("adventure")) {
                         target.setGameMode(GameMode.ADVENTURE);
                         player.sendMessage(Utils.Color(LangFile.getFile().getString("gamemode.changed")
                                 .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                                .replaceAll("%gamemode%", player.getGameMode().name().toUpperCase())
+                                .replaceAll("%gamemode%", target.getGameMode().name().toUpperCase())
                         ));
                     } else if (type.equalsIgnoreCase("spectator")) {
                         target.setGameMode(GameMode.SPECTATOR);
                         player.sendMessage(Utils.Color(LangFile.getFile().getString("gamemode.changed")
                                 .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                                .replaceAll("%gamemode%", player.getGameMode().name().toUpperCase())
+                                .replaceAll("%gamemode%", target.getGameMode().name().toUpperCase())
                         ));
                     }
                 }catch (Exception e){
@@ -144,6 +144,65 @@ public class CommandGamemode extends Command {
                             .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
                     ));
                 }
+            }
+        }else{
+            String type = args[0];
+            Player target = Bukkit.getPlayer(args[1]);
+
+            try{
+                if(type.equalsIgnoreCase("0")){
+                    target.setGameMode(GameMode.SURVIVAL);
+                    sender.sendMessage(Utils.Color(LangFile.getFile().getString("gamemode.changed")
+                            .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
+                            .replaceAll("%gamemode%", target.getGameMode().name().toUpperCase())
+                    ));
+                } else if (type.equalsIgnoreCase("1")) {
+                    target.setGameMode(GameMode.CREATIVE);
+                    sender.sendMessage(Utils.Color(LangFile.getFile().getString("gamemode.changed")
+                            .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
+                            .replaceAll("%gamemode%", target.getGameMode().name().toUpperCase())
+                    ));
+                } else if (type.equalsIgnoreCase("2")) {
+                    target.setGameMode(GameMode.ADVENTURE);
+                    sender.sendMessage(Utils.Color(LangFile.getFile().getString("gamemode.changed")
+                            .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
+                            .replaceAll("%gamemode%", target.getGameMode().name().toUpperCase())
+                    ));
+                } else if (type.equalsIgnoreCase("3")) {
+                    target.setGameMode(GameMode.SPECTATOR);
+                    sender.sendMessage(Utils.Color(LangFile.getFile().getString("gamemode.changed")
+                            .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
+                            .replaceAll("%gamemode%", target.getGameMode().name().toUpperCase())
+                    ));
+                } else if (type.equalsIgnoreCase("survival")) {
+                    target.setGameMode(GameMode.SURVIVAL);
+                    sender.sendMessage(Utils.Color(LangFile.getFile().getString("gamemode.changed")
+                            .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
+                            .replaceAll("%gamemode%", target.getGameMode().name().toUpperCase())
+                    ));
+                } else if (type.equalsIgnoreCase("creative")) {
+                    target.setGameMode(GameMode.CREATIVE);
+                    sender.sendMessage(Utils.Color(LangFile.getFile().getString("gamemode.changed")
+                            .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
+                            .replaceAll("%gamemode%", target.getGameMode().name().toUpperCase())
+                    ));
+                } else if (type.equalsIgnoreCase("adventure")) {
+                    target.setGameMode(GameMode.ADVENTURE);
+                    sender.sendMessage(Utils.Color(LangFile.getFile().getString("gamemode.changed")
+                            .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
+                            .replaceAll("%gamemode%", target.getGameMode().name().toUpperCase())
+                    ));
+                } else if (type.equalsIgnoreCase("spectator")) {
+                    target.setGameMode(GameMode.SPECTATOR);
+                    sender.sendMessage(Utils.Color(LangFile.getFile().getString("gamemode.changed")
+                            .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
+                            .replaceAll("%gamemode%", target.getGameMode().name().toUpperCase())
+                    ));
+                }
+            }catch (Exception e){
+                sender.sendMessage(Utils.Color(LangFile.getFile().getString("invalid-target")
+                        .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
+                ));
             }
         }
     }
