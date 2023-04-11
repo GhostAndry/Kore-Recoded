@@ -2,6 +2,8 @@ package me.ghostdevelopment.kore;
 
 import me.ghostdevelopment.kore.files.*;
 
+
+@SuppressWarnings("ALL")
 public class Functions {
 
     private static Kore plugin;
@@ -28,8 +30,11 @@ public class Functions {
         LangFile.getFile().addDefault("reload.success", "%prefix% &aSuccessfully reloaded!");
         LangFile.getFile().addDefault("reload.error", "%prefix% &cInternal error. Check the console for more info.");
 
-        LangFile.getFile().addDefault("gamemodes.changed", "%prefix% &aYour gamemode was changed to %gamemode%");
+        LangFile.getFile().addDefault("gamemode.changed", "%prefix% &aYour gamemode was changed to %gamemode%");
         LangFile.getFile().addDefault("gamemode.changed-other", "%prefix% %player%'s gamemode was changed to %gamemode%");
+        LangFile.getFile().addDefault("gamemode.usage.console", "%prefix% &cUsage: /gamemode <gamemode> <player>");
+        LangFile.getFile().addDefault("gamemode.usage.player", "%prefix% &cUsage: /gamemode <gamemode> [player]");
+
 
     }
 

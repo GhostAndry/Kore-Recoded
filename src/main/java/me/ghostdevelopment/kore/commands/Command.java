@@ -40,20 +40,8 @@ public abstract class Command implements CommandExecutor {
             }
         }
 
-        if(commandInfo.onlyPlayers()){
-            if(!(sender instanceof Player)) {
-                sender.sendMessage(Utils.Color(LangFile.getFile().getString("only-players")
-                        .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                ));
-                return false;
-            }
-            execute((Player) sender, args);
-        }
-
         execute(sender, args);
         return false;
     }
-
-    public void execute(Player player, String[] args){}
     public void execute(CommandSender sender, String[] args){}
 }
