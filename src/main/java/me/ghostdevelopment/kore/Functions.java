@@ -10,6 +10,7 @@ public class Functions {
 
     public static void reloadFiles(){
 
+        SettingsFile.reload();
         FreezeLocFile.reload();
         HomesFile.reload();
         LangFile.reload();
@@ -34,6 +35,12 @@ public class Functions {
         LangFile.getFile().addDefault("gamemode.usage.console", "%prefix% &cUsage: /gamemode <gamemode> <player>");
         LangFile.getFile().addDefault("gamemode.usage.player", "%prefix% &cUsage: /gamemode <gamemode> &7[player]");
 
+    }
+
+    public static void setupSettings(){
+
+        SettingsFile.getFile().addDefault("gamemode.enabled", true);
+        SettingsFile.getFile().addDefault("fly.enabled", true);
 
     }
 

@@ -51,8 +51,9 @@ public final class Kore extends JavaPlugin {
     }
 
     private void setupFiles(){
-        getConfig().options().copyDefaults(true);
-        saveDefaultConfig();
+        SettingsFile.setUp();
+        SettingsFile.getFile().options().copyDefaults(true);
+        SettingsFile.reload();
 
         FreezeLocFile.setUp();
         FreezeLocFile.getFile().options().copyDefaults(true);

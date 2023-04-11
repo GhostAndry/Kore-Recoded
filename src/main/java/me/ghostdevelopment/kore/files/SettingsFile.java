@@ -8,13 +8,13 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import java.io.File;
 import java.io.IOException;
 
-public class LangFile {
+public class SettingsFile {
 
     private static File file;
     private static FileConfiguration config;
 
     public static void setUp(){
-        file = new File(Bukkit.getServer().getPluginManager().getPlugin("KoreRecoded").getDataFolder(), "language.yml");
+        file = new File(Bukkit.getServer().getPluginManager().getPlugin("KoreRecoded").getDataFolder(), "settings.yml");
         if(!(file.exists())){
             try {
                 file.createNewFile();
@@ -30,7 +30,7 @@ public class LangFile {
         try {
             config.save(file);
         }catch (Exception e){
-            Console.warning("&cCould not write on language.yml file.");
+            Console.warning("&cCould not write on settings.yml file.");
         }
     }
 }
