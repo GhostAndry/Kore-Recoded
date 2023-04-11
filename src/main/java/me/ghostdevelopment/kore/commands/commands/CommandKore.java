@@ -6,6 +6,8 @@ import me.ghostdevelopment.kore.Utils;
 import me.ghostdevelopment.kore.commands.Command;
 import me.ghostdevelopment.kore.commands.CommandInfo;
 import me.ghostdevelopment.kore.files.LangFile;
+import org.apache.commons.lang.ObjectUtils;
+import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
@@ -34,10 +36,14 @@ public class CommandKore extends Command {
                     }
                     try {
                         Functions.reloadFiles();
-                        player.sendMessage(Utils.Color(LangFile.getFile().getString("reload.success")));
-                    } catch (Exception e) {
-                        Console.warning(e.getMessage());
-                        player.sendMessage(Utils.Color(LangFile.getFile().getString("reload.error")));
+                        sender.sendMessage(Utils.Color(LangFile.getFile().getString("reload.success")
+                                .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
+                        ));
+                    } catch (NullPointerException e) {
+                        Bukkit.getLogger().warning(e.getMessage());
+                        player.sendMessage(Utils.Color(LangFile.getFile().getString("reload.error")
+                                .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
+                        ));
                     }
                 }
             }
@@ -54,10 +60,14 @@ public class CommandKore extends Command {
                 } else if (args[0].equalsIgnoreCase("reload")) {
                     try {
                         Functions.reloadFiles();
-                        sender.sendMessage(Utils.Color(LangFile.getFile().getString("reload.success")));
-                    } catch (Exception e) {
-                        Console.warning(e.getMessage());
-                        sender.sendMessage(Utils.Color(LangFile.getFile().getString("reload.error")));
+                        sender.sendMessage(Utils.Color(LangFile.getFile().getString("reload.success")
+                                .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
+                        ));
+                    } catch (NullPointerException e) {
+                        Bukkit.getLogger().warning(e.getMessage());
+                        sender.sendMessage(Utils.Color(LangFile.getFile().getString("reload.error")
+                                .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
+                        ));
                     }
                 }
             }

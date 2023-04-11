@@ -10,20 +10,17 @@ import org.bukkit.GameMode;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+@SuppressWarnings("ALL")
 @CommandInfo(name = "gmc", permission = "kore.gamemode.creative", permission2 =  "kore.gamemode.*")
 public class CommandGMC extends Command {
+
     private Kore plugin;
+
     @Override
     public void execute(CommandSender sender, String[] args) {
         if(sender instanceof Player) {
             Player player = (Player) sender;
 
-            if (!plugin.getConfig().getBoolean("gamemode.enabled")) {
-                player.sendMessage(Utils.Color(LangFile.getFile().getString("command-disabled")
-                        .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                ));
-                return;
-            }
             if (args.length == 0) {
                 player.setGameMode(GameMode.CREATIVE);
                 player.sendMessage(Utils.Color(LangFile.getFile().getString("gamemode.changed")

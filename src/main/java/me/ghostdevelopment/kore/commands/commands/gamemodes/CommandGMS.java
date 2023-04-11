@@ -21,12 +21,6 @@ public class CommandGMS extends Command {
         if(sender instanceof Player) {
             Player player = (Player) sender;
 
-            if (!(plugin.getConfig().getBoolean("gamemode.enabled"))) {
-                player.sendMessage(Utils.Color(LangFile.getFile().getString("command-disabled")
-                        .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                ));
-                return;
-            }
             if (args.length == 0) {
                 player.setGameMode(GameMode.SURVIVAL);
                 player.sendMessage(Utils.Color(LangFile.getFile().getString("gamemode.changed")
