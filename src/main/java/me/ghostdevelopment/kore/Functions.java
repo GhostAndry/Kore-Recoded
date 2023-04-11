@@ -33,14 +33,19 @@ public class Functions {
         LangFile.getFile().addDefault("gamemode.changed", "%prefix% &aYour gamemode was changed to &e&o%gamemode%");
         LangFile.getFile().addDefault("gamemode.changed-other", "%prefix% &a%player%'s gamemode was changed to &e&o%gamemode%");
         LangFile.getFile().addDefault("gamemode.usage.console", "%prefix% &cUsage: /gamemode <gamemode> <player>");
-        LangFile.getFile().addDefault("gamemode.usage.player", "%prefix% &cUsage: /gamemode <gamemode> &7[player]");
+        LangFile.getFile().addDefault("gamemode.usage.player", "%prefix% &cUsage: /gamemode <gamemode> &1[player]");
 
         LangFile.getFile().addDefault("fly.enabled", "%prefix% &aFly enabled.");
         LangFile.getFile().addDefault("fly.disabled", "%prefix% &aFly disabled.");
         LangFile.getFile().addDefault("fly.enabled-other", "%prefix% &aFly enabled for %player%.");
         LangFile.getFile().addDefault("fly.disabled-other", "%prefix% &aFly disabled for %player%.");
         LangFile.getFile().addDefault("fly.usage.console", "%prefix% &cUsage: /fly <player>");
-        LangFile.getFile().addDefault("fly.usage.player", "%prefix% &cUsage: /fly &7[player]");
+        LangFile.getFile().addDefault("fly.usage.player", "%prefix% &cUsage: /fly &1[player]");
+
+        LangFile.getFile().addDefault("teleport.teleported", "%prefix% &aTeleported to %player%");
+        LangFile.getFile().addDefault("teleport.teleported-other", "%prefix% &aTeleported %player% to %target%");
+        LangFile.getFile().addDefault("teleport.usage.player", "%prefix% &cUsage: /teleport <player> &1[player]");
+        LangFile.getFile().addDefault("teleport.usage.console", "%prefix% &cUsage: /teleport <player> <player>");
 
     }
 

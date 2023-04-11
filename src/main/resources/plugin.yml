@@ -15,3 +15,7 @@ commands:
     aliases:
       - gm
   fly:
+  teleport:
+    aliases:
+      - tp
+      - tpto
