@@ -19,3 +19,25 @@ commands:
     aliases:
       - tp
       - tpto
+
+permissions:
+  kore.*:
+    description: ""
+  kore.reload:
+    description: ""
+  kore.teleport:
+    description: ""
+  kore.tp:
+    description: ""
+  kore.gamemode:
+    description: ""
+  kore.gamemode.*:
+    description: ""
+  kore.gamemode.creative:
+    description: ""
+  kore.gamemode.survival:
+    description: ""
+  kore.gamemode.adventure:
+    description: ""
+  kore.gamemode.spectator:
+    description: ""
