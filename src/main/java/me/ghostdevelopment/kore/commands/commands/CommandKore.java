@@ -43,6 +43,20 @@ public class CommandKore extends Command {
                                 .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
                         ));
                     }
+                } else if (args[0].equalsIgnoreCase("help")) {
+                    player.sendMessage(Utils.Color("\n" +
+                            "&c<mandatory> &1[optional]\n" +
+                            "&7/kore <help|reload|info>\n" +
+                            "&7/gamemode &c<gamemode> &1[player]\n" +
+                            "&7/gmc &1[player]\n" +
+                            "&7/gms &1[player]\n" +
+                            "&7/gma &1[player]\n" +
+                            "&7/gmsp &1[player]\n" +
+                            "&7/fly &1[player]" +
+                            "\n"
+                    ));
+                }else{
+                    player.sendMessage(Utils.Color("\n&aThis server is running Kore."));
                 }
             }
         }else{
@@ -67,6 +81,20 @@ public class CommandKore extends Command {
                                 .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
                         ));
                     }
+                } else if (args[0].equalsIgnoreCase("help")) {
+                    sender.sendMessage(Utils.Color("\n" +
+                            "&call parameters are mandatory!" +
+                            "&7/kore <help|reload|info>\n" +
+                            "&7/gamemode &c<gamemode> <player>\n" +
+                            "&7/gmc &c<player>\n" +
+                            "&7/gms &c<player>\n" +
+                            "&7/gma &c<player>\n" +
+                            "&7/gmsp &c<player>\n" +
+                            "&7/fly &c<player>" +
+                            "\n"
+                    ));
+                }else{
+                    sender.sendMessage(Utils.Color("\n&aThis server is running Kore."));
                 }
             }
         }
