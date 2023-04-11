@@ -5,10 +5,10 @@ import me.ghostdevelopment.kore.Utils;
 import me.ghostdevelopment.kore.files.LangFile;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
 
 import java.util.Objects;
 
+@SuppressWarnings("ALL")
 public abstract class Command implements CommandExecutor {
 
     private Kore plugin;
@@ -32,6 +32,7 @@ public abstract class Command implements CommandExecutor {
                     ||sender.hasPermission(commandInfo.permission2())
                     ||sender.hasPermission(commandInfo.permission3())
                     ||sender.hasPermission("kore.*")
+                    ||sender.hasPermission("*")
             )){
                 sender.sendMessage(Utils.Color(LangFile.getFile().getString("no-permissions")
                         .replaceAll("%prefix%", LangFile.getFile().getString("prefix%"))
