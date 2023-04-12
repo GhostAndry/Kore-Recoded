@@ -36,9 +36,9 @@ public class Functions {
         LangFile.getFile().addDefault("gamemode.usage.player", "%prefix% &cUsage: /gamemode <gamemode> &1[player]");
 
         LangFile.getFile().addDefault("fly.enabled", "%prefix% &aFly enabled.");
-        LangFile.getFile().addDefault("fly.disabled", "%prefix% &aFly disabled.");
+        LangFile.getFile().addDefault("fly.disabled", "%prefix% &cFly disabled.");
         LangFile.getFile().addDefault("fly.enabled-other", "%prefix% &aFly enabled for %player%.");
-        LangFile.getFile().addDefault("fly.disabled-other", "%prefix% &aFly disabled for %player%.");
+        LangFile.getFile().addDefault("fly.disabled-other", "%prefix% &cFly disabled for %player%.");
         LangFile.getFile().addDefault("fly.usage.console", "%prefix% &cUsage: /fly <player>");
         LangFile.getFile().addDefault("fly.usage.player", "%prefix% &cUsage: /fly &1[player]");
 
@@ -47,6 +47,13 @@ public class Functions {
         LangFile.getFile().addDefault("teleport.usage.player", "%prefix% &cUsage: /teleport <player> &1[player]");
         LangFile.getFile().addDefault("teleport.usage.console", "%prefix% &cUsage: /teleport <player> <player>");
 
+        LangFile.getFile().addDefault("god.enabled", "%prefix% &aGodmode enabled.");
+        LangFile.getFile().addDefault("god.disabled", "%prefix% &cGodmode disabled.");
+        LangFile.getFile().addDefault("god.enabled-other", "%prefix% &aGodmode enabled for %player%.");
+        LangFile.getFile().addDefault("god.disabled-other", "%prefix% &cGodmode disabled for %player%.");
+        LangFile.getFile().addDefault("god.usage.player", "%prefix% &cUsage: /god &1[player]");
+        LangFile.getFile().addDefault("god.usage.console", "%prefix% &cUsage: /god <player>");
+
     }
 
     public static void setupSettings(){
@@ -54,6 +61,7 @@ public class Functions {
         SettingsFile.getFile().addDefault("gamemode.enabled", true);
         SettingsFile.getFile().addDefault("fly.enabled", true);
         SettingsFile.getFile().addDefault("teleport.enabled", true);
+        SettingsFile.getFile().addDefault("godmode.enabled", true);
 
     }
 

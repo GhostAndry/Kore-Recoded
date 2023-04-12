@@ -6,7 +6,6 @@ load: STARTUP
 commands:
   kore:
 
-  # Gamemodes
   gmc:
   gms:
   gma:
@@ -14,11 +13,14 @@ commands:
   gamemode:
     aliases:
       - gm
+
   fly:
+
   teleport:
     aliases:
       - tp
       - tpto
+  god:
 
 permissions:
   kore.*:
@@ -40,4 +42,6 @@ permissions:
   kore.gamemode.adventure:
     description: ""
   kore.gamemode.spectator:
+    description: ""
+  kore.godmode:
     description: ""

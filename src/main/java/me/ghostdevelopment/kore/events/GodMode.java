@@ -1,0 +1,19 @@
+package me.ghostdevelopment.kore.events;
+
+import me.ghostdevelopment.kore.commands.commands.CommandGod;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
+
+public class GodMode implements Listener {
+
+    @EventHandler
+    public void PlayerInGodModDamage(EntityDamageByEntityEvent event){
+        if (event.getEntity() instanceof Player) {
+            if(CommandGod.getGod().contains(((Player) event.getEntity()).getPlayer())){
+                event.setCancelled(true);
+            }
+        }
+    }
+}

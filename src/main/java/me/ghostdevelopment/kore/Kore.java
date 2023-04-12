@@ -1,6 +1,7 @@
 package me.ghostdevelopment.kore;
 
 import me.ghostdevelopment.kore.commands.Command;
+import me.ghostdevelopment.kore.events.GodMode;
 import me.ghostdevelopment.kore.files.*;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -44,13 +45,13 @@ public final class Kore extends JavaPlugin {
         ArrayList<Listener> events = new ArrayList<>();
 
         //add all events and listeners
-
+        if(SettingsFile.getFile().getBoolean("godmode.enabled")){
+            events.add(new GodMode());
+        }
 
         for(Listener l : events){
             getServer().getPluginManager().registerEvents(l, this);
         }
-
-
     }
 
     private void setupFiles(){
@@ -58,6 +59,11 @@ public final class Kore extends JavaPlugin {
         Functions.setupSettings();
         SettingsFile.getFile().options().copyDefaults(true);
         SettingsFile.save();
+
+        LangFile.setUp();
+        Functions.setLangFile();
+        LangFile.getFile().options().copyDefaults(true);
+        LangFile.save();
 
         FreezeLocFile.setUp();
         FreezeLocFile.getFile().options().copyDefaults(true);
@@ -67,11 +73,6 @@ public final class Kore extends JavaPlugin {
         HomesFile.getFile().options().copyDefaults(true);
         HomesFile.save();
 
-        LangFile.setUp();
-        Functions.setLangFile();
-        LangFile.getFile().options().copyDefaults(true);
-        LangFile.save();
-
         SpawnFile.setUp();
         SpawnFile.getFile().options().copyDefaults(true);
         SpawnFile.save();
@@ -80,5 +81,22 @@ public final class Kore extends JavaPlugin {
         WarpsFile.getFile().options().copyDefaults(true);
         WarpsFile.save();
     }
+
+
+    /*
+
+    TODO: test godmode
+    TODO: Speed
+    TODO: Vanish,
+    TODO: Kill,
+    TODO: Smite,
+    TODO: Explode,
+    TODO: Home,
+    TODO: Spawn,
+    TODO: Trash,
+    TODO: Warp
+
+    */
+
 
 }
