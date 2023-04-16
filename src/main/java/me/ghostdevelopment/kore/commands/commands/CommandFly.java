@@ -16,8 +16,6 @@ import java.util.ArrayList;
 @CommandInfo(name = "fly", permission = "kore.fly")
 public class CommandFly extends Command {
 
-    private Kore plugin;
-
     private static ArrayList<Player> flying = new ArrayList<>();
 
     @Override

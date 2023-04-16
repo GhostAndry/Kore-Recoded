@@ -15,8 +15,6 @@ import org.bukkit.entity.Player;
 @CommandInfo(name = "gma", permission = "kore.gamemode.adventure", permission2 =  "kore.gamemode.*", permission3 = "kore.gamemode")
 public class CommandGMA extends Command {
 
-    private Kore plugin;
-
     @Override
     public void execute(CommandSender sender, String[] args) {
         if(!(SettingsFile.getFile().getBoolean("gamemode.enabled"))){

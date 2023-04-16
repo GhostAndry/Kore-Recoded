@@ -14,8 +14,6 @@ import org.bukkit.entity.Player;
 @CommandInfo(name = "teleport", permission = "kore.teleport", permission2 = "kore.tp")
 public class CommandTeleport extends Command {
 
-    private Kore plugin;
-
     @Override
     public void execute(CommandSender sender, String[] args) {
 

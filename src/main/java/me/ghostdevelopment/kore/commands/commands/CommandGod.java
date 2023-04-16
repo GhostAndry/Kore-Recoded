@@ -16,8 +16,6 @@ import java.util.ArrayList;
 @CommandInfo(name = "god", permission = "kore.god")
 public class CommandGod extends Command {
 
-    private Kore plugin;
-
     private static ArrayList<Player> god = new ArrayList<>();
 
     @Override
