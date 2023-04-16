@@ -8,13 +8,14 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import java.io.File;
 import java.io.IOException;
 
+@SuppressWarnings("all")
 public class LangFile {
 
     private static File file;
     private static FileConfiguration config;
 
     public static void setUp(){
-        file = new File(Bukkit.getServer().getPluginManager().getPlugin("KoreRecoded").getDataFolder(), "language.yml");
+        file = new File(Bukkit.getServer().getPluginManager().getPlugin("KoreRecoded").getDataFolder(), "messages.yml");
         if(!(file.exists())){
             try {
                 file.createNewFile();
