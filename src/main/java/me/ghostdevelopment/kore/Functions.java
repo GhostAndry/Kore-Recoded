@@ -54,6 +54,11 @@ public class Functions {
         LangFile.getFile().addDefault("god.usage.player", "%prefix% &cUsage: /god &1[player]");
         LangFile.getFile().addDefault("god.usage.console", "%prefix% &cUsage: /god <player>");
 
+        LangFile.getFile().addDefault("heal.healed", "%prefix% &aHealed!");
+        LangFile.getFile().addDefault("heal.healed-other", "%prefix% &a%player% has been healed!");
+        LangFile.getFile().addDefault("heal.usage.player", "%prefix% &cUsage: /heal &1[player]");
+        LangFile.getFile().addDefault("heal.usage.console", "%prefix% &cUsage: /heal <player>");
+
     }
 
     public static void setupSettings(){
@@ -62,6 +67,7 @@ public class Functions {
         SettingsFile.getFile().addDefault("fly.enabled", true);
         SettingsFile.getFile().addDefault("teleport.enabled", true);
         SettingsFile.getFile().addDefault("godmode.enabled", true);
+        SettingsFile.getFile().addDefault("heal.enabled", true);
 
     }
 

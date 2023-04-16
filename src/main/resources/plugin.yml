@@ -21,6 +21,7 @@ commands:
       - tp
       - tpto
   god:
+  heal:
 
 permissions:
   kore.*:
@@ -44,4 +45,6 @@ permissions:
   kore.gamemode.spectator:
     description: ""
   kore.godmode:
+    description: ""
+  kore.heal:
     description: ""
