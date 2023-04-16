@@ -15,7 +15,6 @@ public class CommandHeal extends Command {
     @Override
     public void execute(CommandSender sender, String[] args) {
         if(sender instanceof Player){
-            // player
             Player player = (Player) sender;
 
             if(args.length>1){
