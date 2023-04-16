@@ -47,7 +47,6 @@ public class CommandHeal extends Command {
                     return;
                 }
             }
-
         }else{
             if(!(args.length==1)){
                 sender.sendMessage(Utils.Color(LangFile.getFile().getString("heal.usage.console")
