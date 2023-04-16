@@ -35,7 +35,7 @@ public abstract class Command implements CommandExecutor {
                     ||sender.hasPermission("*")
             )){
                 sender.sendMessage(Utils.Color(LangFile.getFile().getString("no-permissions")
-                        .replaceAll("%prefix%", LangFile.getFile().getString("prefix%"))
+                        .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
                 ));
                 return false;
             }
