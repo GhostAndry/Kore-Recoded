@@ -2,7 +2,6 @@ package me.ghostdevelopment.kore;
 
 import me.ghostdevelopment.kore.files.*;
 
-
 @SuppressWarnings("ALL")
 public class Functions {
 
@@ -59,15 +58,26 @@ public class Functions {
         LangFile.getFile().addDefault("heal.usage.player", "%prefix% &cUsage: /heal &1[player]");
         LangFile.getFile().addDefault("heal.usage.console", "%prefix% &cUsage: /heal <player>");
 
+        LangFile.getFile().addDefault("vanish.enabled", "%prefix% &aVanish turned on.");
+        LangFile.getFile().addDefault("vanish.disabled", "%prefix% &aVanish turned off.");
+        LangFile.getFile().addDefault("vanish.enabled-other", "%prefix% &aVanish turned on for &e&o%player%.");
+        LangFile.getFile().addDefault("vanish.disabled-other", "%prefix% &aVanish turned off for &e&o%player%.");
+
     }
 
     public static void setupSettings(){
 
         SettingsFile.getFile().addDefault("gamemode.enabled", true);
+
         SettingsFile.getFile().addDefault("fly.enabled", true);
+
         SettingsFile.getFile().addDefault("teleport.enabled", true);
+
         SettingsFile.getFile().addDefault("godmode.enabled", true);
+
         SettingsFile.getFile().addDefault("heal.enabled", true);
+
+        SettingsFile.getFile().addDefault("vanish.enabled", true);
 
     }
 
