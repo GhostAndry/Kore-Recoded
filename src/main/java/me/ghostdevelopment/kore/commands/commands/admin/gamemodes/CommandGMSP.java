@@ -1,4 +1,4 @@
-package me.ghostdevelopment.kore.commands.commands.gamemodes;
+package me.ghostdevelopment.kore.commands.commands.admin.gamemodes;
 
 import me.ghostdevelopment.kore.Utils;
 import me.ghostdevelopment.kore.commands.Command;
@@ -11,8 +11,8 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 @SuppressWarnings("ALL")
-@CommandInfo(name = "gma", permission = "kore.gamemode.adventure", permission2 =  "kore.gamemode.*", permission3 = "kore.gamemode")
-public class CommandGMA extends Command {
+@CommandInfo(name = "gmsp", permission = "kore.gamemode.spectator", permission2 =  "kore.gamemode.*", permission3 = "kore.gamemode")
+public class CommandGMSP extends Command {
 
     @Override
     public void execute(CommandSender sender, String[] args) {
@@ -27,7 +27,7 @@ public class CommandGMA extends Command {
             Player player = (Player) sender;
 
             if (args.length == 0) {
-                player.setGameMode(GameMode.ADVENTURE);
+                player.setGameMode(GameMode.SPECTATOR);
                 player.sendMessage(Utils.Color(LangFile.getFile().getString("gamemode.changed")
                         .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
                         .replaceAll("%gamemode%", player.getGameMode().name().toUpperCase())
@@ -37,7 +37,7 @@ public class CommandGMA extends Command {
                 try {
                     Player target = Bukkit.getPlayer(args[0]);
 
-                    target.setGameMode(GameMode.ADVENTURE);
+                    target.setGameMode(GameMode.SPECTATOR);
                     player.sendMessage(Utils.Color(LangFile.getFile().getString("gamemode.changed-other")
                             .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
                             .replaceAll("%gamemode%", target.getGameMode().name().toUpperCase())
@@ -59,7 +59,7 @@ public class CommandGMA extends Command {
             try {
                 Player target = Bukkit.getPlayer(args[0]);
 
-                target.setGameMode(GameMode.ADVENTURE);
+                target.setGameMode(GameMode.SPECTATOR);
                 sender.sendMessage(Utils.Color(LangFile.getFile().getString("gamemode.changed-other")
                         .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
                         .replaceAll("%gamemode%", target.getGameMode().name().toUpperCase())

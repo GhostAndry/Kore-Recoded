@@ -1,4 +1,4 @@
-package me.ghostdevelopment.kore.commands.commands.gamemodes;
+package me.ghostdevelopment.kore.commands.commands.admin.gamemodes;
 
 import me.ghostdevelopment.kore.Utils;
 import me.ghostdevelopment.kore.commands.Command;
@@ -11,8 +11,9 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 @SuppressWarnings("ALL")
-@CommandInfo(name = "gmc", permission = "kore.gamemode.creative", permission2 =  "kore.gamemode.*", permission3 = "kore.gamemode")
-public class CommandGMC extends Command {
+@CommandInfo(name = "gma", permission = "kore.gamemode.adventure", permission2 =  "kore.gamemode.*", permission3 = "kore.gamemode")
+public class CommandGMA extends Command {
+
     @Override
     public void execute(CommandSender sender, String[] args) {
         if(!(SettingsFile.getFile().getBoolean("gamemode.enabled"))){
@@ -26,7 +27,7 @@ public class CommandGMC extends Command {
             Player player = (Player) sender;
 
             if (args.length == 0) {
-                player.setGameMode(GameMode.CREATIVE);
+                player.setGameMode(GameMode.ADVENTURE);
                 player.sendMessage(Utils.Color(LangFile.getFile().getString("gamemode.changed")
                         .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
                         .replaceAll("%gamemode%", player.getGameMode().name().toUpperCase())
@@ -36,7 +37,7 @@ public class CommandGMC extends Command {
                 try {
                     Player target = Bukkit.getPlayer(args[0]);
 
-                    target.setGameMode(GameMode.CREATIVE);
+                    target.setGameMode(GameMode.ADVENTURE);
                     player.sendMessage(Utils.Color(LangFile.getFile().getString("gamemode.changed-other")
                             .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
                             .replaceAll("%gamemode%", target.getGameMode().name().toUpperCase())
@@ -58,7 +59,7 @@ public class CommandGMC extends Command {
             try {
                 Player target = Bukkit.getPlayer(args[0]);
 
-                target.setGameMode(GameMode.CREATIVE);
+                target.setGameMode(GameMode.ADVENTURE);
                 sender.sendMessage(Utils.Color(LangFile.getFile().getString("gamemode.changed-other")
                         .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
                         .replaceAll("%gamemode%", target.getGameMode().name().toUpperCase())

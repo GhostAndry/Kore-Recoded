@@ -1,6 +1,5 @@
-package me.ghostdevelopment.kore.commands.commands;
+package me.ghostdevelopment.kore.commands.commands.admin;
 
-import me.ghostdevelopment.kore.Kore;
 import me.ghostdevelopment.kore.Utils;
 import me.ghostdevelopment.kore.commands.Command;
 import me.ghostdevelopment.kore.commands.CommandInfo;

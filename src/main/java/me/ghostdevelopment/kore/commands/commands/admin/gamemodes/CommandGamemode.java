@@ -1,4 +1,4 @@
-package me.ghostdevelopment.kore.commands.commands.gamemodes;
+package me.ghostdevelopment.kore.commands.commands.admin.gamemodes;
 
 import me.ghostdevelopment.kore.Kore;
 import me.ghostdevelopment.kore.Utils;
