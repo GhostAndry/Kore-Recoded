@@ -22,6 +22,10 @@ commands:
       - tpto
   god:
   heal:
+  vanish:
+    aliases:
+      - v
+
 
 permissions:
   kore.*:
@@ -47,4 +51,6 @@ permissions:
   kore.godmode:
     description: ""
   kore.heal:
+    description: ""
+  kore.vanish:
     description: ""

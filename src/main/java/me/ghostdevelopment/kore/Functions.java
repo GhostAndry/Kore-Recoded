@@ -62,6 +62,8 @@ public class Functions {
         LangFile.getFile().addDefault("vanish.disabled", "%prefix% &aVanish turned off.");
         LangFile.getFile().addDefault("vanish.enabled-other", "%prefix% &aVanish turned on for &e&o%player%.");
         LangFile.getFile().addDefault("vanish.disabled-other", "%prefix% &aVanish turned off for &e&o%player%.");
+        LangFile.getFile().addDefault("vanish.usage.player", "%prefix% &cUsage: /vanish &1[player]");
+        LangFile.getFile().addDefault("vanish.usage.console", "%prefix% &cUsage: /vanish <player>");
 
     }
 
