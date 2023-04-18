@@ -4,6 +4,7 @@ import me.ghostdevelopment.kore.Utils;
 import me.ghostdevelopment.kore.commands.Command;
 import me.ghostdevelopment.kore.commands.CommandInfo;
 import me.ghostdevelopment.kore.files.LangFile;
+import me.ghostdevelopment.kore.files.SettingsFile;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -18,6 +19,14 @@ public class CommandVanish extends Command {
 
     @Override
     public void execute(CommandSender sender, String[] args) {
+
+        if (!(SettingsFile.getFile().getBoolean("vanish.enabled"))){
+            sender.sendMessage(Utils.Color(LangFile.getFile().getString("command-disabled")
+                    .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
+            ));
+            return;
+        }
+
         if(sender instanceof Player){
             Player player = (Player) sender;
 

@@ -2,6 +2,7 @@ package me.ghostdevelopment.kore;
 
 import me.ghostdevelopment.kore.commands.Command;
 import me.ghostdevelopment.kore.events.GodMode;
+import me.ghostdevelopment.kore.events.VanishPlayer;
 import me.ghostdevelopment.kore.files.*;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -25,7 +26,7 @@ public final class Kore extends JavaPlugin {
         // Plugin shutdown logic
     }
 
-
+    @SuppressWarnings("ALL")
     private void registerCommands(){
         String packageName = getClass().getPackage().getName();
         for(Class<? extends Command> clazz: new Reflections(packageName + ".commands.commands").getSubTypesOf(Command.class)){
@@ -47,6 +48,9 @@ public final class Kore extends JavaPlugin {
         //add all events and listeners
         if(SettingsFile.getFile().getBoolean("godmode.enabled")){
             events.add(new GodMode());
+        }
+        if(SettingsFile.getFile().getBoolean("vanish.enabled")){
+            events.add(new VanishPlayer());
         }
 
         for(Listener l : events){
@@ -87,7 +91,6 @@ public final class Kore extends JavaPlugin {
 
     TODO: test godmode
     TODO: Speed
-    TODO: Vanish,
     TODO: Kill,
     TODO: Smite,
     TODO: Explode,
