@@ -53,11 +53,11 @@ public class CommandKore extends Command {
                             "&7/gms &1[player]\n" +
                             "&7/gma &1[player]\n" +
                             "&7/gmsp &1[player]\n" +
-                            "&7/fly &1[player]" +
-                            "&7/teleport /tp &c<player> &1[player]" +
-                            "&7/heal &1[player]" +
-                            "&7/god &1[player]" +
-                            "&7/vanish /v &1[player]" +
+                            "&7/fly &1[player]\n" +
+                            "&7/teleport /tp &c<player> &1[player]\n" +
+                            "&7/heal &1[player]\n" +
+                            "&7/god &1[player]\n" +
+                            "&7/vanish /v &1[player]\n" +
                             "\n"
                     ));
                 }else{
