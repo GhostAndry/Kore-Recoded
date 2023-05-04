@@ -11,6 +11,8 @@ import org.bukkit.Location;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+@SuppressWarnings("ALL")
+
 @CommandInfo(name = "spawn", permission = "kore.spawn")
 public class CommandSpawn extends Command {
 

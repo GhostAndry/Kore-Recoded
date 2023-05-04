@@ -8,6 +8,8 @@ import me.ghostdevelopment.kore.files.LangFile;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+@SuppressWarnings("ALL")
+
 @CommandInfo(name = "setspawn", permission = "kore.setspawn")
 public class CommandSetspawn extends Command {
 

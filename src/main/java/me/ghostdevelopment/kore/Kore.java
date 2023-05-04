@@ -11,6 +11,7 @@ import org.reflections.Reflections;
 
 import java.util.ArrayList;
 
+@SuppressWarnings("ALL")
 public final class Kore extends JavaPlugin {
 
     @Override
