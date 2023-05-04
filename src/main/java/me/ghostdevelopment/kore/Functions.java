@@ -5,6 +5,9 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @SuppressWarnings("ALL")
 public class Functions {
 
@@ -93,9 +96,6 @@ public class Functions {
         SettingsFile.getFile().addDefault("spawn.on-join", true);
 
         SettingsFile.getFile().addDefault("trash.enabled", true);
-
-        SettingsFile.getFile().addDefault("chat.enabled", true);
-        SettingsFile.getFile().addDefault("chat.format", "%sender%: %message%");
 
     }
 

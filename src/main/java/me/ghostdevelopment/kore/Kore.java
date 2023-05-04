@@ -1,12 +1,12 @@
 package me.ghostdevelopment.kore;
 
-import me.clip.placeholderapi.PlaceholderAPI;
 import me.ghostdevelopment.kore.commands.Command;
-import me.ghostdevelopment.kore.events.ChatManager;
 import me.ghostdevelopment.kore.events.GodMode;
 import me.ghostdevelopment.kore.events.SpawnOnJoin;
 import me.ghostdevelopment.kore.events.VanishPlayer;
-import me.ghostdevelopment.kore.files.*;
+import me.ghostdevelopment.kore.files.LangFile;
+import me.ghostdevelopment.kore.files.SettingsFile;
+import me.ghostdevelopment.kore.files.StorageFile;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.reflections.Reflections;
@@ -60,9 +60,6 @@ public final class Kore extends JavaPlugin {
             if(SettingsFile.getFile().getBoolean("spawn.on-join")){
                 events.add(new SpawnOnJoin());
             }
-        }
-        if(SettingsFile.getFile().getBoolean("chat.enabled")){
-            events.add(new ChatManager());
         }
 
         for(Listener l : events){

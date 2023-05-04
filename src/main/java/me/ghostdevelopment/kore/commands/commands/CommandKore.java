@@ -29,7 +29,8 @@ public class CommandKore extends Command {
                 } else if (args[0].equalsIgnoreCase("reload")) {
 
                     if (!player.hasPermission("kore.reload")) {
-                        player.sendMessage(Utils.Color(LangFile.getFile().getString("no-permissions").replaceAll("%prefix%", LangFile.getFile().getString("prefix%"))
+                        player.sendMessage(Utils.Color(LangFile.getFile().getString("no-permissions")
+                                .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
                         ));
                         return;
                     }
