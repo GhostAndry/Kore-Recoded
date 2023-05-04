@@ -25,6 +25,8 @@ commands:
   vanish:
     aliases:
       - v
+  setspawn:
+  spawn:
 
 
 permissions:
@@ -53,4 +55,8 @@ permissions:
   kore.heal:
     description: ""
   kore.vanish:
+    description: ""
+  kore.setspawn:
+    description: ""
+  kore.spawn:
     description: ""

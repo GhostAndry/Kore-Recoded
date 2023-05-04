@@ -1,6 +1,9 @@
 package me.ghostdevelopment.kore;
 
 import me.ghostdevelopment.kore.files.*;
+import org.bukkit.Bukkit;
+import org.bukkit.Location;
+import org.bukkit.World;
 
 @SuppressWarnings("ALL")
 public class Functions {
@@ -10,11 +13,8 @@ public class Functions {
     public static void reloadFiles(){
 
         SettingsFile.reload();
-        FreezeLocFile.reload();
-        HomesFile.reload();
         LangFile.reload();
-        SpawnFile.reload();
-        WarpsFile.reload();
+        StorageFile.reload();
 
     }
 
@@ -65,6 +65,13 @@ public class Functions {
         LangFile.getFile().addDefault("vanish.usage.player", "%prefix% &cUsage: /vanish &1[player]");
         LangFile.getFile().addDefault("vanish.usage.console", "%prefix% &cUsage: /vanish <player>");
 
+        LangFile.getFile().addDefault("spawn.set", "%prefix% &aSpawn has beed set to %x% %y% %z%.");
+        LangFile.getFile().addDefault("spawn.teleported", "%prefix% &aTeleported to spawn");
+        LangFile.getFile().addDefault("spawn.teleported-other", "%prefix% &aTeleported %player% to spawn");
+        LangFile.getFile().addDefault("spawn.nonexistent", "%prefix% &cSpawn point wasn't set yet");
+        LangFile.getFile().addDefault("spawn.usage.player", "%prefix% &cUsage: /spawn &1[player]");
+        LangFile.getFile().addDefault("spawn.usage.console", "%prefix% &cYou cant set the spawn with console");
+
     }
 
     public static void setupSettings(){
@@ -81,6 +88,30 @@ public class Functions {
 
         SettingsFile.getFile().addDefault("vanish.enabled", true);
 
+        SettingsFile.getFile().addDefault("spawn.enabled", true);
+        SettingsFile.getFile().addDefault("spawn.on-join", true);
+
+    }
+
+    public static void setSpawnLoc(Location loc){
+        StorageFile.getFile().set("spawn.world", loc.getWorld().getName());
+        StorageFile.getFile().set("spawn.x", loc.getX());
+        StorageFile.getFile().set("spawn.y", loc.getY());
+        StorageFile.getFile().set("spawn.z", loc.getZ());
+        StorageFile.getFile().set("spawn.pitch", loc.getPitch());
+        StorageFile.getFile().set("spawn.yaw", loc.getYaw());
+        StorageFile.save();
+    }
+    public static Location getSpawnLocation(){
+        Location loc = new Location(
+                Bukkit.getWorld(StorageFile.getFile().getString("spawn.world")),
+                StorageFile.getFile().getDouble("spawn.x"),
+                StorageFile.getFile().getDouble("spawn.y"),
+                StorageFile.getFile().getDouble("spawn.z"),
+                (float) StorageFile.getFile().getDouble("spawn.yaw"),
+                (float) StorageFile.getFile().getDouble("spawn.pitch")
+        );
+        return loc;
     }
 
 }

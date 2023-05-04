@@ -42,25 +42,32 @@ public class CommandGod extends Command {
                     ));
                 }
             } else if (args.length==1) {
-                Player target = Bukkit.getPlayer(args[0]);
-                if (god.contains(target)) {
-                    god.remove(target);
-                    target.sendMessage(Utils.Color(LangFile.getFile().getString("god.disabled")
+                try {
+                    Player target = Bukkit.getPlayer(args[0]);
+                    if (god.contains(target)) {
+                        god.remove(target);
+                        target.sendMessage(Utils.Color(LangFile.getFile().getString("god.disabled")
+                                .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
+                        ));
+                        player.sendMessage(Utils.Color(LangFile.getFile().getString("god.disabled-other")
+                                .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
+                                .replaceAll("%player%", target.getName())
+                        ));
+                    } else {
+                        god.add(target);
+                        target.sendMessage(Utils.Color(LangFile.getFile().getString("god.enabled")
+                                .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
+                        ));
+                        player.sendMessage(Utils.Color(LangFile.getFile().getString("god.enabled-other")
+                                .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
+                                .replaceAll("%player%", target.getName())
+                        ));
+                    }
+                }catch (Exception e){
+                    player.sendMessage(Utils.Color(LangFile.getFile().getString("invalid-target")
                             .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
                     ));
-                    player.sendMessage(Utils.Color(LangFile.getFile().getString("god.disabled-other")
-                            .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                            .replaceAll("%player%", target.getName())
-                    ));
-                } else {
-                    god.add(target);
-                    target.sendMessage(Utils.Color(LangFile.getFile().getString("god.enabled")
-                            .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                    ));
-                    player.sendMessage(Utils.Color(LangFile.getFile().getString("god.enabled-other")
-                            .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                            .replaceAll("%player%", target.getName())
-                    ));
+                    return;
                 }
             }else{
                 player.sendMessage(Utils.Color(LangFile.getFile().getString("god.usage.player")

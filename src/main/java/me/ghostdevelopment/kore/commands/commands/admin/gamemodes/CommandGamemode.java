@@ -12,7 +12,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 @SuppressWarnings("ALL")
-@CommandInfo(name = "gamemode", permission = "kore.gamemode.*", permission3 = "kore.gamemode")
+@CommandInfo(name = "gamemode", permission = "kore.gamemode.*", permission2 = "kore.gamemode")
 public class CommandGamemode extends Command {
 
     private Kore plugin;

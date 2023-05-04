@@ -2,6 +2,7 @@ package me.ghostdevelopment.kore;
 
 import me.ghostdevelopment.kore.commands.Command;
 import me.ghostdevelopment.kore.events.GodMode;
+import me.ghostdevelopment.kore.events.SpawnOnJoin;
 import me.ghostdevelopment.kore.events.VanishPlayer;
 import me.ghostdevelopment.kore.files.*;
 import org.bukkit.event.Listener;
@@ -52,6 +53,11 @@ public final class Kore extends JavaPlugin {
         if(SettingsFile.getFile().getBoolean("vanish.enabled")){
             events.add(new VanishPlayer());
         }
+        if(SettingsFile.getFile().getBoolean("spawn.enabled")){
+            if(SettingsFile.getFile().getBoolean("spawn.on-join")){
+                events.add(new SpawnOnJoin());
+            }
+        }
 
         for(Listener l : events){
             getServer().getPluginManager().registerEvents(l, this);
@@ -69,33 +75,19 @@ public final class Kore extends JavaPlugin {
         LangFile.getFile().options().copyDefaults(true);
         LangFile.save();
 
-        FreezeLocFile.setUp();
-        FreezeLocFile.getFile().options().copyDefaults(true);
-        FreezeLocFile.save();
-
-        HomesFile.setUp();
-        HomesFile.getFile().options().copyDefaults(true);
-        HomesFile.save();
-
-        SpawnFile.setUp();
-        SpawnFile.getFile().options().copyDefaults(true);
-        SpawnFile.save();
-
-        WarpsFile.setUp();
-        WarpsFile.getFile().options().copyDefaults(true);
-        WarpsFile.save();
+        StorageFile.setUp();
+        StorageFile.getFile().options().copyDefaults(true);
+        StorageFile.save();
     }
 
 
     /*
 
-    TODO: test godmode
     TODO: Speed
     TODO: Kill,
     TODO: Smite,
     TODO: Explode,
     TODO: Home,
-    TODO: Spawn,
     TODO: Trash,
     TODO: Warp
 

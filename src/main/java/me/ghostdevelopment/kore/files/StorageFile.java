@@ -9,30 +9,29 @@ import java.io.File;
 import java.io.IOException;
 
 @SuppressWarnings("ALL")
-public class FreezeLocFile {
+public class StorageFile {
 
     private static File file;
-    private static FileConfiguration freezeLocFile;
+    private static FileConfiguration warpsFile;
 
     public static void setUp(){
-        file = new File(Bukkit.getServer().getPluginManager().getPlugin("KoreRecoded").getDataFolder(), "freezeLoc.yml");
+        file = new File(Bukkit.getServer().getPluginManager().getPlugin("KoreRecoded").getDataFolder(), "storage.yml");
         if(!(file.exists())){
             try {
                 file.createNewFile();
             }catch (IOException e){
             }
         }
-        freezeLocFile = YamlConfiguration.loadConfiguration(file);
+        warpsFile = YamlConfiguration.loadConfiguration(file);
     }
 
-    public static FileConfiguration getFile(){return freezeLocFile;}
-    public static void reload(){freezeLocFile=YamlConfiguration.loadConfiguration(file);}
+    public static FileConfiguration getFile(){return warpsFile;}
+    public static void reload(){warpsFile=YamlConfiguration.loadConfiguration(file);}
     public static void save(){
         try {
-            freezeLocFile.save(file);
+            warpsFile.save(file);
         }catch (Exception e){
-            Console.warning("&cCould not write on freezeLoc.yml file.");
+            Console.warning("&cCould not write on warps.yml file.");
         }
     }
-
 }

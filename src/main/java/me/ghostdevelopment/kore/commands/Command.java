@@ -10,9 +10,6 @@ import java.util.Objects;
 
 @SuppressWarnings("ALL")
 public abstract class Command implements CommandExecutor {
-
-    private Kore plugin;
-
     private final CommandInfo commandInfo;
 
     public Command(){
