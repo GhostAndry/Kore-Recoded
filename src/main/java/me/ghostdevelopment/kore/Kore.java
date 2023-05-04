@@ -1,6 +1,8 @@
 package me.ghostdevelopment.kore;
 
+import me.clip.placeholderapi.PlaceholderAPI;
 import me.ghostdevelopment.kore.commands.Command;
+import me.ghostdevelopment.kore.events.ChatManager;
 import me.ghostdevelopment.kore.events.GodMode;
 import me.ghostdevelopment.kore.events.SpawnOnJoin;
 import me.ghostdevelopment.kore.events.VanishPlayer;
@@ -59,6 +61,9 @@ public final class Kore extends JavaPlugin {
                 events.add(new SpawnOnJoin());
             }
         }
+        if(SettingsFile.getFile().getBoolean("chat.enabled")){
+            events.add(new ChatManager());
+        }
 
         for(Listener l : events){
             getServer().getPluginManager().registerEvents(l, this);
@@ -89,7 +94,6 @@ public final class Kore extends JavaPlugin {
     TODO: Smite,
     TODO: Explode,
     TODO: Home,
-    TODO: Trash,
     TODO: Warp
 
     */

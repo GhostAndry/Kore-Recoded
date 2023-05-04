@@ -26,7 +26,6 @@ public class CommandGod extends Command {
             return;
         }
 
-
         if(sender instanceof Player){
             Player player = (Player) sender;
             if(args.length==0) {

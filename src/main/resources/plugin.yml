@@ -27,6 +27,10 @@ commands:
       - v
   setspawn:
   spawn:
+  trash:
+    aliases:
+      - disposal
+  #
 
 
 permissions:
@@ -59,4 +63,6 @@ permissions:
   kore.setspawn:
     description: ""
   kore.spawn:
+    description: ""
+  kore.trash:
     description: ""

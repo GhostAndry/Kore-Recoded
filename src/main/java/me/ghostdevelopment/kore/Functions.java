@@ -69,8 +69,9 @@ public class Functions {
         LangFile.getFile().addDefault("spawn.teleported", "%prefix% &aTeleported to spawn");
         LangFile.getFile().addDefault("spawn.teleported-other", "%prefix% &aTeleported %player% to spawn");
         LangFile.getFile().addDefault("spawn.nonexistent", "%prefix% &cSpawn point wasn't set yet");
+        LangFile.getFile().addDefault("spawn.usage.admin", "%prefix% &cUsage: /setspawn");
         LangFile.getFile().addDefault("spawn.usage.player", "%prefix% &cUsage: /spawn &1[player]");
-        LangFile.getFile().addDefault("spawn.usage.console", "%prefix% &cYou cant set the spawn with console");
+        LangFile.getFile().addDefault("spawn.usage.console", "%prefix% &cUsage: /spawn <player>");
 
     }
 
@@ -90,6 +91,11 @@ public class Functions {
 
         SettingsFile.getFile().addDefault("spawn.enabled", true);
         SettingsFile.getFile().addDefault("spawn.on-join", true);
+
+        SettingsFile.getFile().addDefault("trash.enabled", true);
+
+        SettingsFile.getFile().addDefault("chat.enabled", true);
+        SettingsFile.getFile().addDefault("chat.format", "%sender%: %message%");
 
     }
 
