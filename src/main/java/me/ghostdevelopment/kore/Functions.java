@@ -76,6 +76,10 @@ public class Functions {
         LangFile.getFile().addDefault("spawn.usage.player", "%prefix% &cUsage: /spawn &1[player]");
         LangFile.getFile().addDefault("spawn.usage.console", "%prefix% &cUsage: /spawn <player>");
 
+        LangFile.getFile().addDefault("orbitalcannon.shoot", "%prefix% &aThe Orbital Cannon fired a shot at %coords%.");
+        LangFile.getFile().addDefault("orbitalcannon.tell", "%prefix% &c&lYou've been hit by an orbital cannon shot!");
+        LangFile.getFile().addDefault("orbitalcannon.usage", "%prefix% &cUsage: /orbitalcannon <player | x y z>");
+
     }
 
     public static void setupSettings(){
@@ -97,7 +101,8 @@ public class Functions {
 
         SettingsFile.getFile().addDefault("trash.enabled", true);
 
-
+        SettingsFile.getFile().addDefault("orbitalcannon.enabled", true);
+        SettingsFile.getFile().addDefault("orbitalcannon.tell-to-victim", true);
 
         SettingsFile.getFile().addDefault("chat.enabled", true);
         SettingsFile.getFile().addDefault("chat.format", "%sender%: %message%");

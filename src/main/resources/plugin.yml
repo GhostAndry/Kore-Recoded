@@ -30,6 +30,7 @@ commands:
   trash:
     aliases:
       - disposal
+  orbitalcannon:
   #
 
 
@@ -65,4 +66,8 @@ permissions:
   kore.spawn:
     description: ""
   kore.trash:
+    description: ""
+  kore.chatbypass:
+    description: ""
+  kore.orbitalcannon:
     description: ""
