@@ -9,10 +9,8 @@ import me.ghostdevelopment.kore.files.SettingsFile;
 import org.bukkit.Location;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.scheduler.BukkitRunnable;
 
-import javax.rmi.CORBA.Util;
-
+@SuppressWarnings("ALL")
 @CommandInfo(name = "orbitalcannon", permission = "kore.orbitalcannon")
 public class CommandOrbitalcannon extends Command {
 
