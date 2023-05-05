@@ -97,6 +97,15 @@ public class Functions {
 
         SettingsFile.getFile().addDefault("trash.enabled", true);
 
+
+
+        SettingsFile.getFile().addDefault("chat.enabled", true);
+        SettingsFile.getFile().addDefault("chat.format", "%sender%: %message%");
+        List<String> words = new ArrayList<>();
+        words.add("fuck");
+        words.add("shit");
+        SettingsFile.getFile().addDefault("chat.blacklist-words", words);
+
     }
 
     public static void setSpawnLoc(Location loc){
