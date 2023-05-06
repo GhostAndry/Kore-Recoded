@@ -100,7 +100,6 @@ public final class Kore extends JavaPlugin {
 
     TODO: Speed
     TODO: Home,
-    TODO: Warp
 
     */
 
