@@ -1,9 +1,10 @@
 package me.ghostdevelopment.kore;
 
-import me.ghostdevelopment.kore.files.*;
+import me.ghostdevelopment.kore.files.LangFile;
+import me.ghostdevelopment.kore.files.SettingsFile;
+import me.ghostdevelopment.kore.files.StorageFile;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
-import org.bukkit.World;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -80,6 +81,9 @@ public class Functions {
         LangFile.getFile().addDefault("orbitalcannon.tell", "%prefix% &c&lYou've been hit by an orbital cannon shot!");
         LangFile.getFile().addDefault("orbitalcannon.usage", "%prefix% &cUsage: /orbitalcannon <player | x y z>");
 
+        LangFile.getFile().addDefault("smite.smited-player", "%prefix% &aSmited %player%");
+        LangFile.getFile().addDefault("smite.usage", "%prefix% &cUsage: /smite <player>");
+
     }
 
     public static void setupSettings(){
@@ -103,6 +107,8 @@ public class Functions {
 
         SettingsFile.getFile().addDefault("orbitalcannon.enabled", true);
         SettingsFile.getFile().addDefault("orbitalcannon.tell-to-victim", true);
+
+        SettingsFile.getFile().addDefault("smite.enable", true);
 
         SettingsFile.getFile().addDefault("chat.enabled", true);
         SettingsFile.getFile().addDefault("chat.format", "%sender%: %message%");

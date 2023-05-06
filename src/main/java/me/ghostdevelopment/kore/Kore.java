@@ -12,6 +12,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.reflections.Reflections;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
 @SuppressWarnings("ALL")
@@ -21,7 +22,11 @@ public final class Kore extends JavaPlugin {
     public void onEnable() {
         // Plugin startup logic
         setupFiles();
-        registerCommands();
+        try {
+            registerCommands();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
         registerEvents();
 
     }
@@ -32,17 +37,19 @@ public final class Kore extends JavaPlugin {
     }
 
     @SuppressWarnings("ALL")
-    private void registerCommands(){
+    private void registerCommands() throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
         String packageName = getClass().getPackage().getName();
         for(Class<? extends Command> clazz: new Reflections(packageName + ".commands.commands").getSubTypesOf(Command.class)){
+            Command command = clazz.getDeclaredConstructor().newInstance();
             try {
-                Command command = clazz.getDeclaredConstructor().newInstance();
                 getCommand(command.getCommandInfo().name()).setExecutor(command);
                 Console.info("[KoreRecoded] Enabled %module% module"
                         .replace("%module%", command.getCommandInfo().name())
                 );
             } catch (Exception e) {
-                throw new RuntimeException(e);
+                System.err.println("[KoreRecoded] Can't load %module% module"
+                        .replace("%module%", command.getCommandInfo().name())
+                );
             }
         }
     }
@@ -93,8 +100,6 @@ public final class Kore extends JavaPlugin {
 
     TODO: Speed
     TODO: Kill,
-    TODO: Smite,
-    TODO: Explode,
     TODO: Home,
     TODO: Warp
 
