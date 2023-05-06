@@ -33,6 +33,7 @@ commands:
   orbitalcannon:
   smite:
   kill:
+  warp:
 
 
 permissions:
@@ -75,4 +76,8 @@ permissions:
   kore.smite:
     description: ""
   kore.kill:
+    description: ""
+  kore.warp:
+    description: ""
+  kore.warp.admin:
     description: ""

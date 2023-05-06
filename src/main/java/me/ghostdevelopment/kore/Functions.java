@@ -12,8 +12,6 @@ import java.util.List;
 @SuppressWarnings("ALL")
 public class Functions {
 
-    private static Kore plugin;
-
     public static void reloadFiles(){
 
         SettingsFile.reload();
@@ -88,6 +86,17 @@ public class Functions {
         LangFile.getFile().addDefault("kill.usage.player", "%prefix% &cUsage: /kill &1[player]");
         LangFile.getFile().addDefault("kill.usage.console", "%prefix% &cUsage: /kill <player>");
 
+        LangFile.getFile().addDefault("warp.warped", "%prefix% &aYou have been warped to %warp%");
+        LangFile.getFile().addDefault("warp.warped-other", "%prefix% &aYou have warped %player% to %warp%");
+        LangFile.getFile().addDefault("warp.not-found", "%prefix% &cWarp not found.");
+        LangFile.getFile().addDefault("warp.admin.added", "%prefix% &a%warp% was succesfully added.");
+        LangFile.getFile().addDefault("warp.admin.already-exist", "%prefix% &c%warp% already exist");
+        LangFile.getFile().addDefault("warp.admin.removed", "%prefix% &a%warp% was succesfully removed.");
+        LangFile.getFile().addDefault("warp.usage.player", "%prefix% &cUsage: /warp <name> &1[player]");
+        LangFile.getFile().addDefault("warp.usage.console", "%prefix% &cUsage: /warp <name> <player>");
+        LangFile.getFile().addDefault("warp.usage.admin.add", "%prefix% &cUsage: /warp add <name>");
+        LangFile.getFile().addDefault("warp.usage.admin.remove", "%prefix% &cUsage: /warp remove <name>");
+
     }
 
     public static void setupSettings(){
@@ -116,6 +125,8 @@ public class Functions {
 
         SettingsFile.getFile().addDefault("kill.enabled", true);
 
+        SettingsFile.getFile().addDefault("warp.enabled", true);
+
         SettingsFile.getFile().addDefault("chat.enabled", true);
         SettingsFile.getFile().addDefault("chat.format", "%sender%: %message%");
         List<String> words = new ArrayList<>();
@@ -124,6 +135,8 @@ public class Functions {
         SettingsFile.getFile().addDefault("chat.blacklist-words", words);
 
     }
+
+// /////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public static void setSpawnLoc(Location loc){
         StorageFile.getFile().set("spawn.world", loc.getWorld().getName());
@@ -145,5 +158,59 @@ public class Functions {
         );
         return loc;
     }
+
+// /////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    public static void addWarp(Location location, String warp_name){
+        warp_name=warp_name.toLowerCase();
+
+        StorageFile.getFile().set("warps."+warp_name+".world", location.getWorld().getName());
+        StorageFile.getFile().set("warps."+warp_name+".x", location.getX());
+        StorageFile.getFile().set("warps."+warp_name+".y", location.getY());
+        StorageFile.getFile().set("warps."+warp_name+".z", location.getZ());
+        StorageFile.getFile().set("warps."+warp_name+".yaw", location.getYaw());
+        StorageFile.getFile().set("warps."+warp_name+".pitch", location.getPitch());
+        StorageFile.save();
+
+    }
+
+    public static Location getWarpLoc(String warp_name){
+        warp_name=warp_name.toLowerCase();
+        Location loc = new Location(
+                Bukkit.getWorld(StorageFile.getFile().getString("warps."+warp_name+".world")),
+                StorageFile.getFile().getDouble("warps."+warp_name+".x"),
+                StorageFile.getFile().getDouble("warps."+warp_name+".y"),
+                StorageFile.getFile().getDouble("warps."+warp_name+".z"),
+                (float) StorageFile.getFile().getDouble("warps."+warp_name+".yaw"),
+                (float) StorageFile.getFile().getDouble("warps."+warp_name+".pitch")
+        );
+        return loc;
+    }
+
+    public static void delWarp(String warp_name){
+        warp_name=warp_name.toLowerCase();
+
+        StorageFile.getFile().set("warps."+warp_name+".world", null);
+        StorageFile.getFile().set("warps."+warp_name+".x", null);
+        StorageFile.getFile().set("warps."+warp_name+".y", null);
+        StorageFile.getFile().set("warps."+warp_name+".z", null);
+        StorageFile.getFile().set("warps."+warp_name+".yaw", null);
+        StorageFile.getFile().set("warps."+warp_name+".pitch", null);
+        StorageFile.getFile().set("warps."+warp_name, null);
+        StorageFile.save();
+
+    }
+
+    public static Boolean checkWarp(String warp_name){
+        warp_name=warp_name.toLowerCase();
+        if(StorageFile.getFile().contains("warps."+warp_name)){
+            return true;
+        }else{
+            return false;
+        }
+
+    }
+
+
 
 }
