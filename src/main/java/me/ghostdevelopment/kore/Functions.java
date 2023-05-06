@@ -84,6 +84,10 @@ public class Functions {
         LangFile.getFile().addDefault("smite.smited-player", "%prefix% &aSmited %player%");
         LangFile.getFile().addDefault("smite.usage", "%prefix% &cUsage: /smite <player>");
 
+        LangFile.getFile().addDefault("kill.killed", "%prefix% &aKilled %player%.");
+        LangFile.getFile().addDefault("kill.usage.player", "%prefix% &cUsage: /kill &1[player]");
+        LangFile.getFile().addDefault("kill.usage.console", "%prefix% &cUsage: /kill <player>");
+
     }
 
     public static void setupSettings(){
@@ -109,6 +113,8 @@ public class Functions {
         SettingsFile.getFile().addDefault("orbitalcannon.tell-to-victim", true);
 
         SettingsFile.getFile().addDefault("smite.enable", true);
+
+        SettingsFile.getFile().addDefault("kill.enabled", true);
 
         SettingsFile.getFile().addDefault("chat.enabled", true);
         SettingsFile.getFile().addDefault("chat.format", "%sender%: %message%");

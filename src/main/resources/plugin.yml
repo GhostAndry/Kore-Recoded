@@ -32,7 +32,7 @@ commands:
       - disposal
   orbitalcannon:
   smite:
-  #
+  kill:
 
 
 permissions:
@@ -71,4 +71,8 @@ permissions:
   kore.chatbypass:
     description: ""
   kore.orbitalcannon:
+    description: ""
+  kore.smite:
+    description: ""
+  kore.kill:
     description: ""
