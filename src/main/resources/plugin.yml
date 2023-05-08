@@ -34,6 +34,7 @@ commands:
   smite:
   kill:
   warp:
+  home:
 
 
 permissions:
@@ -80,4 +81,6 @@ permissions:
   kore.warp:
     description: ""
   kore.warp.admin:
+    description: ""
+  kore.home:
     description: ""
