@@ -5,6 +5,7 @@ import me.ghostdevelopment.kore.files.SettingsFile;
 import me.ghostdevelopment.kore.files.StorageFile;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -97,6 +98,13 @@ public class Functions {
         LangFile.getFile().addDefault("warp.usage.admin.add", "%prefix% &cUsage: /warp add <name>");
         LangFile.getFile().addDefault("warp.usage.admin.remove", "%prefix% &cUsage: /warp remove <name>");
 
+        LangFile.getFile().addDefault("home.teleported", "%prefix% &aYou have been teleported to your home.");
+        LangFile.getFile().addDefault("home.teleported-other", "%prefix% &aYou have teleported %player% to his house.");
+        LangFile.getFile().addDefault("home.not-set", "%prefix% &cYou haven't set your home yet.");
+        LangFile.getFile().addDefault("home.set", "%prefix% &aYour home has been set to your position.");
+        LangFile.getFile().addDefault("home.removed", "%prefix% &cYour home has been removed.");
+        LangFile.getFile().addDefault("home.usage", "%prefix% &cUsage /home &1[set|remove]");
+
     }
 
     public static void setupSettings(){
@@ -126,6 +134,10 @@ public class Functions {
         SettingsFile.getFile().addDefault("kill.enabled", true);
 
         SettingsFile.getFile().addDefault("warp.enabled", true);
+
+        SettingsFile.getFile().addDefault("home.enabled", true);
+
+
 
         SettingsFile.getFile().addDefault("chat.enabled", true);
         SettingsFile.getFile().addDefault("chat.format", "%sender%: %message%");
@@ -211,6 +223,72 @@ public class Functions {
 
     }
 
+// /////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    public static void addHome(Player player){
+
+        String name= player.getName();
+        Location location = player.getLocation();
+
+        name=name.toLowerCase();
+
+        StorageFile.getFile().set("homes."+name+".world", location.getWorld().getName());
+        StorageFile.getFile().set("homes."+name+".x", location.getX());
+        StorageFile.getFile().set("homes."+name+".y", location.getY());
+        StorageFile.getFile().set("homes."+name+".z", location.getZ());
+        StorageFile.getFile().set("homes."+name+".yaw", location.getYaw());
+        StorageFile.getFile().set("homes."+name+".pitch", location.getPitch());
+        StorageFile.save();
+
+    }
+
+    public static void delHome(Player player){
+
+        String name= player.getName();
+        Location location = player.getLocation();
+
+        name=name.toLowerCase();
+
+        StorageFile.getFile().set("homes."+name+".world", null);
+        StorageFile.getFile().set("homes."+name+".x", null);
+        StorageFile.getFile().set("homes."+name+".y", null);
+        StorageFile.getFile().set("homes."+name+".z", null);
+        StorageFile.getFile().set("homes."+name+".yaw", null);
+        StorageFile.getFile().set("homes."+name+".pitch", null);
+        StorageFile.getFile().set("homes."+name, null);
+        StorageFile.save();
+
+    }
+
+    public static Location getHomeLoc(Player player){
+
+        String name= player.getName();
+
+        name=name.toLowerCase();
+
+        Location loc = new Location(
+                Bukkit.getWorld(StorageFile.getFile().getString("homes."+name+".world")),
+                StorageFile.getFile().getDouble("homes."+name+".x"),
+                StorageFile.getFile().getDouble("homes."+name+".y"),
+                StorageFile.getFile().getDouble("homes."+name+".z"),
+                (float) StorageFile.getFile().getDouble("homes."+name+".yaw"),
+                (float) StorageFile.getFile().getDouble("homes."+name+".pitch")
+        );
+        return loc;
+    }
+
+    public static Boolean checkHome(Player player){
+
+        String name= player.getName();
+
+        name=name.toLowerCase();
+
+        if(StorageFile.getFile().contains("homes."+name)){
+            return true;
+        }else{
+            return false;
+        }
+
+    }
 
 }
