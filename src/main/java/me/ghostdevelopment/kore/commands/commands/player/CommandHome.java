@@ -5,6 +5,7 @@ import me.ghostdevelopment.kore.Utils;
 import me.ghostdevelopment.kore.commands.Command;
 import me.ghostdevelopment.kore.commands.CommandInfo;
 import me.ghostdevelopment.kore.files.LangFile;
+import me.ghostdevelopment.kore.files.SettingsFile;
 import org.bukkit.Location;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -15,6 +16,13 @@ public class CommandHome extends Command {
 
     @Override
     public void execute(CommandSender sender, String[] args) {
+
+        if (!(SettingsFile.getFile().getBoolean("home.enabled"))){
+            sender.sendMessage(Utils.Color(LangFile.getFile().getString("command-disabled")
+                    .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
+            ));
+            return;
+        }
 
         if(sender instanceof Player){
 
