@@ -21,6 +21,7 @@ public final class Kore extends JavaPlugin {
     @Override
     public void onEnable() {
         // Plugin startup logic
+        Metrics metrics = new Metrics(this, 18478);
         setupFiles();
         try {
             registerCommands();
