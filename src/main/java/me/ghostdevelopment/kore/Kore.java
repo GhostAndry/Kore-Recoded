@@ -96,12 +96,4 @@ public final class Kore extends JavaPlugin {
         StorageFile.save();
     }
 
-
-    /*
-
-    TODO: Speed
-
-    */
-
-
 }
