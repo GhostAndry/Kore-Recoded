@@ -2,6 +2,7 @@ package me.ghostdevelopment.kore.commands;
 
 import me.ghostdevelopment.kore.Utils;
 import me.ghostdevelopment.kore.files.LangFile;
+import me.ghostdevelopment.kore.files.SettingsFile;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 

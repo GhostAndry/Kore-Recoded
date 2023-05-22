@@ -59,6 +59,16 @@ public class CommandKore extends Command {
                             "&7/heal &1[player]\n" +
                             "&7/god &1[player]\n" +
                             "&7/vanish /v &1[player]\n" +
+                            "&7/setspawn\n" +
+                            "&7/spawn &1[player]\n" +
+                            "&7/trash /disposal\n" +
+                            "&7/orbitalcannon &c<player | x y z> \n" +
+                            "&7/smite &c<player>\n" +
+                            "&7/kill &1[player]\n" +
+                            "&7/warp &c<add|remove> <name>\n" +
+                            "&7/warp &c<name> &1[player]\n" +
+                            "&7/home &1[set|remove]\n" +
+                            "&7/speed &c<value> &1[player] [type]\n"+
                             "\n"
                     ));
                 }else{
@@ -92,15 +102,25 @@ public class CommandKore extends Command {
                             "&call parameters are mandatory!" +
                             "&7/kore <help|reload|info>\n" +
                             "&7/gamemode &c<gamemode> <player>\n" +
-                            "&7/gmc &c<player>\n" +
-                            "&7/gms &c<player>\n" +
-                            "&7/gma &c<player>\n" +
-                            "&7/gmsp &c<player>\n" +
-                            "&7/fly &c<player>" +
-                            "&7/teleport /tp &c<player> &c<player>\n" +
-                            "&7/heal &c<player>\n" +
-                            "&7/god &c<player>\n" +
-                            "&7/vanish /v &c<player>\n" +
+                            "&7/gmc <player>\n" +
+                            "&7/gms <player>\n" +
+                            "&7/gma <player>\n" +
+                            "&7/gmsp <player>\n" +
+                            "&7/fly <player>\n" +
+                            "&7/teleport /tp &c<player> <player>\n" +
+                            "&7/heal <player>\n" +
+                            "&7/god <player>\n" +
+                            "&7/vanish /v <player>\n" +
+                            "&7/setspawn\n" +
+                            "&7/spawn &c<player>\n" +
+                            "&7/trash /disposal\n" +
+                            "&7/orbitalcannon &c<player | x y z> \n" +
+                            "&7/smite &c<player>\n" +
+                            "&7/kill <player>\n" +
+                            "&7/warp &c<add|remove> <name>\n" +
+                            "&7/warp &c<name> <player>\n" +
+                            "&7/home &c<set|remove>\n" +
+                            "&7/speed &c<value> <player> <type>\n"+
                             "\n"
                     ));
                 }else{

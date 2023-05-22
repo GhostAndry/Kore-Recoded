@@ -70,12 +70,13 @@ public class CommandHome extends Command {
                         if(Functions.checkHome(player)){
                             try{
 
-                             Functions.delHome(player);
+                                Functions.delHome(player);
 
-                             player.sendMessage(Utils.Color(LangFile.getFile().getString("home.removed")
-                                     .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                             ));
-                             return;
+                                player.sendMessage(Utils.Color(LangFile.getFile().getString("home.removed")
+                                        .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
+                                ));
+                                return;
+
                             }catch (Exception e) {
                                 throw new NullPointerException(e.getMessage());
                             }

@@ -105,6 +105,13 @@ public class Functions {
         LangFile.getFile().addDefault("home.removed", "%prefix% &cYour home has been removed.");
         LangFile.getFile().addDefault("home.usage", "%prefix% &cUsage /home &1[set|remove]");
 
+        LangFile.getFile().addDefault("speed.set", "%prefix% Your speed was set to %speed%");
+        LangFile.getFile().addDefault("speed.set-other", "%prefix% %player%'s speed was set to %speed%");
+        LangFile.getFile().addDefault("speed.invalid-value", "%prefix% &cInvalid speed value");
+        LangFile.getFile().addDefault("speed.invalid-type", "%prefix% &cInvalid speed type. Speed types: Walk or Walking, Fly or Flight");
+        LangFile.getFile().addDefault("speed.usage.player", "%prefix% &cUsage: /speed <value> &1[player] [type]");
+        LangFile.getFile().addDefault("speed.usage.console", "%prefix% &cUsage: /speed <value> <player> <type>");
+
     }
 
     public static void setupSettings(){
@@ -137,7 +144,7 @@ public class Functions {
 
         SettingsFile.getFile().addDefault("home.enabled", true);
 
-
+        SettingsFile.getFile().addDefault("speed.enabled", true);
 
         SettingsFile.getFile().addDefault("chat.enabled", true);
         SettingsFile.getFile().addDefault("chat.format", "%sender%: %message%");
@@ -289,6 +296,18 @@ public class Functions {
             return false;
         }
 
+    }
+
+// /////////////////////////////////////////////////////////////////////////////
+
+    public static void setSpeed(Player player, String type, Float speed){
+    
+        if(type.equals("walk")){
+            player.setWalkSpeed(speed / 10.0f);
+        } else if (type.equals("fly") || type.equals("flight")) {
+            player.setFlySpeed(speed / 10.0f);
+        }
+    
     }
 
 }
