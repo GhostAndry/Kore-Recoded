@@ -252,7 +252,6 @@ public class Functions {
     public static void delHome(Player player){
 
         String name= player.getName();
-        Location location = player.getLocation();
 
         name=name.toLowerCase();
 
