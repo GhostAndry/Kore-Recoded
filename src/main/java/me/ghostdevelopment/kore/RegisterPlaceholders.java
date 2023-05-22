@@ -1,0 +1,49 @@
+package me.ghostdevelopment.kore;
+
+import me.clip.placeholderapi.expansion.PlaceholderExpansion;
+import me.ghostdevelopment.kore.commands.commands.admin.CommandFly;
+import me.ghostdevelopment.kore.commands.commands.admin.CommandGod;
+import me.ghostdevelopment.kore.commands.commands.admin.CommandVanish;
+
+import org.bukkit.entity.Player;
+
+@SuppressWarnings({"NullableProblems", "FieldCanBeLocal"})
+public class RegisterPlaceholders extends PlaceholderExpansion {
+
+    private final String pluginName = "korerecoded";
+    private final String authorName = "GhostAndry";
+    private final String version = "1.6-RECODED";
+    @Override
+    public String getIdentifier() {
+        return pluginName;
+    }
+    @Override
+    public String getAuthor() {
+        return authorName;
+    }
+    @Override
+    public String getVersion() {
+        return version;
+    }
+
+    @Override
+    public boolean canRegister() {
+        return true;
+    }
+    @Override
+    public boolean persist() {
+        return true;
+    }
+
+
+    @Override
+    public String onPlaceholderRequest(Player player, String params) {
+        if(player==null)return "";
+
+        if(params.equals("vanished")) return String.valueOf(CommandVanish.getVanished().contains(player));
+        if(params.equals("flying")) return String.valueOf(CommandFly.getFlying().contains(player));
+        if(params.equals("godmode")) return  String.valueOf(CommandGod.getGod().contains(player));
+
+    return null;
+    }
+}
