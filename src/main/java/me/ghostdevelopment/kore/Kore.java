@@ -22,6 +22,13 @@ public final class Kore extends JavaPlugin {
     public void onEnable() {
         // Plugin startup logic
         Metrics metrics = new Metrics(this, 18478);
+
+        if(getServer().getPluginManager().getPlugin("PlaceholderAPI")!=null){
+            new RegisterPlaceholders().register();
+        }else{
+            Console.warning("PlaceholderAPI is absent in minecraft server.\nPlaceholders won't work without it!");
+        }
+
         setupFiles();
         try {
             registerCommands();
