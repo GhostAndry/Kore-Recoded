@@ -22,7 +22,7 @@ public class CommandKore extends Command {
             } else if (args.length == 1) {
                 if (args[0].equalsIgnoreCase("info")) {
                     player.sendMessage(Utils.Color(
-                            "&aKore 1.6 RECODED\n" +
+                            "&aKore 1.7\n" +
                                     "&aAuthor: &7GhostAndry\n" +
                                     "&aGitHub: &b&nhttps://github.com/GhostAndry/Kore-Recoded\n" +
                                     "\n"));
@@ -81,7 +81,7 @@ public class CommandKore extends Command {
             } else if (args.length == 1) {
                 if (args[0].equalsIgnoreCase("info")) {
                     sender.sendMessage(Utils.Color(
-                            "&aKore 1.6 RECODED\n" +
+                            "&aKore 1.7\n" +
                                     "&aAuthor: &7GhostAndry\n" +
                                     "&aGitHub: &b&nhttps://github.com/GhostAndry/Kore-Recoded\n" +
                                     "\n"));
