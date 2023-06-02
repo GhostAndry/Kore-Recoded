@@ -112,8 +112,8 @@ public class Functions {
         LangFile.getFile().addDefault("speed.usage.player", "%prefix% &cUsage: /speed <value> &1[player] [type]");
         LangFile.getFile().addDefault("speed.usage.console", "%prefix% &cUsage: /speed <value> <player> <type>");
 
-        LangFile.getFile().addDefault("day.set", "%prefix% &aTime set to day");
-        LangFile.getFile().addDefault("day.usage", "%prefix% &c");
+        //LangFile.getFile().addDefault("day.set", "%prefix% &aTime set to day");
+        //LangFile.getFile().addDefault("day.usage", "%prefix% &c");
 
     }
 
