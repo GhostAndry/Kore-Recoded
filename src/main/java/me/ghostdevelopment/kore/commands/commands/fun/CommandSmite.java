@@ -12,13 +12,13 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 @SuppressWarnings("ALL")
-@CommandInfo(name = "smite", permission = "kore.smite")
+@CommandInfo(name = "smite", permission = "kore.smite", moduleName = "smite")
 public class CommandSmite extends Command {
 
     @Override
     public void execute(CommandSender sender, String[] args) {
 
-        if (!(SettingsFile.getFile().getBoolean("vanish.enabled"))){
+        if (!(SettingsFile.getFile().getBoolean("smite.enabled"))){
             sender.sendMessage(Utils.Color(LangFile.getFile().getString("command-disabled")
                     .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
             ));

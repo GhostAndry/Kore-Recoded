@@ -10,7 +10,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 @SuppressWarnings("ALL")
-@CommandInfo(name = "teleport", permission = "kore.teleport", permission2 = "kore.tp")
+@CommandInfo(name = "teleport", permission = "kore.teleport", permission2 = "kore.tp", moduleName = "teleport")
 public class CommandTeleport extends Command {
 
     @Override

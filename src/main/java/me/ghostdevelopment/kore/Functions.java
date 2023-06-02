@@ -112,6 +112,9 @@ public class Functions {
         LangFile.getFile().addDefault("speed.usage.player", "%prefix% &cUsage: /speed <value> &1[player] [type]");
         LangFile.getFile().addDefault("speed.usage.console", "%prefix% &cUsage: /speed <value> <player> <type>");
 
+        LangFile.getFile().addDefault("day.set", "%prefix% &aTime set to day");
+        LangFile.getFile().addDefault("day.usage", "%prefix% &c");
+
     }
 
     public static void setupSettings(){
@@ -136,7 +139,7 @@ public class Functions {
         SettingsFile.getFile().addDefault("orbitalcannon.enabled", true);
         SettingsFile.getFile().addDefault("orbitalcannon.tell-to-victim", true);
 
-        SettingsFile.getFile().addDefault("smite.enable", true);
+        SettingsFile.getFile().addDefault("smite.enabled", true);
 
         SettingsFile.getFile().addDefault("kill.enabled", true);
 

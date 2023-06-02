@@ -11,7 +11,7 @@ import org.bukkit.entity.Player;
 
 
 @SuppressWarnings("ALL")
-@CommandInfo(name = "kill", permission = "kore.kill")
+@CommandInfo(name = "kill", permission = "kore.kill", moduleName = "kill")
 public class CommandKill extends Command {
 
     @Override

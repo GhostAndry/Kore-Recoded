@@ -21,7 +21,7 @@ public final class Kore extends JavaPlugin {
     @Override
     public void onEnable() {
         // Plugin startup logic
-        Metrics metrics = new Metrics(this, 18478);
+        Metrics metrics = new Metrics(this, 18653);
 
         if(getServer().getPluginManager().getPlugin("PlaceholderAPI")!=null){
             new RegisterPlaceholders().register();
@@ -44,18 +44,27 @@ public final class Kore extends JavaPlugin {
         // Plugin shutdown logic
     }
 
-    @SuppressWarnings("ALL")
     private void registerCommands() throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
         String packageName = getClass().getPackage().getName();
         for(Class<? extends Command> clazz: new Reflections(packageName + ".commands.commands").getSubTypesOf(Command.class)){
             Command command = clazz.getDeclaredConstructor().newInstance();
+            if(!command.getCommandInfo().moduleName().equals("main")) {
+
+                if (!SettingsFile.getFile().getBoolean(command.getCommandInfo().moduleName() + ".enabled")) {
+                    Console.info("[Kore] Skipped %module% module registration because it is disabled"
+                            .replace("%module%", command.getCommandInfo().moduleName())
+                    );
+                    continue;
+                }
+
+            }
             try {
                 getCommand(command.getCommandInfo().name()).setExecutor(command);
-                Console.info("[KoreRecoded] Enabled %module% module"
+                Console.info("[Kore] Enabled %module% module"
                         .replace("%module%", command.getCommandInfo().name())
                 );
             } catch (Exception e) {
-                System.err.println("[KoreRecoded] Can't load %module% module"
+                System.err.println("[Kore] Can't load %module% module"
                         .replace("%module%", command.getCommandInfo().name())
                 );
             }

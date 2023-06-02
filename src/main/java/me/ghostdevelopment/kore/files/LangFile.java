@@ -15,7 +15,7 @@ public class LangFile {
     private static FileConfiguration config;
 
     public static void setUp(){
-        file = new File(Bukkit.getServer().getPluginManager().getPlugin("KoreRecoded").getDataFolder(), "messages.yml");
+        file = new File(Bukkit.getServer().getPluginManager().getPlugin("Kore").getDataFolder(), "messages.yml");
         if(!(file.exists())){
             try {
                 file.createNewFile();

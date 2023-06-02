@@ -15,7 +15,7 @@ public class StorageFile {
     private static FileConfiguration config;
 
     public static void setUp(){
-        file = new File(Bukkit.getServer().getPluginManager().getPlugin("KoreRecoded").getDataFolder(), "storage.yml");
+        file = new File(Bukkit.getServer().getPluginManager().getPlugin("Kore").getDataFolder(), "storage.yml");
         if(!(file.exists())){
             try {
                 file.createNewFile();

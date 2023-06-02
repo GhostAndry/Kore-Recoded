@@ -14,7 +14,7 @@ public class SettingsFile {
     private static FileConfiguration config;
 
     public static void setUp(){
-        file = new File(Bukkit.getServer().getPluginManager().getPlugin("KoreRecoded").getDataFolder(), "config.yml");
+        file = new File(Bukkit.getServer().getPluginManager().getPlugin("Kore").getDataFolder(), "config.yml");
         if(!(file.exists())){
             try {
                 file.createNewFile();

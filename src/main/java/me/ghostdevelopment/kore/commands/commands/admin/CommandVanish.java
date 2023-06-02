@@ -12,7 +12,7 @@ import org.bukkit.entity.Player;
 import java.util.ArrayList;
 
 @SuppressWarnings("ALL")
-@CommandInfo(name = "vanish", permission = "kore.vanish")
+@CommandInfo(name = "vanish", permission = "kore.vanish", moduleName = "vanish")
 public class CommandVanish extends Command {
 
     private static ArrayList<Player> vanished = new ArrayList<>();

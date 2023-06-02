@@ -11,7 +11,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 @SuppressWarnings("ALL")
-@CommandInfo(name = "home", permission = "kore.home")
+@CommandInfo(name = "home", permission = "kore.home", moduleName = "home")
 public class CommandHome extends Command {
 
     @Override

@@ -10,9 +10,9 @@ import org.bukkit.entity.Player;
 @SuppressWarnings({ "NullableProblems", "FieldCanBeLocal" })
 public class RegisterPlaceholders extends PlaceholderExpansion {
 
-    private final String pluginName = "korerecoded";
+    private final String pluginName = "kore";
     private final String authorName = "GhostAndry";
-    private final String version = "1.6-RECODED";
+    private final String version = "1.7";
 
     @Override
     public String getIdentifier() {

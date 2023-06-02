@@ -11,7 +11,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 @SuppressWarnings("ALL")
-@CommandInfo(name = "gms", permission = "kore.gamemode.survival", permission2 =  "kore.gamemode.*", permission3 = "kore.gamemode")
+@CommandInfo(name = "gms", permission = "kore.gamemode.survival", permission2 =  "kore.gamemode.*", permission3 = "kore.gamemode", moduleName = "gamemode")
 public class CommandGMS extends Command {
 
     @Override

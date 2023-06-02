@@ -1,4 +1,4 @@
-name: KoreRecoded
+name: Kore
 version: '${project.version}'
 main: me.ghostdevelopment.kore.Kore
 load: STARTUP

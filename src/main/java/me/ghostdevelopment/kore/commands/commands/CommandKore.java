@@ -10,7 +10,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 @SuppressWarnings("ALL")
-@CommandInfo(name = "kore")
+@CommandInfo(name = "kore", moduleName = "main")
 public class CommandKore extends Command {
     @Override
     public void execute(CommandSender sender, String[] args) {

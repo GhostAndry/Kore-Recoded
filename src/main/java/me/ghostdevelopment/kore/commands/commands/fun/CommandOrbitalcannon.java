@@ -11,7 +11,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 @SuppressWarnings("ALL")
-@CommandInfo(name = "orbitalcannon", permission = "kore.orbitalcannon")
+@CommandInfo(name = "orbitalcannon", permission = "kore.orbitalcannon", moduleName = "orbitalcannon")
 public class CommandOrbitalcannon extends Command {
 
     private Kore plugin;

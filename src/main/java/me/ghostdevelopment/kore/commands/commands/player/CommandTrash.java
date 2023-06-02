@@ -11,7 +11,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 
 @SuppressWarnings("ALL")
-@CommandInfo(name = "trash", permission = "kore.trash")
+@CommandInfo(name = "trash", permission = "kore.trash", moduleName = "trash")
 public class CommandTrash extends Command {
 
     @Override
