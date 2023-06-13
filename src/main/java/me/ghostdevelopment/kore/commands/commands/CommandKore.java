@@ -95,6 +95,30 @@ public class CommandKore extends Command {
                 }else{
                     player.sendMessage(Utils.Color("\n&aThis server is running Kore."));
                 }
+            }else if (args.length==2) {
+
+                if (args[0].equalsIgnoreCase("lang")||args[0].equalsIgnoreCase("language")) {
+
+                    try{
+                        String lang = args[1];
+
+                        LangFile.setUp(lang);
+                        LangFile.reload();
+
+                        player.sendMessage(Utils.Color(LangFile.getFile().getString("reload.success")
+                                .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
+                        ));
+
+                    }catch (Exception ignored){
+                        player.sendMessage(Utils.Color(LangFile.getFile().getString("reload.error")
+                                .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
+                        ));
+                        Console.warning("&4&lERROR: &cThe lang file you specified does not exist!");
+                    }
+
+                }else{
+                    player.sendMessage(Utils.Color("\n&aThis server is running Kore."));
+                }
             }
         }else{
             if (args.length == 0) {
@@ -144,7 +168,12 @@ public class CommandKore extends Command {
                             "&7/speed &c<value> <player> <type>\n"+
                             "\n"
                     ));
-                } else if (args[0].equalsIgnoreCase("lang")||args[0].equalsIgnoreCase("language")) {
+                }else{
+                    sender.sendMessage(Utils.Color("\n&aThis server is running Kore."));
+                }
+            } else if (args.length==2) {
+
+                 if (args[0].equalsIgnoreCase("lang")||args[0].equalsIgnoreCase("language")) {
 
                     try{
                         String lang = args[1];
@@ -164,7 +193,7 @@ public class CommandKore extends Command {
                     }
 
                 }else{
-                    sender.sendMessage(Utils.Color("\n&aThis server is running Kore."));
+                     sender.sendMessage(Utils.Color("\n&aThis server is running Kore."));
                 }
             }
         }
