@@ -1,6 +1,7 @@
 package me.ghostdevelopment.kore.files;
 
 import me.ghostdevelopment.kore.Console;
+import me.ghostdevelopment.kore.Kore;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -11,16 +12,15 @@ import java.io.IOException;
 @SuppressWarnings("all")
 public class LangFile {
 
+    private static final Kore main = Kore.getInstance();
     private static File file;
     private static FileConfiguration config;
 
     public static void setUp(){
+        
         file = new File(Bukkit.getServer().getPluginManager().getPlugin("Kore").getDataFolder(), "messages.yml");
         if(!(file.exists())){
-            try {
-                file.createNewFile();
-            }catch (IOException e){
-            }
+            main.saveResource(file.getName(), false);
         }
         config = YamlConfiguration.loadConfiguration(file);
     }

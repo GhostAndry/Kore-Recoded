@@ -1,5 +1,6 @@
 package me.ghostdevelopment.kore;
 
+import lombok.Getter;
 import me.ghostdevelopment.kore.commands.Command;
 import me.ghostdevelopment.kore.events.ChatManager;
 import me.ghostdevelopment.kore.events.GodMode;
@@ -18,8 +19,11 @@ import java.util.ArrayList;
 @SuppressWarnings("ALL")
 public final class Kore extends JavaPlugin {
 
+    @Getter private static Kore instance;
+
     @Override
     public void onEnable() {
+        instance = this;
         // Plugin startup logic
         Metrics metrics = new Metrics(this, 18653);
 
@@ -48,16 +52,6 @@ public final class Kore extends JavaPlugin {
         String packageName = getClass().getPackage().getName();
         for(Class<? extends Command> clazz: new Reflections(packageName + ".commands.commands").getSubTypesOf(Command.class)){
             Command command = clazz.getDeclaredConstructor().newInstance();
-            if(!command.getCommandInfo().moduleName().equals("main")) {
-
-                if (!SettingsFile.getFile().getBoolean(command.getCommandInfo().moduleName() + ".enabled")) {
-                    Console.info("[Kore] Skipped %module% module registration because it is disabled"
-                            .replace("%module%", command.getCommandInfo().moduleName())
-                    );
-                    continue;
-                }
-
-            }
             try {
                 getCommand(command.getCommandInfo().name()).setExecutor(command);
                 Console.info("[Kore] Enabled %module% module"
