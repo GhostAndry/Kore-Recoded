@@ -17,8 +17,9 @@ public class LangFile {
     private static FileConfiguration config;
 
     public static void setUp(){
-        
-        file = new File(Bukkit.getServer().getPluginManager().getPlugin("Kore").getDataFolder(), "messages.yml");
+        String path = main.getDataFolder().getPath() + "/lang/";
+        File dir = new File(path);
+        File file = new File(dir, lang + ".yml");
         if(!(file.exists())){
             main.saveResource(file.getName(), false);
         }
@@ -31,7 +32,7 @@ public class LangFile {
         try {
             config.save(file);
         }catch (Exception e){
-            Console.warning("&cCould not write on language.yml file.");
+            Console.warning("&cCould not write on .");
         }
     }
 }
