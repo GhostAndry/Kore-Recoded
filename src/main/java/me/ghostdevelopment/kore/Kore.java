@@ -34,6 +34,7 @@ public final class Kore extends JavaPlugin {
         }
 
         setupFiles();
+        saveDefaultConfig();
         try {
             registerCommands();
         } catch (Exception e) {
@@ -91,10 +92,6 @@ public final class Kore extends JavaPlugin {
     }
 
     private void setupFiles(){
-        SettingsFile.setUp();
-        Functions.setupSettings();
-        SettingsFile.getFile().options().copyDefaults(true);
-        SettingsFile.save();
 
         LangFile.setUp();
         Functions.setLangFile();
