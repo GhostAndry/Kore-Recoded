@@ -1,5 +1,6 @@
 package me.ghostdevelopment.kore.commands.commands;
 
+import me.ghostdevelopment.kore.Console;
 import me.ghostdevelopment.kore.Functions;
 import me.ghostdevelopment.kore.Utils;
 import me.ghostdevelopment.kore.commands.Command;
@@ -12,6 +13,7 @@ import org.bukkit.entity.Player;
 @SuppressWarnings("ALL")
 @CommandInfo(name = "kore", moduleName = "main")
 public class CommandKore extends Command {
+
     @Override
     public void execute(CommandSender sender, String[] args) {
         if(sender instanceof Player) {
@@ -48,7 +50,7 @@ public class CommandKore extends Command {
                 } else if (args[0].equalsIgnoreCase("help")) {
                     player.sendMessage(Utils.Color("\n" +
                             "&c<mandatory> &1[optional]\n" +
-                            "&7/kore <help|reload|info>\n" +
+                            "&7/kore <help|reload|info|(lang|language)>\n" +
                             "&7/gamemode &c<gamemode> &1[player]\n" +
                             "&7/gmc &1[player]\n" +
                             "&7/gms &1[player]\n" +
@@ -71,6 +73,25 @@ public class CommandKore extends Command {
                             "&7/speed &c<value> &1[player] [type]\n"+
                             "\n"
                     ));
+                } else if (args[0].equalsIgnoreCase("lang")||args[0].equalsIgnoreCase("language")) {
+
+                    try{
+                        String lang = args[1];
+
+                        LangFile.setUp(lang);
+                        LangFile.reload();
+
+                        player.sendMessage(Utils.Color(LangFile.getFile().getString("reload.success")
+                                .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
+                        ));
+
+                    }catch (Exception ignored){
+                        player.sendMessage(Utils.Color(LangFile.getFile().getString("reload.error")
+                                .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
+                        ));
+                        Console.warning("&4&lERROR: &cThe lang file you specified does not exist!");
+                    }
+
                 }else{
                     player.sendMessage(Utils.Color("\n&aThis server is running Kore."));
                 }
@@ -100,7 +121,7 @@ public class CommandKore extends Command {
                 } else if (args[0].equalsIgnoreCase("help")) {
                     sender.sendMessage(Utils.Color("\n" +
                             "&call parameters are mandatory!" +
-                            "&7/kore <help|reload|info>\n" +
+                            "&7/kore <help|reload|info|(lang|language)>\n" +
                             "&7/gamemode &c<gamemode> <player>\n" +
                             "&7/gmc <player>\n" +
                             "&7/gms <player>\n" +
@@ -123,6 +144,25 @@ public class CommandKore extends Command {
                             "&7/speed &c<value> <player> <type>\n"+
                             "\n"
                     ));
+                } else if (args[0].equalsIgnoreCase("lang")||args[0].equalsIgnoreCase("language")) {
+
+                    try{
+                        String lang = args[1];
+
+                        LangFile.setUp(lang);
+                        LangFile.reload();
+
+                        sender.sendMessage(Utils.Color(LangFile.getFile().getString("reload.success")
+                                .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
+                        ));
+
+                    }catch (Exception ignored){
+                        sender.sendMessage(Utils.Color(LangFile.getFile().getString("reload.error")
+                                .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
+                        ));
+                        Console.warning("&4&lERROR: &cThe lang file you specified does not exist!");
+                    }
+
                 }else{
                     sender.sendMessage(Utils.Color("\n&aThis server is running Kore."));
                 }

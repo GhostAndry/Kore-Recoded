@@ -2,12 +2,11 @@ package me.ghostdevelopment.kore.files;
 
 import me.ghostdevelopment.kore.Console;
 import me.ghostdevelopment.kore.Kore;
-import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
-import java.io.IOException;
+import java.util.Arrays;
 
 @SuppressWarnings("all")
 public class LangFile {
@@ -17,11 +16,16 @@ public class LangFile {
     private static FileConfiguration config;
 
     public static void setUp(){
+        Arrays.asList("it", "en", main.getConfig().getString("messages")).forEach(lang -> setUp(lang));
+    }
+
+
+    public static void setUp(String lang){
         String path = main.getDataFolder().getPath() + "/lang/";
         File dir = new File(path);
         File file = new File(dir, lang + ".yml");
         if(!(file.exists())){
-            main.saveResource(file.getName(), false);
+            main.saveResource("lang/"+lang+".yml", false);
         }
         config = YamlConfiguration.loadConfiguration(file);
     }
@@ -32,7 +36,7 @@ public class LangFile {
         try {
             config.save(file);
         }catch (Exception e){
-            Console.warning("&cCould not write on .");
+            Console.warning("&cCould not write on langguage files.");
         }
     }
 }

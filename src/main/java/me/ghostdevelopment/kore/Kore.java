@@ -33,8 +33,8 @@ public final class Kore extends JavaPlugin {
             Console.warning("PlaceholderAPI is absent in minecraft server.\nPlaceholders won't work without it!");
         }
 
-        setupFiles();
         saveDefaultConfig();
+        setupFiles();
         try {
             registerCommands();
         } catch (Exception e) {
@@ -94,7 +94,6 @@ public final class Kore extends JavaPlugin {
     private void setupFiles(){
 
         LangFile.setUp();
-        Functions.setLangFile();
         LangFile.getFile().options().copyDefaults(true);
         LangFile.save();
 
