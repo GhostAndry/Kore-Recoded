@@ -15,9 +15,15 @@ public class Functions {
 
     public static void reloadFiles(){
 
-        SettingsFile.reload();
-        LangFile.reload();
-        StorageFile.reload();
+        try {
+            Bukkit.getScheduler().runTask(Kore.getInstance(), () -> {
+                Bukkit.getPluginManager().disablePlugin(Kore.getInstance());
+                Bukkit.getPluginManager().enablePlugin(Kore.getInstance());
+            });
+            SettingsFile.reload();
+            LangFile.reload();
+            StorageFile.reload();
+        }catch (Exception ignored){}
 
     }
 
