@@ -28,7 +28,7 @@ public class LangFile {
         if(!file.exists()){
             if (main.getResource(file.getPath().replace('\\', '/'))==null) {
                 file.createNewFile();
-                // to
+                // todo old file setup with file.addDefault
             } else main.saveResource(file.getPath(), false);
         }
         config = YamlConfiguration.loadConfiguration(file);
