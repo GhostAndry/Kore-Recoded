@@ -96,6 +96,7 @@ public class CommandKore extends Command {
 
                     player.sendMessage(Utils.Color(LangFile.getFile().getString("messages.successfully-set")
                             .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
+                            .replaceAll("%lang%", LangFile.getFile().getString("lang-name"))
                     ));
 
                 }else{
@@ -172,6 +173,7 @@ public class CommandKore extends Command {
 
                      sender.sendMessage(Utils.Color(LangFile.getFile().getString("messages.successfully-set")
                              .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
+                             .replaceAll("%lang%", LangFile.getFile().getString("lang-name"))
                      ));
 
                 }else{

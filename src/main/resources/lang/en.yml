@@ -3,6 +3,7 @@ no-permissions: "%prefix% &cYou don't have permissions."
 only-players: "%prefix% &cOnly players can run this command!"
 command-disabled: "%prefix% &cThis command is disabled"
 invalid-target: "%prefix% &cPlayer not found."
+lang-name: "English"
 messages:
     successfully-set: "%prefix% &aSuccessfully changed language file to %lang%"
     not-exist: "%prefix% &cImpossible to load the languages because the file doesn't exist!"

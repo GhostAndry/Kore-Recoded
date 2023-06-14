@@ -3,6 +3,7 @@ no-permissions: "%prefix% &cУ вас нет разрешений."
 only-players: "%prefix% &cТолько игроки могут выполнить эту команду!"
 command-disabled: "%prefix% &cЭта команда отключена"
 invalid-target: "%prefix% &cИгрок не найден."
+lang-name: "Русский"
 messages:
     successfully-set: "%prefix% &aУспешно изменен языковой файл на %lang%"
     not-exist: "%prefix% &cНевозможно загрузить языки, потому что файл не существует!"

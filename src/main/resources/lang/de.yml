@@ -1,0 +1,106 @@
+prefix: "&b&lKore&f:"
+no-permissions: "%prefix% &cDu hast keine Berechtigungen."
+only-players: "%prefix% &cNur Spieler können diesen Befehl ausführen!"
+command-disabled: "%prefix% &cDieser Befehl ist deaktiviert"
+invalid-target: "%prefix% &cSpieler nicht gefunden."
+lang-name: "Deutsch"
+messages:
+    successfully-set: "%prefix% &aSprachdatei erfolgreich geändert auf %lang%"
+    not-exist: "%prefix% &cSprachen können nicht geladen werden, da die Datei nicht existiert!"
+reload:
+    success: "%prefix% &aErfolgreich neu geladen!"
+    error: "%prefix% &cInterner Fehler. Überprüfen Sie die Konsole für weitere Informationen."
+gamemode:
+    changed: "%prefix% &aDein Spielmodus wurde geändert auf &e&o%gamemode%"
+    changed-other: "%prefix% &a%player%s Spielmodus wurde geändert auf &e&o%gamemode%"
+    usage:
+        console: "%prefix% &cVerwendung: /gamemode <gamemode> <spieler>"
+        player: "%prefix% &cVerwendung: /gamemode <gamemode> &1[spieler]"
+fly:
+    enabled: "%prefix% &aFlug aktiviert."
+    disabled: "%prefix% &cFlug deaktiviert."
+    enabled-other: "%prefix% &aFlug für %player% aktiviert."
+    disabled-other: "%prefix% &cFlug für %player% deaktiviert."
+    usage:
+        console: "%prefix% &cVerwendung: /fly <spieler>"
+        player: "%prefix% &cVerwendung: /fly &1[spieler]"
+teleport:
+    teleported: "%prefix% &aTeleportiert zu %player%"
+    teleported-other: "%prefix% &aTeleportiert %player% zu %target%"
+    usage:
+        player: "%prefix% &cVerwendung: /teleport <spieler> &1[spieler]"
+        console: "%prefix% &cVerwendung: /teleport <spieler> <spieler>"
+god:
+    enabled: "%prefix% &aGottmodus aktiviert."
+    disabled: "%prefix% &cGottmodus deaktiviert."
+    enabled-other: "%prefix% &aGottmodus für %player% aktiviert."
+    disabled-other: "%prefix% &cGottmodus für %player% deaktiviert."
+    usage:
+        player: "%prefix% &cVerwendung: /god &1[spieler]"
+        console: "%prefix% &cVerwendung: /god <spieler>"
+heal:
+    healed: "%prefix% &aGeheilt!"
+    healed-other: "%prefix% &a%player% wurde geheilt!"
+    usage:
+        player: "%prefix% &cVerwendung: /heal &1[spieler]"
+        console: "%prefix% &cVerwendung: /heal <spieler>"
+vanish:
+    enabled: "%prefix% &aVanish aktiviert."
+    disabled: "%prefix% &aVanish deaktiviert."
+    enabled-other: "%prefix% &aVanish für &e&o%player% aktiviert."
+    disabled-other: "%prefix% &aVanish für &e&o%player% deaktiviert."
+    usage:
+        player: "%prefix% &cVerwendung: /vanish &1[spieler]"
+        console: "%prefix% &cVerwendung: /vanish <spieler>"
+spawn:
+    set: "%prefix% &aSpawn wurde festgelegt auf %x% %y% %z%."
+    teleported: "%prefix% &aTeleportiert zum Spawn"
+    teleported-other: "%prefix% &aTeleportiert %player% zum Spawn"
+    nonexistent: "%prefix% &cSpawn-Punkt wurde noch nicht festgelegt"
+    usage:
+        admin: "%prefix% &cVerwendung: /setspawn"
+        player: "%prefix% &cVerwendung: /spawn &1[spieler]"
+        console: "%prefix% &cVerwendung: /spawn <spieler>"
+orbitalcannon:
+    shoot: "%prefix% &aDer Orbitalcannon hat einen Schuss auf %coords% abgefeuert."
+    tell: "%prefix% &c&lDu wurdest von einem Orbitalcannon-Schuss getroffen!"
+    usage: "%prefix% &cVerwendung: /orbitalcannon <spieler | x y z>"
+smite:
+    smited-player: "%prefix% &a%player% wurde bestraft!"
+    usage: "%prefix% &cVerwendung: /smite <spieler>"
+kill:
+    killed: "%prefix% &a%player% wurde getötet."
+    usage:
+        player: "%prefix% &cVerwendung: /kill &1[spieler]"
+        console: "%prefix% &cVerwendung: /kill <spieler>"
+warp:
+    warped: "%prefix% &aDu wurdest zu %warp% teleportiert."
+    warped-other: "%prefix% &aDu hast %player% zu %warp% teleportiert."
+    not-found: "%prefix% &cWarp nicht gefunden."
+    admin:
+        added: "%prefix% &a%warp% wurde erfolgreich hinzugefügt."
+        already-exist: "%prefix% &c%warp% existiert bereits"
+        removed: "%prefix% &a%warp% wurde erfolgreich entfernt."
+    usage:
+        player: "%prefix% &cVerwendung: /warp <name> &1[spieler]"
+        console: "%prefix% &cVerwendung: /warp <name> <spieler>"
+        admin:
+            add: "%prefix% &cVerwendung: /warp add <name>"
+            remove: "%prefix% &cVerwendung: /warp remove <name>"
+home:
+    teleported: "%prefix% &aDu wurdest zu deinem Zuhause teleportiert."
+    teleported-other: "%prefix% &aDu hast %player% zu seinem Zuhause teleportiert."
+    not-set: "%prefix% &cDu hast dein Zuhause noch nicht festgelegt."
+    set: "%prefix% &aDein Zuhause wurde auf deine Position gesetzt."
+    removed: "%prefix% &cDein Zuhause wurde entfernt."
+    usage: "%prefix% &cVerwendung /home &1[set|remove]"
+speed:
+    set: "%prefix% Deine Geschwindigkeit wurde auf %speed% gesetzt."
+    set-other: "%prefix% %player%s Geschwindigkeit wurde auf %speed% gesetzt."
+    invalid-value: "%prefix% &cUngültiger Geschwindigkeitswert"
+    invalid-type:
+        "%prefix% &cUngültiger Geschwindigkeitstyp. Geschwindigkeitstypen: Laufen oder Gehen, Fliegen
+        oder Flug"
+    usage:
+        player: "%prefix% &cVerwendung: /speed <wert> &1[spieler] [typ]"
+        console: "%prefix% &cVerwendung: /speed <wert> <spieler> <typ>"

@@ -3,6 +3,7 @@ no-permissions: "%prefix% &cNo tienes permisos."
 only-players: "%prefix% &c¡Solo los jugadores pueden ejecutar este comando!"
 command-disabled: "%prefix% &cEste comando está deshabilitado"
 invalid-target: "%prefix% &cJugador no encontrado."
+lang-name: "Español"
 messages:
     successfully-set: "%prefix% &aArchivo de idioma cambiado exitosamente a %lang%"
     not-exist: "%prefix% &c¡Imposible cargar los idiomas porque el archivo no existe!"

@@ -1,0 +1,74 @@
+prefix: "&b&lKore&f:"
+no-permissions: "%prefix% &cNemáš dostatečná oprávnění."
+only-players: "%prefix% &cTento příkaz mohou použít pouze hráči!"
+command-disabled: "%prefix% &cTento příkaz je zakázán"
+invalid-target: "%prefix% &cHráč nenalezen."
+lang-name: "Čeština"
+messages:
+    successfully-set: "%prefix% &aJazykový soubor úspěšně změněn na %lang%"
+    not-exist: "%prefix% &cJazyk nelze načíst, protože soubor neexistuje!"
+reload:
+    success: "%prefix% &aNahráno znovu!"
+    error: "%prefix% &cVnitřní chyba. Zkontrolujte konzoli pro více informací."
+gamemode:
+    changed: "%prefix% &aMód hry byl změněn na &e&o%gamemode%"
+    changed-other: "%prefix% &aMód hry hráče %player% byl změněn na &e&o%gamemode%"
+    usage:
+        console: "%prefix% &cPoužití: /gamemode <gamemode> <hráč>"
+        player: "%prefix% &cPoužití: /gamemode <gamemode> &1[hráč]"
+fly:
+    enabled: "%prefix% &aLétání povoleno."
+    disabled: "%prefix% &cLétání zakázáno."
+    enabled-other: "%prefix% &aLétání povoleno pro hráče %player%."
+    disabled-other: "%prefix% &cLétání zakázáno pro hráče %player%."
+    usage:
+        console: "%prefix% &cPoužití: /fly <hráč>"
+        player: "%prefix% &cPoužití: /fly &1[hráč]"
+teleport:
+    teleported: "%prefix% &aTeleportováno k %player%"
+    teleported-other: "%prefix% &aTeleportováno %player% k %target%"
+    usage:
+        player: "%prefix% &cPoužití: /teleport <hráč> &1[hráč]"
+        console: "%prefix% &cPoužití: /teleport <hráč> <hráč>"
+god:
+    enabled: "%prefix% &aMód boha povolen."
+    disabled: "%prefix% &cMód boha zakázán."
+    enabled-other: "%prefix% &aMód boha povolen pro hráče %player%."
+    disabled-other: "%prefix% &cMód boha zakázán pro hráče %player%."
+    usage:
+        player: "%prefix% &cPoužití: /god &1[hráč]"
+        console: "%prefix% &cPoužití: /god <hráč>"
+heal:
+    healed: "%prefix% &aUzdraven!"
+    healed-other: "%prefix% &aHráč %player% byl uzdraven!"
+    usage:
+        player: "%prefix% &cPoužití: /heal &1[hráč]"
+        console: "%prefix% &cPoužití: /heal <hráč>"
+vanish:
+    enabled: "%prefix% &aNeviditelnost povolena."
+    disabled: "%prefix% &aNeviditelnost zakázána."
+    enabled-other: "%prefix% &aNeviditelnost povolena pro &e&o%player%."
+    disabled-other: "%prefix% &aNeviditelnost zakázána pro &e&o%player%."
+    usage:
+        player: "%prefix% &cPoužití: /vanish &1[hráč]"
+        console: "%prefix% &cPoužití: /vanish <hráč>"
+spawn:
+    set: "%prefix% &aSpawn byl nastaven na %x% %y% %z%."
+    teleported: "%prefix% &aTeleportováno na spawn"
+    teleported-other: "%prefix% &aTeleportováno hráče %player% na spawn"
+    nonexistent: "%prefix% &cBod spawnu nebyl dosud nastaven"
+    usage:
+        admin: "%prefix% &cPoužití:/spawn &1[set|hráč]"
+        player: "%prefix% &cPoužití: /spawn &1[hráč]"
+        console: "%prefix% &cPoužití: /spawn &1[set|hráč] <hráč>"
+time:
+    set: "%prefix% &aČas byl nastaven na %time%."
+    add: "%prefix% &aByl přidán %time% čas."
+    usage:
+        console: "%prefix% &cPoužití: /time <set|add> <čas> &1[hráč]"
+        player: "%prefix% &cPoužití: /time <set|add> <čas> &1[hráč]"
+weather:
+    set: "%prefix% &aPočasí bylo nastaveno na %weather%."
+    usage:
+        console: "%prefix% &cPoužití: /weather <clear|rain|thunder> &1[hráč]"
+        player: "%prefix% &cPoužití: /weather <clear|rain|thunder> &1[hráč]"
