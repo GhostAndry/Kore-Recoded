@@ -5,11 +5,12 @@ import me.ghostdevelopment.kore.Console;
 import me.ghostdevelopment.kore.Kore;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
-import org.bukkit.util.FileUtil;
 
 import java.io.File;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
-import java.util.Objects;
 
 @SuppressWarnings("all")
 public class LangFile {
@@ -18,8 +19,8 @@ public class LangFile {
     private static File file;
     private static FileConfiguration config;
 
-    public static void setUp(){
-        Arrays.asList("it", "en", "ru", "es", main.getConfig().getString("messages")).forEach(lang -> setUp(lang));
+    public static void setUp() {
+        Arrays.asList("it", "en", "ru", "es", "fr", main.getConfig().getString("messages")).forEach(lang -> setUp(lang));
     }
 
     @SneakyThrows
@@ -39,6 +40,37 @@ public class LangFile {
             }
         }
         config = YamlConfiguration.loadConfiguration(file);
+        FileConfiguration defaultConfig = loadDefaultConfig(lang);
+        updateFile(defaultConfig, config, file);
+    }
+
+    private static FileConfiguration loadDefaultConfig(String lang) {
+        String resourcePath = "lang/" + lang + ".yml";
+        InputStream resourceInputStream = main.getResource(resourcePath);
+        if (resourceInputStream != null) {
+            InputStreamReader inputStreamReader = new InputStreamReader(resourceInputStream, StandardCharsets.UTF_8);
+            return YamlConfiguration.loadConfiguration(inputStreamReader);
+        }
+        return null;
+    }
+
+    public static void updateFile(FileConfiguration defaultConfig, FileConfiguration config, File file) {
+        if (defaultConfig != null) {
+            boolean updated = false;
+            for (String key : defaultConfig.getKeys(true)) {
+                if (!config.contains(key)) {
+                    config.set(key, defaultConfig.get(key));
+                    updated = true;
+                }
+            }
+            if (updated) {
+                try {
+                    config.save(file);
+                } catch (Exception e) {
+                    Console.warning(e.getMessage());
+                }
+            }
+        }
     }
 
     public static boolean checkFileExists(String lang) {
@@ -47,12 +79,18 @@ public class LangFile {
         return file.exists();
     }
 
-    public static FileConfiguration getFile(){return config;}
-    public static void reload(){setUp();}
-    public static void save(){
+    public static FileConfiguration getFile() {
+        return config;
+    }
+
+    public static void reload() {
+        setUp();
+    }
+
+    public static void save() {
         try {
             config.save(file);
-        }catch (Exception e){
+        } catch (Exception e) {
             Console.warning(e.getMessage());
         }
     }

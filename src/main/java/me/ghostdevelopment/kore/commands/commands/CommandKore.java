@@ -91,6 +91,7 @@ public class CommandKore extends Command {
                     }
 
                     SettingsFile.getFile().set("messages", lang);
+                    SettingsFile.save();
                     Functions.reloadFiles();
 
                     player.sendMessage(Utils.Color(LangFile.getFile().getString("messages.successfully-set")
@@ -166,6 +167,7 @@ public class CommandKore extends Command {
                      }
 
                      SettingsFile.getFile().set("messages", lang);
+                     SettingsFile.save();
                      Functions.reloadFiles();
 
                      sender.sendMessage(Utils.Color(LangFile.getFile().getString("messages.successfully-set")
