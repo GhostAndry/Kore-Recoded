@@ -6,6 +6,7 @@ import me.ghostdevelopment.kore.Utils;
 import me.ghostdevelopment.kore.commands.Command;
 import me.ghostdevelopment.kore.commands.CommandInfo;
 import me.ghostdevelopment.kore.files.LangFile;
+import me.ghostdevelopment.kore.files.SettingsFile;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -24,7 +25,7 @@ public class CommandKore extends Command {
             } else if (args.length == 1) {
                 if (args[0].equalsIgnoreCase("info")) {
                     player.sendMessage(Utils.Color(
-                            "&aKore 1.7\n" +
+                            "&aKore 1.8\n" +
                                     "&aAuthor: &7GhostAndry\n" +
                                     "&aGitHub: &b&nhttps://github.com/GhostAndry/Kore-Recoded\n" +
                                     "\n"));
@@ -73,25 +74,6 @@ public class CommandKore extends Command {
                             "&7/speed &c<value> &1[player] [type]\n"+
                             "\n"
                     ));
-                } else if (args[0].equalsIgnoreCase("lang")||args[0].equalsIgnoreCase("language")) {
-
-                    try{
-                        String lang = args[1];
-
-                        LangFile.setUp(lang);
-                        LangFile.reload();
-
-                        player.sendMessage(Utils.Color(LangFile.getFile().getString("reload.success")
-                                .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                        ));
-
-                    }catch (Exception ignored){
-                        player.sendMessage(Utils.Color(LangFile.getFile().getString("reload.error")
-                                .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                        ));
-                        Console.warning("&4&lERROR: &cThe lang file you specified does not exist!");
-                    }
-
                 }else{
                     player.sendMessage(Utils.Color("\n&aThis server is running Kore."));
                 }
@@ -99,22 +81,21 @@ public class CommandKore extends Command {
 
                 if (args[0].equalsIgnoreCase("lang")||args[0].equalsIgnoreCase("language")) {
 
-                    try{
-                        String lang = args[1];
+                    String lang = args[1];
 
-                        LangFile.setUp(lang);
-                        LangFile.reload();
-
-                        player.sendMessage(Utils.Color(LangFile.getFile().getString("reload.success")
+                    if(!LangFile.checkFileExists(lang)){
+                        player.sendMessage(Utils.Color(LangFile.getFile().getString("messages.not-exist")
                                 .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
                         ));
-
-                    }catch (Exception ignored){
-                        player.sendMessage(Utils.Color(LangFile.getFile().getString("reload.error")
-                                .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                        ));
-                        Console.warning("&4&lERROR: &cThe lang file you specified does not exist!");
+                        return;
                     }
+
+                    SettingsFile.getFile().set("messages", lang);
+                    Functions.reloadFiles();
+
+                    player.sendMessage(Utils.Color(LangFile.getFile().getString("messages.successfully-set")
+                            .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
+                    ));
 
                 }else{
                     player.sendMessage(Utils.Color("\n&aThis server is running Kore."));
@@ -126,7 +107,7 @@ public class CommandKore extends Command {
             } else if (args.length == 1) {
                 if (args[0].equalsIgnoreCase("info")) {
                     sender.sendMessage(Utils.Color(
-                            "&aKore 1.7\n" +
+                            "&aKore 1.8\n" +
                                     "&aAuthor: &7GhostAndry\n" +
                                     "&aGitHub: &b&nhttps://github.com/GhostAndry/Kore-Recoded\n" +
                                     "\n"));
@@ -175,22 +156,21 @@ public class CommandKore extends Command {
 
                  if (args[0].equalsIgnoreCase("lang")||args[0].equalsIgnoreCase("language")) {
 
-                    try{
-                        String lang = args[1];
+                     String lang = args[1];
 
-                        LangFile.setUp(lang);
-                        LangFile.reload();
+                     if(!LangFile.checkFileExists(lang)){
+                         sender.sendMessage(Utils.Color(LangFile.getFile().getString("messages.not-exist")
+                                 .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
+                         ));
+                         return;
+                     }
 
-                        sender.sendMessage(Utils.Color(LangFile.getFile().getString("reload.success")
-                                .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                        ));
+                     SettingsFile.getFile().set("messages", lang);
+                     Functions.reloadFiles();
 
-                    }catch (Exception ignored){
-                        sender.sendMessage(Utils.Color(LangFile.getFile().getString("reload.error")
-                                .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                        ));
-                        Console.warning("&4&lERROR: &cThe lang file you specified does not exist!");
-                    }
+                     sender.sendMessage(Utils.Color(LangFile.getFile().getString("messages.successfully-set")
+                             .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
+                     ));
 
                 }else{
                      sender.sendMessage(Utils.Color("\n&aThis server is running Kore."));

@@ -1,39 +1,39 @@
 gamemode:
-  enabled: true
+    enabled: true
 fly:
-  enabled: true
+    enabled: true
 teleport:
-  enabled: true
+    enabled: true
 godmode:
-  enabled: true
+    enabled: true
 heal:
-  enabled: true
+    enabled: true
 vanish:
-  enabled: true
+    enabled: true
 spawn:
-  enabled: true
-  on-join: true
+    enabled: true
+    on-join: true
 trash:
-  enabled: true
+    enabled: true
 orbitalcannon:
-  enabled: true
-  tell-to-victim: true
+    enabled: true
+    tell-to-victim: true
 smite:
-  enabled: true
-  enable: true
+    enabled: true
+    enable: true
 kill:
-  enabled: true
+    enabled: true
 warp:
-  enabled: true
+    enabled: true
 home:
-  enabled: true
+    enabled: true
 speed:
-  enabled: true
+    enabled: true
 chat:
-  enabled: true
-  format: '%sender%: %message%'
-  blacklist-words:
-    - fuck
-    - shit
+    enabled: true
+    format: "%sender%: %message%"
+    blacklist-words:
+        - fuck
+        - shit
 
 messages: en

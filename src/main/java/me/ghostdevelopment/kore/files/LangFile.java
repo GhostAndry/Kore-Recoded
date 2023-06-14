@@ -23,15 +23,28 @@ public class LangFile {
     }
 
     @SneakyThrows
-    public static void setUp(String lang){
-        File file = new File(new File(main.getDataFolder().getPath() + "/lang/"), lang + ".yml");
-        if(!file.exists()){
-            if (main.getResource(file.getPath().replace('\\', '/'))==null) {
+    public static void setUp(String lang) {
+        File langFolder = new File(main.getDataFolder().getPath() + "/lang/");
+        if (!langFolder.exists()) {
+            langFolder.mkdirs();
+        }
+
+        File file = new File(langFolder, lang + ".yml");
+        if (!file.exists()) {
+            String resourcePath = "lang/" + lang + ".yml";
+            if (main.getResource(resourcePath) == null) {
                 file.createNewFile();
-                // todo old file setup with file.addDefault
-            } else main.saveResource(file.getPath(), false);
+            } else {
+                main.saveResource(resourcePath, false);
+            }
         }
         config = YamlConfiguration.loadConfiguration(file);
+    }
+
+    public static boolean checkFileExists(String lang) {
+        File langFolder = new File(main.getDataFolder().getPath() + "/lang/");
+        File file = new File(langFolder, lang + ".yml");
+        return file.exists();
     }
 
     public static FileConfiguration getFile(){return config;}
