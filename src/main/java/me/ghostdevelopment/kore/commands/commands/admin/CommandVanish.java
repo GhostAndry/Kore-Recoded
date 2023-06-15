@@ -34,7 +34,7 @@ public class CommandVanish extends Command {
                 if(vanished.contains(player)){
                     vanished.remove(player);
                     for(Player other : Bukkit.getOnlinePlayers()){
-                        other.hidePlayer(player);
+                        other.showPlayer(player);
                     }
                     player.sendMessage(Utils.Color(LangFile.getFile().getString("vanish.disabled")
                             .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
@@ -42,7 +42,7 @@ public class CommandVanish extends Command {
                 }else{
                     vanished.add(player);
                     for(Player other : Bukkit.getOnlinePlayers()){
-                        other.showPlayer(player);
+                        other.hidePlayer(player);
                     }
                     player.sendMessage(Utils.Color(LangFile.getFile().getString("vanish.enabled")
                             .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
