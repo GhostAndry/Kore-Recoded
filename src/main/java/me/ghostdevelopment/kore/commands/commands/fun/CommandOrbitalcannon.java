@@ -51,7 +51,9 @@ public class CommandOrbitalcannon extends Command {
             }
 
             location.getWorld().strikeLightningEffect(location);
-            location.getWorld().createExplosion(location, 50f, false);
+            location.getWorld().createExplosion(location, 150f, false);
+            location.getWorld().createExplosion(location, 150f, false);
+            location.getWorld().createExplosion(location, 150f, false);
         } else {
             sender.sendMessage(Utils.Color(LangFile.getFile().getString("orbitalcannon.usage")
                     .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))

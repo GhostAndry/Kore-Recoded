@@ -12,7 +12,7 @@ reload:
     error: "%prefix% &cErrore interno. Guarda la console per errori."
 gamemode:
     changed: "%prefix% &aLa tua Gamemode è stata cambiata in &e&o%gamemode%"
-    changed-other: "%prefix% &a%player%'s gamemode was changed to &e&o%gamemode%"
+    changed-other: "%prefix% &aLa gamemode di %player% è stata cambiata in &e&o%gamemode%"
     usage:
         console: "%prefix% &cUso: /gamemode <gamemode> <player>"
         player: "%prefix% &cUso: /gamemode <gamemode> &1[player]"
@@ -95,8 +95,8 @@ home:
     removed: "%prefix% &cLa tua Casa è stata rimossa."
     usage: "%prefix% &cUso:67/home &1[set|remove]"
 speed:
-    set: "%prefix% La tua Velocita è stata imposta a %speed%"
-    set-other: "%prefix% La Velocita di %player% è stata imposta a %speed%"
+    set: "%prefix% &aLa tua Velocita è stata imposta a %speed%"
+    set-other: "%prefix% &aLa Velocita di %player% è stata imposta a %speed%"
     invalid-value: "%prefix% &cVelocita Imposta Invalida."
     invalid-type:
         "%prefix% &cTipo di Velocita Imposta è Invalida. Ci sono Queste Velocita: Walk or Walking, Fly

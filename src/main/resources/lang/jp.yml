@@ -1,0 +1,106 @@
+prefix: "&b&lKore&f:"
+no-permissions: "%prefix% &c権限がありません。"
+only-players: "%prefix% &cこのコマンドはプレイヤーのみが実行できます！"
+command-disabled: "%prefix% &cこのコマンドは無効です"
+invalid-target: "%prefix% &cプレイヤーが見つかりません。"
+lang-name: "日本"
+messages:
+  successfully-set: "%prefix% &a言語ファイルが %lang% に変更されました。"
+  not-exist: "%prefix% &cファイルが存在しないため、言語を読み込むことができません！"
+reload:
+  success: "%prefix% &a正常にリロードされました！"
+  error: "%prefix% &c内部エラーが発生しました。詳細についてはコンソールを確認してください。"
+gamemode:
+  changed: "%prefix% &aゲームモードが &e&o%gamemode% に変更されました。"
+  changed-other: "%prefix% &a%player% のゲームモードが &e&o%gamemode% に変更されました。"
+  usage:
+    console: "%prefix% &c使い方：/gamemode <gamemode> <player>"
+    player: "%prefix% &c使い方：/gamemode <gamemode> &1[player]"
+fly:
+  enabled: "%prefix% &a飛行が有効になりました。"
+  disabled: "%prefix% &c飛行が無効になりました。"
+  enabled-other: "%prefix% &a%player% の飛行が有効になりました。"
+  disabled-other: "%prefix% &c%player% の飛行が無効になりました。"
+  usage:
+    console: "%prefix% &c使い方：/fly <player>"
+    player: "%prefix% &c使い方：/fly &1[player]"
+teleport:
+  teleported: "%prefix% &a%player% にテレポートしました。"
+  teleported-other: "%prefix% &a%player% を %target% にテレポートしました。"
+  usage:
+    player: "%prefix% &c使い方：/teleport <player> &1[player]"
+    console: "%prefix% &c使い方：/teleport <player> <player>"
+god:
+  enabled: "%prefix% &aゴッドモードが有効になりました。"
+  disabled: "%prefix% &cゴッドモードが無効になりました。"
+  enabled-other: "%prefix% &a%player% のゴッドモードが有効になりました。"
+  disabled-other: "%prefix% &c%player% のゴッドモードが無効になりました。"
+  usage:
+    player: "%prefix% &c使い方：/god &1[player]"
+    console: "%prefix% &c使い方：/god <player>"
+heal:
+  healed: "%prefix% &a回復しました！"
+  healed-other: "%prefix% &a%player% が回復しました！"
+  usage:
+    player: "%prefix% &c使い方：/heal &1[player]"
+    console: "%prefix% &c使い方：/heal <player>"
+vanish:
+  enabled: "%prefix% &aバニッシュが有効になりました。"
+  disabled: "%prefix% &aバニッシュが無効になりました。"
+  enabled-other: "%prefix% &a%player% のバニッシュが有効になりました。"
+  disabled-other: "%prefix% &a%player% のバニッシュが無効になりました。"
+  usage:
+    player: "%prefix% &c使い方：/vanish &1[player]"
+    console: "%prefix% &c使い方：/vanish <player>"
+spawn:
+  set: "%prefix% &aスポーンポイントが %x%% %y% %z% に設定されました。"
+  teleported: "%prefix% &aスポーンポイントにテレポートしました。"
+  teleported-other: "%prefix% &a%player% をスポーンポイントにテレポートしました。"
+  nonexistent: "%prefix% &cスポーンポイントがまだ設定されていません。"
+  usage:
+    admin: "%prefix% &c使い方：/setspawn"
+    player: "%prefix% &c使い方：/spawn &1[player]"
+    console: "%prefix% &c使い方：/spawn <player>"
+orbitalcannon:
+  shoot: "%prefix% &aオービタルキャノンが %coords% に発射されました。"
+  tell: "%prefix% &c&lオービタルキャノンの砲撃が当たりました！"
+  usage: "%prefix% &c使い方：/orbitalcannon <player | x y z>"
+smite:
+  smited-player: "%prefix% &a%player% をスマイトしました。"
+  usage: "%prefix% &c使い方：/smite <player>"
+kill:
+  killed: "%prefix% &a%player% を倒しました。"
+  usage:
+    player: "%prefix% &c使い方：/kill &1[player]"
+    console: "%prefix% &c使い方：/kill <player>"
+warp:
+  warped: "%prefix% &aあなたは %warp% にワープしました。"
+  warped-other: "%prefix% &aあなたは %player% を %warp% にワープしました。"
+  not-found: "%prefix% &cワープが見つかりません。"
+  admin:
+    added: "%prefix% &a%warp% が正常に追加されました。"
+    already-exist: "%prefix% &c%warp% は既に存在します。"
+    removed: "%prefix% &a%warp% が正常に削除されました。"
+  usage:
+    player: "%prefix% &c使い方：/warp <name> &1[player]"
+    console: "%prefix% &c使い方：/warp <name> <player>"
+    admin:
+      add: "%prefix% &c使い方：/warp add <name>"
+      remove: "%prefix% &c使い方：/warp remove <name>"
+home:
+  teleported: "%prefix% &a自宅にテレポートしました。"
+  teleported-other: "%prefix% &a%player% を彼の家にテレポートしました。"
+  not-set: "%prefix% &cまだ自宅が設定されていません。"
+  set: "%prefix% &a現在地にあなたの家が設定されました。"
+  removed: "%prefix% &cあなたの家が削除されました。"
+  usage: "%prefix% &c使い方 /home &1[set|remove]"
+speed:
+  set: "%prefix% 速度が %speed% に設定されました。"
+  set-other: "%prefix% %player% の速度が %speed% に設定されました。"
+  invalid-value: "%prefix% &c無効な速度値"
+  invalid-type:
+    "%prefix% &c無効な速度タイプ。速度タイプ：Walk or Walking, Fly
+        or Flight"
+  usage:
+    player: "%prefix% &c使い方：/speed <value> &1[player] [type]"
+    console: "%prefix% &c使い方：/speed <value> <player> <type>"

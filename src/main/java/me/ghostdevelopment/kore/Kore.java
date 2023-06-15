@@ -25,6 +25,16 @@ public final class Kore extends JavaPlugin {
     public void onEnable() {
         instance = this;
         // Plugin startup logic
+
+        System.out.println("\n\n" +
+                " _  __              \n" +
+                "| |/ /              \n" +
+                "| ' / ___  _ __ ___ \n" +
+                "|  < / _ \\| '__/ _ \\\n" +
+                "| . \\ (_) | | |  __/\n" +
+                "|_|\\_\\___/|_|  \\___|\n" +
+                "\n");
+
         Metrics metrics = new Metrics(this, 18653);
 
         if(getServer().getPluginManager().getPlugin("PlaceholderAPI")!=null){

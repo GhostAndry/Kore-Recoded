@@ -1,0 +1,105 @@
+prefix: "&b&lKore&f:"
+no-permissions: "%prefix% &c您没有权限。"
+only-players: "%prefix% &c仅玩家可以执行此命令！"
+command-disabled: "%prefix% &c此命令已禁用"
+invalid-target: "%prefix% &c找不到玩家。"
+lang-name: "中國人"
+messages:
+  successfully-set: "%prefix% &a成功将语言文件更改为 %lang%"
+  not-exist: "%prefix% &c无法加载语言，因为文件不存在！"
+reload:
+  success: "%prefix% &a成功重载！"
+  error: "%prefix% &c内部错误。查看控制台以获取更多信息。"
+gamemode:
+  changed: "%prefix% &a您的游戏模式已更改为 &e&o%gamemode%"
+  changed-other: "%prefix% &a%player% 的游戏模式已更改为 &e&o%gamemode%"
+  usage:
+    console: "%prefix% &c用法：/gamemode <游戏模式> <玩家>"
+    player: "%prefix% &c用法：/gamemode <游戏模式> &1[玩家]"
+fly:
+  enabled: "%prefix% &a飞行已启用。"
+  disabled: "%prefix% &c飞行已禁用。"
+  enabled-other: "%prefix% &a玩家 %player% 的飞行已启用。"
+  disabled-other: "%prefix% &c玩家 %player% 的飞行已禁用。"
+  usage:
+    console: "%prefix% &c用法：/fly <玩家>"
+    player: "%prefix% &c用法：/fly &1[玩家]"
+teleport:
+  teleported: "%prefix% &a传送到 %player%"
+  teleported-other: "%prefix% &a将 %player% 传送到 %target%"
+  usage:
+    player: "%prefix% &c用法：/teleport <玩家> &1[玩家]"
+    console: "%prefix% &c用法：/teleport <玩家> <玩家>"
+god:
+  enabled: "%prefix% &a上帝模式已启用。"
+  disabled: "%prefix% &c上帝模式已禁用。"
+  enabled-other: "%prefix% &a为 %player% 启用上帝模式。"
+  disabled-other: "%prefix% &c为 %player% 禁用上帝模式。"
+  usage:
+    player: "%prefix% &c用法：/god &1[玩家]"
+    console: "%prefix% &c用法：/god <玩家>"
+heal:
+  healed: "%prefix% &a已治愈！"
+  healed-other: "%prefix% &a%player% 已被治愈！"
+  usage:
+    player: "%prefix% &c用法：/heal &1[玩家]"
+    console: "%prefix% &c用法：/heal <玩家>"
+vanish:
+  enabled: "%prefix% &a隐身已开启。"
+  disabled: "%prefix% &a隐身已关闭。"
+  enabled-other: "%prefix% &a为 &e&o%player% 开启隐身。"
+  disabled-other: "%prefix% &a为 &e&o%player% 关闭隐身。"
+  usage:
+    player: "%prefix% &c用法：/vanish &1[玩家]"
+    console: "%prefix% &c用法：/vanish <玩家>"
+spawn:
+  set: "%prefix% &a出生点已设置为 %x% %y% %z%。"
+  teleported: "%prefix% &a传送到出生点"
+  teleported-other: "%prefix% &a将 %player% 传送到出生点"
+  nonexistent: "%prefix% &c尚未设置出生点"
+  usage:
+    admin: "%prefix% &c用法：/setspawn"
+    player: "%prefix% &c用法：/spawn &1[玩家]"
+    console: "%prefix% &c用法：/spawn <玩家>"
+orbitalcannon:
+  shoot: "%prefix% &a轨道炮在 %coords% 处发射了一枚子弹。"
+  tell: "%prefix% &c&l你被轨道炮击中了！"
+  usage: "%prefix% &c用法：/orbitalcannon <玩家 | x y z>"
+smite:
+  smited-player: "%prefix% &a惩罚 %player%"
+  usage: "%prefix% &c用法：/smite <玩家>"
+kill:
+  killed: "%prefix% &a击杀 %player%。"
+  usage:
+    player: "%prefix% &c用法：/kill &1[玩家]"
+    console: "%prefix% &c用法：/kill <玩家>"
+warp:
+  warped: "%prefix% &a您已传送至 %warp%"
+  warped-other: "%prefix% &a您已将 %player% 传送至 %warp%"
+  not-found: "%prefix% &c找不到传送点。"
+  admin:
+    added: "%prefix% &a成功添加 %warp%。"
+    already-exist: "%prefix% &c%warp% 已存在"
+    removed: "%prefix% &a成功移除 %warp%。"
+  usage:
+    player: "%prefix% &c用法：/warp <名称> &1[玩家]"
+    console: "%prefix% &c用法：/warp <名称> <玩家>"
+    admin:
+      add: "%prefix% &c用法：/warp add <名称>"
+      remove: "%prefix% &c用法：/warp remove <名称>"
+home:
+  teleported: "%prefix% &a您已传送到您的家。"
+  teleported-other: "%prefix% &a您已将 %player% 传送到他的家。"
+  not-set: "%prefix% &c您还没有设置家。"
+  set: "%prefix% &a您已将家设置为您的位置。"
+  removed: "%prefix% &c您的家已被移除。"
+  usage: "%prefix% &c用法 /home &1[set|remove]"
+speed:
+  set: "%prefix% 您的速度已设置为 %speed%"
+  set-other: "%prefix% %player% 的速度已设置为 %speed%"
+  invalid-value: "%prefix% &c速度值无效"
+  invalid-type:
+    "%prefix% &c速度类型无效。速度类型：步行或行走，飞行或飞行"
+  usage:
+    player: "%prefix% &c用法：/speed <值> &1[玩家] [类型]"
+    console: "%prefix% &c用法：/speed <值> <玩家> <类型>"

@@ -18,7 +18,8 @@ set "formatted_date=%year%-%month%-%day%"
 set "formatted_time=%hour%:%minute%"
 
 REM Eseguire il commit con il messaggio contenente la data e l'ora
-git commit -a -m "%formatted_date% %formatted_time%"
+rem git commit -a -m "%formatted_date% %formatted_time%"
+git commit -a -m "Update to 1.8"
 git push
 
 REM Visualizzare l'output del commit
