@@ -2,7 +2,7 @@ package me.ghostdevelopment.kore.commands.commands.admin;
 
 import me.ghostdevelopment.kore.Functions;
 import me.ghostdevelopment.kore.Utils;
-import me.ghostdevelopment.kore.commands.Command;
+import me.ghostdevelopment.kore.commands.KoreCommand;
 import me.ghostdevelopment.kore.commands.CommandInfo;
 import me.ghostdevelopment.kore.files.LangFile;
 import me.ghostdevelopment.kore.files.SettingsFile;
@@ -12,7 +12,7 @@ import org.bukkit.entity.Player;
 @SuppressWarnings("ALL")
 
 @CommandInfo(name = "setspawn", permission = "kore.setspawn", moduleName = "spawn")
-public class CommandSetspawn extends Command {
+public class CommandSetspawn extends KoreCommand {
 
     @Override
     public void execute(CommandSender sender, String[] args) {

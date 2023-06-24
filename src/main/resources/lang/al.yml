@@ -25,11 +25,11 @@ fly:
         console: "%prefix% &cPërdorimi: /fly <player>"
         player: "%prefix% &cPërdorimi: /fly &1[player]"
 teleport:
-    teleported: "%prefix% &aU teleportua te %player%"
-    teleported-other: "%prefix% &aU teleportua %player% te %target%"
+    teleported: "%prefix% &aU teleportua te %loc%"
+    teleported-other: "%prefix% &aU teleportua %player% te %loc%"
     usage:
-        player: "%prefix% &cPërdorimi: /teleport <player> &1[player]"
-        console: "%prefix% &cPërdorimi: /teleport <player> <player>"
+        player: "%prefix% &cPërdorimi: /teleport <player| x y z > &1[player| x y z ]"
+        console: "%prefix% &cPërdorimi: /teleport <player| x y z > <player| x y z >"
 god:
     enabled: "%prefix% &aGodmode aktivizuar."
     disabled: "%prefix% &cGodmode çaktivizuar."

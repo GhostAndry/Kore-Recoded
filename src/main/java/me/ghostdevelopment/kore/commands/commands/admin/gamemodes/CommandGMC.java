@@ -1,7 +1,7 @@
 package me.ghostdevelopment.kore.commands.commands.admin.gamemodes;
 
 import me.ghostdevelopment.kore.Utils;
-import me.ghostdevelopment.kore.commands.Command;
+import me.ghostdevelopment.kore.commands.KoreCommand;
 import me.ghostdevelopment.kore.commands.CommandInfo;
 import me.ghostdevelopment.kore.files.LangFile;
 import me.ghostdevelopment.kore.files.SettingsFile;
@@ -12,7 +12,7 @@ import org.bukkit.entity.Player;
 
 @SuppressWarnings("ALL")
 @CommandInfo(name = "gmc", permission = "kore.gamemode.creative", permission2 =  "kore.gamemode.*", permission3 = "kore.gamemode", moduleName = "gamemode")
-public class CommandGMC extends Command {
+public class CommandGMC extends KoreCommand {
     @Override
     public void execute(CommandSender sender, String[] args) {
         if(!(SettingsFile.getFile().getBoolean("gamemode.enabled"))){

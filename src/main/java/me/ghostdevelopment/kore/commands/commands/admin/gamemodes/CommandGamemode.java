@@ -2,7 +2,7 @@ package me.ghostdevelopment.kore.commands.commands.admin.gamemodes;
 
 import me.ghostdevelopment.kore.Kore;
 import me.ghostdevelopment.kore.Utils;
-import me.ghostdevelopment.kore.commands.Command;
+import me.ghostdevelopment.kore.commands.KoreCommand;
 import me.ghostdevelopment.kore.commands.CommandInfo;
 import me.ghostdevelopment.kore.files.LangFile;
 import me.ghostdevelopment.kore.files.SettingsFile;
@@ -13,7 +13,7 @@ import org.bukkit.entity.Player;
 
 @SuppressWarnings("ALL")
 @CommandInfo(name = "gamemode", permission = "kore.gamemode.*", permission2 = "kore.gamemode", moduleName = "gamemode")
-public class CommandGamemode extends Command {
+public class CommandGamemode extends KoreCommand {
 
     private Kore plugin;
 

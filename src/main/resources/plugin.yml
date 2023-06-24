@@ -1,5 +1,5 @@
 name: Kore
-version: "${project.version}"
+version: 1.9
 main: me.ghostdevelopment.kore.Kore
 load: STARTUP
 
@@ -36,6 +36,7 @@ commands:
     warp:
     home:
     speed:
+    weather:
 
 permissions:
     kore.*:
@@ -85,4 +86,8 @@ permissions:
     kore.home:
         description: ""
     kore.speed:
+        description: ""
+    kore.weather:
+        description: ""
+    kore.chatcolor:
         description: ""

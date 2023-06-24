@@ -25,11 +25,11 @@ fly:
         console: "%prefix% &cUso: /fly <jugador>"
         player: "%prefix% &cUso: /fly &1[jugador]"
 teleport:
-    teleported: "%prefix% &aTeletransportado a %player%"
-    teleported-other: "%prefix% &aTeletransportó a %player% a %target%"
+    teleported: "%prefix% &aTeletransportado a %loc%"
+    teleported-other: "%prefix% &aTeletransportó a %player% a %loc%"
     usage:
-        player: "%prefix% &cUso: /teleport <jugador> &1[jugador]"
-        console: "%prefix% &cUso: /teleport <jugador> <jugador>"
+        player: "%prefix% &cUso: /teleport <jugador| x y z > &1[jugador| x y z ]"
+        console: "%prefix% &cUso: /teleport <jugador| x y z > <jugador| x y z >"
 god:
     enabled: "%prefix% &aModo dios habilitado."
     disabled: "%prefix% &cModo dios deshabilitado."

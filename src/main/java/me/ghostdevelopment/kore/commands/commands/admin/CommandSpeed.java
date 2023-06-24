@@ -2,7 +2,7 @@ package me.ghostdevelopment.kore.commands.commands.admin;
 
 import me.ghostdevelopment.kore.Functions;
 import me.ghostdevelopment.kore.Utils;
-import me.ghostdevelopment.kore.commands.Command;
+import me.ghostdevelopment.kore.commands.KoreCommand;
 import me.ghostdevelopment.kore.commands.CommandInfo;
 import me.ghostdevelopment.kore.files.LangFile;
 import me.ghostdevelopment.kore.files.SettingsFile;
@@ -13,7 +13,7 @@ import org.bukkit.entity.Player;
 
 @SuppressWarnings("ALL")
 @CommandInfo(name = "speed", permission = "kore.speed", moduleName = "home")
-public class CommandSpeed extends Command {
+public class CommandSpeed extends KoreCommand {
 
     @Override
     public void execute(CommandSender sender, String[] args) {

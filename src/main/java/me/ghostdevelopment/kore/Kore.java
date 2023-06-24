@@ -1,7 +1,7 @@
 package me.ghostdevelopment.kore;
 
 import lombok.Getter;
-import me.ghostdevelopment.kore.commands.Command;
+import me.ghostdevelopment.kore.commands.KoreCommand;
 import me.ghostdevelopment.kore.events.ChatManager;
 import me.ghostdevelopment.kore.events.GodMode;
 import me.ghostdevelopment.kore.events.SpawnOnJoin;
@@ -37,6 +37,10 @@ public final class Kore extends JavaPlugin {
 
         Metrics metrics = new Metrics(this, 18653);
 
+        metrics.addCustomChart(new Metrics.SimplePie("language", () -> {
+            return SettingsFile.getFile().getString("messages");
+        }));
+
         if(getServer().getPluginManager().getPlugin("PlaceholderAPI")!=null){
             new RegisterPlaceholders().register();
         }else{
@@ -61,8 +65,8 @@ public final class Kore extends JavaPlugin {
 
     private void registerCommands() throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
         String packageName = getClass().getPackage().getName();
-        for(Class<? extends Command> clazz: new Reflections(packageName + ".commands.commands").getSubTypesOf(Command.class)){
-            Command command = clazz.getDeclaredConstructor().newInstance();
+        for(Class<? extends KoreCommand> clazz: new Reflections(packageName + ".commands.commands").getSubTypesOf(KoreCommand.class)){
+            KoreCommand command = clazz.getDeclaredConstructor().newInstance();
             try {
                 getCommand(command.getCommandInfo().name()).setExecutor(command);
                 Console.info("[Kore] Enabled %module% module"
@@ -113,3 +117,14 @@ public final class Kore extends JavaPlugin {
     }
 
 }
+
+
+/*
+
+TODO: TPA COMMAND
+TODO: Add hexacolor support
+TODO: Add color permission
+TODO: Add weather command
+TODO: Add time command
+
+ */

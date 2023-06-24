@@ -20,7 +20,6 @@ orbitalcannon:
     tell-to-victim: true
 smite:
     enabled: true
-    enable: true
 kill:
     enabled: true
 warp:

@@ -1,7 +1,7 @@
 package me.ghostdevelopment.kore.commands.commands.admin;
 
 import me.ghostdevelopment.kore.Utils;
-import me.ghostdevelopment.kore.commands.Command;
+import me.ghostdevelopment.kore.commands.KoreCommand;
 import me.ghostdevelopment.kore.commands.CommandInfo;
 import me.ghostdevelopment.kore.files.LangFile;
 import me.ghostdevelopment.kore.files.SettingsFile;
@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 @SuppressWarnings("ALL")
 @CommandInfo(name = "fly", permission = "kore.fly", moduleName = "fly")
-public class CommandFly extends Command {
+public class CommandFly extends KoreCommand {
 
     private static ArrayList<Player> flying = new ArrayList<>();
 

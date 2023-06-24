@@ -20,7 +20,7 @@ public class LangFile {
     private static FileConfiguration config;
 
     public static void setUp() {
-        Arrays.asList("it", "en", "ru", "es", "fr", "al", "de", "cz", "jp", "cn", main.getConfig().getString("messages")).forEach(lang -> setUp(lang));
+        Arrays.asList("it", "en", "ru", "es", "fr", "al", "de", "cz", main.getConfig().getString("messages")).forEach(lang -> setUp(lang));
     }
 
     @SneakyThrows

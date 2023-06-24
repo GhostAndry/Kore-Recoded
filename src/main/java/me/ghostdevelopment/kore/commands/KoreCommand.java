@@ -2,17 +2,16 @@ package me.ghostdevelopment.kore.commands;
 
 import me.ghostdevelopment.kore.Utils;
 import me.ghostdevelopment.kore.files.LangFile;
-import me.ghostdevelopment.kore.files.SettingsFile;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
 import java.util.Objects;
 
 @SuppressWarnings("ALL")
-public abstract class Command implements CommandExecutor {
+public abstract class KoreCommand implements CommandExecutor {
     private final CommandInfo commandInfo;
 
-    public Command(){
+    public KoreCommand(){
         commandInfo = getClass().getDeclaredAnnotation(CommandInfo.class);
         Objects.requireNonNull(commandInfo, "Commands must have @CommandInfo annotations");
     }

@@ -1,7 +1,7 @@
 package me.ghostdevelopment.kore.commands.commands.admin;
 
 import me.ghostdevelopment.kore.Utils;
-import me.ghostdevelopment.kore.commands.Command;
+import me.ghostdevelopment.kore.commands.KoreCommand;
 import me.ghostdevelopment.kore.commands.CommandInfo;
 import me.ghostdevelopment.kore.files.LangFile;
 import me.ghostdevelopment.kore.files.SettingsFile;
@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 @SuppressWarnings("ALL")
 @CommandInfo(name = "vanish", permission = "kore.vanish", moduleName = "vanish")
-public class CommandVanish extends Command {
+public class CommandVanish extends KoreCommand {
 
     private static ArrayList<Player> vanished = new ArrayList<>();
 

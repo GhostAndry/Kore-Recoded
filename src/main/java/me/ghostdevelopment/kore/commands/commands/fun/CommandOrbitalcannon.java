@@ -2,7 +2,7 @@ package me.ghostdevelopment.kore.commands.commands.fun;
 
 import me.ghostdevelopment.kore.Kore;
 import me.ghostdevelopment.kore.Utils;
-import me.ghostdevelopment.kore.commands.Command;
+import me.ghostdevelopment.kore.commands.KoreCommand;
 import me.ghostdevelopment.kore.commands.CommandInfo;
 import me.ghostdevelopment.kore.files.LangFile;
 import me.ghostdevelopment.kore.files.SettingsFile;
@@ -12,7 +12,7 @@ import org.bukkit.entity.Player;
 
 @SuppressWarnings("ALL")
 @CommandInfo(name = "orbitalcannon", permission = "kore.orbitalcannon", moduleName = "orbitalcannon")
-public class CommandOrbitalcannon extends Command {
+public class CommandOrbitalcannon extends KoreCommand {
 
     private Kore plugin;
     private static Location location;

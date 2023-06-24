@@ -2,7 +2,7 @@ package me.ghostdevelopment.kore.commands.commands.player;
 
 import me.ghostdevelopment.kore.Functions;
 import me.ghostdevelopment.kore.Utils;
-import me.ghostdevelopment.kore.commands.Command;
+import me.ghostdevelopment.kore.commands.KoreCommand;
 import me.ghostdevelopment.kore.commands.CommandInfo;
 import me.ghostdevelopment.kore.files.LangFile;
 import me.ghostdevelopment.kore.files.SettingsFile;
@@ -12,7 +12,7 @@ import org.bukkit.entity.Player;
 
 @SuppressWarnings("ALL")
 @CommandInfo(name = "home", permission = "kore.home", moduleName = "home")
-public class CommandHome extends Command {
+public class CommandHome extends KoreCommand {
 
     @Override
     public void execute(CommandSender sender, String[] args) {

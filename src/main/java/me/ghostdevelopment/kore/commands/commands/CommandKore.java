@@ -1,9 +1,8 @@
 package me.ghostdevelopment.kore.commands.commands;
 
-import me.ghostdevelopment.kore.Console;
 import me.ghostdevelopment.kore.Functions;
 import me.ghostdevelopment.kore.Utils;
-import me.ghostdevelopment.kore.commands.Command;
+import me.ghostdevelopment.kore.commands.KoreCommand;
 import me.ghostdevelopment.kore.commands.CommandInfo;
 import me.ghostdevelopment.kore.files.LangFile;
 import me.ghostdevelopment.kore.files.SettingsFile;
@@ -13,7 +12,7 @@ import org.bukkit.entity.Player;
 
 @SuppressWarnings("ALL")
 @CommandInfo(name = "kore", moduleName = "main")
-public class CommandKore extends Command {
+public class CommandKore extends KoreCommand {
 
     @Override
     public void execute(CommandSender sender, String[] args) {
@@ -25,7 +24,7 @@ public class CommandKore extends Command {
             } else if (args.length == 1) {
                 if (args[0].equalsIgnoreCase("info")) {
                     player.sendMessage(Utils.Color(
-                            "&aKore 1.8\n" +
+                            "&aKore 1.9\n" +
                                     "&aAuthor: &7GhostAndry\n" +
                                     "&aGitHub: &b&nhttps://github.com/GhostAndry/Kore-Recoded\n" +
                                     "\n"));
@@ -109,7 +108,7 @@ public class CommandKore extends Command {
             } else if (args.length == 1) {
                 if (args[0].equalsIgnoreCase("info")) {
                     sender.sendMessage(Utils.Color(
-                            "&aKore 1.8\n" +
+                            "&aKore 1.9\n" +
                                     "&aAuthor: &7GhostAndry\n" +
                                     "&aGitHub: &b&nhttps://github.com/GhostAndry/Kore-Recoded\n" +
                                     "\n"));
