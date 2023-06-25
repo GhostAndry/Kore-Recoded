@@ -104,3 +104,6 @@ speed:
     usage:
         player: "%prefix% &cVerwendung: /speed <wert> &1[spieler] [typ]"
         console: "%prefix% &cVerwendung: /speed <wert> <spieler> <typ>"
+killmobs:
+    killed: "%prefix% &aAlle feindlichen Kreaturen wurden getötet"
+    usage: "%prefix% &cVerwendung: /killmobs"

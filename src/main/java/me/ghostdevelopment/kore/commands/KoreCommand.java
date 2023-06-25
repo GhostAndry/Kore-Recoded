@@ -40,5 +40,6 @@ public abstract class KoreCommand implements CommandExecutor {
         execute(sender, args);
         return false;
     }
-    public void execute(CommandSender sender, String[] args){}
+
+    public abstract void execute(CommandSender sender, String[] args);
 }

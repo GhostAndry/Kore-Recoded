@@ -11,7 +11,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 @SuppressWarnings("ALL")
-@CommandInfo(name = "gmc", permission = "kore.gamemode.creative", permission2 =  "kore.gamemode.*", permission3 = "kore.gamemode", moduleName = "gamemode")
+@CommandInfo(name = "gmc", permission = "kore.gamemode.creative", permission2 =  "kore.gamemode.*", permission3 = "kore.gamemode")
 public class CommandGMC extends KoreCommand {
     @Override
     public void execute(CommandSender sender, String[] args) {

@@ -12,7 +12,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 @SuppressWarnings("ALL")
-@CommandInfo(name = "smite", permission = "kore.smite", moduleName = "smite")
+@CommandInfo(name = "smite", permission = "kore.smite")
 public class CommandSmite extends KoreCommand {
 
     @Override

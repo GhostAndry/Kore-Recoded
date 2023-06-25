@@ -107,6 +107,8 @@ public final class Kore extends JavaPlugin {
 
     private void setupFiles(){
 
+        SettingsFile.setUp();
+
         LangFile.setUp();
         LangFile.getFile().options().copyDefaults(true);
         LangFile.save();

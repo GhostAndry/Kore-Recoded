@@ -104,3 +104,6 @@ speed:
     usage:
         player: "%prefix% &cPoužití: /speed <value> &1[player] [type]"
         console: "%prefix% &cPoužití: /speed <value> <player> <type>"
+killmobs:
+    killed: "%prefix% &aZabito všechny nepřátelské moby"
+    usage: "%prefix% &cPoužití: /killmobs"

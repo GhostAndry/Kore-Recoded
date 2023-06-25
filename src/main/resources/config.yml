@@ -28,6 +28,9 @@ home:
     enabled: true
 speed:
     enabled: true
+killmobs:
+    enabled: true
+    async: true #recomanded: true
 chat:
     enabled: true
     format: "%sender%: %message%"

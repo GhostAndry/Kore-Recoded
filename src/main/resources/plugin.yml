@@ -37,6 +37,7 @@ commands:
     home:
     speed:
     weather:
+    killmobs:
 
 permissions:
     kore.*:
@@ -90,4 +91,6 @@ permissions:
     kore.weather:
         description: ""
     kore.chatcolor:
+        description: ""
+    kore.killmobs:
         description: ""

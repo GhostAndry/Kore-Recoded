@@ -9,9 +9,10 @@ import me.ghostdevelopment.kore.files.SettingsFile;
 import org.bukkit.Location;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.scheduler.BukkitRunnable;
 
 @SuppressWarnings("ALL")
-@CommandInfo(name = "orbitalcannon", permission = "kore.orbitalcannon", moduleName = "orbitalcannon")
+@CommandInfo(name = "orbitalcannon", permission = "kore.orbitalcannon")
 public class CommandOrbitalcannon extends KoreCommand {
 
     private Kore plugin;
@@ -54,6 +55,7 @@ public class CommandOrbitalcannon extends KoreCommand {
             location.getWorld().createExplosion(location, 150f, false);
             location.getWorld().createExplosion(location, 150f, false);
             location.getWorld().createExplosion(location, 150f, false);
+
         } else {
             sender.sendMessage(Utils.Color(LangFile.getFile().getString("orbitalcannon.usage")
                     .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))

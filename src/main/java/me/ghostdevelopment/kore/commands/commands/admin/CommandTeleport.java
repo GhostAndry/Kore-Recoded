@@ -11,7 +11,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 @SuppressWarnings("ALL")
-@CommandInfo(name = "teleport", permission = "kore.teleport", permission2 = "kore.tp", moduleName = "teleport")
+@CommandInfo(name = "teleport", permission = "kore.teleport", permission2 = "kore.tp")
 public class CommandTeleport extends KoreCommand {
 
     @Override

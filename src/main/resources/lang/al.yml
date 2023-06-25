@@ -104,3 +104,6 @@ speed:
     usage:
         player: "%prefix% &cPërdorimi: /speed <value> &1[player] [type]"
         console: "%prefix% &cPërdorimi: /speed <value> <player> <type>"
+killmobs:
+    killed: "%prefix% &aTë gjitha krijesat armiqësore janë vrarë"
+    usage: "%prefix% &cPërdorimi: /killmobs"

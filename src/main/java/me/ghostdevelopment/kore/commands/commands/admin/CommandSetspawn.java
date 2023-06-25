@@ -11,7 +11,7 @@ import org.bukkit.entity.Player;
 
 @SuppressWarnings("ALL")
 
-@CommandInfo(name = "setspawn", permission = "kore.setspawn", moduleName = "spawn")
+@CommandInfo(name = "setspawn", permission = "kore.setspawn")
 public class CommandSetspawn extends KoreCommand {
 
     @Override

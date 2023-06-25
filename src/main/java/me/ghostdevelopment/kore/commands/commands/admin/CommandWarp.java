@@ -12,7 +12,7 @@ import org.bukkit.entity.Player;
 
 
 @SuppressWarnings("ALL")
-@CommandInfo(name = "warp", permission = "kore.warp", moduleName = "warp")
+@CommandInfo(name = "warp", permission = "kore.warp")
 public class CommandWarp extends KoreCommand {
 
     @Override

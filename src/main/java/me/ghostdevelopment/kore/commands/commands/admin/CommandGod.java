@@ -12,7 +12,7 @@ import org.bukkit.entity.Player;
 import java.util.ArrayList;
 
 @SuppressWarnings("ALL")
-@CommandInfo(name = "god", permission = "kore.god", moduleName = "godmode")
+@CommandInfo(name = "god", permission = "kore.god")
 public class CommandGod extends KoreCommand {
 
     private static ArrayList<Player> god = new ArrayList<>();

@@ -10,7 +10,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 @SuppressWarnings("all")
-@CommandInfo(name = "heal", permission = "kore.heal", moduleName = "heal")
+@CommandInfo(name = "heal", permission = "kore.heal")
 public class CommandHeal extends KoreCommand {
 
     @Override

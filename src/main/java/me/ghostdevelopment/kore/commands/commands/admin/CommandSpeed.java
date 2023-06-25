@@ -12,7 +12,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 @SuppressWarnings("ALL")
-@CommandInfo(name = "speed", permission = "kore.speed", moduleName = "home")
+@CommandInfo(name = "speed", permission = "kore.speed")
 public class CommandSpeed extends KoreCommand {
 
     @Override

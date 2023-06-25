@@ -13,5 +13,4 @@ public @interface CommandInfo {
     String permission() default "";
     String permission2() default "";
     String permission3() default "";
-    String moduleName();
 }

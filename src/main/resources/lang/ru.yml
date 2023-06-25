@@ -102,3 +102,6 @@ speed:
     usage:
         player: "%prefix% &cИспользование: /speed <value> &1[player] [type]"
         console: "%prefix% &cИспользование: /speed <value> <player> <type>"
+killmobs:
+    killed: "%prefix% &aУбиты все враждебные мобы"
+    usage: "%prefix% &cИспользование: /killmobs"

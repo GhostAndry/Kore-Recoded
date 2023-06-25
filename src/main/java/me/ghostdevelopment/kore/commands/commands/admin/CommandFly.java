@@ -12,7 +12,7 @@ import org.bukkit.entity.Player;
 import java.util.ArrayList;
 
 @SuppressWarnings("ALL")
-@CommandInfo(name = "fly", permission = "kore.fly", moduleName = "fly")
+@CommandInfo(name = "fly", permission = "kore.fly")
 public class CommandFly extends KoreCommand {
 
     private static ArrayList<Player> flying = new ArrayList<>();
