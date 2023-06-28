@@ -56,6 +56,12 @@ public final class Kore extends JavaPlugin {
         }
         registerEvents();
 
+        new UpdateChecker(this, 107023).getVersion(version -> {
+            if (!this.getDescription().getVersion().equals(version)) {
+                getLogger().info("[Kore] There is a new update available.Version: "+version);
+            }
+        });
+
     }
 
     @Override

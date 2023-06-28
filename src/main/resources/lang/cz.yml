@@ -3,7 +3,7 @@ no-permissions: "%prefix% &cNemáte potřebná oprávnění."
 only-players: "%prefix% &cTento příkaz mohou spustit pouze hráči!"
 command-disabled: "%prefix% &cTento příkaz je zakázán"
 invalid-target: "%prefix% &cHráč nenalezen."
-lang-name: "Angličtina"
+lang-name: "Čeština"
 messages:
     successfully-set: "%prefix% &aÚspěšně změněn jazykový soubor na %lang%"
     not-exist: "%prefix% &cNelze načíst jazyky, protože soubor neexistuje!"
