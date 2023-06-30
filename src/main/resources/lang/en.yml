@@ -53,7 +53,7 @@ vanish:
         player: "%prefix% &cUsage: /vanish &1[player]"
         console: "%prefix% &cUsage: /vanish <player>"
 spawn:
-    set: "%prefix% &aSpawn has beed set to %x% %y% %z%."
+    set: "%prefix% &aSpawn has been set to %x% %y% %z%."
     teleported: "%prefix% &aTeleported to spawn"
     teleported-other: "%prefix% &aTeleported %player% to spawn"
     nonexistent: "%prefix% &cSpawn point wasn't set yet"
@@ -78,9 +78,9 @@ warp:
     warped-other: "%prefix% &aYou have warped %player% to %warp%"
     not-found: "%prefix% &cWarp not found."
     admin:
-        added: "%prefix% &a%warp% was succesfully added."
+        added: "%prefix% &a%warp% was successfully added."
         already-exist: "%prefix% &c%warp% already exist"
-        removed: "%prefix% &a%warp% was succesfully removed."
+        removed: "%prefix% &a%warp% was successfully removed."
     usage:
         player: "%prefix% &cUsage: /warp <name> &1[player]"
         console: "%prefix% &cUsage: /warp <name> <player>"
