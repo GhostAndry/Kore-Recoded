@@ -1,6 +1,7 @@
 package me.ghostdevelopment.kore.commands.commands;
 
 import me.ghostdevelopment.kore.Functions;
+import me.ghostdevelopment.kore.Kore;
 import me.ghostdevelopment.kore.Utils;
 import me.ghostdevelopment.kore.commands.KoreCommand;
 import me.ghostdevelopment.kore.commands.CommandInfo;
@@ -24,7 +25,7 @@ public class CommandKore extends KoreCommand {
             } else if (args.length == 1) {
                 if (args[0].equalsIgnoreCase("info")) {
                     player.sendMessage(Utils.Color(
-                            "&aKore 1.9\n" +
+                            "&aKore $ver\n".replace("$ver", Kore.getInstance().getDescription().getVersion()) +
                                     "&aAuthor: &7GhostAndry\n" +
                                     "&aGitHub: &b&nhttps://github.com/GhostAndry/Kore-Recoded\n" +
                                     "\n"));
@@ -108,7 +109,7 @@ public class CommandKore extends KoreCommand {
             } else if (args.length == 1) {
                 if (args[0].equalsIgnoreCase("info")) {
                     sender.sendMessage(Utils.Color(
-                            "&aKore 1.9\n" +
+                            "&aKore $ver\n".replace("$ver", Kore.getInstance().getDescription().getVersion()) +
                                     "&aAuthor: &7GhostAndry\n" +
                                     "&aGitHub: &b&nhttps://github.com/GhostAndry/Kore-Recoded\n" +
                                     "\n"));
