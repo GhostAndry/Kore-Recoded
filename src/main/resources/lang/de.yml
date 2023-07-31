@@ -107,3 +107,7 @@ speed:
 killmobs:
     killed: "%prefix% &aAlle feindlichen Kreaturen wurden getötet"
     usage: "%prefix% &cVerwendung: /killmobs"
+spawnmob:
+    spawned: '%prefix% &a%num% Mobs wurden erstellt!'
+    invalid: '%prefix% &cUngültige Entität'
+    usage: '%prefix% &cVerwendung: /spawnmob <Mob> [Anzahl]'

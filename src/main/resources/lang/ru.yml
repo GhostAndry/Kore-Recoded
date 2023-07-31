@@ -105,3 +105,7 @@ speed:
 killmobs:
     killed: "%prefix% &aУбиты все враждебные мобы"
     usage: "%prefix% &cИспользование: /killmobs"
+spawnmob:
+    spawned: '%prefix% &a%num% мобов было создано!'
+    invalid: '%prefix% &cНедопустимая сущность'
+    usage: '%prefix% &cИспользование: /spawnmob <моб> [кол-во]'

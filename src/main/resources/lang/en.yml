@@ -107,3 +107,7 @@ speed:
 killmobs:
     killed: "%prefix% &aKilled all hostile mobs"
     usage: "%prefix% &cUsage: /killmobs"
+spawnmob:
+    spawned: '%prefix% &a%num% mobs have been spawned!'
+    invalid: '%prefix% &cInvalid entity'
+    usage: '%prefix% &cUsage: /spawnmob <mob> [num]'

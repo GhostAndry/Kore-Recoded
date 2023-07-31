@@ -1,5 +1,5 @@
 name: Kore
-version: 1.10
+version: 1.11
 main: me.ghostdevelopment.kore.Kore
 load: STARTUP
 
@@ -38,6 +38,7 @@ commands:
     speed:
     weather:
     killmobs:
+    spawnmob:
 
 permissions:
     kore.*:
@@ -93,4 +94,6 @@ permissions:
     kore.chatcolor:
         description: ""
     kore.killmobs:
+        description: ""
+    kore.spawnmob:
         description: ""

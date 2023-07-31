@@ -107,3 +107,7 @@ speed:
 killmobs:
     killed: "%prefix% &aTë gjitha krijesat armiqësore janë vrarë"
     usage: "%prefix% &cPërdorimi: /killmobs"
+spawnmob:
+    spawned: '%prefix% &a%num% krijesa u krijuan!'
+    invalid: '%prefix% &cEntitet i pavlefshëm'
+    usage: '%prefix% &cPërdorimi: /spawnmob <krijesë> [numër]'

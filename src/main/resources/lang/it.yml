@@ -109,4 +109,5 @@ killmobs:
     usage: "%prefix% &cUso: /killmobs"
 spawnmob:
     spawned: "%prefix% &a%num% mobs sono stati creati!"
+    invalid: "%prefix% &cEntità invalida"
     usage: "%prefix% &cUso: /spawnmobs <mob> [num]"

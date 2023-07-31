@@ -107,3 +107,7 @@ speed:
 killmobs:
     killed: "%prefix% &aZabito všechny nepřátelské moby"
     usage: "%prefix% &cPoužití: /killmobs"
+spawnmob:
+    spawned: '%prefix% &aBylo vytvořeno %num% mobů!'
+    invalid: '%prefix% &cNeplatná entita'
+    usage: '%prefix% &cPoužití: /spawnmob <mob> [počet]'

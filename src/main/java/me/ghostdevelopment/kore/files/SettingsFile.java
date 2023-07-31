@@ -9,7 +9,7 @@ public class SettingsFile {
 
     public static void setUp(){
         main.getConfig().options().copyDefaults(true);
-        main.saveDefaultConfig();
+        save();
     }
     public static FileConfiguration getFile(){return main.getConfig();}
     public static void reload(){main.reloadConfig();}

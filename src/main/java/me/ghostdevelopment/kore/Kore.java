@@ -2,6 +2,7 @@ package me.ghostdevelopment.kore;
 
 import lombok.Getter;
 import me.ghostdevelopment.kore.commands.KoreCommand;
+import me.ghostdevelopment.kore.commands.commands.fun.CommandSpawnmob;
 import me.ghostdevelopment.kore.events.ChatManager;
 import me.ghostdevelopment.kore.events.GodMode;
 import me.ghostdevelopment.kore.events.SpawnOnJoin;
@@ -12,6 +13,9 @@ import me.ghostdevelopment.kore.files.StorageFile;
 import me.ghostdevelopment.kore.utils.Console;
 import me.ghostdevelopment.kore.utils.Metrics;
 import me.ghostdevelopment.kore.utils.RegisterPlaceholders;
+import org.bukkit.Bukkit;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.EntityType;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.reflections.Reflections;
@@ -26,8 +30,9 @@ public final class Kore extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        addEntities();
+
         instance = this;
-        // Plugin startup logic
 
         System.out.println("\n\n" +
                 " _  __              \n" +
@@ -70,6 +75,108 @@ public final class Kore extends JavaPlugin {
     @Override
     public void onDisable() {
         // Plugin shutdown logic
+    }
+
+    private void addEntities(){
+        String serverVersion = Bukkit.getServer().getVersion();
+        String[] versionParts = serverVersion.split("\\.");
+        int majorVersion = Integer.parseInt(versionParts[1]);
+
+        switch (majorVersion) {
+            case 8:
+                for (EntityType entityType : EntityType.values()) {
+                    if (entityType.isAlive() && !entityType.name().equals("PLAYER")) {
+                        CommandSpawnmob.getEntities().add(entityType);
+                    }
+                }
+                break;
+            case 9:
+                for (EntityType entityType : EntityType.values()) {
+                    if (entityType.isAlive() && !entityType.name().equals("PLAYER")) {
+                        CommandSpawnmob.getEntities().add(entityType);
+                    }
+                }
+                break;
+            case 10:
+                for (EntityType entityType : EntityType.values()) {
+                    if (entityType.isAlive() && !entityType.name().equals("PLAYER")) {
+                        CommandSpawnmob.getEntities().add(entityType);
+                    }
+                }
+                break;
+            case 11:
+                for (EntityType entityType : EntityType.values()) {
+                    if (entityType.isAlive() && !entityType.name().equals("PLAYER")) {
+                        CommandSpawnmob.getEntities().add(entityType);
+                    }
+                }
+                break;
+            case 12:
+                for (EntityType entityType : EntityType.values()) {
+                    if (entityType.isAlive() && !entityType.name().equals("PLAYER")) {
+                        CommandSpawnmob.getEntities().add(entityType);
+                    }
+                }
+                break;
+            case 13:
+                for (EntityType entityType : EntityType.values()) {
+                    if (entityType.isAlive() && !entityType.name().equals("PLAYER")) {
+                        CommandSpawnmob.getEntities().add(entityType);
+                    }
+                }
+                break;
+            case 14:
+                for (EntityType entityType : EntityType.values()) {
+                    if (entityType.isAlive() && !entityType.name().equals("PLAYER")) {
+                        CommandSpawnmob.getEntities().add(entityType);
+                    }
+                }
+                break;
+            case 15:
+                for (EntityType entityType : EntityType.values()) {
+                    if (entityType.isAlive() && !entityType.name().equals("PLAYER")) {
+                        CommandSpawnmob.getEntities().add(entityType);
+                    }
+                }
+                break;
+            case 16:
+                for (EntityType entityType : EntityType.values()) {
+                    if (entityType.isAlive() && !entityType.name().equals("PLAYER")) {
+                        CommandSpawnmob.getEntities().add(entityType);
+                    }
+                }
+                break;
+            case 17:
+                for (EntityType entityType : EntityType.values()) {
+                    if (entityType.isAlive() && !entityType.name().equals("PLAYER")) {
+                        CommandSpawnmob.getEntities().add(entityType);
+                    }
+                }
+                break;
+            case 18:
+                for (EntityType entityType : EntityType.values()) {
+                    if (entityType.isAlive() && !entityType.name().equals("PLAYER")) {
+                        CommandSpawnmob.getEntities().add(entityType);
+                    }
+                }
+                break;
+            case 19:
+                for (EntityType entityType : EntityType.values()) {
+                    if (entityType.isAlive() && !entityType.name().equals("PLAYER")) {
+                        CommandSpawnmob.getEntities().add(entityType);
+                    }
+                }
+                break;
+            case 20:
+                for (EntityType entityType : EntityType.values()) {
+                    if (entityType.isAlive() && !entityType.name().equals("PLAYER")) {
+                        CommandSpawnmob.getEntities().add(entityType);
+                    }
+                }
+                break;
+            default:
+                break;
+        }
     }
 
     private void registerCommands() throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {

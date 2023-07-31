@@ -33,6 +33,7 @@ killmobs:
     async: true #recomanded: true
 spawnmob:
     enabled: true
+    async: true #recomanded: true
 chat:
     enabled: true
     format: "%sender%: %message%"
