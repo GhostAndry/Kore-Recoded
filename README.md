@@ -69,6 +69,11 @@ Tested versions: 1.8, 1.9, 1.10, 1.11. 1.12, 1.13, 1.14, 1.15, 1.16, 1.17, 1.18,
 - %kore_vanished%
 - %kore_flying%
 - %kore_godmode%
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> ed11417537cf698db6e351c0cd1df52ac13c2cc9
 ​
 [BStats](https://bstats.org/plugin/bukkit/Kore/18653)
 
