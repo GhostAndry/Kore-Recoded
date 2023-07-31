@@ -1,6 +1,6 @@
 package me.ghostdevelopment.kore.commands.commands.fun;
 
-import me.ghostdevelopment.kore.Utils;
+import me.ghostdevelopment.kore.utils.Color;
 import me.ghostdevelopment.kore.commands.KoreCommand;
 import me.ghostdevelopment.kore.commands.CommandInfo;
 import me.ghostdevelopment.kore.files.LangFile;
@@ -19,7 +19,7 @@ public class CommandSmite extends KoreCommand {
     public void execute(CommandSender sender, String[] args) {
 
         if (!(SettingsFile.getFile().getBoolean("smite.enabled"))){
-            sender.sendMessage(Utils.Color(LangFile.getFile().getString("command-disabled")
+            sender.sendMessage(Color.Color(LangFile.getFile().getString("command-disabled")
                     .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
             ));
             return;
@@ -36,19 +36,19 @@ public class CommandSmite extends KoreCommand {
 
                 world.strikeLightning(location);
 
-                sender.sendMessage(Utils.Color(LangFile.getFile().getString("smite.smited-player")
+                sender.sendMessage(Color.Color(LangFile.getFile().getString("smite.smited-player")
                         .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
                         .replaceAll("%player%", target.getName())
                 ));
 
             }catch (Exception e){
-                sender.sendMessage(Utils.Color(LangFile.getFile().getString("invalid-target")
+                sender.sendMessage(Color.Color(LangFile.getFile().getString("invalid-target")
                         .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
                 ));
             }
 
         }else{
-            sender.sendMessage(Utils.Color(LangFile.getFile().getString("smite.usage")
+            sender.sendMessage(Color.Color(LangFile.getFile().getString("smite.usage")
                     .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
             ));
         }

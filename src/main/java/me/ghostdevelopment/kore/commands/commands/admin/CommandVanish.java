@@ -1,6 +1,6 @@
 package me.ghostdevelopment.kore.commands.commands.admin;
 
-import me.ghostdevelopment.kore.Utils;
+import me.ghostdevelopment.kore.utils.Color;
 import me.ghostdevelopment.kore.commands.KoreCommand;
 import me.ghostdevelopment.kore.commands.CommandInfo;
 import me.ghostdevelopment.kore.files.LangFile;
@@ -21,7 +21,7 @@ public class CommandVanish extends KoreCommand {
     public void execute(CommandSender sender, String[] args) {
 
         if (!(SettingsFile.getFile().getBoolean("vanish.enabled"))){
-            sender.sendMessage(Utils.Color(LangFile.getFile().getString("command-disabled")
+            sender.sendMessage(Color.Color(LangFile.getFile().getString("command-disabled")
                     .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
             ));
             return;
@@ -36,7 +36,7 @@ public class CommandVanish extends KoreCommand {
                     for(Player other : Bukkit.getOnlinePlayers()){
                         other.showPlayer(player);
                     }
-                    player.sendMessage(Utils.Color(LangFile.getFile().getString("vanish.disabled")
+                    player.sendMessage(Color.Color(LangFile.getFile().getString("vanish.disabled")
                             .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
                     ));
                 }else{
@@ -44,7 +44,7 @@ public class CommandVanish extends KoreCommand {
                     for(Player other : Bukkit.getOnlinePlayers()){
                         other.hidePlayer(player);
                     }
-                    player.sendMessage(Utils.Color(LangFile.getFile().getString("vanish.enabled")
+                    player.sendMessage(Color.Color(LangFile.getFile().getString("vanish.enabled")
                             .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
                     ));
                 }
@@ -55,7 +55,7 @@ public class CommandVanish extends KoreCommand {
                     for(Player other : Bukkit.getOnlinePlayers()){
                         other.hidePlayer(target);
                     }
-                    player.sendMessage(Utils.Color(LangFile.getFile().getString("vanish.disabled-other")
+                    player.sendMessage(Color.Color(LangFile.getFile().getString("vanish.disabled-other")
                             .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
                             .replaceAll("%player%", target.getName())
                     ));
@@ -64,13 +64,13 @@ public class CommandVanish extends KoreCommand {
                     for(Player other : Bukkit.getOnlinePlayers()){
                         other.showPlayer(target);
                     }
-                    player.sendMessage(Utils.Color(LangFile.getFile().getString("vanish.enabled-other")
+                    player.sendMessage(Color.Color(LangFile.getFile().getString("vanish.enabled-other")
                             .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
                             .replaceAll("%player%", target.getName())
                     ));
                 }
             }else{
-                player.sendMessage(Utils.Color(LangFile.getFile().getString("vanish.usage.player")
+                player.sendMessage(Color.Color(LangFile.getFile().getString("vanish.usage.player")
                         .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
                 ));
                 return;
@@ -84,7 +84,7 @@ public class CommandVanish extends KoreCommand {
                     for(Player other : Bukkit.getOnlinePlayers()){
                         other.hidePlayer(target);
                     }
-                    sender.sendMessage(Utils.Color(LangFile.getFile().getString("vanish.disabled-other")
+                    sender.sendMessage(Color.Color(LangFile.getFile().getString("vanish.disabled-other")
                             .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
                             .replaceAll("%player%", target.getName())
                     ));
@@ -93,14 +93,14 @@ public class CommandVanish extends KoreCommand {
                     for(Player other : Bukkit.getOnlinePlayers()){
                         other.showPlayer(target);
                     }
-                    sender.sendMessage(Utils.Color(LangFile.getFile().getString("vanish.enabled-other")
+                    sender.sendMessage(Color.Color(LangFile.getFile().getString("vanish.enabled-other")
                             .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
                             .replaceAll("%player%", target.getName())
                     ));
                 }
 
             }else{
-                sender.sendMessage(Utils.Color(LangFile.getFile().getString("vanish.usage.player")
+                sender.sendMessage(Color.Color(LangFile.getFile().getString("vanish.usage.player")
                         .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
                 ));
                 return;

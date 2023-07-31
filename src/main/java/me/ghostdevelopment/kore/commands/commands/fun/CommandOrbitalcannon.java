@@ -1,7 +1,7 @@
 package me.ghostdevelopment.kore.commands.commands.fun;
 
 import me.ghostdevelopment.kore.Kore;
-import me.ghostdevelopment.kore.Utils;
+import me.ghostdevelopment.kore.utils.Color;
 import me.ghostdevelopment.kore.commands.KoreCommand;
 import me.ghostdevelopment.kore.commands.CommandInfo;
 import me.ghostdevelopment.kore.files.LangFile;
@@ -9,7 +9,6 @@ import me.ghostdevelopment.kore.files.SettingsFile;
 import org.bukkit.Location;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.scheduler.BukkitRunnable;
 
 @SuppressWarnings("ALL")
 @CommandInfo(name = "orbitalcannon", permission = "kore.orbitalcannon")
@@ -22,7 +21,7 @@ public class CommandOrbitalcannon extends KoreCommand {
     public void execute(CommandSender sender, String[] args) {
 
         if (!(SettingsFile.getFile().getBoolean("orbitalcannon.enabled"))) {
-            sender.sendMessage(Utils.Color(LangFile.getFile().getString("command-disabled")
+            sender.sendMessage(Color.Color(LangFile.getFile().getString("command-disabled")
                     .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
             ));
             return;
@@ -35,12 +34,12 @@ public class CommandOrbitalcannon extends KoreCommand {
                     Player target = sender.getServer().getPlayer(args[0]);
                     location = target.getLocation();
                     if (SettingsFile.getFile().getBoolean("orbitalcannon.tell-to-victim")) {
-                        target.sendMessage(Utils.Color(LangFile.getFile().getString("orbitalcannon.tell")
+                        target.sendMessage(Color.Color(LangFile.getFile().getString("orbitalcannon.tell")
                                 .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
                         ));
                     }
                 } catch (Exception e) {
-                    sender.sendMessage(Utils.Color(LangFile.getFile().getString("invalid-target")
+                    sender.sendMessage(Color.Color(LangFile.getFile().getString("invalid-target")
                             .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
                     ));
                 }
@@ -57,7 +56,7 @@ public class CommandOrbitalcannon extends KoreCommand {
             location.getWorld().createExplosion(location, 150f, false);
 
         } else {
-            sender.sendMessage(Utils.Color(LangFile.getFile().getString("orbitalcannon.usage")
+            sender.sendMessage(Color.Color(LangFile.getFile().getString("orbitalcannon.usage")
                     .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
             ));
         }

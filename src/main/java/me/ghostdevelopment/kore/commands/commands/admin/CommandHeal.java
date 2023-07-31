@@ -1,6 +1,6 @@
 package me.ghostdevelopment.kore.commands.commands.admin;
 
-import me.ghostdevelopment.kore.Utils;
+import me.ghostdevelopment.kore.utils.Color;
 import me.ghostdevelopment.kore.commands.KoreCommand;
 import me.ghostdevelopment.kore.commands.CommandInfo;
 import me.ghostdevelopment.kore.files.LangFile;
@@ -17,7 +17,7 @@ public class CommandHeal extends KoreCommand {
     public void execute(CommandSender sender, String[] args) {
 
         if (!(SettingsFile.getFile().getBoolean("heal.enabled"))){
-            sender.sendMessage(Utils.Color(LangFile.getFile().getString("command-disabled")
+            sender.sendMessage(Color.Color(LangFile.getFile().getString("command-disabled")
                     .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
             ));
             return;
@@ -27,7 +27,7 @@ public class CommandHeal extends KoreCommand {
             Player player = (Player) sender;
 
             if(args.length>1){
-                player.sendMessage(Utils.Color(LangFile.getFile().getString("heal.usage.player")
+                player.sendMessage(Color.Color(LangFile.getFile().getString("heal.usage.player")
                         .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
                 ));
                 return;
@@ -35,7 +35,7 @@ public class CommandHeal extends KoreCommand {
             if (args.length==0) {
                 player.setHealth(20);
                 player.setFoodLevel(40);
-                player.sendMessage(Utils.Color(LangFile.getFile().getString("heal.healed")
+                player.sendMessage(Color.Color(LangFile.getFile().getString("heal.healed")
                         .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
                 ));
             } else if (args.length==1) {
@@ -44,12 +44,12 @@ public class CommandHeal extends KoreCommand {
 
                     target.setHealth(20);
                     target.setFoodLevel(40);
-                    player.sendMessage(Utils.Color(LangFile.getFile().getString("heal.healed-other")
+                    player.sendMessage(Color.Color(LangFile.getFile().getString("heal.healed-other")
                             .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
                             .replaceAll("%player%", target.getName())
                     ));
                 }catch (Exception e){
-                    player.sendMessage(Utils.Color(LangFile.getFile().getString("invalid-target")
+                    player.sendMessage(Color.Color(LangFile.getFile().getString("invalid-target")
                             .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
                     ));
                     return;
@@ -57,7 +57,7 @@ public class CommandHeal extends KoreCommand {
             }
         }else{
             if(!(args.length==1)){
-                sender.sendMessage(Utils.Color(LangFile.getFile().getString("heal.usage.console")
+                sender.sendMessage(Color.Color(LangFile.getFile().getString("heal.usage.console")
                         .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
                 ));
                 return;
@@ -68,12 +68,12 @@ public class CommandHeal extends KoreCommand {
 
                 target.setFoodLevel(40);
                 target.setHealth(20);
-                sender.sendMessage(Utils.Color(LangFile.getFile().getString("heal.healed-other")
+                sender.sendMessage(Color.Color(LangFile.getFile().getString("heal.healed-other")
                         .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
                         .replaceAll("%player%", target.getName())
                 ));
             }catch (Exception e){
-                sender.sendMessage(Utils.Color(LangFile.getFile().getString("invalid-target")
+                sender.sendMessage(Color.Color(LangFile.getFile().getString("invalid-target")
                         .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
                 ));
                 return;

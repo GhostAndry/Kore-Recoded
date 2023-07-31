@@ -2,14 +2,13 @@ package me.ghostdevelopment.kore.events;
 
 import me.clip.placeholderapi.PlaceholderAPI;
 import me.ghostdevelopment.kore.Kore;
-import me.ghostdevelopment.kore.Utils;
+import me.ghostdevelopment.kore.utils.Color;
 import me.ghostdevelopment.kore.files.SettingsFile;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
-import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.List;
 
@@ -42,7 +41,7 @@ public class ChatManager implements Listener {
             formattedMessage = SettingsFile.getFile().getString("chat.format");
             formattedMessage = formattedMessage.replaceAll("%sender%", author).replace("%message%", message);
 
-            Bukkit.broadcastMessage(Utils.Color(PlaceholderAPI.setPlaceholders(event.getPlayer(), formattedMessage)));
+            Bukkit.broadcastMessage(Color.Color(PlaceholderAPI.setPlaceholders(event.getPlayer(), formattedMessage)));
 
         }
 

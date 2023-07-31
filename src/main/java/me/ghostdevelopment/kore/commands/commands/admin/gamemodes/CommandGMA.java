@@ -1,6 +1,6 @@
 package me.ghostdevelopment.kore.commands.commands.admin.gamemodes;
 
-import me.ghostdevelopment.kore.Utils;
+import me.ghostdevelopment.kore.utils.Color;
 import me.ghostdevelopment.kore.commands.KoreCommand;
 import me.ghostdevelopment.kore.commands.CommandInfo;
 import me.ghostdevelopment.kore.files.LangFile;
@@ -17,7 +17,7 @@ public class CommandGMA extends KoreCommand {
     @Override
     public void execute(CommandSender sender, String[] args) {
         if(!(SettingsFile.getFile().getBoolean("gamemode.enabled"))){
-            sender.sendMessage(Utils.Color(LangFile.getFile().getString("command-disabled")
+            sender.sendMessage(Color.Color(LangFile.getFile().getString("command-disabled")
                     .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
             ));
             return;
@@ -28,7 +28,7 @@ public class CommandGMA extends KoreCommand {
 
             if (args.length == 0) {
                 player.setGameMode(GameMode.ADVENTURE);
-                player.sendMessage(Utils.Color(LangFile.getFile().getString("gamemode.changed")
+                player.sendMessage(Color.Color(LangFile.getFile().getString("gamemode.changed")
                         .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
                         .replaceAll("%gamemode%", player.getGameMode().name().toUpperCase())
                 ));
@@ -38,20 +38,20 @@ public class CommandGMA extends KoreCommand {
                     Player target = Bukkit.getPlayer(args[0]);
 
                     target.setGameMode(GameMode.ADVENTURE);
-                    player.sendMessage(Utils.Color(LangFile.getFile().getString("gamemode.changed-other")
+                    player.sendMessage(Color.Color(LangFile.getFile().getString("gamemode.changed-other")
                             .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
                             .replaceAll("%gamemode%", target.getGameMode().name().toUpperCase())
                             .replaceAll("%player%", target.getName())
                     ));
                 } catch (Exception e) {
-                    player.sendMessage(Utils.Color(LangFile.getFile().getString("invalid-target")
+                    player.sendMessage(Color.Color(LangFile.getFile().getString("invalid-target")
                             .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
                     ));
                 }
             }
         }else{
             if(!(args.length==1)){
-                sender.sendMessage(Utils.Color(LangFile.getFile().getString("gamemode.usage.console")
+                sender.sendMessage(Color.Color(LangFile.getFile().getString("gamemode.usage.console")
                         .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
                 ));
                 return;
@@ -60,13 +60,13 @@ public class CommandGMA extends KoreCommand {
                 Player target = Bukkit.getPlayer(args[0]);
 
                 target.setGameMode(GameMode.ADVENTURE);
-                sender.sendMessage(Utils.Color(LangFile.getFile().getString("gamemode.changed-other")
+                sender.sendMessage(Color.Color(LangFile.getFile().getString("gamemode.changed-other")
                         .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
                         .replaceAll("%gamemode%", target.getGameMode().name().toUpperCase())
                         .replaceAll("%player%", target.getName())
                 ));
             } catch (Exception e) {
-                sender.sendMessage(Utils.Color(LangFile.getFile().getString("invalid-target")
+                sender.sendMessage(Color.Color(LangFile.getFile().getString("invalid-target")
                         .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
                 ));
             }

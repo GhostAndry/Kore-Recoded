@@ -1,7 +1,7 @@
 package me.ghostdevelopment.kore.commands.commands.player;
 
 import me.ghostdevelopment.kore.Functions;
-import me.ghostdevelopment.kore.Utils;
+import me.ghostdevelopment.kore.utils.Color;
 import me.ghostdevelopment.kore.commands.KoreCommand;
 import me.ghostdevelopment.kore.commands.CommandInfo;
 import me.ghostdevelopment.kore.files.LangFile;
@@ -18,7 +18,7 @@ public class CommandHome extends KoreCommand {
     public void execute(CommandSender sender, String[] args) {
 
         if (!(SettingsFile.getFile().getBoolean("home.enabled"))){
-            sender.sendMessage(Utils.Color(LangFile.getFile().getString("command-disabled")
+            sender.sendMessage(Color.Color(LangFile.getFile().getString("command-disabled")
                     .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
             ));
             return;
@@ -37,12 +37,12 @@ public class CommandHome extends KoreCommand {
                         Location home = Functions.getHomeLoc(player);
 
                         player.teleport(home);
-                        player.sendMessage(Utils.Color(LangFile.getFile().getString("home.teleported")
+                        player.sendMessage(Color.Color(LangFile.getFile().getString("home.teleported")
                                 .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
                         ));
                         return;
                     }else{
-                        player.sendMessage(Utils.Color(LangFile.getFile().getString("home.not-set")
+                        player.sendMessage(Color.Color(LangFile.getFile().getString("home.not-set")
                                 .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
                         ));
                         return;
@@ -56,7 +56,7 @@ public class CommandHome extends KoreCommand {
                             try {
                                 Functions.addHome(player);
 
-                                player.sendMessage(Utils.Color(LangFile.getFile().getString("home.set")
+                                player.sendMessage(Color.Color(LangFile.getFile().getString("home.set")
                                         .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
                                 ));
                                 return;
@@ -72,7 +72,7 @@ public class CommandHome extends KoreCommand {
 
                                 Functions.delHome(player);
 
-                                player.sendMessage(Utils.Color(LangFile.getFile().getString("home.removed")
+                                player.sendMessage(Color.Color(LangFile.getFile().getString("home.removed")
                                         .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
                                 ));
                                 return;
@@ -83,7 +83,7 @@ public class CommandHome extends KoreCommand {
                         }
 
                     }else{
-                        player.sendMessage(Utils.Color(LangFile.getFile().getString("home.usage")
+                        player.sendMessage(Color.Color(LangFile.getFile().getString("home.usage")
                                 .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
                         ));
                         return;
@@ -92,14 +92,14 @@ public class CommandHome extends KoreCommand {
                 }
 
             }else{
-                player.sendMessage(Utils.Color(LangFile.getFile().getString("home.usage")
+                player.sendMessage(Color.Color(LangFile.getFile().getString("home.usage")
                         .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
                 ));
                 return;
             }
 
         }else{
-            sender.sendMessage(Utils.Color(LangFile.getFile().getString("only-players")
+            sender.sendMessage(Color.Color(LangFile.getFile().getString("only-players")
                     .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
             ));
         }

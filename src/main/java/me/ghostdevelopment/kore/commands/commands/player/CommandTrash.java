@@ -1,6 +1,6 @@
 package me.ghostdevelopment.kore.commands.commands.player;
 
-import me.ghostdevelopment.kore.Utils;
+import me.ghostdevelopment.kore.utils.Color;
 import me.ghostdevelopment.kore.commands.KoreCommand;
 import me.ghostdevelopment.kore.commands.CommandInfo;
 import me.ghostdevelopment.kore.files.LangFile;
@@ -18,7 +18,7 @@ public class CommandTrash extends KoreCommand {
     public void execute(CommandSender sender, String[] args) {
 
         if (!(SettingsFile.getFile().getBoolean("trash.enabled"))){
-            sender.sendMessage(Utils.Color(LangFile.getFile().getString("command-disabled")
+            sender.sendMessage(Color.Color(LangFile.getFile().getString("command-disabled")
                     .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
             ));
             return;
@@ -28,12 +28,12 @@ public class CommandTrash extends KoreCommand {
 
             Player player = (Player) sender;
 
-            Inventory inventory = Bukkit.createInventory(player, 54, Utils.Color("&cTrash"));
+            Inventory inventory = Bukkit.createInventory(player, 54, Color.Color("&cTrash"));
 
             player.openInventory(inventory);
 
         }else{
-            sender.sendMessage(Utils.Color(LangFile.getFile().getString("only-players")
+            sender.sendMessage(Color.Color(LangFile.getFile().getString("only-players")
                     .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
             ));
         }

@@ -1,6 +1,6 @@
 package me.ghostdevelopment.kore.commands;
 
-import me.ghostdevelopment.kore.Utils;
+import me.ghostdevelopment.kore.utils.Color;
 import me.ghostdevelopment.kore.files.LangFile;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -30,7 +30,7 @@ public abstract class KoreCommand implements CommandExecutor {
                     ||sender.hasPermission("kore.*")
                     ||sender.hasPermission("*")
             )){
-                sender.sendMessage(Utils.Color(LangFile.getFile().getString("no-permissions")
+                sender.sendMessage(Color.Color(LangFile.getFile().getString("no-permissions")
                         .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
                 ));
                 return false;

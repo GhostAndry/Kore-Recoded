@@ -1,7 +1,7 @@
 package me.ghostdevelopment.kore.commands.commands.admin;
 
 import me.ghostdevelopment.kore.Kore;
-import me.ghostdevelopment.kore.Utils;
+import me.ghostdevelopment.kore.utils.Color;
 import me.ghostdevelopment.kore.commands.CommandInfo;
 import me.ghostdevelopment.kore.commands.KoreCommand;
 import me.ghostdevelopment.kore.files.LangFile;
@@ -20,14 +20,14 @@ public class CommandKillMobs extends KoreCommand {
     public void execute(CommandSender sender, String[] args) {
 
         if (!(SettingsFile.getFile().getBoolean("killmobs.enabled"))){
-            sender.sendMessage(Utils.Color(LangFile.getFile().getString("command-disabled")
+            sender.sendMessage(Color.Color(LangFile.getFile().getString("command-disabled")
                     .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
             ));
             return;
         }
 
         if(args.length!=0){
-            sender.sendMessage(Utils.Color(LangFile.getFile().getString("killmobs.usage")
+            sender.sendMessage(Color.Color(LangFile.getFile().getString("killmobs.usage")
                     .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
             ));
             return;
@@ -45,7 +45,7 @@ public class CommandKillMobs extends KoreCommand {
                             }
                         }
                     }
-                    sender.sendMessage(Utils.Color(LangFile.getFile().getString("killmobs.killed")
+                    sender.sendMessage(Color.Color(LangFile.getFile().getString("killmobs.killed")
                             .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
                     ));
                 }
@@ -59,7 +59,7 @@ public class CommandKillMobs extends KoreCommand {
                     }
                 }
             }
-            sender.sendMessage(Utils.Color(LangFile.getFile().getString("killmobs.killed")
+            sender.sendMessage(Color.Color(LangFile.getFile().getString("killmobs.killed")
                     .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
             ));
         }

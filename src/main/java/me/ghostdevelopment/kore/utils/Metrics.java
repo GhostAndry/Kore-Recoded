@@ -1,4 +1,4 @@
-package me.ghostdevelopment.kore;
+package me.ghostdevelopment.kore.utils;
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;

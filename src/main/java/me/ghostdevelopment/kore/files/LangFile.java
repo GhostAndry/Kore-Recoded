@@ -1,7 +1,7 @@
 package me.ghostdevelopment.kore.files;
 
 import lombok.SneakyThrows;
-import me.ghostdevelopment.kore.Console;
+import me.ghostdevelopment.kore.utils.Console;
 import me.ghostdevelopment.kore.Kore;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;

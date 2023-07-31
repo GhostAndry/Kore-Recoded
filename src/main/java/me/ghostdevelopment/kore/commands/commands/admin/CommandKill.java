@@ -1,6 +1,6 @@
 package me.ghostdevelopment.kore.commands.commands.admin;
 
-import me.ghostdevelopment.kore.Utils;
+import me.ghostdevelopment.kore.utils.Color;
 import me.ghostdevelopment.kore.commands.KoreCommand;
 import me.ghostdevelopment.kore.commands.CommandInfo;
 import me.ghostdevelopment.kore.files.LangFile;
@@ -18,7 +18,7 @@ public class CommandKill extends KoreCommand {
     public void execute(CommandSender sender, String[] args) {
 
         if (!(SettingsFile.getFile().getBoolean("kill.enabled"))){
-            sender.sendMessage(Utils.Color(LangFile.getFile().getString("command-disabled")
+            sender.sendMessage(Color.Color(LangFile.getFile().getString("command-disabled")
                     .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
             ));
             return;
@@ -31,7 +31,7 @@ public class CommandKill extends KoreCommand {
             if(args.length==0){
 
                 player.setHealth(0);
-                player.sendMessage(Utils.Color(LangFile.getFile().getString("kill.killed")
+                player.sendMessage(Color.Color(LangFile.getFile().getString("kill.killed")
                         .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
                         .replaceAll("%player%", player.getName())
                 ));
@@ -44,19 +44,19 @@ public class CommandKill extends KoreCommand {
 
                     target.setHealth(0);
 
-                    player.sendMessage(Utils.Color(LangFile.getFile().getString("kill.killed")
+                    player.sendMessage(Color.Color(LangFile.getFile().getString("kill.killed")
                             .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
                             .replaceAll("%player%", target.getName())
                     ));
 
                 }catch (Exception e){
-                    player.sendMessage(Utils.Color(LangFile.getFile().getString("invalid-target")
+                    player.sendMessage(Color.Color(LangFile.getFile().getString("invalid-target")
                             .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
                     ));
                 }
 
             }else{
-                player.sendMessage(Utils.Color(LangFile.getFile().getString("kill.usage.player")
+                player.sendMessage(Color.Color(LangFile.getFile().getString("kill.usage.player")
                         .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
                 ));
             }
@@ -71,19 +71,19 @@ public class CommandKill extends KoreCommand {
 
                     target.setHealth(0);
 
-                    sender.sendMessage(Utils.Color(LangFile.getFile().getString("kill.killed")
+                    sender.sendMessage(Color.Color(LangFile.getFile().getString("kill.killed")
                             .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
                             .replaceAll("%player%", target.getName())
                     ));
 
                 }catch (Exception e){
-                    sender.sendMessage(Utils.Color(LangFile.getFile().getString("invalid-target")
+                    sender.sendMessage(Color.Color(LangFile.getFile().getString("invalid-target")
                             .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
                     ));
                 }
 
             }else{
-                sender.sendMessage(Utils.Color(LangFile.getFile().getString("kill.usage.console")
+                sender.sendMessage(Color.Color(LangFile.getFile().getString("kill.usage.console")
                         .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
                 ));
             }

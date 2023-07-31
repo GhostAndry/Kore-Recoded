@@ -107,3 +107,6 @@ speed:
 killmobs:
     killed: "%prefix% &aUcciso tutti i mobs ostili"
     usage: "%prefix% &cUso: /killmobs"
+spawnmob:
+    spawned: "%prefix% &a%num% mobs sono stati creati!"
+    usage: "%prefix% &cUso: /spawnmobs <mob> [num]"

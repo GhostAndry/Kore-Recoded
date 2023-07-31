@@ -1,7 +1,7 @@
 package me.ghostdevelopment.kore.commands.commands.admin;
 
 import me.ghostdevelopment.kore.Functions;
-import me.ghostdevelopment.kore.Utils;
+import me.ghostdevelopment.kore.utils.Color;
 import me.ghostdevelopment.kore.commands.KoreCommand;
 import me.ghostdevelopment.kore.commands.CommandInfo;
 import me.ghostdevelopment.kore.files.LangFile;
@@ -18,7 +18,7 @@ public class CommandSetspawn extends KoreCommand {
     public void execute(CommandSender sender, String[] args) {
 
         if (!(SettingsFile.getFile().getBoolean("spawn.enabled"))){
-            sender.sendMessage(Utils.Color(LangFile.getFile().getString("command-disabled")
+            sender.sendMessage(Color.Color(LangFile.getFile().getString("command-disabled")
                     .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
             ));
             return;
@@ -30,7 +30,7 @@ public class CommandSetspawn extends KoreCommand {
 
             if (args.length==0) {
                 Functions.setSpawnLoc(player.getLocation());
-                player.sendMessage(Utils.Color(LangFile.getFile().getString("spawn.set")
+                player.sendMessage(Color.Color(LangFile.getFile().getString("spawn.set")
                         .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
                         .replaceAll("%x%", String.valueOf(player.getLocation().getX()))
                         .replaceAll("%y%", String.valueOf(player.getLocation().getY()))
@@ -38,11 +38,11 @@ public class CommandSetspawn extends KoreCommand {
                 ));
                 return;
             }
-            player.sendMessage(Utils.Color(LangFile.getFile().getString("spawn.usage.admin")
+            player.sendMessage(Color.Color(LangFile.getFile().getString("spawn.usage.admin")
                     .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
             ));
         }else{
-            sender.sendMessage(Utils.Color(LangFile.getFile().getString("only-players")
+            sender.sendMessage(Color.Color(LangFile.getFile().getString("only-players")
                     .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
             ));
         }

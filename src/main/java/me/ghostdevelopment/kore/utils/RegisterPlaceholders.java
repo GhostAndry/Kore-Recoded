@@ -1,4 +1,4 @@
-package me.ghostdevelopment.kore;
+package me.ghostdevelopment.kore.utils;
 
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 import me.ghostdevelopment.kore.commands.commands.admin.CommandFly;
