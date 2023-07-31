@@ -48,4 +48,4 @@ public enum EntityUtils {
     public String getNmsClassName() {
         return nmsClassName;
     }
-}G:\Kore-Recoded\src\main\java\me\ghostdevelopment\kore\utils\EntityUtils.java
+}
