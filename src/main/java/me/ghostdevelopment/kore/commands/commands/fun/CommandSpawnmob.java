@@ -1,6 +1,5 @@
 package me.ghostdevelopment.kore.commands.commands.fun;
 
-
 import me.ghostdevelopment.kore.Kore;
 import me.ghostdevelopment.kore.commands.CommandInfo;
 import me.ghostdevelopment.kore.commands.KoreCommand;
@@ -9,7 +8,6 @@ import me.ghostdevelopment.kore.files.SettingsFile;
 import me.ghostdevelopment.kore.utils.Color;
 import me.ghostdevelopment.kore.utils.Console;
 import org.bukkit.Bukkit;
-import org.bukkit.World;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
@@ -17,8 +15,9 @@ import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.ArrayList;
+import java.util.List;
 
-@CommandInfo(name = "spawnmob", permission = "kore.spawnmob")
+@CommandInfo(name = "spawnmob", permission = "kore.spawnmob", tabCompleter = true)
 public class CommandSpawnmob extends KoreCommand {
 
     private static ArrayList<EntityType> entities = new ArrayList<>();
@@ -116,7 +115,22 @@ public class CommandSpawnmob extends KoreCommand {
         }
     }
 
-    public static ArrayList<EntityType> getEntities() {
-        return entities;
+    @Override
+    public List<String> onTabComplete(CommandSender sender, org.bukkit.command.Command command, String alias, String[] args) {
+        List<String> completions = new ArrayList<>();
+
+        if (args.length == 1) {
+            String partialName = args[0].toLowerCase();
+            for (EntityType entityType : entities) {
+                String entityName = entityType.name().toLowerCase();
+                if (entityName.startsWith(partialName)) {
+                    completions.add(entityName);
+                }
+            }
+        }
+
+        return completions;
     }
+
+    public static ArrayList<EntityType> getEntities() {return entities;}
 }

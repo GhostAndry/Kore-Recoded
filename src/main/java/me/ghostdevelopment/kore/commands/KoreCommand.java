@@ -4,11 +4,14 @@ import me.ghostdevelopment.kore.utils.Color;
 import me.ghostdevelopment.kore.files.LangFile;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.TabCompleter;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @SuppressWarnings("ALL")
-public abstract class KoreCommand implements CommandExecutor {
+public abstract class KoreCommand implements CommandExecutor, TabCompleter {
     private final CommandInfo commandInfo;
 
     public KoreCommand(){
@@ -42,4 +45,7 @@ public abstract class KoreCommand implements CommandExecutor {
     }
 
     public abstract void execute(CommandSender sender, String[] args);
+    public List<String> onTabComplete(CommandSender sender, org.bukkit.command.Command command, String alias, String[] args) {
+        return new ArrayList<>();
+    }
 }

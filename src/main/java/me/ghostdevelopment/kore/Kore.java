@@ -30,8 +30,6 @@ public final class Kore extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        addEntities();
-
         instance = this;
 
         System.out.println("\n\n" +
@@ -57,6 +55,7 @@ public final class Kore extends JavaPlugin {
 
         saveDefaultConfig();
         setupFiles();
+        addEntities();
         try {
             registerCommands();
         } catch (Exception e) {
@@ -66,7 +65,7 @@ public final class Kore extends JavaPlugin {
 
         new UpdateChecker(this, 107023).getVersion(version -> {
             if (!this.getDescription().getVersion().equals(version)) {
-                getLogger().info("[Kore] There is a new update available.Version: "+version);
+                getLogger().info("There is a new update available.Version: "+version);
             }
         });
 
@@ -177,6 +176,7 @@ public final class Kore extends JavaPlugin {
             default:
                 break;
         }
+        return;
     }
 
     private void registerCommands() throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
@@ -185,6 +185,9 @@ public final class Kore extends JavaPlugin {
             KoreCommand command = clazz.getDeclaredConstructor().newInstance();
             try {
                 getCommand(command.getCommandInfo().name()).setExecutor(command);
+                if(command.getCommandInfo().tabCompleter()){
+                    getCommand(command.getCommandInfo().name()).setTabCompleter(command);
+                }
                 Console.info("[Kore] Enabled %module% module"
                         .replace("%module%", command.getCommandInfo().name())
                 );
@@ -240,9 +243,7 @@ public final class Kore extends JavaPlugin {
 /*
 
 TODO: TPA COMMAND
-TODO: Add hexacolor support
-TODO: Add color permission
 TODO: Add weather command
 TODO: Add time command
 
- */
+*/

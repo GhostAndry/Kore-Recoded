@@ -40,5 +40,4 @@ chat:
     blacklist-words:
         - fuck
         - shit
-
 messages: en
