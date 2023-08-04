@@ -72,6 +72,8 @@ public class CommandKore extends KoreCommand {
                             "&7/warp &c<name> &1[player]\n" +
                             "&7/home &1[set|remove]\n" +
                             "&7/speed &c<value> &1[player] [type]\n"+
+                            "&7/killmobs\n"+
+                            "&7/spawnmob <mob> [num]"+
                             "\n"
                     ));
                 }else{
@@ -149,6 +151,7 @@ public class CommandKore extends KoreCommand {
                             "&7/warp &c<name> <player>\n" +
                             "&7/home &c<set|remove>\n" +
                             "&7/speed &c<value> <player> <type>\n"+
+                            "/killmobs\n"+
                             "\n"
                     ));
                 }else{

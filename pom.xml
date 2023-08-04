@@ -6,7 +6,7 @@
 
     <groupId>me.ghostdevelopment</groupId>
     <artifactId>Kore</artifactId>
-    <version>1.11</version>
+    <version>1.11.1</version>
     <packaging>jar</packaging>
 
     <name>KoreRecoded</name>
@@ -78,6 +78,30 @@
                                     <shadedPattern>me.ghostdevelopment</shadedPattern>
                                 </relocation>
                             </relocations>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.2.0</version>
+                <executions>
+                    <execution>
+                        <id>copy-package</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>D:/SeecretDesktop/ServerVersions/Test/test-1/plugins</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${project.build.directory}</directory>
+                                    <includes>
+                                        <include>${project.artifactId}-${project.version}.jar</include>
+                                    </includes>
+                                </resource>
+                            </resources>
                         </configuration>
                     </execution>
                 </executions>

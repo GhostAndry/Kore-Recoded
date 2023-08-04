@@ -64,24 +64,20 @@ public class CommandSpawnmob extends KoreCommand {
 
                     try {
                         if(SettingsFile.getFile().getBoolean("spawnmob.async")){
-                            BukkitRunnable task = new BukkitRunnable() {
-                                @Override
-                                public void run() {
-                                    for(int i = 1; i <= entityNum; i++) {
-                                        Bukkit.getScheduler().runTask(Kore.getInstance(), new Runnable() {
-                                            @Override
-                                            public void run() {
-                                                Entity entity = player.getWorld().spawn(player.getLocation(), entityType.getEntityClass());
-                                            }
-                                        });
-                                    }
-                                    player.sendMessage(Color.Color(LangFile.getFile().getString("spawnmob.spawned")
-                                            .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                                            .replaceAll("%num%", String.valueOf(entityNum))
-                                    ));
+                            Bukkit.getScheduler().runTask(Kore.getInstance(), () -> {
+                                for(int i = 1; i <= entityNum; i++) {
+                                    Bukkit.getScheduler().runTask(Kore.getInstance(), new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            Entity entity = player.getWorld().spawn(player.getLocation(), entityType.getEntityClass());
+                                        }
+                                    });
                                 }
-                            };
-                            task.runTaskAsynchronously(Kore.getInstance());
+                                player.sendMessage(Color.Color(LangFile.getFile().getString("spawnmob.spawned")
+                                        .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
+                                        .replaceAll("%num%", String.valueOf(entityNum))
+                                ));
+                            });
                             return;
                         } else {
                             for(int i = 1; i <= entityNum; i++) {

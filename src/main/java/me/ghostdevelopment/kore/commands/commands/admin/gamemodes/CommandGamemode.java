@@ -8,14 +8,16 @@ import me.ghostdevelopment.kore.files.LangFile;
 import me.ghostdevelopment.kore.files.SettingsFile;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
+import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-@SuppressWarnings("ALL")
-@CommandInfo(name = "gamemode", permission = "kore.gamemode.*", permission2 = "kore.gamemode")
-public class CommandGamemode extends KoreCommand {
+import java.util.ArrayList;
+import java.util.List;
 
-    private Kore plugin;
+@SuppressWarnings("ALL")
+@CommandInfo(name = "gamemode", permission = "kore.gamemode.*", permission2 = "kore.gamemode", tabCompleter = true)
+public class CommandGamemode extends KoreCommand {
 
     @Override
     public void execute(CommandSender sender, String[] args) {
@@ -206,6 +208,33 @@ public class CommandGamemode extends KoreCommand {
             }
         }
     }
+
+    @Override
+    public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
+        List<String> completions = new ArrayList<>();
+
+        if (args.length == 1) {
+            String partialName = args[0].toLowerCase();
+            String[] gameModes = {"survival", "creative", "adventure", "spectator"};
+
+            for (String gameMode : gameModes) {
+                if (gameMode.startsWith(partialName)) {
+                    completions.add(gameMode);
+                }
+            }
+        } else if (args.length == 2 && sender instanceof Player) {
+            String partialName = args[1].toLowerCase();
+            for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
+                String playerName = onlinePlayer.getName();
+                if (playerName.toLowerCase().startsWith(partialName)) {
+                    completions.add(playerName);
+                }
+            }
+        }
+
+        return completions;
+    }
+
 }
 
 /*

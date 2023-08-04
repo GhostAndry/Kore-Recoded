@@ -7,11 +7,15 @@ import me.ghostdevelopment.kore.files.LangFile;
 import me.ghostdevelopment.kore.files.SettingsFile;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @SuppressWarnings("ALL")
-@CommandInfo(name = "teleport", permission = "kore.teleport", permission2 = "kore.tp")
+@CommandInfo(name = "teleport", permission = "kore.teleport", permission2 = "kore.tp", tabCompleter = true)
 public class CommandTeleport extends KoreCommand {
 
     @Override
@@ -136,5 +140,28 @@ public class CommandTeleport extends KoreCommand {
                 return;
             }
         }
+    }
+
+    @Override
+    public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
+        List<String> completions = new ArrayList<>();
+
+         if(args.length==1){
+             String partialName = args[0].toLowerCase();
+             for(Player player: Bukkit.getOnlinePlayers()){
+                 if (player.getName().startsWith(partialName)){
+                     completions.add(player.getName());
+                 }
+             }
+         } else if (args.length==2) {
+             String partialName = args[0].toLowerCase();
+             for(Player player: Bukkit.getOnlinePlayers()){
+                 if (player.getName().startsWith(partialName)){
+                     completions.add(player.getName());
+                 }
+             }
+         }
+
+        return completions;
     }
 }

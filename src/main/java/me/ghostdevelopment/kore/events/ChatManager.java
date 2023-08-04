@@ -4,6 +4,8 @@ import me.clip.placeholderapi.PlaceholderAPI;
 import me.ghostdevelopment.kore.Kore;
 import me.ghostdevelopment.kore.utils.Color;
 import me.ghostdevelopment.kore.files.SettingsFile;
+import me.ghostdevelopment.kore.utils.Console;
+import me.ghostdevelopment.kore.utils.RegisterPlaceholders;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -14,9 +16,6 @@ import java.util.List;
 
 @SuppressWarnings("ALL")
 public class ChatManager implements Listener {
-
-    private Kore plugin;
-
     private static String formattedMessage;
 
     @EventHandler(priority = EventPriority.HIGHEST)
@@ -41,7 +40,11 @@ public class ChatManager implements Listener {
             formattedMessage = SettingsFile.getFile().getString("chat.format");
             formattedMessage = formattedMessage.replaceAll("%sender%", author).replace("%message%", message);
 
-            Bukkit.broadcastMessage(Color.Color(PlaceholderAPI.setPlaceholders(event.getPlayer(), formattedMessage)));
+            if(Kore.getInstance().getServer().getPluginManager().getPlugin("PlaceholderAPI")!=null){
+                Bukkit.broadcastMessage(Color.Color(PlaceholderAPI.setPlaceholders(event.getPlayer(), formattedMessage)));
+            }else{
+                Bukkit.broadcastMessage(Color.Color(formattedMessage));
+            }
 
         }
 

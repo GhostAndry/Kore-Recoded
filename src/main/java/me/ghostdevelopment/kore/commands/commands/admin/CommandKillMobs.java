@@ -35,22 +35,18 @@ public class CommandKillMobs extends KoreCommand {
 
 
         if(SettingsFile.getFile().getBoolean("killmobs.async")) {
-            BukkitRunnable task = new BukkitRunnable() {
-                @Override
-                public void run() {
-                    for (World world : Bukkit.getWorlds()) {
-                        for (Entity entity : world.getEntities()) {
-                            if (!(entity instanceof Player)) {
-                                entity.remove();
-                            }
+            Bukkit.getScheduler().runTask(Kore.getInstance(), () -> {
+                for (World world : Bukkit.getWorlds()) {
+                    for (Entity entity : world.getEntities()) {
+                        if (!(entity instanceof Player)) {
+                            entity.remove();
                         }
                     }
-                    sender.sendMessage(Color.Color(LangFile.getFile().getString("killmobs.killed")
-                            .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                    ));
                 }
-            };
-            task.runTaskAsynchronously(Kore.getInstance());
+                sender.sendMessage(Color.Color(LangFile.getFile().getString("killmobs.killed")
+                        .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
+                ));
+            });
         }else{
             for (World world : Bukkit.getWorlds()) {
                 for (Entity entity : world.getEntities()) {

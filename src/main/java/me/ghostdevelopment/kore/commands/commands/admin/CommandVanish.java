@@ -53,7 +53,7 @@ public class CommandVanish extends KoreCommand {
                 if(vanished.contains(target)){
                     vanished.remove(target);
                     for(Player other : Bukkit.getOnlinePlayers()){
-                        other.hidePlayer(target);
+                        other.showPlayer(target);
                     }
                     player.sendMessage(Color.Color(LangFile.getFile().getString("vanish.disabled-other")
                             .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
@@ -62,7 +62,7 @@ public class CommandVanish extends KoreCommand {
                 }else{
                     vanished.add(target);
                     for(Player other : Bukkit.getOnlinePlayers()){
-                        other.showPlayer(target);
+                        other.hidePlayer(target);
                     }
                     player.sendMessage(Color.Color(LangFile.getFile().getString("vanish.enabled-other")
                             .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
@@ -82,7 +82,7 @@ public class CommandVanish extends KoreCommand {
                 if(vanished.contains(target)){
                     vanished.remove(target);
                     for(Player other : Bukkit.getOnlinePlayers()){
-                        other.hidePlayer(target);
+                        other.showPlayer(target);
                     }
                     sender.sendMessage(Color.Color(LangFile.getFile().getString("vanish.disabled-other")
                             .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
@@ -91,7 +91,7 @@ public class CommandVanish extends KoreCommand {
                 }else{
                     vanished.add(target);
                     for(Player other : Bukkit.getOnlinePlayers()){
-                        other.showPlayer(target);
+                        other.hidePlayer(target);
                     }
                     sender.sendMessage(Color.Color(LangFile.getFile().getString("vanish.enabled-other")
                             .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))

@@ -7,11 +7,15 @@ import me.ghostdevelopment.kore.files.LangFile;
 import me.ghostdevelopment.kore.files.SettingsFile;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
+import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @SuppressWarnings("ALL")
-@CommandInfo(name = "gma", permission = "kore.gamemode.adventure", permission2 =  "kore.gamemode.*", permission3 = "kore.gamemode")
+@CommandInfo(name = "gma", permission = "kore.gamemode.adventure", permission2 =  "kore.gamemode.*", permission3 = "kore.gamemode", tabCompleter = true)
 public class CommandGMA extends KoreCommand {
 
     @Override
@@ -71,5 +75,22 @@ public class CommandGMA extends KoreCommand {
                 ));
             }
         }
+    }
+
+    @Override
+    public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
+        List<String> completions = new ArrayList<>();
+
+        if (args.length==1){
+            String partialName = args[0].toLowerCase();
+            for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
+                String playerName = onlinePlayer.getName();
+                if (playerName.toLowerCase().startsWith(partialName)) {
+                    completions.add(playerName);
+                }
+            }
+        }
+
+        return completions;
     }
 }

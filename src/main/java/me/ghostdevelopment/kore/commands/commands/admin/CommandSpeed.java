@@ -8,11 +8,15 @@ import me.ghostdevelopment.kore.files.LangFile;
 import me.ghostdevelopment.kore.files.SettingsFile;
 
 import org.bukkit.Bukkit;
+import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @SuppressWarnings("ALL")
-@CommandInfo(name = "speed", permission = "kore.speed")
+@CommandInfo(name = "speed", permission = "kore.speed", tabCompleter = true)
 public class CommandSpeed extends KoreCommand {
 
     @Override
@@ -229,5 +233,25 @@ public class CommandSpeed extends KoreCommand {
                 return;
             }
         }
+    }
+
+    @Override
+    public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
+        List<String> completions = new ArrayList<>();
+
+        if (args.length == 1) {
+            for (float i = 0; i <= 10.0; i += 0.1) {
+                completions.add(String.format("%.1f", i));
+            }
+        } else if (args.length == 2) {
+            for (Player player : Bukkit.getOnlinePlayers()) {
+                completions.add(player.getName());
+            }
+        } else if (args.length == 3) {
+            completions.add("walk");
+            completions.add("fly");
+        }
+
+        return completions;
     }
 }

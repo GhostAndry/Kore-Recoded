@@ -1,5 +1,5 @@
 name: Kore
-version: 1.11
+version: 1.11.1
 main: me.ghostdevelopment.kore.Kore
 load: STARTUP
 
@@ -36,7 +36,6 @@ commands:
     warp:
     home:
     speed:
-    weather:
     killmobs:
     spawnmob:
 

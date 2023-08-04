@@ -1,18 +1,24 @@
 package me.ghostdevelopment.kore.commands.commands.admin;
 
-import me.ghostdevelopment.kore.Functions;
-import me.ghostdevelopment.kore.utils.Color;
-import me.ghostdevelopment.kore.commands.KoreCommand;
 import me.ghostdevelopment.kore.commands.CommandInfo;
-import me.ghostdevelopment.kore.files.LangFile;
+import me.ghostdevelopment.kore.commands.KoreCommand;
 import me.ghostdevelopment.kore.files.SettingsFile;
-import org.bukkit.Bukkit;
-import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
+import me.ghostdevelopment.kore.files.StorageFile;
+import me.ghostdevelopment.kore.files.LangFile;
+import me.ghostdevelopment.kore.utils.Color;
+import me.ghostdevelopment.kore.Functions;
 
+import org.bukkit.command.CommandSender;
+import org.bukkit.command.Command;
+import org.bukkit.entity.Player;
+import org.bukkit.Bukkit;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 @SuppressWarnings("ALL")
-@CommandInfo(name = "warp", permission = "kore.warp")
+@CommandInfo(name = "warp", permission = "kore.warp", tabCompleter = true)
 public class CommandWarp extends KoreCommand {
 
     @Override
@@ -30,29 +36,32 @@ public class CommandWarp extends KoreCommand {
             Player player = (Player) sender;
 
             if(args.length==1||args.length==2){
-
                 if(args[0].equalsIgnoreCase("add")){
-
                     if(player.hasPermission("kore.warp.admin")){
+                        try {
+                            String warp_name = args[1];
 
-                        String warp_name = args[1];
+                            if (!Functions.checkWarp(warp_name)) {
+                                Functions.addWarp(player.getLocation(), warp_name);
 
-                        if (!Functions.checkWarp(warp_name)) {
-                            Functions.addWarp(player.getLocation(), warp_name);
-
-                            player.sendMessage(Color.Color(LangFile.getFile().getString("warp.admin.added")
+                                player.sendMessage(Color.Color(LangFile.getFile().getString("warp.admin.added")
+                                        .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
+                                        .replaceAll("%warp%", warp_name)
+                                ));
+                                return;
+                            } else {
+                                player.sendMessage(Color.Color(LangFile.getFile().getString("warp.admin.already-exist")
+                                        .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
+                                        .replaceAll("%warp%", warp_name)
+                                ));
+                                return;
+                            }
+                        }catch (Exception e){
+                            player.sendMessage(Color.Color(LangFile.getFile().getString("warp.usage.admin")
                                     .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                                    .replaceAll("%warp%", warp_name)
-                            ));
-                            return;
-                        }else{
-                            player.sendMessage(Color.Color(LangFile.getFile().getString("warp.admin.already-exist")
-                                    .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                                    .replaceAll("%warp%", warp_name)
                             ));
                             return;
                         }
-
                     }else{
                         player.sendMessage(Color.Color(LangFile.getFile().getString("no-permissions")
                                 .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
@@ -61,21 +70,26 @@ public class CommandWarp extends KoreCommand {
                     }
 
                 }else if (args[0].equalsIgnoreCase("remove")){
-
                     if(player.hasPermission("kore.warp.admin")||player.isOp()){
+                        try {
+                            String warp_name = args[1];
 
-                        String warp_name = args[1];
+                            if (Functions.checkWarp(warp_name)) {
+                                Functions.delWarp(warp_name);
 
-                        if (Functions.checkWarp(warp_name)) {
-                            Functions.delWarp(warp_name);
-
-                            player.sendMessage(Color.Color(LangFile.getFile().getString("warp.admin.removed")
-                                    .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                                    .replaceAll("%warp%", warp_name)
-                            ));
-                            return;
-                        }else{
-                            player.sendMessage(Color.Color(LangFile.getFile().getString("warp.not-found")
+                                player.sendMessage(Color.Color(LangFile.getFile().getString("warp.admin.removed")
+                                        .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
+                                        .replaceAll("%warp%", warp_name)
+                                ));
+                                return;
+                            } else {
+                                player.sendMessage(Color.Color(LangFile.getFile().getString("warp.not-found")
+                                        .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
+                                ));
+                                return;
+                            }
+                        }catch (Exception e){
+                            player.sendMessage(Color.Color(LangFile.getFile().getString("warp.usage.admin")
                                     .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
                             ));
                             return;
@@ -189,9 +203,62 @@ public class CommandWarp extends KoreCommand {
                 ));
                 return;
             }
-
         }
-
     }
 
+    @Override
+    public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
+        List<String> completions = new ArrayList<>();
+
+        if (args.length == 1) {
+            if (sender.hasPermission("kore.warp.admin")
+                    || sender.hasPermission("kore.warp.*")
+                    || sender.hasPermission("kore.*")
+                    || sender.hasPermission("*")
+                    || sender.isOp()
+            ) {
+                completions.add("add");
+                completions.add("remove");
+            }
+            Set<String> warps = StorageFile.getFile().getConfigurationSection("warps").getKeys(false);
+            String partialName = args[0].toLowerCase();
+            for (String warp : warps) {
+                if (warp.toLowerCase().startsWith(partialName)) {
+                    completions.add(warp);
+                }
+            }
+        } else if (args.length == 2) {
+            String subCommand = args[0].toLowerCase();
+            if (subCommand.equals("add")
+                    && (sender.hasPermission("kore.warp.admin")
+                    || sender.hasPermission("kore.warp.*")
+                    || sender.hasPermission("kore.*")
+                    || sender.hasPermission("*")
+                    || sender.isOp())
+            ) {
+                String partialName = args[1].toLowerCase();
+                for (Player player : Bukkit.getOnlinePlayers()) {
+                    if (player.getName().toLowerCase().startsWith(partialName)) {
+                        completions.add(player.getName());
+                    }
+                }
+            } else if (subCommand.equals("remove")
+                    && (sender.hasPermission("kore.warp.admin")
+                    || sender.hasPermission("kore.warp.*")
+                    || sender.hasPermission("kore.*")
+                    || sender.hasPermission("*")
+                    || sender.isOp())
+            ) {
+                Set<String> warps = StorageFile.getFile().getConfigurationSection("warps").getKeys(false);
+                String partialName = args[1].toLowerCase();
+                for (String warp : warps) {
+                    if (warp.toLowerCase().startsWith(partialName)) {
+                        completions.add(warp);
+                    }
+                }
+            }
+        }
+
+        return completions;
+    }
 }

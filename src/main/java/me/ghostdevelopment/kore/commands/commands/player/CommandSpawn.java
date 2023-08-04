@@ -9,12 +9,16 @@ import me.ghostdevelopment.kore.files.SettingsFile;
 import me.ghostdevelopment.kore.files.StorageFile;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @SuppressWarnings("ALL")
 
-@CommandInfo(name = "spawn", permission = "kore.spawn")
+@CommandInfo(name = "spawn", permission = "kore.spawn", tabCompleter = true)
 public class CommandSpawn extends KoreCommand {
 
     @Override
@@ -115,5 +119,22 @@ public class CommandSpawn extends KoreCommand {
                 ));
             }
         }
+    }
+
+    @Override
+    public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
+        List<String> completions = new ArrayList<>();
+
+        if (args.length==1){
+            String partialName = args[0].toLowerCase();
+            for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
+                String playerName = onlinePlayer.getName();
+                if (playerName.toLowerCase().startsWith(partialName)) {
+                    completions.add(playerName);
+                }
+            }
+        }
+
+        return completions;
     }
 }
