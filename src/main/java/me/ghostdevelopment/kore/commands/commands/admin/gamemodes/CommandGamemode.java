@@ -215,7 +215,7 @@ public class CommandGamemode extends KoreCommand {
 
         if (args.length == 1) {
             String partialName = args[0].toLowerCase();
-            String[] gameModes = {"survival", "creative", "adventure", "spectator"};
+            String[] gameModes = {"survival", "creative", "adventure", "spectator", "1", "0", "2", "3"};
 
             for (String gameMode : gameModes) {
                 if (gameMode.startsWith(partialName)) {

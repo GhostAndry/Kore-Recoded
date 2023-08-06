@@ -16,8 +16,6 @@ import java.util.List;
 
 @SuppressWarnings("ALL")
 public class ChatManager implements Listener {
-    private static String formattedMessage;
-
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onPlayerChat(AsyncPlayerChatEvent event){
 
@@ -32,13 +30,12 @@ public class ChatManager implements Listener {
             ){
                 List<String> blacklist_words = SettingsFile.getFile().getStringList("chat.blacklist-words");
                 for (String word : blacklist_words) {
-                    if (message.contains(word))
-                        message = message.replaceAll(word, "***");
+                    if (message.contains(word)) message = message.replaceAll(word, "***");
                 }
             }
 
-            formattedMessage = SettingsFile.getFile().getString("chat.format");
-            formattedMessage = formattedMessage.replaceAll("%sender%", author).replace("%message%", message);
+            String messageBase = SettingsFile.getFile().getString("chat.format");
+            String formattedMessage = messageBase.replaceAll("%sender%", author).replace("%message%", message);
 
             if(Kore.getInstance().getServer().getPluginManager().getPlugin("PlaceholderAPI")!=null){
                 Bukkit.broadcastMessage(Color.Color(PlaceholderAPI.setPlaceholders(event.getPlayer(), formattedMessage)));

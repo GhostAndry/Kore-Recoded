@@ -6,13 +6,15 @@ import me.ghostdevelopment.kore.commands.CommandInfo;
 import me.ghostdevelopment.kore.files.LangFile;
 import me.ghostdevelopment.kore.files.SettingsFile;
 import org.bukkit.Bukkit;
+import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @SuppressWarnings("ALL")
-@CommandInfo(name = "vanish", permission = "kore.vanish")
+@CommandInfo(name = "vanish", permission = "kore.vanish", tabCompleter = true)
 public class CommandVanish extends KoreCommand {
 
     private static ArrayList<Player> vanished = new ArrayList<>();
@@ -106,6 +108,23 @@ public class CommandVanish extends KoreCommand {
                 return;
             }
         }
+    }
+
+    @Override
+    public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
+        List<String> completions = new ArrayList<>();
+
+        if (args.length==1){
+            String partialName = args[0].toLowerCase();
+            for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
+                String playerName = onlinePlayer.getName();
+                if (playerName.toLowerCase().startsWith(partialName)) {
+                    completions.add(playerName);
+                }
+            }
+        }
+
+        return completions;
     }
 
     public static ArrayList<Player> getVanished() {

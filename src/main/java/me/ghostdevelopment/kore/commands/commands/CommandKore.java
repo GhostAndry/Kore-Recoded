@@ -8,11 +8,15 @@ import me.ghostdevelopment.kore.commands.CommandInfo;
 import me.ghostdevelopment.kore.files.LangFile;
 import me.ghostdevelopment.kore.files.SettingsFile;
 import org.bukkit.Bukkit;
+import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @SuppressWarnings("ALL")
-@CommandInfo(name = "kore")
+@CommandInfo(name = "kore", tabCompleter = true)
 public class CommandKore extends KoreCommand {
 
     @Override
@@ -185,4 +189,21 @@ public class CommandKore extends KoreCommand {
             }
         }
     }
+
+    @Override
+    public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
+        List<String> completions = new ArrayList<>();
+
+        if (args.length == 1) {
+            completions.add("info");
+            completions.add("reload");
+            completions.add("help");
+            completions.add("lang");
+            completions.add("language");
+        } else if (args.length == 2 && (args[0].equalsIgnoreCase("lang") || args[0].equalsIgnoreCase("language"))) {
+            completions.addAll(LangFile.getAvailableLanguages());
+        }
+        return completions;
+    }
+
 }

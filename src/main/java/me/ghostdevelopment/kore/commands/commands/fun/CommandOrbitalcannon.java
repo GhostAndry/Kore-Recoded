@@ -6,12 +6,17 @@ import me.ghostdevelopment.kore.commands.KoreCommand;
 import me.ghostdevelopment.kore.commands.CommandInfo;
 import me.ghostdevelopment.kore.files.LangFile;
 import me.ghostdevelopment.kore.files.SettingsFile;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @SuppressWarnings("ALL")
-@CommandInfo(name = "orbitalcannon", permission = "kore.orbitalcannon")
+@CommandInfo(name = "orbitalcannon", permission = "kore.orbitalcannon", tabCompleter = true)
 public class CommandOrbitalcannon extends KoreCommand {
 
     private Kore plugin;
@@ -60,6 +65,21 @@ public class CommandOrbitalcannon extends KoreCommand {
                     .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
             ));
         }
+    }
 
+    @Override
+    public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
+        List<String> completions = new ArrayList<>();
+
+        if (args.length == 1) {
+            for (Player player : Bukkit.getServer().getOnlinePlayers()) {
+                completions.add(player.getName());
+            }
+        } else if (args.length == 2 || args.length == 3) {
+            completions.add("<x>");
+            completions.add("<y>");
+            completions.add("<z>");
+        }
+        return completions;
     }
 }

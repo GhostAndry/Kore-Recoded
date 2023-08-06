@@ -10,7 +10,9 @@ import java.io.File;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 @SuppressWarnings("all")
 public class LangFile {
@@ -93,5 +95,19 @@ public class LangFile {
         } catch (Exception e) {
             Console.warning(e.getMessage());
         }
+    }
+
+    public static List<String> getAvailableLanguages() {
+        List<String> languages = new ArrayList<>();
+        File langFolder = new File(main.getDataFolder().getPath() + "/lang/");
+        File[] files = langFolder.listFiles();
+        if (files != null) {
+            for (File file : files) {
+                if (file.isFile() && file.getName().endsWith(".yml")) {
+                    languages.add(file.getName().replace(".yml", ""));
+                }
+            }
+        }
+        return languages;
     }
 }
