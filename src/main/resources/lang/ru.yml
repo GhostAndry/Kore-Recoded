@@ -109,3 +109,10 @@ spawnmob:
     spawned: '%prefix% &a%num% мобов было создано!'
     invalid: '%prefix% &cНедопустимая сущность'
     usage: '%prefix% &cИспользование: /spawnmob <моб> [кол-во]'
+holograms:
+    created: "%prefix% &aГолограмма создана с именем %name%"
+    line-added: "%prefix% &aЛиния №%n% была добавлена"
+    deleted: "%prefix% &cГолограмма с именем %name% была успешно удалена!"
+    line-delete: "%prefix% &cЛиния №%n% была удалена"
+    usage: "%prefix% &cИспользование: /holo <create|addline|delete|removeline> <аргументы>"
+

@@ -111,3 +111,9 @@ spawnmob:
     spawned: '%prefix% &a%num% Mobs wurden erstellt!'
     invalid: '%prefix% &cUngültige Entität'
     usage: '%prefix% &cVerwendung: /spawnmob <Mob> [Anzahl]'
+holograms:
+    created: "%prefix% &aHologramm wurde mit dem Namen %name% erstellt"
+    line-added: "%prefix% &aZeile Nr. %n% wurde hinzugefügt"
+    deleted: "%prefix% &cHologramm mit dem Namen %name% wurde erfolgreich gelöscht!"
+    line-delete: "%prefix% &cZeile Nr. %n% wurde gelöscht"
+    usage: "%prefix% &cVerwendung: /holo <erstellen|hinzufügen|löschen|zeileentfernen> <Argumente>"

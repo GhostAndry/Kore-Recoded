@@ -111,3 +111,9 @@ spawnmob:
     spawned: "%prefix% &a%num% mobs sono stati creati!"
     invalid: "%prefix% &cEntità invalida"
     usage: "%prefix% &cUso: /spawnmobs <mob> [num]"
+holograms:
+    created: "%prefix% &aHologram creato con il nome %name%"
+    line-added: "%prefix% &aLinea n.%n% aggiunta"
+    deleted: "%prefix% &cHologram con il nome %name% eliminato con successo!"
+    line-delete: "%prefix% &cLinea n.%n% eliminata"
+    usage: "%prefix% &cUtilizzo: /holo <create|addline|delete|removeline> <argomenti>"

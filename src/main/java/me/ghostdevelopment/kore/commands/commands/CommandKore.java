@@ -77,8 +77,7 @@ public class CommandKore extends KoreCommand {
                             "&7/home &1[set|remove]\n" +
                             "&7/speed &c<value> &1[player] [type]\n"+
                             "&7/killmobs\n"+
-                            "&7/spawnmob <mob> [num]"+
-                            "\n"
+                            "&7/spawnmob &c<mob> &1[num]\n"
                     ));
                 }else{
                     player.sendMessage(Color.Color("\n&aThis server is running Kore."));

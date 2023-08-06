@@ -1,5 +1,5 @@
 name: Kore
-version: 1.12
+version: 1.13
 main: me.ghostdevelopment.kore.Kore
 load: STARTUP
 
@@ -38,6 +38,10 @@ commands:
     speed:
     killmobs:
     spawnmob:
+    holo:
+        aliases:
+            - holograms
+            - hologram
 
 permissions:
     kore.*:
@@ -95,4 +99,6 @@ permissions:
     kore.killmobs:
         description: ""
     kore.spawnmob:
+        description: ""
+    kore.holo:
         description: ""

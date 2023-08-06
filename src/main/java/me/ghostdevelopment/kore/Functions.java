@@ -181,4 +181,54 @@ public class Functions {
     
     }
 
+// /////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    public static void addHologram(String name, Location location){
+
+        String path = "holo."+name+".";
+
+        StorageFile.getFile().set(path+".x",String.valueOf(location.getX()));
+        StorageFile.getFile().set(path+".y",String.valueOf(location.getY()));
+        StorageFile.getFile().set(path+".z",String.valueOf(location.getZ()));
+        StorageFile.getFile().set(path+".world",String.valueOf(location.getWorld().getName()));
+        List<String> lines = new ArrayList<>();
+        lines.add(null);
+        for(String line : lines){
+            StorageFile.getFile().set(path+".lines", line);
+        }
+        StorageFile.save();
+
+    }
+
+    public static void addLines(String name, List<String> lines){
+
+        String path = "holo."+name+".";
+
+        for(String line : lines){
+            StorageFile.getFile().set(path+".lines", line);
+        }
+        StorageFile.save();
+
+    }
+
+    public static void removeHolo(String name){
+
+        String path = "holo."+name;
+        StorageFile.getFile().set(path, null);
+        StorageFile.save();
+
+    }
+
+    public static void removeLine(String name, Integer line) {
+        String path = "holo." + name + '.';
+        List<?> lines = StorageFile.getFile().getList(path + "lines");
+
+        if (line >= 0 && line < lines.size()) {
+            lines.remove(line);
+            StorageFile.getFile().set(path + ".lines", String.valueOf(lines));
+            StorageFile.save();
+        } else {
+            System.out.println("Invalid line number. The line does not exist.");
+        }
+    }
 }

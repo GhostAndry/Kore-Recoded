@@ -111,3 +111,9 @@ spawnmob:
     spawned: '%prefix% &a%num% krijesa u krijuan!'
     invalid: '%prefix% &cEntitet i pavlefshëm'
     usage: '%prefix% &cPërdorimi: /spawnmob <krijesë> [numër]'
+holograms:
+    created: "%prefix% &aHologrami u krijua me emrin %name%"
+    line-added: "%prefix% &aRresht %n% u shtua"
+    deleted: "%prefix% &cHologrami me emrin %name% u fshi me sukses!"
+    line-delete: "%prefix% &cRreshti %n% u fshi"
+    usage: "%prefix% &cPërdorimi: /holo <krijo|shtorresht|fshij|fshijrresht> <argumente>"

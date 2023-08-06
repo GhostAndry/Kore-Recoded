@@ -108,6 +108,12 @@ killmobs:
     killed: "%prefix% &aKilled all hostile mobs"
     usage: "%prefix% &cUsage: /killmobs"
 spawnmob:
-    spawned: '%prefix% &a%num% mobs have been spawned!'
-    invalid: '%prefix% &cInvalid entity'
-    usage: '%prefix% &cUsage: /spawnmob <mob> [num]'
+    spawned: "prefix% &a%num% mobs have been spawned!"
+    invalid: "%prefix% &cInvalid entity"
+    usage: "%prefix% &cUsage: /spawnmob <mob> [num]"
+holograms:
+    created: "%prefix% &aHologram was create with name %name%"
+    line-added: "%prefix% &aLine n.%n% was added"
+    deleted: "%prefix% &cHologram with name %name% was successfully deleted!"
+    lide-delete: "%prefix% &cLine n.%n% was deleted"
+    usage: "%prefix% &cUsage: /holo <create|addline|delete|removeline> <arguments>"

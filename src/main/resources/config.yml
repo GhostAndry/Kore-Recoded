@@ -34,6 +34,9 @@ killmobs:
 spawnmob:
     enabled: true
     async: true #recomanded: true
+holograms:
+    enabled: true
+    line-distance: 0.38
 chat:
     enabled: true
     format: "%sender%: %message%"
