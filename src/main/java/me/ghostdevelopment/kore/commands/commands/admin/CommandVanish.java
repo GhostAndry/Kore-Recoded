@@ -36,7 +36,9 @@ public class CommandVanish extends KoreCommand {
                 if(vanished.contains(player)){
                     vanished.remove(player);
                     for(Player other : Bukkit.getOnlinePlayers()){
-                        other.showPlayer(player);
+                        if(!(other.hasPermission("kore.vanish")||other.hasPermission("kore.*")||other.hasPermission("*")||other.isOp())) {
+                            other.showPlayer(player);
+                        }
                     }
                     player.sendMessage(Color.Color(LangFile.getFile().getString("vanish.disabled")
                             .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
@@ -44,7 +46,9 @@ public class CommandVanish extends KoreCommand {
                 }else{
                     vanished.add(player);
                     for(Player other : Bukkit.getOnlinePlayers()){
-                        other.hidePlayer(player);
+                        if(!(other.hasPermission("kore.vanish")||other.hasPermission("kore.*")||other.hasPermission("*")||other.isOp())) {
+                            other.hidePlayer(player);
+                        }
                     }
                     player.sendMessage(Color.Color(LangFile.getFile().getString("vanish.enabled")
                             .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
@@ -55,7 +59,9 @@ public class CommandVanish extends KoreCommand {
                 if(vanished.contains(target)){
                     vanished.remove(target);
                     for(Player other : Bukkit.getOnlinePlayers()){
-                        other.showPlayer(target);
+                        if(!(other.hasPermission("kore.vanish")||other.hasPermission("kore.*")||other.hasPermission("*")||other.isOp())) {
+                            other.showPlayer(target);
+                        }
                     }
                     player.sendMessage(Color.Color(LangFile.getFile().getString("vanish.disabled-other")
                             .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
@@ -64,7 +70,9 @@ public class CommandVanish extends KoreCommand {
                 }else{
                     vanished.add(target);
                     for(Player other : Bukkit.getOnlinePlayers()){
-                        other.hidePlayer(target);
+                        if(!(other.hasPermission("kore.vanish")||other.hasPermission("kore.*")||other.hasPermission("*")||other.isOp())) {
+                            other.hidePlayer(target);
+                        }
                     }
                     player.sendMessage(Color.Color(LangFile.getFile().getString("vanish.enabled-other")
                             .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
@@ -84,7 +92,9 @@ public class CommandVanish extends KoreCommand {
                 if(vanished.contains(target)){
                     vanished.remove(target);
                     for(Player other : Bukkit.getOnlinePlayers()){
-                        other.showPlayer(target);
+                        if(!(other.hasPermission("kore.vanish")||other.hasPermission("kore.*")||other.hasPermission("*")||other.isOp())) {
+                            other.showPlayer(target);
+                        }
                     }
                     sender.sendMessage(Color.Color(LangFile.getFile().getString("vanish.disabled-other")
                             .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
@@ -93,7 +103,9 @@ public class CommandVanish extends KoreCommand {
                 }else{
                     vanished.add(target);
                     for(Player other : Bukkit.getOnlinePlayers()){
-                        other.hidePlayer(target);
+                        if(!(other.hasPermission("kore.vanish")||other.hasPermission("kore.*")||other.hasPermission("*")||other.isOp())) {
+                            other.hidePlayer(target);
+                        }
                     }
                     sender.sendMessage(Color.Color(LangFile.getFile().getString("vanish.enabled-other")
                             .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))

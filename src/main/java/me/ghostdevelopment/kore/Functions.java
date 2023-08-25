@@ -3,8 +3,11 @@ package me.ghostdevelopment.kore;
 import me.ghostdevelopment.kore.files.LangFile;
 import me.ghostdevelopment.kore.files.SettingsFile;
 import me.ghostdevelopment.kore.files.StorageFile;
+import net.minecraft.server.v1_8_R3.World;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.entity.ArmorStand;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
@@ -185,11 +188,11 @@ public class Functions {
 
     public static void addHologram(String name, Location location){
 
-        String path = "holo."+name+".";
+        String path = "holograms."+name+".";
 
-        StorageFile.getFile().set(path+".x",String.valueOf(location.getX()));
-        StorageFile.getFile().set(path+".y",String.valueOf(location.getY()));
-        StorageFile.getFile().set(path+".z",String.valueOf(location.getZ()));
+        StorageFile.getFile().set(path+".x",location.getX());
+        StorageFile.getFile().set(path+".y",location.getY());
+        StorageFile.getFile().set(path+".z",location.getZ());
         StorageFile.getFile().set(path+".world",String.valueOf(location.getWorld().getName()));
         List<String> lines = new ArrayList<>();
         lines.add(null);
@@ -202,25 +205,23 @@ public class Functions {
 
     public static void addLines(String name, List<String> lines){
 
-        String path = "holo."+name+".";
+        String path = "holograms."+name+".";
 
-        for(String line : lines){
-            StorageFile.getFile().set(path+".lines", line);
-        }
+        StorageFile.getFile().set(path+".lines", lines);
         StorageFile.save();
 
     }
 
     public static void removeHolo(String name){
 
-        String path = "holo."+name;
+        String path = "holograms."+name;
         StorageFile.getFile().set(path, null);
         StorageFile.save();
 
     }
 
     public static void removeLine(String name, Integer line) {
-        String path = "holo." + name + '.';
+        String path = "holograms." + name + '.';
         List<?> lines = StorageFile.getFile().getList(path + "lines");
 
         if (line >= 0 && line < lines.size()) {
@@ -231,4 +232,5 @@ public class Functions {
             System.out.println("Invalid line number. The line does not exist.");
         }
     }
+
 }
