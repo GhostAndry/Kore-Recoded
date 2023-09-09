@@ -111,9 +111,3 @@ spawnmob:
     spawned: '%prefix% &aBylo vytvořeno %num% mobů!'
     invalid: '%prefix% &cNeplatná entita'
     usage: '%prefix% &cPoužití: /spawnmob <mob> [počet]'
-holograms:
-    created: "%prefix% &aHologram vytvořen s názvem %name%"
-    line-added: "%prefix% &aŘádek č.%n% byl přidán"
-    deleted: "%prefix% &cHologram s názvem %name% byl úspěšně smazán!"
-    line-delete: "%prefix% &cŘádek č.%n% byl smazán"
-    usage: "%prefix% &cPoužití: /holo <create|addline|delete|removeline> <argumenty>"

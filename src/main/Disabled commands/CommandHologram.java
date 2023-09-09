@@ -127,7 +127,14 @@ public class CommandHologram extends KoreCommand {
                         Functions.removeHolo(name);
                     });
                     return;
+                } else if (args[0].equalsIgnoreCase("addlines")) {
+
+
+
+                } else if (args[0].equalsIgnoreCase("removeline")){
+                    //
                 }
+
 
                 /*
                 for (int i = 1; i < args.length; i++) {

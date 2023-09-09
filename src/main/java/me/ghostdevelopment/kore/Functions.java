@@ -207,7 +207,15 @@ public class Functions {
 
         String path = "holograms."+name+".";
 
-        StorageFile.getFile().set(path+".lines", lines);
+        List<String> cfgLines = new ArrayList<>();
+
+        cfgLines = StorageFile.getFile().getStringList(path+".lines");
+
+        for (String line : lines){
+            cfgLines.add(line);
+        }
+
+        StorageFile.getFile().set(path+".lines", cfgLines);
         StorageFile.save();
 
     }

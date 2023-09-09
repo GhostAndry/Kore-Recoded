@@ -38,10 +38,6 @@ commands:
     speed:
     killmobs:
     spawnmob:
-    holo:
-        aliases:
-            - holograms
-            - hologram
 
 permissions:
     kore.*:
@@ -99,6 +95,4 @@ permissions:
     kore.killmobs:
         description: ""
     kore.spawnmob:
-        description: ""
-    kore.holo:
         description: ""
