@@ -18,7 +18,7 @@ import java.util.List;
 
 @SuppressWarnings("ALL")
 
-@CommandInfo(name = "spawn", permission = "kore.spawn", tabCompleter = true)
+@CommandInfo(name = "spawn", permission = "kore.spawn", permission2 = "kore.spawn.other", tabCompleter = true)
 public class CommandSpawn extends KoreCommand {
 
     @Override
@@ -70,11 +70,18 @@ public class CommandSpawn extends KoreCommand {
                             ||StorageFile.getFile().contains("spawn.yaw")
                             ||StorageFile.getFile().contains("spawn.pitch")
                     ) {
-                        Location spawn = Functions.getSpawnLocation();
-                        target.teleport(spawn);
-                        player.sendMessage(Color.Color(LangFile.getFile().getString("spawn.teleported")
-                                .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                        ));
+                        if(player.hasPermission("kore.spawn.other")) {
+                            Location spawn = Functions.getSpawnLocation();
+                            target.teleport(spawn);
+                            player.sendMessage(Color.Color(LangFile.getFile().getString("spawn.teleported")
+                                    .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
+                            ));
+                        }else{
+                            player.sendMessage(Color.Color(LangFile.getFile().getString("no-permissions")
+                                    .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
+                            ));
+                            return;
+                        }
                     }else{
                         player.sendMessage(Color.Color(LangFile.getFile().getString("spawn.nonexistent")
                                 .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))

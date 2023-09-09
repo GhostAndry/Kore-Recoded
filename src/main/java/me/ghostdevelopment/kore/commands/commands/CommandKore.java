@@ -25,7 +25,7 @@ public class CommandKore extends KoreCommand {
             Player player = (Player) sender;
 
             if (args.length == 0) {
-                player.sendMessage(Color.Color("\n&aThis server is running Kore."));
+                player.sendMessage(Color.Color("\n&aThis server is running Kore v$ver\n".replace("$ver", Kore.getInstance().getDescription().getVersion())));
             } else if (args.length == 1) {
                 if (args[0].equalsIgnoreCase("info")) {
                     player.sendMessage(Color.Color(
@@ -80,7 +80,7 @@ public class CommandKore extends KoreCommand {
                             "&7/spawnmob &c<mob> &1[num]\n"
                     ));
                 }else{
-                    player.sendMessage(Color.Color("\n&aThis server is running Kore."));
+                    player.sendMessage(Color.Color("\n&aThis server is running Kore v$ver\n".replace("$ver", Kore.getInstance().getDescription().getVersion())));
                 }
             }else if (args.length==2) {
 
@@ -199,6 +199,7 @@ public class CommandKore extends KoreCommand {
             completions.add("help");
             completions.add("lang");
             completions.add("language");
+            completions.add("update (SOON)");
         } else if (args.length == 2 && (args[0].equalsIgnoreCase("lang") || args[0].equalsIgnoreCase("language"))) {
             completions.addAll(LangFile.getAvailableLanguages());
         }

@@ -29,7 +29,7 @@ teleport:
     teleported-other: "%prefix% &aTeleportován %player% k %loc%"
     usage:
         player: "%prefix% &cPoužití: /teleport <player| x y z > &1[player| x y z ]"
-        console: "%prefix% &cPoužití: /teleport <player| x y z > <player| x y z >"
+        console: "%prefix% &cPoužití: /teleport <player| x y z > <player>"
 god:
     enabled: "%prefix% &aMód bůh povolen."
     disabled: "%prefix% &cMód bůh zakázán."

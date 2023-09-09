@@ -35,7 +35,6 @@ public class CommandTeleport extends KoreCommand {
             if(args.length!=1||args.length!=2||args.length!=3||args.length!=4){
 
                 try{
-                    // tp <player>
                     if(args.length==1){
 
                         Player target = Bukkit.getPlayer(args[0]);
@@ -154,7 +153,7 @@ public class CommandTeleport extends KoreCommand {
                  }
              }
          } else if (args.length==2) {
-             String partialName = args[0].toLowerCase();
+             String partialName = args[1].toLowerCase();
              for(Player player: Bukkit.getOnlinePlayers()){
                  if (player.getName().startsWith(partialName)){
                      completions.add(player.getName());

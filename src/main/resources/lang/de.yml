@@ -29,7 +29,7 @@ teleport:
     teleported-other: "%prefix% &aTeleportiert %player% zu %loc%"
     usage:
         player: "%prefix% &cVerwendung: /teleport <spieler| x y z > &1[spieler| x y z ]"
-        console: "%prefix% &cVerwendung: /teleport <spieler| x y z > <spieler| x y z >"
+        console: "%prefix% &cVerwendung: /teleport <spieler| x y z > <spieler>"
 god:
     enabled: "%prefix% &aGottmodus aktiviert."
     disabled: "%prefix% &cGottmodus deaktiviert."

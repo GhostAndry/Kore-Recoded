@@ -70,6 +70,8 @@ permissions:
         description: ""
     kore.spawn:
         description: ""
+    kore.spawn.other:
+        description: ""
     kore.trash:
         description: ""
     kore.chatbypass:
@@ -96,3 +98,4 @@ permissions:
         description: ""
     kore.spawnmob:
         description: ""
+

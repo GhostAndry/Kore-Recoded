@@ -148,10 +148,10 @@ public class CommandGamemode extends KoreCommand {
                 }
             }
         }else{
-            String type = args[0];
-            Player target = Bukkit.getPlayer(args[1]);
-
             try{
+                String type = args[0];
+                Player target = Bukkit.getPlayer(args[1]);
+
                 if(type.equalsIgnoreCase("0")){
                     target.setGameMode(GameMode.SURVIVAL);
                     sender.sendMessage(Color.Color(LangFile.getFile().getString("gamemode.changed")
@@ -222,7 +222,7 @@ public class CommandGamemode extends KoreCommand {
                     completions.add(gameMode);
                 }
             }
-        } else if (args.length == 2 && sender instanceof Player) {
+        } else if (args.length == 2) {
             String partialName = args[1].toLowerCase();
             for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
                 String playerName = onlinePlayer.getName();

@@ -3,12 +3,11 @@ package me.ghostdevelopment.kore;
 import me.ghostdevelopment.kore.files.LangFile;
 import me.ghostdevelopment.kore.files.SettingsFile;
 import me.ghostdevelopment.kore.files.StorageFile;
-import net.minecraft.server.v1_8_R3.World;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
-import org.bukkit.entity.ArmorStand;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +27,10 @@ public class Functions {
             StorageFile.reload();
         }catch (Exception ignored){}
 
+    }
+
+    public static void updatePlugin(){
+        // SOON
     }
 
 // /////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -177,7 +180,32 @@ public class Functions {
     public static void setSpeed(Player player, String type, Float speed){
     
         if(type.equals("walk")){
-            player.setWalkSpeed(speed / 10.0f);
+
+            int speedInt = 0;
+
+            if (speed >= 0.1 && speed <= 1.0) {
+                speedInt = 1;
+            } else if (speed > 1.1 && speed <= 2.0) {
+                speedInt = 2;
+            } else if (speed > 2.1 && speed <= 3.0) {
+                speedInt = 3;
+            } else if (speed > 3.1 && speed <= 4.0) {
+                speedInt = 4;
+            } else if (speed > 4.1 && speed <= 5.0) {
+                speedInt = 5;
+            } else if (speed > 5.1 && speed <= 6.0) {
+                speedInt = 6;
+            } else if (speed > 6.1 && speed <= 7.0) {
+                speedInt = 7;
+            } else if (speed > 7.1 && speed <= 8.0) {
+                speedInt = 8;
+            } else if (speed > 8.1 && speed <= 9.0) {
+                speedInt = 9;
+            } else if (speed > 9.1 && speed <= 10.0) {
+                speedInt = 10;
+            }
+
+            player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 999999999, speedInt));
         } else if (type.equals("fly") || type.equals("flight")) {
             player.setFlySpeed(speed / 10.0f);
         }
