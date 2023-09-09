@@ -42,6 +42,7 @@ Tested versions: 1.8, 1.9, 1.10, 1.11. 1.12, 1.13, 1.14, 1.15, 1.16, 1.17, 1.18,
 - kore.gamemode.creative
 - kore.gamemode.survival
 - kore.orbitalcannon
+- kore.spawn.other
 - kore.chatbypass
 - kore.warp.admin
 - kore.gamemode.*
