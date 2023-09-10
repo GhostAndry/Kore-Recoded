@@ -13,6 +13,8 @@ vanish:
 spawn:
     enabled: true
     on-join: true
+    on-death: true
+    on-void: true
 trash:
     enabled: true
 orbitalcannon:
@@ -41,3 +43,17 @@ chat:
         - fuck
         - shit
 messages: en
+
+server:
+    join-msg: "&8[&a+&8] &f%player%"
+    leave-msg: "&8[&a+&8] &f%player%"
+
+world-manipulator:
+    enable: true
+    rules:
+        anti-hunger: true
+        anti-weather: true
+        anti-join-message: true
+        anti-mob-spawn: true
+
+

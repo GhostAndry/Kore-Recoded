@@ -1,5 +1,5 @@
 name: Kore
-version: 1.13
+version: 1.14
 main: me.ghostdevelopment.kore.Kore
 load: STARTUP
 

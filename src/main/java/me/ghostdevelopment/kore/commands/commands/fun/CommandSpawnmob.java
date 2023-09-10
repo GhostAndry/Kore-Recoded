@@ -120,7 +120,7 @@ public class CommandSpawnmob extends KoreCommand {
             for (EntityType entityType : entities) {
                 String entityName = entityType.name().toLowerCase();
                 if (entityName.startsWith(partialName)) {
-                    completions.add(entityName);
+                    completions.add(entityName.toUpperCase());
                 }
             }
         }

@@ -73,7 +73,7 @@ public class CommandSpawn extends KoreCommand {
                         if(player.hasPermission("kore.spawn.other")) {
                             Location spawn = Functions.getSpawnLocation();
                             target.teleport(spawn);
-                            player.sendMessage(Color.Color(LangFile.getFile().getString("spawn.teleported")
+                            player.sendMessage(Color.Color(LangFile.getFile().getString("spawn.teleported-other")
                                     .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
                             ));
                         }else{

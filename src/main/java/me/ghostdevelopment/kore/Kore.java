@@ -3,10 +3,7 @@ package me.ghostdevelopment.kore;
 import lombok.Getter;
 import me.ghostdevelopment.kore.commands.KoreCommand;
 import me.ghostdevelopment.kore.commands.commands.fun.CommandSpawnmob;
-import me.ghostdevelopment.kore.events.ChatManager;
-import me.ghostdevelopment.kore.events.GodMode;
-import me.ghostdevelopment.kore.events.SpawnOnJoin;
-import me.ghostdevelopment.kore.events.VanishPlayer;
+import me.ghostdevelopment.kore.events.*;
 import me.ghostdevelopment.kore.files.LangFile;
 import me.ghostdevelopment.kore.files.SettingsFile;
 import me.ghostdevelopment.kore.files.StorageFile;
@@ -14,7 +11,6 @@ import me.ghostdevelopment.kore.utils.Console;
 import me.ghostdevelopment.kore.utils.Metrics;
 import me.ghostdevelopment.kore.utils.RegisterPlaceholders;
 import org.bukkit.Bukkit;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -211,12 +207,20 @@ public final class Kore extends JavaPlugin {
         }
         if(SettingsFile.getFile().getBoolean("spawn.enabled")){
             if(SettingsFile.getFile().getBoolean("spawn.on-join")){
-                events.add(new SpawnOnJoin());
+                events.add(new Spawn());
             }
         }
 
         if(SettingsFile.getFile().getBoolean("chat.enabled")){
             events.add(new ChatManager());
+        }
+
+        if(SettingsFile.getFile().getBoolean("world-manipulator.enable")){
+            events.add(new WorldManipulator());
+        }
+
+        if(!(Kore.getInstance().getConfig().getString("server.join-msg") == null || Kore.getInstance().getConfig().getString("server.join-msg").isEmpty())){
+            events.add(new JoinMSG());
         }
 
         for(Listener l : events){
