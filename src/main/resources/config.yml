@@ -1,3 +1,7 @@
+
+commands:
+    asynchronously: false
+
 gamemode:
     enabled: true
 fly:

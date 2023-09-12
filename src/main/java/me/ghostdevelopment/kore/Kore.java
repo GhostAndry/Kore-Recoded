@@ -43,9 +43,9 @@ public final class Kore extends JavaPlugin {
             return SettingsFile.getFile().getString("messages");
         }));
 
-        if(getServer().getPluginManager().getPlugin("PlaceholderAPI")!=null){
+        if (getServer().getPluginManager().getPlugin("PlaceholderAPI") != null) {
             new RegisterPlaceholders().register();
-        }else{
+        } else {
             Console.warning("PlaceholderAPI is absent in minecraft server.\nPlaceholders won't work without it!");
         }
 
@@ -61,15 +61,19 @@ public final class Kore extends JavaPlugin {
 
         new UpdateChecker(this, 107023).getVersion(version -> {
             if (!this.getDescription().getVersion().equals(version)) {
-                getLogger().info("There is a new update available.Version: "+version);
+                getLogger().info("There is a new update available.Version: " + version);
             }
         });
 
     }
 
-    @Override
-    public void onDisable() {
-        // Plugin shutdown logic
+    public static int calculateY(){
+        String serverVersion = Bukkit.getServer().getVersion();
+        String[] versionParts = serverVersion.split("\\.");
+        int majorVersion = Integer.parseInt(versionParts[1]);
+
+        if(majorVersion>=18) return -64;
+        else return 0;
     }
 
     private void addEntities(){
@@ -178,7 +182,18 @@ public final class Kore extends JavaPlugin {
     private void registerCommands() throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
         String packageName = getClass().getPackage().getName();
         for(Class<? extends KoreCommand> clazz: new Reflections(packageName + ".commands.commands").getSubTypesOf(KoreCommand.class)){
-            KoreCommand command = clazz.getDeclaredConstructor().newInstance();
+            KoreCommand command = null;
+            try {
+                command = clazz.getDeclaredConstructor().newInstance();
+            } catch (InstantiationException e) {
+                throw new RuntimeException(e);
+            } catch (IllegalAccessException e) {
+                throw new RuntimeException(e);
+            } catch (InvocationTargetException e) {
+                throw new RuntimeException(e);
+            } catch (NoSuchMethodException e) {
+                throw new RuntimeException(e);
+            }
             try {
                 getCommand(command.getCommandInfo().name()).setExecutor(command);
                 if(command.getCommandInfo().tabCompleter()){
@@ -198,7 +213,6 @@ public final class Kore extends JavaPlugin {
     private void registerEvents(){
         ArrayList<Listener> events = new ArrayList<>();
 
-        //add all events and listeners
         if(SettingsFile.getFile().getBoolean("godmode.enabled")){
             events.add(new GodMode());
         }
@@ -239,6 +253,7 @@ public final class Kore extends JavaPlugin {
         StorageFile.setUp();
         StorageFile.getFile().options().copyDefaults(true);
         StorageFile.save();
+
     }
 
 }

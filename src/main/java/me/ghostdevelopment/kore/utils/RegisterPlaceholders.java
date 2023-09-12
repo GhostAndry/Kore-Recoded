@@ -1,6 +1,7 @@
 package me.ghostdevelopment.kore.utils;
 
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
+import me.ghostdevelopment.kore.Kore;
 import me.ghostdevelopment.kore.commands.commands.admin.CommandFly;
 import me.ghostdevelopment.kore.commands.commands.admin.CommandGod;
 import me.ghostdevelopment.kore.commands.commands.admin.CommandVanish;
@@ -12,7 +13,7 @@ public class RegisterPlaceholders extends PlaceholderExpansion {
 
     private final String pluginName = "kore";
     private final String authorName = "GhostAndry";
-    private final String version = "1.7";
+    private final String version = Kore.getInstance().getDescription().getVersion();
 
     @Override
     public String getIdentifier() {

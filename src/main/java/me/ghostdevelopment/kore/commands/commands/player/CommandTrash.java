@@ -1,5 +1,6 @@
 package me.ghostdevelopment.kore.commands.commands.player;
 
+import me.ghostdevelopment.kore.Kore;
 import me.ghostdevelopment.kore.utils.Color;
 import me.ghostdevelopment.kore.commands.KoreCommand;
 import me.ghostdevelopment.kore.commands.CommandInfo;
@@ -30,7 +31,9 @@ public class CommandTrash extends KoreCommand {
 
             Inventory inventory = Bukkit.createInventory(player, 54, Color.Color("&cTrash"));
 
-            player.openInventory(inventory);
+            Bukkit.getScheduler().runTaskAsynchronously(Kore.getInstance(), ()->{
+                player.openInventory(inventory);
+            });
 
         }else{
             sender.sendMessage(Color.Color(LangFile.getFile().getString("only-players")

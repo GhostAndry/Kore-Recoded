@@ -1,5 +1,6 @@
 package me.ghostdevelopment.kore.commands.commands.fun;
 
+import lombok.Getter;
 import me.ghostdevelopment.kore.Kore;
 import me.ghostdevelopment.kore.commands.CommandInfo;
 import me.ghostdevelopment.kore.commands.KoreCommand;
@@ -20,6 +21,7 @@ import java.util.List;
 @CommandInfo(name = "spawnmob", permission = "kore.spawnmob", tabCompleter = true)
 public class CommandSpawnmob extends KoreCommand {
 
+    @Getter
     private static ArrayList<EntityType> entities = new ArrayList<>();
 
     @Override
@@ -66,12 +68,7 @@ public class CommandSpawnmob extends KoreCommand {
                         if(SettingsFile.getFile().getBoolean("spawnmob.async")){
                             Bukkit.getScheduler().runTask(Kore.getInstance(), () -> {
                                 for(int i = 1; i <= entityNum; i++) {
-                                    Bukkit.getScheduler().runTask(Kore.getInstance(), new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            Entity entity = player.getWorld().spawn(player.getLocation(), entityType.getEntityClass());
-                                        }
-                                    });
+                                    Entity entity = player.getWorld().spawn(player.getLocation(), entityType.getEntityClass());
                                 }
                                 player.sendMessage(Color.Color(LangFile.getFile().getString("spawnmob.spawned")
                                         .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
@@ -128,5 +125,4 @@ public class CommandSpawnmob extends KoreCommand {
         return completions;
     }
 
-    public static ArrayList<EntityType> getEntities() {return entities;}
 }

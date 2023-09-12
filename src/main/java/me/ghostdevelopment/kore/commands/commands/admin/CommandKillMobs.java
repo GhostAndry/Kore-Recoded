@@ -10,6 +10,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
@@ -38,7 +39,7 @@ public class CommandKillMobs extends KoreCommand {
             Bukkit.getScheduler().runTask(Kore.getInstance(), () -> {
                 for (World world : Bukkit.getWorlds()) {
                     for (Entity entity : world.getEntities()) {
-                        if (!(entity instanceof Player)) {
+                        if (!(entity instanceof Player || entity.getType().equals(EntityType.PAINTING) || entity.getType().equals(EntityType.ARMOR_STAND))) {
                             entity.remove();
                         }
                     }

@@ -1,7 +1,9 @@
 package me.ghostdevelopment.kore.commands;
 
+import me.ghostdevelopment.kore.Kore;
 import me.ghostdevelopment.kore.utils.Color;
 import me.ghostdevelopment.kore.files.LangFile;
+import org.bukkit.Bukkit;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
@@ -26,22 +28,48 @@ public abstract class KoreCommand implements CommandExecutor, TabCompleter {
     @Override
     public boolean onCommand(CommandSender sender, org.bukkit.command.Command command, String label, String[] args) {
 
-        if(!(commandInfo.permission().isEmpty())){
-            if(!(sender.hasPermission(commandInfo.permission())
-                    ||sender.hasPermission(commandInfo.permission2())
-                    ||sender.hasPermission(commandInfo.permission3())
-                    ||sender.hasPermission("kore.*")
-                    ||sender.hasPermission("*")
-            )){
-                sender.sendMessage(Color.Color(LangFile.getFile().getString("no-permissions")
-                        .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                ));
-                return false;
-            }
-        }
+        if(Kore.getInstance().getConfig().getBoolean("commands.asynchronously")) {
 
-        execute(sender, args);
-        return false;
+            Bukkit.getScheduler().runTask(Kore.getInstance(), ()->{
+
+                if (!(commandInfo.permission().isEmpty())) {
+                    if (!(sender.hasPermission(commandInfo.permission())
+                            || sender.hasPermission(commandInfo.permission2())
+                            || sender.hasPermission(commandInfo.permission3())
+                            || sender.hasPermission("kore.*")
+                            || sender.hasPermission("*")
+                    )) {
+                        sender.sendMessage(Color.Color(LangFile.getFile().getString("no-permissions")
+                                .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
+                        ));
+                        return;
+                    }
+                }
+
+                execute(sender, args);
+                return;
+            });
+
+            return true;
+
+        }else{
+            if (!(commandInfo.permission().isEmpty())) {
+                if (!(sender.hasPermission(commandInfo.permission())
+                        || sender.hasPermission(commandInfo.permission2())
+                        || sender.hasPermission(commandInfo.permission3())
+                        || sender.hasPermission("kore.*")
+                        || sender.hasPermission("*")
+                )) {
+                    sender.sendMessage(Color.Color(LangFile.getFile().getString("no-permissions")
+                            .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
+                    ));
+                    return false;
+                }
+            }
+
+            execute(sender, args);
+            return true;
+        }
     }
 
     public abstract void execute(CommandSender sender, String[] args);

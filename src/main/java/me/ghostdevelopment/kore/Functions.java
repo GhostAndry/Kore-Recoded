@@ -205,7 +205,8 @@ public class Functions {
                 speedInt = 10;
             }
 
-            player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 999999999, speedInt));
+            if(speedInt==0) player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 1, speedInt, true, false), true);
+            else player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 999999999, speedInt-1, true, false), true);
         } else if (type.equals("fly") || type.equals("flight")) {
             player.setFlySpeed(speed / 10.0f);
         }

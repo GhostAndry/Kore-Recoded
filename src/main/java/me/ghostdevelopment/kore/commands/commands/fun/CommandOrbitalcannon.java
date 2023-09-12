@@ -73,10 +73,15 @@ public class CommandOrbitalcannon extends KoreCommand {
 
         if (args.length == 1) {
             for (Player player : Bukkit.getServer().getOnlinePlayers()) {
-                completions.add("<x>");
-                completions.add("<y>");
-                completions.add("<z>");
-                completions.add(player.getName());
+                String partialName = args[0].toLowerCase();
+                if(player.getName().startsWith(partialName)){
+                    completions.add(player.getName());
+                }else {
+                    completions.add("<x>");
+                    completions.add("<y>");
+                    completions.add("<z>");
+                    completions.add(player.getName());
+                }
             }
         } else if (args.length == 2 || args.length == 3) {
             completions.add("<x>");
