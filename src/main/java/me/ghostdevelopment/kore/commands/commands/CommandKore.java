@@ -199,7 +199,6 @@ public class CommandKore extends KoreCommand {
             completions.add("help");
             completions.add("lang");
             completions.add("language");
-            completions.add("update (SOON)");
         } else if (args.length == 2 && (args[0].equalsIgnoreCase("lang") || args[0].equalsIgnoreCase("language"))) {
             completions.addAll(LangFile.getAvailableLanguages());
         }

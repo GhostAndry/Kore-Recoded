@@ -6,9 +6,16 @@ import me.ghostdevelopment.kore.files.StorageFile;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,10 +34,6 @@ public class Functions {
             StorageFile.reload();
         }catch (Exception ignored){}
 
-    }
-
-    public static void updatePlugin(){
-        // test
     }
 
 // /////////////////////////////////////////////////////////////////////////////////////////////////////
