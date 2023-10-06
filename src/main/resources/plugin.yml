@@ -5,39 +5,63 @@ load: STARTUP
 
 commands:
     kore:
+        description: ""
 
     gmc:
+        description: ""
     gms:
+        description: ""
     gma:
+        description: ""
     gmsp:
+        description: ""
     gamemode:
+        description: ""
         aliases:
             - gm
 
     fly:
+        description: ""
 
     teleport:
+        description: ""
         aliases:
             - tp
             - tpto
     god:
+        description: ""
     heal:
+        description: ""
     vanish:
+        description: ""
         aliases:
             - v
     setspawn:
+        description: ""
     spawn:
+        description: ""
     trash:
+        description: ""
         aliases:
             - disposal
     orbitalcannon:
+        description: ""
     smite:
+        description: ""
     kill:
+        description: ""
     warp:
+        description: ""
     home:
+        description: ""
     speed:
+        description: ""
     killmobs:
+        description: ""
     spawnmob:
+        description: ""
+    sun:
+        description: ""
 
 permissions:
     kore.*:
@@ -97,5 +121,7 @@ permissions:
     kore.killmobs:
         description: ""
     kore.spawnmob:
+        description: ""
+    kore.sun:
         description: ""
 

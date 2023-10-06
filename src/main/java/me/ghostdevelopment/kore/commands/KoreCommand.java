@@ -76,4 +76,5 @@ public abstract class KoreCommand implements CommandExecutor, TabCompleter {
     public List<String> onTabComplete(CommandSender sender, org.bukkit.command.Command command, String alias, String[] args) {
         return new ArrayList<>();
     }
+
 }
