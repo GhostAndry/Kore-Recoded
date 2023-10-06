@@ -17,7 +17,5 @@ public class CommandSun extends KoreCommand {
             world.setStorm(false);
             world.setWeatherDuration(1000000000);
         }
-
     }
-
 }
