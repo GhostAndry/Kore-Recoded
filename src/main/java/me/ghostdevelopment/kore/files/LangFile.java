@@ -1,6 +1,7 @@
 package me.ghostdevelopment.kore.files;
 
 import lombok.SneakyThrows;
+import me.ghostdevelopment.kore.utils.Color;
 import me.ghostdevelopment.kore.utils.Console;
 import me.ghostdevelopment.kore.Kore;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -109,5 +110,9 @@ public class LangFile {
             }
         }
         return languages;
+    }
+
+    public static String getString(String path){
+        return Color.Color(getFile().getString(path).replaceAll("%prefix%", getFile().getString("prefix")));
     }
 }

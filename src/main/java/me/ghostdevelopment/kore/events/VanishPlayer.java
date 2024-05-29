@@ -1,7 +1,7 @@
 package me.ghostdevelopment.kore.events;
 
 import me.ghostdevelopment.kore.Kore;
-import me.ghostdevelopment.kore.commands.commands.admin.CommandVanish;
+import me.ghostdevelopment.kore.commands.impl.admin.CommandVanish;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

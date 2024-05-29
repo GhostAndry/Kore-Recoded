@@ -1,4 +1,4 @@
-package me.ghostdevelopment.kore.commands.commands.player;
+package me.ghostdevelopment.kore.commands.impl.player;
 
 import me.ghostdevelopment.kore.Kore;
 import me.ghostdevelopment.kore.utils.Color;
@@ -19,9 +19,7 @@ public class CommandTrash extends KoreCommand {
     public void execute(CommandSender sender, String[] args) {
 
         if (!(SettingsFile.getFile().getBoolean("trash.enabled"))){
-            sender.sendMessage(Color.Color(LangFile.getFile().getString("command-disabled")
-                    .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-            ));
+            sender.sendMessage(LangFile.getString("command-disabled"));
             return;
         }
 
@@ -36,9 +34,7 @@ public class CommandTrash extends KoreCommand {
             });
 
         }else{
-            sender.sendMessage(Color.Color(LangFile.getFile().getString("only-players")
-                    .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-            ));
+            sender.sendMessage(LangFile.getString("only-players"));
         }
     }
 }

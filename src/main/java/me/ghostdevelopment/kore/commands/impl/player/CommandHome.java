@@ -1,4 +1,4 @@
-package me.ghostdevelopment.kore.commands.commands.player;
+package me.ghostdevelopment.kore.commands.impl.player;
 
 import me.ghostdevelopment.kore.Functions;
 import me.ghostdevelopment.kore.utils.Color;
@@ -18,9 +18,7 @@ public class CommandHome extends KoreCommand {
     public void execute(CommandSender sender, String[] args) {
 
         if (!(SettingsFile.getFile().getBoolean("home.enabled"))){
-            sender.sendMessage(Color.Color(LangFile.getFile().getString("command-disabled")
-                    .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-            ));
+            sender.sendMessage(LangFile.getString("command-disabled"));
             return;
         }
 

@@ -1,4 +1,4 @@
-package me.ghostdevelopment.kore.commands.commands.admin;
+package me.ghostdevelopment.kore.commands.impl.admin;
 
 import me.ghostdevelopment.kore.commands.CommandInfo;
 import me.ghostdevelopment.kore.commands.KoreCommand;

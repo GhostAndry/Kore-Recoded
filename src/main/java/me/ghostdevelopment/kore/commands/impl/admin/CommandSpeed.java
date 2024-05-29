@@ -1,4 +1,4 @@
-package me.ghostdevelopment.kore.commands.commands.admin;
+package me.ghostdevelopment.kore.commands.impl.admin;
 
 import me.ghostdevelopment.kore.Functions;
 import me.ghostdevelopment.kore.utils.Color;
@@ -22,8 +22,7 @@ public class CommandSpeed extends KoreCommand {
     @Override
     public void execute(CommandSender sender, String[] args) {
         if (!(SettingsFile.getFile().getBoolean("speed.enabled"))) {
-            sender.sendMessage(Color.Color(LangFile.getFile().getString("command-disabled")
-                    .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))));
+            sender.sendMessage(LangFile.getString("command-disabled"));
             return;
         }
 

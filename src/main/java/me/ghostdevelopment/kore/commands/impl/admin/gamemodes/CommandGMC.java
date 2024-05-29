@@ -1,4 +1,4 @@
-package me.ghostdevelopment.kore.commands.commands.admin.gamemodes;
+package me.ghostdevelopment.kore.commands.impl.admin.gamemodes;
 
 import me.ghostdevelopment.kore.utils.Color;
 import me.ghostdevelopment.kore.commands.KoreCommand;
@@ -15,15 +15,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 @SuppressWarnings("ALL")
-@CommandInfo(name = "gma", permission = "kore.gamemode.adventure", permission2 =  "kore.gamemode.*", permission3 = "kore.gamemode", tabCompleter = true)
-public class CommandGMA extends KoreCommand {
-
+@CommandInfo(name = "gmc", permission = "kore.gamemode.creative", permission2 =  "kore.gamemode.*", permission3 = "kore.gamemode", tabCompleter = true)
+public class CommandGMC extends KoreCommand {
     @Override
     public void execute(CommandSender sender, String[] args) {
         if(!(SettingsFile.getFile().getBoolean("gamemode.enabled"))){
-            sender.sendMessage(Color.Color(LangFile.getFile().getString("command-disabled")
-                    .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-            ));
+            sender.sendMessage(LangFile.getString("command-disabled"));
             return;
         }
 
@@ -31,7 +28,7 @@ public class CommandGMA extends KoreCommand {
             Player player = (Player) sender;
 
             if (args.length == 0) {
-                player.setGameMode(GameMode.ADVENTURE);
+                player.setGameMode(GameMode.CREATIVE);
                 player.sendMessage(Color.Color(LangFile.getFile().getString("gamemode.changed")
                         .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
                         .replaceAll("%gamemode%", player.getGameMode().name().toUpperCase())
@@ -41,7 +38,7 @@ public class CommandGMA extends KoreCommand {
                 try {
                     Player target = Bukkit.getPlayer(args[0]);
 
-                    target.setGameMode(GameMode.ADVENTURE);
+                    target.setGameMode(GameMode.CREATIVE);
                     player.sendMessage(Color.Color(LangFile.getFile().getString("gamemode.changed-other")
                             .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
                             .replaceAll("%gamemode%", target.getGameMode().name().toUpperCase())
@@ -63,7 +60,7 @@ public class CommandGMA extends KoreCommand {
             try {
                 Player target = Bukkit.getPlayer(args[0]);
 
-                target.setGameMode(GameMode.ADVENTURE);
+                target.setGameMode(GameMode.CREATIVE);
                 sender.sendMessage(Color.Color(LangFile.getFile().getString("gamemode.changed-other")
                         .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
                         .replaceAll("%gamemode%", target.getGameMode().name().toUpperCase())

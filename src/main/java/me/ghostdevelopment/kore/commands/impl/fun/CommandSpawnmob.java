@@ -1,4 +1,4 @@
-package me.ghostdevelopment.kore.commands.commands.fun;
+package me.ghostdevelopment.kore.commands.impl.fun;
 
 import lombok.Getter;
 import me.ghostdevelopment.kore.Kore;
@@ -13,7 +13,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
-import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,9 +27,7 @@ public class CommandSpawnmob extends KoreCommand {
     public void execute(CommandSender sender, String[] args) {
 
         if (!(SettingsFile.getFile().getBoolean("spawnmob.enabled"))) {
-            sender.sendMessage(Color.Color(LangFile.getFile().getString("command-disabled")
-                    .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-            ));
+            sender.sendMessage(LangFile.getString("command-disabled"));
             return;
         }
 

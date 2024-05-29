@@ -1,4 +1,4 @@
-package me.ghostdevelopment.kore.commands.commands.admin;
+package me.ghostdevelopment.kore.commands.impl.admin;
 
 import me.ghostdevelopment.kore.commands.CommandInfo;
 import me.ghostdevelopment.kore.commands.KoreCommand;
@@ -25,9 +25,7 @@ public class CommandWarp extends KoreCommand {
     public void execute(CommandSender sender, String[] args) {
 
         if (!(SettingsFile.getFile().getBoolean("warp.enabled"))){
-            sender.sendMessage(Color.Color(LangFile.getFile().getString("command-disabled")
-                    .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-            ));
+            sender.sendMessage(LangFile.getString("command-disabled"));
             return;
         }
 

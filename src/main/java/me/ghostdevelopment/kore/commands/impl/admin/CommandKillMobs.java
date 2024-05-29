@@ -1,4 +1,4 @@
-package me.ghostdevelopment.kore.commands.commands.admin;
+package me.ghostdevelopment.kore.commands.impl.admin;
 
 import me.ghostdevelopment.kore.Kore;
 import me.ghostdevelopment.kore.utils.Color;
@@ -12,7 +12,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
-import org.bukkit.scheduler.BukkitRunnable;
 
 @CommandInfo(name = "killmobs", permission = "kore.killmobs")
 public class CommandKillMobs extends KoreCommand {
@@ -21,9 +20,7 @@ public class CommandKillMobs extends KoreCommand {
     public void execute(CommandSender sender, String[] args) {
 
         if (!(SettingsFile.getFile().getBoolean("killmobs.enabled"))){
-            sender.sendMessage(Color.Color(LangFile.getFile().getString("command-disabled")
-                    .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-            ));
+            sender.sendMessage(LangFile.getString("command-disabled"));
             return;
         }
 

@@ -1,4 +1,4 @@
-package me.ghostdevelopment.kore.commands.commands;
+package me.ghostdevelopment.kore.commands.impl;
 
 import me.ghostdevelopment.kore.Functions;
 import me.ghostdevelopment.kore.Kore;

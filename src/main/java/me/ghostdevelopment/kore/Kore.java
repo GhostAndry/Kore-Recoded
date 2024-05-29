@@ -2,7 +2,7 @@ package me.ghostdevelopment.kore;
 
 import lombok.Getter;
 import me.ghostdevelopment.kore.commands.KoreCommand;
-import me.ghostdevelopment.kore.commands.commands.fun.CommandSpawnmob;
+import me.ghostdevelopment.kore.commands.impl.fun.CommandSpawnmob;
 import me.ghostdevelopment.kore.events.*;
 import me.ghostdevelopment.kore.files.LangFile;
 import me.ghostdevelopment.kore.files.SettingsFile;
@@ -77,111 +77,17 @@ public final class Kore extends JavaPlugin {
     }
 
     private void addEntities(){
-        String serverVersion = Bukkit.getServer().getVersion();
-        String[] versionParts = serverVersion.split("\\.");
-        int majorVersion = Integer.parseInt(versionParts[1]);
-
-        switch (majorVersion) {
-            case 8:
-                for (EntityType entityType : EntityType.values()) {
-                    if (entityType.isAlive() && !entityType.name().equals("PLAYER")) {
-                        CommandSpawnmob.getEntities().add(entityType);
-                    }
-                }
-                break;
-            case 9:
-                for (EntityType entityType : EntityType.values()) {
-                    if (entityType.isAlive() && !entityType.name().equals("PLAYER")) {
-                        CommandSpawnmob.getEntities().add(entityType);
-                    }
-                }
-                break;
-            case 10:
-                for (EntityType entityType : EntityType.values()) {
-                    if (entityType.isAlive() && !entityType.name().equals("PLAYER")) {
-                        CommandSpawnmob.getEntities().add(entityType);
-                    }
-                }
-                break;
-            case 11:
-                for (EntityType entityType : EntityType.values()) {
-                    if (entityType.isAlive() && !entityType.name().equals("PLAYER")) {
-                        CommandSpawnmob.getEntities().add(entityType);
-                    }
-                }
-                break;
-            case 12:
-                for (EntityType entityType : EntityType.values()) {
-                    if (entityType.isAlive() && !entityType.name().equals("PLAYER")) {
-                        CommandSpawnmob.getEntities().add(entityType);
-                    }
-                }
-                break;
-            case 13:
-                for (EntityType entityType : EntityType.values()) {
-                    if (entityType.isAlive() && !entityType.name().equals("PLAYER")) {
-                        CommandSpawnmob.getEntities().add(entityType);
-                    }
-                }
-                break;
-            case 14:
-                for (EntityType entityType : EntityType.values()) {
-                    if (entityType.isAlive() && !entityType.name().equals("PLAYER")) {
-                        CommandSpawnmob.getEntities().add(entityType);
-                    }
-                }
-                break;
-            case 15:
-                for (EntityType entityType : EntityType.values()) {
-                    if (entityType.isAlive() && !entityType.name().equals("PLAYER")) {
-                        CommandSpawnmob.getEntities().add(entityType);
-                    }
-                }
-                break;
-            case 16:
-                for (EntityType entityType : EntityType.values()) {
-                    if (entityType.isAlive() && !entityType.name().equals("PLAYER")) {
-                        CommandSpawnmob.getEntities().add(entityType);
-                    }
-                }
-                break;
-            case 17:
-                for (EntityType entityType : EntityType.values()) {
-                    if (entityType.isAlive() && !entityType.name().equals("PLAYER")) {
-                        CommandSpawnmob.getEntities().add(entityType);
-                    }
-                }
-                break;
-            case 18:
-                for (EntityType entityType : EntityType.values()) {
-                    if (entityType.isAlive() && !entityType.name().equals("PLAYER")) {
-                        CommandSpawnmob.getEntities().add(entityType);
-                    }
-                }
-                break;
-            case 19:
-                for (EntityType entityType : EntityType.values()) {
-                    if (entityType.isAlive() && !entityType.name().equals("PLAYER")) {
-                        CommandSpawnmob.getEntities().add(entityType);
-                    }
-                }
-                break;
-            case 20:
-                for (EntityType entityType : EntityType.values()) {
-                    if (entityType.isAlive() && !entityType.name().equals("PLAYER")) {
-                        CommandSpawnmob.getEntities().add(entityType);
-                    }
-                }
-                break;
-            default:
-                break;
+        for (EntityType entityType : EntityType.values()) {
+            if (entityType.isAlive() && !entityType.name().equals("PLAYER")) {
+                CommandSpawnmob.getEntities().add(entityType);
+            }
         }
-        return;
     }
 
     private void registerCommands() throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
         String packageName = getClass().getPackage().getName();
-        for(Class<? extends KoreCommand> clazz: new Reflections(packageName + ".commands.commands").getSubTypesOf(KoreCommand.class)){
+        for(Class<? extends KoreCommand> clazz: new Reflections(packageName + ".commands.impl").getSubTypesOf(KoreCommand.class)){
+
             KoreCommand command = null;
             try {
                 command = clazz.getDeclaredConstructor().newInstance();
@@ -199,14 +105,7 @@ public final class Kore extends JavaPlugin {
                 if(command.getCommandInfo().tabCompleter()){
                     getCommand(command.getCommandInfo().name()).setTabCompleter(command);
                 }
-                Console.info("[Kore] Enabled %module% module"
-                        .replace("%module%", command.getCommandInfo().name())
-                );
-            } catch (Exception e) {
-                System.err.println("[Kore] Can't load %module% module"
-                        .replace("%module%", command.getCommandInfo().name())
-                );
-            }
+            } catch (Exception ignored) {}
         }
     }
 

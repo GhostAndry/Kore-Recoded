@@ -2,9 +2,9 @@ package me.ghostdevelopment.kore.utils;
 
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 import me.ghostdevelopment.kore.Kore;
-import me.ghostdevelopment.kore.commands.commands.admin.CommandFly;
-import me.ghostdevelopment.kore.commands.commands.admin.CommandGod;
-import me.ghostdevelopment.kore.commands.commands.admin.CommandVanish;
+import me.ghostdevelopment.kore.commands.impl.admin.CommandFly;
+import me.ghostdevelopment.kore.commands.impl.admin.CommandGod;
+import me.ghostdevelopment.kore.commands.impl.admin.CommandVanish;
 
 import org.bukkit.entity.Player;
 

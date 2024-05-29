@@ -39,9 +39,7 @@ public abstract class KoreCommand implements CommandExecutor, TabCompleter {
                             || sender.hasPermission("kore.*")
                             || sender.hasPermission("*")
                     )) {
-                        sender.sendMessage(Color.Color(LangFile.getFile().getString("no-permissions")
-                                .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                        ));
+                        sender.sendMessage(LangFile.getString("no-permissions"));
                         return;
                     }
                 }
@@ -60,9 +58,7 @@ public abstract class KoreCommand implements CommandExecutor, TabCompleter {
                         || sender.hasPermission("kore.*")
                         || sender.hasPermission("*")
                 )) {
-                    sender.sendMessage(Color.Color(LangFile.getFile().getString("no-permissions")
-                            .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                    ));
+                    sender.sendMessage(LangFile.getString("no-permissions"));
                     return false;
                 }
             }

@@ -1,4 +1,4 @@
-package me.ghostdevelopment.kore.commands.commands.admin;
+package me.ghostdevelopment.kore.commands.impl.admin.gamemodes;
 
 import me.ghostdevelopment.kore.utils.Color;
 import me.ghostdevelopment.kore.commands.KoreCommand;
@@ -6,6 +6,7 @@ import me.ghostdevelopment.kore.commands.CommandInfo;
 import me.ghostdevelopment.kore.files.LangFile;
 import me.ghostdevelopment.kore.files.SettingsFile;
 import org.bukkit.Bukkit;
+import org.bukkit.GameMode;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -13,81 +14,61 @@ import org.bukkit.entity.Player;
 import java.util.ArrayList;
 import java.util.List;
 
-
 @SuppressWarnings("ALL")
-@CommandInfo(name = "kill", permission = "kore.kill", tabCompleter = true)
-public class CommandKill extends KoreCommand {
+@CommandInfo(name = "gma", permission = "kore.gamemode.adventure", permission2 =  "kore.gamemode.*", permission3 = "kore.gamemode", tabCompleter = true)
+public class CommandGMA extends KoreCommand {
 
     @Override
     public void execute(CommandSender sender, String[] args) {
-
-        if (!(SettingsFile.getFile().getBoolean("kill.enabled"))){
-            sender.sendMessage(Color.Color(LangFile.getFile().getString("command-disabled")
-                    .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-            ));
+        if(!(SettingsFile.getFile().getBoolean("gamemode.enabled"))){
+            sender.sendMessage(LangFile.getString("command-disabled"));
             return;
         }
 
-        if(sender instanceof Player){
-
+        if(sender instanceof Player) {
             Player player = (Player) sender;
 
-            if(args.length==0){
-
-                player.setHealth(0);
-                player.sendMessage(Color.Color(LangFile.getFile().getString("kill.killed")
+            if (args.length == 0) {
+                player.setGameMode(GameMode.ADVENTURE);
+                player.sendMessage(Color.Color(LangFile.getFile().getString("gamemode.changed")
                         .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                        .replaceAll("%player%", player.getName())
+                        .replaceAll("%gamemode%", player.getGameMode().name().toUpperCase())
                 ));
+            } else if (args.length == 1) {
 
-            } else if (args.length==1) {
-
-                try{
-
+                try {
                     Player target = Bukkit.getPlayer(args[0]);
 
-                    target.setHealth(0);
-
-                    player.sendMessage(Color.Color(LangFile.getFile().getString("kill.killed")
+                    target.setGameMode(GameMode.ADVENTURE);
+                    player.sendMessage(Color.Color(LangFile.getFile().getString("gamemode.changed-other")
                             .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
+                            .replaceAll("%gamemode%", target.getGameMode().name().toUpperCase())
                             .replaceAll("%player%", target.getName())
                     ));
-
-                }catch (Exception e){
+                } catch (Exception e) {
                     player.sendMessage(Color.Color(LangFile.getFile().getString("invalid-target")
                             .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
                     ));
                 }
-
-            }else{
-                player.sendMessage(Color.Color(LangFile.getFile().getString("kill.usage.player")
+            }
+        }else{
+            if(!(args.length==1)){
+                sender.sendMessage(Color.Color(LangFile.getFile().getString("gamemode.usage.console")
                         .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
                 ));
+                return;
             }
+            try {
+                Player target = Bukkit.getPlayer(args[0]);
 
-        }else{
-
-            if(args.length==1){
-
-                try{
-
-                    Player target = Bukkit.getPlayer(args[0]);
-
-                    target.setHealth(0);
-
-                    sender.sendMessage(Color.Color(LangFile.getFile().getString("kill.killed")
-                            .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                            .replaceAll("%player%", target.getName())
-                    ));
-
-                }catch (Exception e){
-                    sender.sendMessage(Color.Color(LangFile.getFile().getString("invalid-target")
-                            .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                    ));
-                }
-
-            }else {
-                sender.sendMessage(Color.Color(LangFile.getFile().getString("kill.usage.console")
+                target.setGameMode(GameMode.ADVENTURE);
+                sender.sendMessage(Color.Color(LangFile.getFile().getString("gamemode.changed-other")
+                        .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
+                        .replaceAll("%gamemode%", target.getGameMode().name().toUpperCase())
+                        .replaceAll("%player%", target.getName())
+                ));
+            } catch (Exception e) {
+                sender.sendMessage(Color.Color(LangFile.getFile().getString("invalid-target")
                         .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
                 ));
             }

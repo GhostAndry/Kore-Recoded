@@ -1,4 +1,4 @@
-package me.ghostdevelopment.kore.commands.commands.admin.gamemodes;
+package me.ghostdevelopment.kore.commands.impl.admin.gamemodes;
 
 import me.ghostdevelopment.kore.utils.Color;
 import me.ghostdevelopment.kore.commands.KoreCommand;
@@ -21,9 +21,7 @@ public class CommandGMSP extends KoreCommand {
     @Override
     public void execute(CommandSender sender, String[] args) {
         if(!(SettingsFile.getFile().getBoolean("gamemode.enabled"))){
-            sender.sendMessage(Color.Color(LangFile.getFile().getString("command-disabled")
-                    .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-            ));
+            sender.sendMessage(LangFile.getString("command-disabled"));
             return;
         }
 

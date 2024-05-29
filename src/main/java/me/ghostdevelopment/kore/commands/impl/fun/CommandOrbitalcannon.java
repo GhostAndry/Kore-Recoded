@@ -1,4 +1,4 @@
-package me.ghostdevelopment.kore.commands.commands.fun;
+package me.ghostdevelopment.kore.commands.impl.fun;
 
 import me.ghostdevelopment.kore.Kore;
 import me.ghostdevelopment.kore.utils.Color;
@@ -26,9 +26,7 @@ public class CommandOrbitalcannon extends KoreCommand {
     public void execute(CommandSender sender, String[] args) {
 
         if (!(SettingsFile.getFile().getBoolean("orbitalcannon.enabled"))) {
-            sender.sendMessage(Color.Color(LangFile.getFile().getString("command-disabled")
-                    .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-            ));
+            sender.sendMessage(LangFile.getString("command-disabled"));
             return;
         }
 

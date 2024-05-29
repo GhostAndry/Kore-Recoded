@@ -1,4 +1,4 @@
-package me.ghostdevelopment.kore.commands.commands.admin;
+package me.ghostdevelopment.kore.commands.impl.admin;
 
 import me.ghostdevelopment.kore.utils.Color;
 import me.ghostdevelopment.kore.commands.KoreCommand;
@@ -22,9 +22,7 @@ public class CommandGod extends KoreCommand {
     @Override
     public void execute(CommandSender sender, String[] args) {
         if(!(SettingsFile.getFile().getBoolean("godmode.enabled"))){
-            sender.sendMessage(Color.Color(LangFile.getFile().getString("command-disabled")
-                    .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-            ));
+            sender.sendMessage(LangFile.getString("command-disabled"));
             return;
         }
 
