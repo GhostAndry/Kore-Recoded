@@ -25,9 +25,7 @@ public class CommandKillMobs extends KoreCommand {
         }
 
         if(args.length!=0){
-            sender.sendMessage(Color.Color(LangFile.getFile().getString("killmobs.usage")
-                    .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-            ));
+            sender.sendMessage(LangFile.getString("killmobs.usage"));
             return;
         }
 
@@ -41,9 +39,7 @@ public class CommandKillMobs extends KoreCommand {
                         }
                     }
                 }
-                sender.sendMessage(Color.Color(LangFile.getFile().getString("killmobs.killed")
-                        .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                ));
+                sender.sendMessage(LangFile.getString("killmobs.killed"));
             });
         }else{
             for (World world : Bukkit.getWorlds()) {
@@ -53,9 +49,7 @@ public class CommandKillMobs extends KoreCommand {
                     }
                 }
             }
-            sender.sendMessage(Color.Color(LangFile.getFile().getString("killmobs.killed")
-                    .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-            ));
+            sender.sendMessage(LangFile.getString("killmobs.killed"));
         }
     }
 }

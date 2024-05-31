@@ -39,26 +39,26 @@ public class CommandSpeed extends KoreCommand {
                     try {
                         speed = Float.valueOf(args[0]);
                     } catch (NumberFormatException e) {
-                        player.sendMessage(Color.Color(LangFile.getFile().getString("speed.invalid-value")
-                                .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))));
+                        player.sendMessage(LangFile.getString("speed.invalid-value")
+                                .replaceAll("%prefix%", LangFile.getString("prefix")));
                         return;
                     }
                     if (speed > 10.0 || speed < 0.0) {
-                        player.sendMessage(Color.Color(LangFile.getFile().getString("speed.invalid-value")
-                                .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))));
+                        player.sendMessage(LangFile.getString("speed.invalid-value")
+                                .replaceAll("%prefix%", LangFile.getString("prefix")));
                         return;
                     }
 
                     if (player.isOnGround()) {
                         Functions.setSpeed(player, "walk", speed);
-                        player.sendMessage(Color.Color(LangFile.getFile().getString("speed.set")
-                                .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                                .replaceAll("%speed%", String.valueOf(speed))));
+                        player.sendMessage(LangFile.getString("speed.set")
+                                .replaceAll("%prefix%", LangFile.getString("prefix"))
+                                .replaceAll("%speed%", String.valueOf(speed)));
                     } else {
                         Functions.setSpeed(player, "fly", speed);
-                        player.sendMessage(Color.Color(LangFile.getFile().getString("speed.set")
-                                .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                                .replaceAll("%speed%", String.valueOf(speed))));
+                        player.sendMessage(LangFile.getString("speed.set")
+                                .replaceAll("%prefix%", LangFile.getString("prefix"))
+                                .replaceAll("%speed%", String.valueOf(speed)));
                     }
 
                     return;
@@ -72,39 +72,39 @@ public class CommandSpeed extends KoreCommand {
                         try {
                             speed = Float.valueOf(args[0]);
                         } catch (NumberFormatException e) {
-                            player.sendMessage(Color.Color(LangFile.getFile().getString("speed.invalid-value")
-                                    .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))));
+                            player.sendMessage(LangFile.getString("speed.invalid-value")
+                                    .replaceAll("%prefix%", LangFile.getString("prefix")));
                             return;
                         }
                         if (speed > 10.0 || speed < 0.0) {
-                            player.sendMessage(Color.Color(LangFile.getFile().getString("speed.invalid-value")
-                                    .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))));
+                            player.sendMessage(LangFile.getString("speed.invalid-value")
+                                    .replaceAll("%prefix%", LangFile.getString("prefix")));
                             return;
                         }
 
                         if (target.isOnGround()) {
                             Functions.setSpeed(target, "walk", speed);
-                            target.sendMessage(Color.Color(LangFile.getFile().getString("speed.set")
-                                    .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                                    .replaceAll("%speed%", String.valueOf(speed))));
-                            player.sendMessage(Color.Color(LangFile.getFile().getString("speed.set-other")
-                                    .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
+                            target.sendMessage(LangFile.getString("speed.set")
+                                    .replaceAll("%prefix%", LangFile.getString("prefix"))
+                                    .replaceAll("%speed%", String.valueOf(speed)));
+                            player.sendMessage(LangFile.getString("speed.set-other")
+                                    .replaceAll("%prefix%", LangFile.getString("prefix"))
                                     .replaceAll("%player%", target.getName())
-                                    .replaceAll("%speed%", String.valueOf(speed))));
+                                    .replaceAll("%speed%", String.valueOf(speed)));
                         } else {
                             Functions.setSpeed(target, "fly", speed);
-                            target.sendMessage(Color.Color(LangFile.getFile().getString("speed.set")
-                                    .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                                    .replaceAll("%speed%", String.valueOf(speed))));
-                            player.sendMessage(Color.Color(LangFile.getFile().getString("speed.set-other")
-                                    .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
+                            target.sendMessage(LangFile.getString("speed.set")
+                                    .replaceAll("%prefix%", LangFile.getString("prefix"))
+                                    .replaceAll("%speed%", String.valueOf(speed)));
+                            player.sendMessage(LangFile.getString("speed.set-other")
+                                    .replaceAll("%prefix%", LangFile.getString("prefix"))
                                     .replaceAll("%player%", target.getName())
-                                    .replaceAll("%speed%", String.valueOf(speed))));
+                                    .replaceAll("%speed%", String.valueOf(speed)));
                         }
                         return;
                     }catch (Exception e){
-                        sender.sendMessage(Color.Color(LangFile.getFile().getString("speed.invalid-value")
-                                .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))));
+                        sender.sendMessage(LangFile.getString("speed.invalid-value")
+                                .replaceAll("%prefix%", LangFile.getString("prefix")));
                         return;
                     }
 
@@ -119,46 +119,46 @@ public class CommandSpeed extends KoreCommand {
                             try {
                                 speed = Float.valueOf(args[0]);
                             } catch (NumberFormatException e) {
-                                player.sendMessage(Color.Color(LangFile.getFile().getString("speed.invalid-value")
-                                        .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))));
+                                player.sendMessage(LangFile.getString("speed.invalid-value")
+                                        .replaceAll("%prefix%", LangFile.getString("prefix")));
                                 return;
                             }
                             if (speed > 10.0 || speed < 0.0) {
-                                player.sendMessage(Color.Color(LangFile.getFile().getString("speed.invalid-value")
-                                        .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))));
+                                player.sendMessage(LangFile.getString("speed.invalid-value")
+                                        .replaceAll("%prefix%", LangFile.getString("prefix")));
                                 return;
                             }
 
                             if (type.equalsIgnoreCase("walk") || type.equalsIgnoreCase("walking")) {
                                 Functions.setSpeed(target, "walk", speed);
-                                target.sendMessage(Color.Color(LangFile.getFile().getString("speed.set")
-                                        .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                                        .replaceAll("%speed%", String.valueOf(speed))));
-                                player.sendMessage(Color.Color(LangFile.getFile().getString("speed.set-other")
-                                        .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
+                                target.sendMessage(LangFile.getString("speed.set")
+                                        .replaceAll("%prefix%", LangFile.getString("prefix"))
+                                        .replaceAll("%speed%", String.valueOf(speed)));
+                                player.sendMessage(LangFile.getString("speed.set-other")
+                                        .replaceAll("%prefix%", LangFile.getString("prefix"))
                                         .replaceAll("%player%", target.getName())
-                                        .replaceAll("%speed%", String.valueOf(speed))));
+                                        .replaceAll("%speed%", String.valueOf(speed)));
                             } else if (type.equalsIgnoreCase("fly") || type.equalsIgnoreCase("flight")) {
                                 Functions.setSpeed(target, "fly", speed);
-                                target.sendMessage(Color.Color(LangFile.getFile().getString("speed.set")
-                                        .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                                        .replaceAll("%speed%", String.valueOf(speed))));
-                                player.sendMessage(Color.Color(LangFile.getFile().getString("speed.set-other")
-                                        .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
+                                target.sendMessage(LangFile.getString("speed.set")
+                                        .replaceAll("%prefix%", LangFile.getString("prefix"))
+                                        .replaceAll("%speed%", String.valueOf(speed)));
+                                player.sendMessage(LangFile.getString("speed.set-other")
+                                        .replaceAll("%prefix%", LangFile.getString("prefix"))
                                         .replaceAll("%player%", target.getName())
-                                        .replaceAll("%speed%", String.valueOf(speed))));
+                                        .replaceAll("%speed%", String.valueOf(speed)));
                             } else {
-                                player.sendMessage(Color.Color(LangFile.getFile().getString("speed.invalid-type")
-                                        .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))));
+                                player.sendMessage(LangFile.getString("speed.invalid-type")
+                                        .replaceAll("%prefix%", LangFile.getString("prefix")));
                             }
                         }catch (Exception e){
-                            sender.sendMessage(Color.Color(LangFile.getFile().getString("speed.invalid-value")
-                                    .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))));
+                            sender.sendMessage(LangFile.getString("speed.invalid-value")
+                                    .replaceAll("%prefix%", LangFile.getString("prefix")));
                             return;
                         }
                     } catch (Exception e) {
-                        player.sendMessage(Color.Color(LangFile.getFile().getString("invalid-target")
-                                .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))));
+                        player.sendMessage(LangFile.getString("invalid-target")
+                                .replaceAll("%prefix%", LangFile.getString("prefix")));
                     }
 
                     return;
@@ -166,8 +166,8 @@ public class CommandSpeed extends KoreCommand {
                 }
 
             } else {
-                player.sendMessage(Color.Color(LangFile.getFile().getString("speed.usage.player")
-                        .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))));
+                player.sendMessage(LangFile.getString("speed.usage.player")
+                        .replaceAll("%prefix%", LangFile.getString("prefix")));
                 return;
             }
 
@@ -182,53 +182,53 @@ public class CommandSpeed extends KoreCommand {
                         try {
                             speed = Float.valueOf(args[0]);
                         } catch (NumberFormatException e) {
-                            sender.sendMessage(Color.Color(LangFile.getFile().getString("speed.invalid-value")
-                                    .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))));
+                            sender.sendMessage(LangFile.getString("speed.invalid-value")
+                                    .replaceAll("%prefix%", LangFile.getString("prefix")));
                             return;
                         }
                         if (speed > 10.0 || speed < 0.0) {
-                            sender.sendMessage(Color.Color(LangFile.getFile().getString("speed.invalid-value")
-                                    .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))));
+                            sender.sendMessage(LangFile.getString("speed.invalid-value")
+                                    .replaceAll("%prefix%", LangFile.getString("prefix")));
                             return;
                         }
 
                         if (type.equalsIgnoreCase("walk") || type.equalsIgnoreCase("walking")) {
                             Functions.setSpeed(target, "walk", speed);
-                            target.sendMessage(Color.Color(LangFile.getFile().getString("speed.set")
-                                    .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                                    .replaceAll("%speed%", String.valueOf(speed))));
-                            sender.sendMessage(Color.Color(LangFile.getFile().getString("speed.set-other")
-                                    .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
+                            target.sendMessage(LangFile.getString("speed.set")
+                                    .replaceAll("%prefix%", LangFile.getString("prefix"))
+                                    .replaceAll("%speed%", String.valueOf(speed)));
+                            sender.sendMessage(LangFile.getString("speed.set-other")
+                                    .replaceAll("%prefix%", LangFile.getString("prefix"))
                                     .replaceAll("%player%", target.getName())
-                                    .replaceAll("%speed%", String.valueOf(speed))));
+                                    .replaceAll("%speed%", String.valueOf(speed)));
                         } else if (type.equalsIgnoreCase("fly") || type.equalsIgnoreCase("flight")) {
                             Functions.setSpeed(target, "fly", speed);
-                            target.sendMessage(Color.Color(LangFile.getFile().getString("speed.set")
-                                    .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                                    .replaceAll("%speed%", String.valueOf(speed))));
-                            sender.sendMessage(Color.Color(LangFile.getFile().getString("speed.set-other")
-                                    .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
+                            target.sendMessage(LangFile.getString("speed.set")
+                                    .replaceAll("%prefix%", LangFile.getString("prefix"))
+                                    .replaceAll("%speed%", String.valueOf(speed)));
+                            sender.sendMessage(LangFile.getString("speed.set-other")
+                                    .replaceAll("%prefix%", LangFile.getString("prefix"))
                                     .replaceAll("%player%", target.getName())
-                                    .replaceAll("%speed%", String.valueOf(speed))));
+                                    .replaceAll("%speed%", String.valueOf(speed)));
                         } else {
-                            sender.sendMessage(Color.Color(LangFile.getFile().getString("speed.invalid-type")
-                                    .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))));
+                            sender.sendMessage(LangFile.getString("speed.invalid-type")
+                                    .replaceAll("%prefix%", LangFile.getString("prefix")));
                         }
                     }catch (Exception e){
-                        sender.sendMessage(Color.Color(LangFile.getFile().getString("speed.invalid-value")
-                                .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))));
+                        sender.sendMessage(LangFile.getString("speed.invalid-value")
+                                .replaceAll("%prefix%", LangFile.getString("prefix")));
                         return;
                     }
                 } catch (Exception e) {
-                    sender.sendMessage(Color.Color(LangFile.getFile().getString("invalid-target")
-                            .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))));
+                    sender.sendMessage(LangFile.getString("invalid-target")
+                            .replaceAll("%prefix%", LangFile.getString("prefix")));
                 }
 
                 return;
 
             } else {
-                sender.sendMessage(Color.Color(LangFile.getFile().getString("speed.usage.console")
-                        .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))));
+                sender.sendMessage(LangFile.getString("speed.usage.console")
+                        .replaceAll("%prefix%", LangFile.getString("prefix")));
                 return;
             }
         }

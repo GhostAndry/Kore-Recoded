@@ -37,14 +37,10 @@ public class CommandOrbitalcannon extends KoreCommand {
                     Player target = sender.getServer().getPlayer(args[0]);
                     location = target.getLocation();
                     if (SettingsFile.getFile().getBoolean("orbitalcannon.tell-to-victim")) {
-                        target.sendMessage(Color.Color(LangFile.getFile().getString("orbitalcannon.tell")
-                                .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                        ));
+                        target.sendMessage(LangFile.getString("orbitalcannon.tell"));
                     }
                 } catch (Exception e) {
-                    sender.sendMessage(Color.Color(LangFile.getFile().getString("invalid-target")
-                            .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                    ));
+                    sender.sendMessage(LangFile.getString("invalid-target"));
                 }
             }else {
                 int x = Integer.parseInt(args[0]);
@@ -59,9 +55,7 @@ public class CommandOrbitalcannon extends KoreCommand {
             location.getWorld().createExplosion(location, 150f, false);
 
         } else {
-            sender.sendMessage(Color.Color(LangFile.getFile().getString("orbitalcannon.usage")
-                    .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-            ));
+            sender.sendMessage(LangFile.getString("orbitalcannon.usage"));
         }
     }
 

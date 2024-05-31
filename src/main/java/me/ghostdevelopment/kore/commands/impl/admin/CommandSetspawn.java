@@ -28,21 +28,16 @@ public class CommandSetspawn extends KoreCommand {
 
             if (args.length==0) {
                 Functions.setSpawnLoc(player.getLocation());
-                player.sendMessage(Color.Color(LangFile.getFile().getString("spawn.set")
-                        .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
+                player.sendMessage(LangFile.getString("spawn.set")
                         .replaceAll("%x%", String.valueOf(player.getLocation().getX()))
                         .replaceAll("%y%", String.valueOf(player.getLocation().getY()))
                         .replaceAll("%z%", String.valueOf(player.getLocation().getZ()))
-                ));
+                );
                 return;
             }
-            player.sendMessage(Color.Color(LangFile.getFile().getString("spawn.usage.admin")
-                    .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-            ));
+            player.sendMessage(LangFile.getString("spawn.usage.admin"));
         }else{
-            sender.sendMessage(Color.Color(LangFile.getFile().getString("only-players")
-                    .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-            ));
+            sender.sendMessage(LangFile.getString("only-players"));
         }
     }
 }

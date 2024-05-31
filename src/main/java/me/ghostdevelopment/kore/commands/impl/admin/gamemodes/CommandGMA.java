@@ -30,47 +30,41 @@ public class CommandGMA extends KoreCommand {
 
             if (args.length == 0) {
                 player.setGameMode(GameMode.ADVENTURE);
-                player.sendMessage(Color.Color(LangFile.getFile().getString("gamemode.changed")
-                        .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
+                player.sendMessage(LangFile.getString("gamemode.changed")
                         .replaceAll("%gamemode%", player.getGameMode().name().toUpperCase())
-                ));
+                );
             } else if (args.length == 1) {
 
                 try {
                     Player target = Bukkit.getPlayer(args[0]);
 
                     target.setGameMode(GameMode.ADVENTURE);
-                    player.sendMessage(Color.Color(LangFile.getFile().getString("gamemode.changed-other")
-                            .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
+                    player.sendMessage(LangFile.getString("gamemode.changed-other")
                             .replaceAll("%gamemode%", target.getGameMode().name().toUpperCase())
                             .replaceAll("%player%", target.getName())
-                    ));
+                    );
                 } catch (Exception e) {
-                    player.sendMessage(Color.Color(LangFile.getFile().getString("invalid-target")
-                            .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                    ));
+                    player.sendMessage(LangFile.getString("invalid-target")
+                    );
                 }
             }
         }else{
             if(!(args.length==1)){
-                sender.sendMessage(Color.Color(LangFile.getFile().getString("gamemode.usage.console")
-                        .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                ));
+                sender.sendMessage(LangFile.getString("gamemode.usage.console")
+                );
                 return;
             }
             try {
                 Player target = Bukkit.getPlayer(args[0]);
 
                 target.setGameMode(GameMode.ADVENTURE);
-                sender.sendMessage(Color.Color(LangFile.getFile().getString("gamemode.changed-other")
-                        .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
+                sender.sendMessage(LangFile.getString("gamemode.changed-other")
                         .replaceAll("%gamemode%", target.getGameMode().name().toUpperCase())
                         .replaceAll("%player%", target.getName())
-                ));
+                );
             } catch (Exception e) {
-                sender.sendMessage(Color.Color(LangFile.getFile().getString("invalid-target")
-                        .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                ));
+                sender.sendMessage(LangFile.getString("invalid-target")
+                );
             }
         }
     }

@@ -33,10 +33,8 @@ public class CommandKill extends KoreCommand {
             if(args.length==0){
 
                 player.setHealth(0);
-                player.sendMessage(Color.Color(LangFile.getFile().getString("kill.killed")
-                        .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                        .replaceAll("%player%", player.getName())
-                ));
+                player.sendMessage(LangFile.getString("kill.killed")
+                        .replaceAll("%player%", player.getName()));
 
             } else if (args.length==1) {
 
@@ -46,21 +44,15 @@ public class CommandKill extends KoreCommand {
 
                     target.setHealth(0);
 
-                    player.sendMessage(Color.Color(LangFile.getFile().getString("kill.killed")
-                            .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                            .replaceAll("%player%", target.getName())
-                    ));
+                    player.sendMessage(LangFile.getString("kill.killed")
+                            .replaceAll("%player%", target.getName()));
 
                 }catch (Exception e){
-                    player.sendMessage(Color.Color(LangFile.getFile().getString("invalid-target")
-                            .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                    ));
+                    player.sendMessage(LangFile.getString("invalid-target"));
                 }
 
             }else{
-                player.sendMessage(Color.Color(LangFile.getFile().getString("kill.usage.player")
-                        .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                ));
+                player.sendMessage(LangFile.getString("kill.usage.player"));
             }
 
         }else{
@@ -73,21 +65,15 @@ public class CommandKill extends KoreCommand {
 
                     target.setHealth(0);
 
-                    sender.sendMessage(Color.Color(LangFile.getFile().getString("kill.killed")
-                            .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                            .replaceAll("%player%", target.getName())
-                    ));
+                    sender.sendMessage(LangFile.getString("kill.killed")
+                            .replaceAll("%player%", target.getName()));
 
                 }catch (Exception e){
-                    sender.sendMessage(Color.Color(LangFile.getFile().getString("invalid-target")
-                            .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                    ));
+                    sender.sendMessage(LangFile.getString("invalid-target"));
                 }
 
             }else {
-                sender.sendMessage(Color.Color(LangFile.getFile().getString("kill.usage.console")
-                        .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                ));
+                sender.sendMessage(LangFile.getString("kill.usage.console"));
             }
         }
     }

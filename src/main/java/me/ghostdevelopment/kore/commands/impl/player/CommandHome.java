@@ -35,14 +35,10 @@ public class CommandHome extends KoreCommand {
                         Location home = Functions.getHomeLoc(player);
 
                         player.teleport(home);
-                        player.sendMessage(Color.Color(LangFile.getFile().getString("home.teleported")
-                                .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                        ));
+                        player.sendMessage(LangFile.getString("home.teleported"));
                         return;
                     }else{
-                        player.sendMessage(Color.Color(LangFile.getFile().getString("home.not-set")
-                                .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                        ));
+                        player.sendMessage(LangFile.getString("home.not-set"));
                         return;
                     }
 
@@ -54,9 +50,7 @@ public class CommandHome extends KoreCommand {
                             try {
                                 Functions.addHome(player);
 
-                                player.sendMessage(Color.Color(LangFile.getFile().getString("home.set")
-                                        .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                                ));
+                                player.sendMessage(LangFile.getString("home.set"));
                                 return;
                             } catch (Exception e) {
                                 throw new NullPointerException(e.getMessage());
@@ -70,9 +64,7 @@ public class CommandHome extends KoreCommand {
 
                                 Functions.delHome(player);
 
-                                player.sendMessage(Color.Color(LangFile.getFile().getString("home.removed")
-                                        .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                                ));
+                                player.sendMessage(LangFile.getString("home.removed"));
                                 return;
 
                             }catch (Exception e) {
@@ -81,25 +73,19 @@ public class CommandHome extends KoreCommand {
                         }
 
                     }else{
-                        player.sendMessage(Color.Color(LangFile.getFile().getString("home.usage")
-                                .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                        ));
+                        player.sendMessage(LangFile.getString("home.usage"));
                         return;
                     }
 
                 }
 
             }else{
-                player.sendMessage(Color.Color(LangFile.getFile().getString("home.usage")
-                        .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                ));
+                player.sendMessage(LangFile.getString("home.usage"));
                 return;
             }
 
         }else{
-            sender.sendMessage(Color.Color(LangFile.getFile().getString("only-players")
-                    .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-            ));
+            sender.sendMessage(LangFile.getString("only-players"));
         }
 
     }

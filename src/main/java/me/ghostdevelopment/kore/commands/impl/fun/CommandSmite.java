@@ -38,21 +38,15 @@ public class CommandSmite extends KoreCommand {
 
                 world.strikeLightning(location);
 
-                sender.sendMessage(Color.Color(LangFile.getFile().getString("smite.smited-player")
-                        .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                        .replaceAll("%player%", target.getName())
-                ));
+                sender.sendMessage(LangFile.getString("smite.smited-player")
+                        .replaceAll("%player%", target.getName()));
 
             }catch (Exception e){
-                sender.sendMessage(Color.Color(LangFile.getFile().getString("invalid-target")
-                        .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                ));
+                sender.sendMessage(LangFile.getString("invalid-target"));
             }
 
         }else{
-            sender.sendMessage(Color.Color(LangFile.getFile().getString("smite.usage")
-                    .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-            ));
+            sender.sendMessage(LangFile.getString("smite.usage"));
         }
     }
 

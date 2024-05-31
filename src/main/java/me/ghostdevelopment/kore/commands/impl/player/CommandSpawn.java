@@ -45,13 +45,9 @@ public class CommandSpawn extends KoreCommand {
                     ) {
                         Location spawn = Functions.getSpawnLocation();
                         player.teleport(spawn);
-                        player.sendMessage(Color.Color(LangFile.getFile().getString("spawn.teleported")
-                                .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                        ));
+                        player.sendMessage(LangFile.getString("spawn.teleported"));
                     }else{
-                        player.sendMessage(Color.Color(LangFile.getFile().getString("spawn.nonexistent")
-                                .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                        ));
+                        player.sendMessage(LangFile.getString("spawn.nonexistent"));
                     }
                 }catch (Exception e){
                     player.sendMessage(Color.Color("&cAn error has occurred."));
@@ -71,24 +67,16 @@ public class CommandSpawn extends KoreCommand {
                         if(player.hasPermission("kore.spawn.other")) {
                             Location spawn = Functions.getSpawnLocation();
                             target.teleport(spawn);
-                            player.sendMessage(Color.Color(LangFile.getFile().getString("spawn.teleported-other")
-                                    .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                            ));
+                            player.sendMessage(LangFile.getString("spawn.teleported-other"));
                         }else{
-                            player.sendMessage(Color.Color(LangFile.getFile().getString("no-permissions")
-                                    .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                            ));
+                            player.sendMessage(LangFile.getString("no-permissions"));
                             return;
                         }
                     }else{
-                        player.sendMessage(Color.Color(LangFile.getFile().getString("spawn.nonexistent")
-                                .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                        ));
+                        player.sendMessage(LangFile.getString("spawn.nonexistent"));
                     }
                 }catch (Exception e){
-                    player.sendMessage(Color.Color(LangFile.getFile().getString("invalid-target")
-                            .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                    ));
+                    player.sendMessage(LangFile.getString("invalid-target"));
                 }
             }
         }else{
@@ -105,23 +93,15 @@ public class CommandSpawn extends KoreCommand {
                     ) {
                         Location spawn = Functions.getSpawnLocation();
                         target.teleport(spawn);
-                        sender.sendMessage(Color.Color(LangFile.getFile().getString("spawn.teleported")
-                                .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                        ));
+                        sender.sendMessage(LangFile.getString("spawn.teleported"));
                     }else{
-                        sender.sendMessage(Color.Color(LangFile.getFile().getString("spawn.nonexistent")
-                                .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                        ));
+                        sender.sendMessage(LangFile.getString("spawn.nonexistent"));
                     }
                 }catch (Exception e){
-                    sender.sendMessage(Color.Color(LangFile.getFile().getString("invalid-target")
-                            .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                    ));
+                    sender.sendMessage(LangFile.getString("invalid-target"));
                 }
             }else{
-                sender.sendMessage(Color.Color(LangFile.getFile().getString("spawn.usage.console")
-                        .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                ));
+                sender.sendMessage(LangFile.getString("spawn.usage.console"));
             }
         }
     }

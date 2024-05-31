@@ -35,15 +35,11 @@ public class CommandFly extends KoreCommand {
                 if(flying.contains(player)){
                     flying.remove(player);
                     player.setAllowFlight(false);
-                    player.sendMessage(Color.Color(LangFile.getFile().getString("fly.disabled")
-                            .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                    ));
+                    player.sendMessage(LangFile.getString("fly.disabled"));
                 }else{
                     flying.add(player);
                     player.setAllowFlight(true);
-                    player.sendMessage(Color.Color(LangFile.getFile().getString("fly.enabled")
-                            .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                    ));
+                    player.sendMessage(LangFile.getString("fly.enabled"));
                 }
             } else if (args.length==1) {
                 try {
@@ -52,33 +48,21 @@ public class CommandFly extends KoreCommand {
                     if (flying.contains(target)) {
                         flying.remove(target);
                         target.setAllowFlight(false);
-                        player.sendMessage(Color.Color(LangFile.getFile().getString("fly.disabled-other")
-                                .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                                .replaceAll("%player%", target.getName())
-                        ));
-                        target.sendMessage(Color.Color(LangFile.getFile().getString("fly.disabled")
-                                .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                        ));
+                        player.sendMessage(LangFile.getString("fly.disabled-other")
+                                .replaceAll("%player%", target.getName()));
+                        target.sendMessage(LangFile.getString("fly.disabled"));
                     } else {
                         flying.add(target);
                         target.setAllowFlight(true);
-                        player.sendMessage(Color.Color(LangFile.getFile().getString("fly.enabled-other")
-                                .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                                .replaceAll("%player%", target.getName())
-                        ));
-                        target.sendMessage(Color.Color(LangFile.getFile().getString("fly.enabled")
-                                .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                        ));
+                        player.sendMessage(LangFile.getString("fly.enabled-other")
+                                .replaceAll("%player%", target.getName()));
+                        target.sendMessage(LangFile.getString("fly.enabled"));
                     }
                 }catch (Exception e){
-                    player.sendMessage(Color.Color(LangFile.getFile().getString("invalid-target")
-                            .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                    ));
+                    player.sendMessage(LangFile.getString("invalid-target"));
                 }
             }else{
-                player.sendMessage(Color.Color(LangFile.getFile().getString("fly.usage.player")
-                        .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                ));
+                player.sendMessage(LangFile.getString("fly.usage.player"));
             }
         }else{
             if(args.length==1) {
@@ -88,33 +72,21 @@ public class CommandFly extends KoreCommand {
                     if (flying.contains(target)) {
                         flying.remove(target);
                         target.setAllowFlight(false);
-                        sender.sendMessage(Color.Color(LangFile.getFile().getString("fly.disabled-other")
-                                .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                                .replaceAll("%player%", target.getName())
-                        ));
-                        target.sendMessage(Color.Color(LangFile.getFile().getString("fly.disabled")
-                                .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                        ));
+                        sender.sendMessage(LangFile.getString("fly.disabled-other")
+                                .replaceAll("%player%", target.getName()));
+                        target.sendMessage(LangFile.getString("fly.disabled"));
                     } else {
                         flying.add(target);
                         target.setAllowFlight(true);
-                        sender.sendMessage(Color.Color(LangFile.getFile().getString("fly.enabled-other")
-                                .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                                .replaceAll("%player%", target.getName())
-                        ));
-                        target.sendMessage(Color.Color(LangFile.getFile().getString("fly.enabled")
-                                .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                        ));
+                        sender.sendMessage(LangFile.getString("fly.enabled-other")
+                                .replaceAll("%player%", target.getName()));
+                        target.sendMessage(LangFile.getString("fly.enabled"));
                     }
                 } catch (Exception e) {
-                    sender.sendMessage(Color.Color(LangFile.getFile().getString("invalid-target")
-                            .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                    ));
+                    sender.sendMessage(LangFile.getString("invalid-target"));
                 }
             }else{
-                sender.sendMessage(Color.Color(LangFile.getFile().getString("fly.usage.console")
-                        .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                ));
+                sender.sendMessage(LangFile.getString("fly.usage.console"));
             }
         }
     }

@@ -6,7 +6,6 @@ import me.ghostdevelopment.kore.commands.CommandInfo;
 import me.ghostdevelopment.kore.commands.KoreCommand;
 import me.ghostdevelopment.kore.files.LangFile;
 import me.ghostdevelopment.kore.files.SettingsFile;
-import me.ghostdevelopment.kore.utils.Color;
 import me.ghostdevelopment.kore.utils.Console;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
@@ -42,15 +41,11 @@ public class CommandSpawnmob extends KoreCommand {
 
                     Entity entity = player.getWorld().spawn(player.getLocation(), entityType.getEntityClass());
 
-                    player.sendMessage(Color.Color(LangFile.getFile().getString("spawnmob.spawned")
-                            .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                            .replaceAll("%num%", String.valueOf(1))
-                    ));
+                    player.sendMessage(LangFile.getString("spawnmob.spawned")
+                            .replaceAll("%num%", String.valueOf(1)));
                     return;
                 }catch (Exception e){
-                    player.sendMessage(Color.Color(LangFile.getFile().getString("spawnmob.invalid")
-                            .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                    ));
+                    player.sendMessage(LangFile.getString("spawnmob.invalid"));
                     return;
                 }
 
@@ -67,40 +62,32 @@ public class CommandSpawnmob extends KoreCommand {
                                 for(int i = 1; i <= entityNum; i++) {
                                     Entity entity = player.getWorld().spawn(player.getLocation(), entityType.getEntityClass());
                                 }
-                                player.sendMessage(Color.Color(LangFile.getFile().getString("spawnmob.spawned")
-                                        .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                                        .replaceAll("%num%", String.valueOf(entityNum))
-                                ));
+                                player.sendMessage(LangFile.getString("spawnmob.spawned")
+                                        .replaceAll("%num%", String.valueOf(entityNum)));
                             });
                             return;
                         } else {
                             for(int i = 1; i <= entityNum; i++) {
                                 Entity entity = player.getWorld().spawn(player.getLocation(), entityType.getEntityClass());
                             }
-                            player.sendMessage(Color.Color(LangFile.getFile().getString("spawnmob.spawned")
-                                    .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                                    .replaceAll("%num%", String.valueOf(entityNum))
-                            ));
+                            player.sendMessage(LangFile.getString("spawnmob.spawned")
+                                    .replaceAll("%num%", String.valueOf(entityNum)));
                             return;
                         }
                     } catch (Exception e) {
                         Console.warning(e + "\n\nUnable to spawn entity");
                     }
                 }catch (Exception e){
-                    player.sendMessage(Color.Color(LangFile.getFile().getString("spawnmob.invalid")
-                            .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                    ));
+                    player.sendMessage(LangFile.getString("spawnmob.invalid"));
                     return;
                 }
 
             } else {
-                player.sendMessage(Color.Color(LangFile.getFile().getString("spawnmob.usage")
-                        .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                ));
+                player.sendMessage(LangFile.getString("spawnmob.usage"));
                 return;
             }
         } else {
-            sender.sendMessage(Color.Color(LangFile.getFile().getString("only-players")));
+            sender.sendMessage(LangFile.getString("only-players"));
             return;
         }
     }

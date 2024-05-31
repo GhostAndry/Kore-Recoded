@@ -29,39 +29,29 @@ public class CommandHeal extends KoreCommand {
             Player player = (Player) sender;
 
             if(args.length>1){
-                player.sendMessage(Color.Color(LangFile.getFile().getString("heal.usage.player")
-                        .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                ));
+                player.sendMessage(LangFile.getString("heal.usage.player"));
                 return;
             }
             if (args.length==0) {
                 player.setHealth(20);
                 player.setFoodLevel(40);
-                player.sendMessage(Color.Color(LangFile.getFile().getString("heal.healed")
-                        .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                ));
+                player.sendMessage(LangFile.getString("heal.healed"));
             } else if (args.length==1) {
                 try{
                     Player target = Bukkit.getPlayer(args[0]);
 
                     target.setHealth(20);
                     target.setFoodLevel(40);
-                    player.sendMessage(Color.Color(LangFile.getFile().getString("heal.healed-other")
-                            .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                            .replaceAll("%player%", target.getName())
-                    ));
+                    player.sendMessage(LangFile.getString("heal.healed-other")
+                            .replaceAll("%player%", target.getName()));
                 }catch (Exception e){
-                    player.sendMessage(Color.Color(LangFile.getFile().getString("invalid-target")
-                            .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                    ));
+                    player.sendMessage(LangFile.getString("invalid-target"));
                     return;
                 }
             }
         }else{
             if(!(args.length==1)){
-                sender.sendMessage(Color.Color(LangFile.getFile().getString("heal.usage.console")
-                        .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                ));
+                sender.sendMessage(LangFile.getString("heal.usage.console"));
                 return;
             }
 
@@ -70,14 +60,10 @@ public class CommandHeal extends KoreCommand {
 
                 target.setFoodLevel(40);
                 target.setHealth(20);
-                sender.sendMessage(Color.Color(LangFile.getFile().getString("heal.healed-other")
-                        .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                        .replaceAll("%player%", target.getName())
-                ));
+                sender.sendMessage(LangFile.getString("heal.healed-other")
+                        .replaceAll("%player%", target.getName()));
             }catch (Exception e){
-                sender.sendMessage(Color.Color(LangFile.getFile().getString("invalid-target")
-                        .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                ));
+                sender.sendMessage(LangFile.getString("invalid-target"));
                 return;
             }
         }

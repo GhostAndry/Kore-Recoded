@@ -1,6 +1,5 @@
 package me.ghostdevelopment.kore.commands.impl.admin;
 
-import me.ghostdevelopment.kore.utils.Color;
 import me.ghostdevelopment.kore.commands.KoreCommand;
 import me.ghostdevelopment.kore.commands.CommandInfo;
 import me.ghostdevelopment.kore.files.LangFile;
@@ -38,10 +37,8 @@ public class CommandTeleport extends KoreCommand {
                         Player target = Bukkit.getPlayer(args[0]);
 
                         player.teleport(target.getLocation());
-                        player.sendMessage(Color.Color(LangFile.getFile().getString("teleport.teleported")
-                                .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                                .replaceAll("%loc%", target.getName())
-                        ));
+                        player.sendMessage(LangFile.getString("teleport.teleported")
+                                .replaceAll("%loc%", target.getName()));
                         return;
 
                     }else if(args.length==2){
@@ -50,11 +47,9 @@ public class CommandTeleport extends KoreCommand {
                         Player target2 = Bukkit.getPlayer(args[1]);
 
                         target.teleport(target2.getLocation());
-                        player.sendMessage(Color.Color(LangFile.getFile().getString("teleport.teleported-other")
-                                .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
+                        player.sendMessage(LangFile.getString("teleport.teleported-other")
                                 .replaceAll("%player%", target.getName())
-                                .replaceAll("%loc%", target2.getName())
-                        ));
+                                .replaceAll("%loc%", target2.getName()));
                         return;
 
                     } else if (args.length==3) {
@@ -68,10 +63,8 @@ public class CommandTeleport extends KoreCommand {
                         player.teleport(loc);
 
                         String msgloc = x+" "+y+" "+z;
-                        player.sendMessage(Color.Color(LangFile.getFile().getString("teleport.teleported")
-                                .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                                .replaceAll("%loc%", msgloc)
-                        ));
+                        player.sendMessage(LangFile.getString("teleport.teleported")
+                                .replaceAll("%loc%", msgloc));
 
                         return;
 
@@ -88,27 +81,21 @@ public class CommandTeleport extends KoreCommand {
                         target.teleport(loc);
 
                         String msgloc = x+" "+y+" "+z;
-                        player.sendMessage(Color.Color(LangFile.getFile().getString("teleport.teleported-other")
-                                .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
+                        player.sendMessage(LangFile.getString("teleport.teleported-other")
                                 .replaceAll("%player%", target.getName())
-                                .replaceAll("%loc%", msgloc)
-                        ));
+                                .replaceAll("%loc%", msgloc));
 
                         return;
 
                     }
 
                 }catch (Exception e){
-                    player.sendMessage(Color.Color(LangFile.getFile().getString("invalid-target")
-                            .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                    ));
+                    player.sendMessage(LangFile.getString("invalid-target"));
                     return;
                 }
 
             }else{
-                player.sendMessage(Color.Color(LangFile.getFile().getString("teleport.usage.player")
-                        .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                ));
+                player.sendMessage(LangFile.getString("teleport.usage.player"));
                 return;
             }
 
@@ -118,22 +105,16 @@ public class CommandTeleport extends KoreCommand {
                     Player target = Bukkit.getPlayer(args[0]);
                     Player target2 = Bukkit.getPlayer(args[1]);
                     target.teleport(target2);
-                    sender.sendMessage(Color.Color(LangFile.getFile().getString("teleport.teleported-other")
-                            .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
+                    sender.sendMessage(LangFile.getString("teleport.teleported-other")
                             .replaceAll("%player%", target.getName())
-                            .replaceAll("%loc%", target2.getName())
-                    ));
+                            .replaceAll("%loc%", target2.getName()));
                     return;
                 }catch (Exception e){
-                    sender.sendMessage(Color.Color(LangFile.getFile().getString("invalid-target")
-                            .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                    ));
+                    sender.sendMessage(LangFile.getString("invalid-target"));
                     return;
                 }
             }else{
-                sender.sendMessage(Color.Color(LangFile.getFile().getString("teleport.usage.console")
-                        .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                ));
+                sender.sendMessage(LangFile.getString("teleport.usage.console"));
                 return;
             }
         }

@@ -5,7 +5,6 @@ import me.ghostdevelopment.kore.commands.KoreCommand;
 import me.ghostdevelopment.kore.files.SettingsFile;
 import me.ghostdevelopment.kore.files.StorageFile;
 import me.ghostdevelopment.kore.files.LangFile;
-import me.ghostdevelopment.kore.utils.Color;
 import me.ghostdevelopment.kore.Functions;
 
 import org.bukkit.command.CommandSender;
@@ -42,28 +41,20 @@ public class CommandWarp extends KoreCommand {
                             if (!Functions.checkWarp(warp_name)) {
                                 Functions.addWarp(player.getLocation(), warp_name);
 
-                                player.sendMessage(Color.Color(LangFile.getFile().getString("warp.admin.added")
-                                        .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                                        .replaceAll("%warp%", warp_name)
-                                ));
+                                player.sendMessage(LangFile.getString("warp.admin.added")
+                                        .replaceAll("%warp%", warp_name));
                                 return;
                             } else {
-                                player.sendMessage(Color.Color(LangFile.getFile().getString("warp.admin.already-exist")
-                                        .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                                        .replaceAll("%warp%", warp_name)
-                                ));
+                                player.sendMessage(LangFile.getString("warp.admin.already-exist")
+                                        .replaceAll("%warp%", warp_name));
                                 return;
                             }
                         }catch (Exception e){
-                            player.sendMessage(Color.Color(LangFile.getFile().getString("warp.usage.admin")
-                                    .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                            ));
+                            player.sendMessage(LangFile.getString("warp.usage.admin"));
                             return;
                         }
                     }else{
-                        player.sendMessage(Color.Color(LangFile.getFile().getString("no-permissions")
-                                .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                        ));
+                        player.sendMessage(LangFile.getString("no-permissions"));
                         return;
                     }
 
@@ -75,28 +66,20 @@ public class CommandWarp extends KoreCommand {
                             if (Functions.checkWarp(warp_name)) {
                                 Functions.delWarp(warp_name);
 
-                                player.sendMessage(Color.Color(LangFile.getFile().getString("warp.admin.removed")
-                                        .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                                        .replaceAll("%warp%", warp_name)
-                                ));
+                                player.sendMessage(LangFile.getString("warp.admin.removed")
+                                        .replaceAll("%warp%", warp_name));
                                 return;
                             } else {
-                                player.sendMessage(Color.Color(LangFile.getFile().getString("warp.not-found")
-                                        .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                                ));
+                                player.sendMessage(LangFile.getString("warp.not-found"));
                                 return;
                             }
                         }catch (Exception e){
-                            player.sendMessage(Color.Color(LangFile.getFile().getString("warp.usage.admin")
-                                    .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                            ));
+                            player.sendMessage(LangFile.getString("warp.usage.admin"));
                             return;
                         }
 
                     }else{
-                        player.sendMessage(Color.Color(LangFile.getFile().getString("no-permissions")
-                                .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                        ));
+                        player.sendMessage(LangFile.getString("no-permissions"));
                         return;
                     }
 
@@ -108,15 +91,11 @@ public class CommandWarp extends KoreCommand {
                         if (Functions.checkWarp(warp_name)) {
 
                             player.teleport(Functions.getWarpLoc(warp_name));
-                            player.sendMessage(Color.Color(LangFile.getFile().getString("warp.warped")
-                                    .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                                    .replaceAll("%warp%", warp_name)
-                            ));
+                            player.sendMessage(LangFile.getString("warp.warped")
+                                    .replaceAll("%warp%", warp_name));
                             return;
                         }else{
-                            player.sendMessage(Color.Color(LangFile.getFile().getString("warp.not-found")
-                                    .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                            ));
+                            player.sendMessage(LangFile.getString("warp.not-found"));
                             return;
                         }
 
@@ -128,26 +107,18 @@ public class CommandWarp extends KoreCommand {
                             if (Functions.checkWarp(warp_name)) {
 
                                 target.teleport(Functions.getWarpLoc(warp_name));
-                                target.sendMessage(Color.Color(LangFile.getFile().getString("warp.warped")
-                                        .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
+                                target.sendMessage(LangFile.getString("warp.warped")
+                                        .replaceAll("%warp%", warp_name));
+                                player.sendMessage(LangFile.getString("warp.warped-other")
                                         .replaceAll("%warp%", warp_name)
-                                ));
-                                player.sendMessage(Color.Color(LangFile.getFile().getString("warp.warped-other")
-                                        .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                                        .replaceAll("%warp%", warp_name)
-                                        .replaceAll("%player%", target.getName())
-                                ));
+                                        .replaceAll("%player%", target.getName()));
                                 return;
                             } else {
-                                player.sendMessage(Color.Color(LangFile.getFile().getString("warp.not-found")
-                                        .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                                ));
+                                player.sendMessage(LangFile.getString("warp.not-found"));
                                 return;
                             }
                         }catch (Exception e){
-                            player.sendMessage(Color.Color(LangFile.getFile().getString("invalid-target")
-                                    .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                            ));
+                            player.sendMessage(LangFile.getString("invalid-target"));
                             return;
                         }
 
@@ -156,9 +127,7 @@ public class CommandWarp extends KoreCommand {
                 }
 
             }else{
-                player.sendMessage(Color.Color(LangFile.getFile().getString("warp.usage.player")
-                        .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                ));
+                player.sendMessage(LangFile.getString("warp.usage.player"));
                 return;
             }
 
@@ -172,33 +141,23 @@ public class CommandWarp extends KoreCommand {
                     if (Functions.checkWarp(warp_name)) {
 
                         target.teleport(Functions.getWarpLoc(warp_name));
-                        target.sendMessage(Color.Color(LangFile.getFile().getString("warp.warped")
-                                .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
+                        target.sendMessage(LangFile.getString("warp.warped")
+                                .replaceAll("%warp%", warp_name));
+                        sender.sendMessage(LangFile.getString("warp.warped-other")
                                 .replaceAll("%warp%", warp_name)
-                        ));
-                        sender.sendMessage(Color.Color(LangFile.getFile().getString("warp.warped-other")
-                                .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                                .replaceAll("%warp%", warp_name)
-                                .replaceAll("%player%", target.getName())
-                        ));
+                                .replaceAll("%player%", target.getName()));
                         return;
                     } else {
-                        sender.sendMessage(Color.Color(LangFile.getFile().getString("warp.not-found")
-                                .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                        ));
+                        sender.sendMessage(LangFile.getString("warp.not-found"));
                         return;
                     }
                 }catch (Exception e){
-                    sender.sendMessage(Color.Color(LangFile.getFile().getString("invalid-target")
-                            .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                    ));
+                    sender.sendMessage(LangFile.getString("invalid-target"));
                     return;
                 }
 
             }else{
-                sender.sendMessage(Color.Color(LangFile.getFile().getString("warp.usage.console")
-                        .replaceAll("%prefix%", LangFile.getFile().getString("prefix"))
-                ));
+                sender.sendMessage(LangFile.getString("warp.usage.console"));
                 return;
             }
         }
