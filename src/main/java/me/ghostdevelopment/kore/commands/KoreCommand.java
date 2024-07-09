@@ -1,7 +1,6 @@
 package me.ghostdevelopment.kore.commands;
 
 import me.ghostdevelopment.kore.Kore;
-import me.ghostdevelopment.kore.utils.Color;
 import me.ghostdevelopment.kore.files.LangFile;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandExecutor;
@@ -16,7 +15,7 @@ import java.util.Objects;
 public abstract class KoreCommand implements CommandExecutor, TabCompleter {
     private final CommandInfo commandInfo;
 
-    public KoreCommand(){
+    public KoreCommand() {
         commandInfo = getClass().getDeclaredAnnotation(CommandInfo.class);
         Objects.requireNonNull(commandInfo, "Commands must have @CommandInfo annotations");
     }
@@ -28,9 +27,9 @@ public abstract class KoreCommand implements CommandExecutor, TabCompleter {
     @Override
     public boolean onCommand(CommandSender sender, org.bukkit.command.Command command, String label, String[] args) {
 
-        if(Kore.getInstance().getConfig().getBoolean("commands.asynchronously")) {
+        if (Kore.getInstance().getConfig().getBoolean("commands.asynchronously")) {
 
-            Bukkit.getScheduler().runTask(Kore.getInstance(), ()->{
+            Bukkit.getScheduler().runTask(Kore.getInstance(), () -> {
 
                 if (!(commandInfo.permission().isEmpty())) {
                     if (!(sender.hasPermission(commandInfo.permission())
@@ -50,7 +49,7 @@ public abstract class KoreCommand implements CommandExecutor, TabCompleter {
 
             return true;
 
-        }else{
+        } else {
             if (!(commandInfo.permission().isEmpty())) {
                 if (!(sender.hasPermission(commandInfo.permission())
                         || sender.hasPermission(commandInfo.permission2())
@@ -69,6 +68,7 @@ public abstract class KoreCommand implements CommandExecutor, TabCompleter {
     }
 
     public abstract void execute(CommandSender sender, String[] args);
+
     public List<String> onTabComplete(CommandSender sender, org.bukkit.command.Command command, String alias, String[] args) {
         return new ArrayList<>();
     }

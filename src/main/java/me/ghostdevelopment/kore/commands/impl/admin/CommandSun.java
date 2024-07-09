@@ -12,7 +12,7 @@ public class CommandSun extends KoreCommand {
     @Override
     public void execute(CommandSender sender, String[] args) {
 
-        for(World world : Bukkit.getServer().getWorlds()){
+        for (World world : Bukkit.getServer().getWorlds()) {
             world.setTime(1000);
             world.setStorm(false);
             world.setWeatherDuration(1000000000);

@@ -9,9 +9,9 @@ import org.bukkit.event.entity.EntityDamageEvent;
 public class GodMode implements Listener {
 
     @EventHandler
-    public void PlayerInGodModeDamage(EntityDamageEvent event){
+    public void PlayerInGodModeDamage(EntityDamageEvent event) {
         if (event.getEntity() instanceof Player) {
-            if(CommandGod.getGod().contains(((Player) event.getEntity()).getPlayer())){
+            if (CommandGod.getGod().contains(((Player) event.getEntity()).getPlayer())) {
                 event.setCancelled(true);
             }
         }

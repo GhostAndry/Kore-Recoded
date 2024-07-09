@@ -22,7 +22,17 @@ import java.util.ArrayList;
 @SuppressWarnings("ALL")
 public final class Kore extends JavaPlugin {
 
-    @Getter private static Kore instance;
+    @Getter
+    private static Kore instance;
+
+    public static int calculateY() {
+        String serverVersion = Bukkit.getServer().getVersion();
+        String[] versionParts = serverVersion.split("\\.");
+        int majorVersion = Integer.parseInt(versionParts[1]);
+
+        if (majorVersion >= 18) return -64;
+        else return 0;
+    }
 
     @Override
     public void onEnable() {
@@ -67,16 +77,7 @@ public final class Kore extends JavaPlugin {
 
     }
 
-    public static int calculateY(){
-        String serverVersion = Bukkit.getServer().getVersion();
-        String[] versionParts = serverVersion.split("\\.");
-        int majorVersion = Integer.parseInt(versionParts[1]);
-
-        if(majorVersion>=18) return -64;
-        else return 0;
-    }
-
-    private void addEntities(){
+    private void addEntities() {
         for (EntityType entityType : EntityType.values()) {
             if (entityType.isAlive() && !entityType.name().equals("PLAYER")) {
                 CommandSpawnmob.getEntities().add(entityType);
@@ -86,7 +87,7 @@ public final class Kore extends JavaPlugin {
 
     private void registerCommands() throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
         String packageName = getClass().getPackage().getName();
-        for(Class<? extends KoreCommand> clazz: new Reflections(packageName + ".commands.impl").getSubTypesOf(KoreCommand.class)){
+        for (Class<? extends KoreCommand> clazz : new Reflections(packageName + ".commands.impl").getSubTypesOf(KoreCommand.class)) {
 
             KoreCommand command = null;
             try {
@@ -102,46 +103,47 @@ public final class Kore extends JavaPlugin {
             }
             try {
                 getCommand(command.getCommandInfo().name()).setExecutor(command);
-                if(command.getCommandInfo().tabCompleter()){
+                if (command.getCommandInfo().tabCompleter()) {
                     getCommand(command.getCommandInfo().name()).setTabCompleter(command);
                 }
-            } catch (Exception ignored) {}
+            } catch (Exception ignored) {
+            }
         }
     }
 
-    private void registerEvents(){
+    private void registerEvents() {
         ArrayList<Listener> events = new ArrayList<>();
 
-        if(SettingsFile.getFile().getBoolean("godmode.enabled")){
+        if (SettingsFile.getFile().getBoolean("godmode.enabled")) {
             events.add(new GodMode());
         }
-        if(SettingsFile.getFile().getBoolean("vanish.enabled")){
+        if (SettingsFile.getFile().getBoolean("vanish.enabled")) {
             events.add(new VanishPlayer());
         }
-        if(SettingsFile.getFile().getBoolean("spawn.enabled")){
-            if(SettingsFile.getFile().getBoolean("spawn.on-join")){
+        if (SettingsFile.getFile().getBoolean("spawn.enabled")) {
+            if (SettingsFile.getFile().getBoolean("spawn.on-join")) {
                 events.add(new Spawn());
             }
         }
 
-        if(SettingsFile.getFile().getBoolean("chat.enabled")){
+        if (SettingsFile.getFile().getBoolean("chat.enabled")) {
             events.add(new ChatManager());
         }
 
-        if(SettingsFile.getFile().getBoolean("world-manipulator.enable")){
+        if (SettingsFile.getFile().getBoolean("world-manipulator.enable")) {
             events.add(new WorldManipulator());
         }
 
-        if(!(Kore.getInstance().getConfig().getString("server.join-msg") == null || Kore.getInstance().getConfig().getString("server.join-msg").isEmpty())){
+        if (!(Kore.getInstance().getConfig().getString("server.join-msg") == null || Kore.getInstance().getConfig().getString("server.join-msg").isEmpty())) {
             events.add(new JoinMSG());
         }
 
-        for(Listener l : events){
+        for (Listener l : events) {
             getServer().getPluginManager().registerEvents(l, this);
         }
     }
 
-    private void setupFiles(){
+    private void setupFiles() {
 
         SettingsFile.setUp();
 

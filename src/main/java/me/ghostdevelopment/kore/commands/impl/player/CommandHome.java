@@ -1,9 +1,8 @@
 package me.ghostdevelopment.kore.commands.impl.player;
 
 import me.ghostdevelopment.kore.Functions;
-import me.ghostdevelopment.kore.utils.Color;
-import me.ghostdevelopment.kore.commands.KoreCommand;
 import me.ghostdevelopment.kore.commands.CommandInfo;
+import me.ghostdevelopment.kore.commands.KoreCommand;
 import me.ghostdevelopment.kore.files.LangFile;
 import me.ghostdevelopment.kore.files.SettingsFile;
 import org.bukkit.Location;
@@ -17,36 +16,36 @@ public class CommandHome extends KoreCommand {
     @Override
     public void execute(CommandSender sender, String[] args) {
 
-        if (!(SettingsFile.getFile().getBoolean("home.enabled"))){
+        if (!(SettingsFile.getFile().getBoolean("home.enabled"))) {
             sender.sendMessage(LangFile.getString("command-disabled"));
             return;
         }
 
-        if(sender instanceof Player){
+        if (sender instanceof Player) {
 
             Player player = (Player) sender;
 
-            if(args.length==0||args.length==1){
+            if (args.length == 0 || args.length == 1) {
 
-                if(args.length==0){
+                if (args.length == 0) {
 
-                    if(Functions.checkHome(player)){
+                    if (Functions.checkHome(player)) {
 
                         Location home = Functions.getHomeLoc(player);
 
                         player.teleport(home);
                         player.sendMessage(LangFile.getString("home.teleported"));
                         return;
-                    }else{
+                    } else {
                         player.sendMessage(LangFile.getString("home.not-set"));
                         return;
                     }
 
-                } else if (args.length==1) {
+                } else if (args.length == 1) {
 
-                    if(args[0].equalsIgnoreCase("set")){
+                    if (args[0].equalsIgnoreCase("set")) {
 
-                        if(!Functions.checkHome(player)) {
+                        if (!Functions.checkHome(player)) {
                             try {
                                 Functions.addHome(player);
 
@@ -59,32 +58,32 @@ public class CommandHome extends KoreCommand {
 
                     } else if (args[0].equalsIgnoreCase("remove")) {
 
-                        if(Functions.checkHome(player)){
-                            try{
+                        if (Functions.checkHome(player)) {
+                            try {
 
                                 Functions.delHome(player);
 
                                 player.sendMessage(LangFile.getString("home.removed"));
                                 return;
 
-                            }catch (Exception e) {
+                            } catch (Exception e) {
                                 throw new NullPointerException(e.getMessage());
                             }
                         }
 
-                    }else{
+                    } else {
                         player.sendMessage(LangFile.getString("home.usage"));
                         return;
                     }
 
                 }
 
-            }else{
+            } else {
                 player.sendMessage(LangFile.getString("home.usage"));
                 return;
             }
 
-        }else{
+        } else {
             sender.sendMessage(LangFile.getString("only-players"));
         }
 

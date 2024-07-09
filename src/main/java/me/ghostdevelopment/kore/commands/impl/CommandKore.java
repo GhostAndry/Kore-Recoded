@@ -2,11 +2,11 @@ package me.ghostdevelopment.kore.commands.impl;
 
 import me.ghostdevelopment.kore.Functions;
 import me.ghostdevelopment.kore.Kore;
-import me.ghostdevelopment.kore.utils.Color;
-import me.ghostdevelopment.kore.commands.KoreCommand;
 import me.ghostdevelopment.kore.commands.CommandInfo;
+import me.ghostdevelopment.kore.commands.KoreCommand;
 import me.ghostdevelopment.kore.files.LangFile;
 import me.ghostdevelopment.kore.files.SettingsFile;
+import me.ghostdevelopment.kore.utils.Color;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -21,7 +21,7 @@ public class CommandKore extends KoreCommand {
 
     @Override
     public void execute(CommandSender sender, String[] args) {
-        if(sender instanceof Player) {
+        if (sender instanceof Player) {
             Player player = (Player) sender;
 
             if (args.length == 0) {
@@ -69,19 +69,19 @@ public class CommandKore extends KoreCommand {
                             "&7/warp &c<add|remove> <name>\n" +
                             "&7/warp &c<name> &1[player]\n" +
                             "&7/home &1[set|remove]\n" +
-                            "&7/speed &c<value> &1[player] [type]\n"+
-                            "&7/killmobs\n"+
+                            "&7/speed &c<value> &1[player] [type]\n" +
+                            "&7/killmobs\n" +
                             "&7/spawnmob &c<mob> &1[num]\n"));
-                }else{
+                } else {
                     player.sendMessage(Color.Color("\n&aThis server is running Kore v$ver\n".replace("$ver", Kore.getInstance().getDescription().getVersion())));
                 }
-            }else if (args.length==2) {
+            } else if (args.length == 2) {
 
-                if (args[0].equalsIgnoreCase("lang")||args[0].equalsIgnoreCase("language")) {
+                if (args[0].equalsIgnoreCase("lang") || args[0].equalsIgnoreCase("language")) {
 
                     String lang = args[1];
 
-                    if(!LangFile.checkFileExists(lang)){
+                    if (!LangFile.checkFileExists(lang)) {
                         player.sendMessage(LangFile.getString("messages.not-exist"));
                         return;
                     }
@@ -93,11 +93,11 @@ public class CommandKore extends KoreCommand {
                     player.sendMessage(LangFile.getString("messages.successfully-set")
                             .replaceAll("%lang%", LangFile.getString("lang-name")));
 
-                }else{
+                } else {
                     player.sendMessage(Color.Color("\n&aThis server is running Kore."));
                 }
             }
-        }else{
+        } else {
             if (args.length == 0) {
                 sender.sendMessage(Color.Color("\n&aThis server is running Kore."));
             } else if (args.length == 1) {
@@ -138,32 +138,32 @@ public class CommandKore extends KoreCommand {
                             "&7/warp &c<add|remove> <name>\n" +
                             "&7/warp &c<name> <player>\n" +
                             "&7/home &c<set|remove>\n" +
-                            "&7/speed &c<value> <player> <type>\n"+
-                            "/killmobs\n"+
+                            "&7/speed &c<value> <player> <type>\n" +
+                            "/killmobs\n" +
                             "\n"));
-                }else{
+                } else {
                     sender.sendMessage(Color.Color("\n&aThis server is running Kore."));
                 }
-            } else if (args.length==2) {
+            } else if (args.length == 2) {
 
-                 if (args[0].equalsIgnoreCase("lang")||args[0].equalsIgnoreCase("language")) {
+                if (args[0].equalsIgnoreCase("lang") || args[0].equalsIgnoreCase("language")) {
 
-                     String lang = args[1];
+                    String lang = args[1];
 
-                     if(!LangFile.checkFileExists(lang)){
-                         sender.sendMessage(LangFile.getString("messages.not-exist"));
-                         return;
-                     }
+                    if (!LangFile.checkFileExists(lang)) {
+                        sender.sendMessage(LangFile.getString("messages.not-exist"));
+                        return;
+                    }
 
-                     SettingsFile.getFile().set("messages", lang);
-                     SettingsFile.save();
-                     Functions.reloadFiles();
+                    SettingsFile.getFile().set("messages", lang);
+                    SettingsFile.save();
+                    Functions.reloadFiles();
 
-                     sender.sendMessage(LangFile.getString("messages.successfully-set")
-                             .replaceAll("%lang%", LangFile.getString("lang-name")));
+                    sender.sendMessage(LangFile.getString("messages.successfully-set")
+                            .replaceAll("%lang%", LangFile.getString("lang-name")));
 
-                }else{
-                     sender.sendMessage(Color.Color("\n&aThis server is running Kore."));
+                } else {
+                    sender.sendMessage(Color.Color("\n&aThis server is running Kore."));
                 }
             }
         }

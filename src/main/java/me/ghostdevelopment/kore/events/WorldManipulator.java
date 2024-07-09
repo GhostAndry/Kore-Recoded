@@ -14,11 +14,11 @@ import org.bukkit.event.weather.WeatherChangeEvent;
 public class WorldManipulator implements Listener {
 
     @EventHandler(priority = EventPriority.HIGHEST)
-    public void onPlayerHunger(FoodLevelChangeEvent event){
+    public void onPlayerHunger(FoodLevelChangeEvent event) {
 
-        if(SettingsFile.getFile().getBoolean("world-manipulator.enable")){
-            if(SettingsFile.getFile().getBoolean("world-manipulator.rules.anti-hunger")){
-                if(event.getFoodLevel()<20){
+        if (SettingsFile.getFile().getBoolean("world-manipulator.enable")) {
+            if (SettingsFile.getFile().getBoolean("world-manipulator.rules.anti-hunger")) {
+                if (event.getFoodLevel() < 20) {
                     event.setFoodLevel(20);
                 }
             }
@@ -26,40 +26,41 @@ public class WorldManipulator implements Listener {
     }
 
     @EventHandler(priority = EventPriority.HIGHEST)
-    public void onWeatherChange(WeatherChangeEvent event){
+    public void onWeatherChange(WeatherChangeEvent event) {
 
-        if(SettingsFile.getFile().getBoolean("world-manipulator.enable")){
-            if(SettingsFile.getFile().getBoolean("world-manipulator.rules.anti-weather")){
+        if (SettingsFile.getFile().getBoolean("world-manipulator.enable")) {
+            if (SettingsFile.getFile().getBoolean("world-manipulator.rules.anti-weather")) {
                 event.setCancelled(true);
             }
         }
     }
 
     @EventHandler(priority = EventPriority.HIGHEST)
-    public void onPlayerJoin(PlayerJoinEvent event){
+    public void onPlayerJoin(PlayerJoinEvent event) {
 
-        if(SettingsFile.getFile().getBoolean("world-manipulator.enable")){
-            if(SettingsFile.getFile().getBoolean("world-manipulator.rules.anti-join-message")){
+        if (SettingsFile.getFile().getBoolean("world-manipulator.enable")) {
+            if (SettingsFile.getFile().getBoolean("world-manipulator.rules.anti-join-message")) {
                 event.setJoinMessage(null);
             }
         }
     }
-    @EventHandler(priority = EventPriority.HIGHEST)
-    public void onPlayerQuit(PlayerQuitEvent event){
 
-        if(SettingsFile.getFile().getBoolean("world-manipulator.enable")){
-            if(SettingsFile.getFile().getBoolean("world-manipulator.rules.anti-join-message")){
+    @EventHandler(priority = EventPriority.HIGHEST)
+    public void onPlayerQuit(PlayerQuitEvent event) {
+
+        if (SettingsFile.getFile().getBoolean("world-manipulator.enable")) {
+            if (SettingsFile.getFile().getBoolean("world-manipulator.rules.anti-join-message")) {
                 event.setQuitMessage(null);
             }
         }
     }
 
     @EventHandler(priority = EventPriority.HIGHEST)
-    public void onMobSpawn(EntitySpawnEvent event){
+    public void onMobSpawn(EntitySpawnEvent event) {
 
-        if(SettingsFile.getFile().getBoolean("world-manipulator.enable")){
-            if(SettingsFile.getFile().getBoolean("world-manipulator.rules.anti-mob-spawn")){
-                if(event.getEntityType().equals(EntityType.DROPPED_ITEM)) return;
+        if (SettingsFile.getFile().getBoolean("world-manipulator.enable")) {
+            if (SettingsFile.getFile().getBoolean("world-manipulator.rules.anti-mob-spawn")) {
+                if (event.getEntityType().equals(EntityType.DROPPED_ITEM)) return;
                 event.setCancelled(true);
             }
         }

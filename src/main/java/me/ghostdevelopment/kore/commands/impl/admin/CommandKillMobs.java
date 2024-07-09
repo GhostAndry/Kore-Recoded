@@ -1,7 +1,6 @@
 package me.ghostdevelopment.kore.commands.impl.admin;
 
 import me.ghostdevelopment.kore.Kore;
-import me.ghostdevelopment.kore.utils.Color;
 import me.ghostdevelopment.kore.commands.CommandInfo;
 import me.ghostdevelopment.kore.commands.KoreCommand;
 import me.ghostdevelopment.kore.files.LangFile;
@@ -19,18 +18,18 @@ public class CommandKillMobs extends KoreCommand {
     @Override
     public void execute(CommandSender sender, String[] args) {
 
-        if (!(SettingsFile.getFile().getBoolean("killmobs.enabled"))){
+        if (!(SettingsFile.getFile().getBoolean("killmobs.enabled"))) {
             sender.sendMessage(LangFile.getString("command-disabled"));
             return;
         }
 
-        if(args.length!=0){
+        if (args.length != 0) {
             sender.sendMessage(LangFile.getString("killmobs.usage"));
             return;
         }
 
 
-        if(SettingsFile.getFile().getBoolean("killmobs.async")) {
+        if (SettingsFile.getFile().getBoolean("killmobs.async")) {
             Bukkit.getScheduler().runTask(Kore.getInstance(), () -> {
                 for (World world : Bukkit.getWorlds()) {
                     for (Entity entity : world.getEntities()) {
@@ -41,7 +40,7 @@ public class CommandKillMobs extends KoreCommand {
                 }
                 sender.sendMessage(LangFile.getString("killmobs.killed"));
             });
-        }else{
+        } else {
             for (World world : Bukkit.getWorlds()) {
                 for (Entity entity : world.getEntities()) {
                     if (!(entity instanceof Player)) {

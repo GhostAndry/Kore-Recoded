@@ -1,4 +1,3 @@
 .idea
 target
-
-./src/main/java/me/ghostdevelopment/kore/commands/commands/admin/CommandHologram.java
+./server_test/

@@ -4,124 +4,124 @@ main: me.ghostdevelopment.kore.Kore
 load: STARTUP
 
 commands:
-    kore:
-        description: ""
+  kore:
+    description: ""
 
-    gmc:
-        description: ""
-    gms:
-        description: ""
-    gma:
-        description: ""
-    gmsp:
-        description: ""
-    gamemode:
-        description: ""
-        aliases:
-            - gm
+  gmc:
+    description: ""
+  gms:
+    description: ""
+  gma:
+    description: ""
+  gmsp:
+    description: ""
+  gamemode:
+    description: ""
+    aliases:
+      - gm
 
-    fly:
-        description: ""
+  fly:
+    description: ""
 
-    teleport:
-        description: ""
-        aliases:
-            - tp
-            - tpto
-    god:
-        description: ""
-    heal:
-        description: ""
-    vanish:
-        description: ""
-        aliases:
-            - v
-    setspawn:
-        description: ""
-    spawn:
-        description: ""
-    trash:
-        description: ""
-        aliases:
-            - disposal
-    orbitalcannon:
-        description: ""
-    smite:
-        description: ""
-    kill:
-        description: ""
-    warp:
-        description: ""
-    home:
-        description: ""
-    speed:
-        description: ""
-    killmobs:
-        description: ""
-    spawnmob:
-        description: ""
-    sun:
-        description: ""
+  teleport:
+    description: ""
+    aliases:
+      - tp
+      - tpto
+  god:
+    description: ""
+  heal:
+    description: ""
+  vanish:
+    description: ""
+    aliases:
+      - v
+  setspawn:
+    description: ""
+  spawn:
+    description: ""
+  trash:
+    description: ""
+    aliases:
+      - disposal
+  orbitalcannon:
+    description: ""
+  smite:
+    description: ""
+  kill:
+    description: ""
+  warp:
+    description: ""
+  home:
+    description: ""
+  speed:
+    description: ""
+  killmobs:
+    description: ""
+  spawnmob:
+    description: ""
+  sun:
+    description: ""
 
 permissions:
-    kore.*:
-        description: ""
-    kore.reload:
-        description: ""
-    kore.teleport:
-        description: ""
-    kore.tp:
-        description: ""
-    kore.gamemode:
-        description: ""
-    kore.gamemode.*:
-        description: ""
-    kore.gamemode.creative:
-        description: ""
-    kore.gamemode.survival:
-        description: ""
-    kore.gamemode.adventure:
-        description: ""
-    kore.gamemode.spectator:
-        description: ""
-    kore.godmode:
-        description: ""
-    kore.heal:
-        description: ""
-    kore.vanish:
-        description: ""
-    kore.setspawn:
-        description: ""
-    kore.spawn:
-        description: ""
-    kore.spawn.other:
-        description: ""
-    kore.trash:
-        description: ""
-    kore.chatbypass:
-        description: ""
-    kore.orbitalcannon:
-        description: ""
-    kore.smite:
-        description: ""
-    kore.kill:
-        description: ""
-    kore.warp:
-        description: ""
-    kore.warp.admin:
-        description: ""
-    kore.home:
-        description: ""
-    kore.speed:
-        description: ""
-    kore.weather:
-        description: ""
-    kore.chatcolor:
-        description: ""
-    kore.killmobs:
-        description: ""
-    kore.spawnmob:
-        description: ""
-    kore.sun:
-        description: ""
+  kore.*:
+    description: ""
+  kore.reload:
+    description: ""
+  kore.teleport:
+    description: ""
+  kore.tp:
+    description: ""
+  kore.gamemode:
+    description: ""
+  kore.gamemode.*:
+    description: ""
+  kore.gamemode.creative:
+    description: ""
+  kore.gamemode.survival:
+    description: ""
+  kore.gamemode.adventure:
+    description: ""
+  kore.gamemode.spectator:
+    description: ""
+  kore.godmode:
+    description: ""
+  kore.heal:
+    description: ""
+  kore.vanish:
+    description: ""
+  kore.setspawn:
+    description: ""
+  kore.spawn:
+    description: ""
+  kore.spawn.other:
+    description: ""
+  kore.trash:
+    description: ""
+  kore.chatbypass:
+    description: ""
+  kore.orbitalcannon:
+    description: ""
+  kore.smite:
+    description: ""
+  kore.kill:
+    description: ""
+  kore.warp:
+    description: ""
+  kore.warp.admin:
+    description: ""
+  kore.home:
+    description: ""
+  kore.speed:
+    description: ""
+  kore.weather:
+    description: ""
+  kore.chatcolor:
+    description: ""
+  kore.killmobs:
+    description: ""
+  kore.spawnmob:
+    description: ""
+  kore.sun:
+    description: ""
 

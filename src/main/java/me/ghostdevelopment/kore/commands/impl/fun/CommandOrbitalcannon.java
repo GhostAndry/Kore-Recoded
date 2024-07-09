@@ -1,9 +1,8 @@
 package me.ghostdevelopment.kore.commands.impl.fun;
 
 import me.ghostdevelopment.kore.Kore;
-import me.ghostdevelopment.kore.utils.Color;
-import me.ghostdevelopment.kore.commands.KoreCommand;
 import me.ghostdevelopment.kore.commands.CommandInfo;
+import me.ghostdevelopment.kore.commands.KoreCommand;
 import me.ghostdevelopment.kore.files.LangFile;
 import me.ghostdevelopment.kore.files.SettingsFile;
 import org.bukkit.Bukkit;
@@ -19,8 +18,8 @@ import java.util.List;
 @CommandInfo(name = "orbitalcannon", permission = "kore.orbitalcannon", tabCompleter = true)
 public class CommandOrbitalcannon extends KoreCommand {
 
-    private Kore plugin;
     private static Location location;
+    private Kore plugin;
 
     @Override
     public void execute(CommandSender sender, String[] args) {
@@ -31,8 +30,8 @@ public class CommandOrbitalcannon extends KoreCommand {
         }
 
 
-        if (args.length == 1||args.length == 3) {
-            if(args.length==1) {
+        if (args.length == 1 || args.length == 3) {
+            if (args.length == 1) {
                 try {
                     Player target = sender.getServer().getPlayer(args[0]);
                     location = target.getLocation();
@@ -42,7 +41,7 @@ public class CommandOrbitalcannon extends KoreCommand {
                 } catch (Exception e) {
                     sender.sendMessage(LangFile.getString("invalid-target"));
                 }
-            }else {
+            } else {
                 int x = Integer.parseInt(args[0]);
                 int y = Integer.parseInt(args[1]);
                 int z = Integer.parseInt(args[2]);
@@ -66,9 +65,9 @@ public class CommandOrbitalcannon extends KoreCommand {
         if (args.length == 1) {
             for (Player player : Bukkit.getServer().getOnlinePlayers()) {
                 String partialName = args[0].toLowerCase();
-                if(player.getName().startsWith(partialName)){
+                if (player.getName().startsWith(partialName)) {
                     completions.add(player.getName());
-                }else {
+                } else {
                     completions.add("<x>");
                     completions.add("<y>");
                     completions.add("<z>");

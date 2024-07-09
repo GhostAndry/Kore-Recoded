@@ -5,10 +5,9 @@ import me.ghostdevelopment.kore.Kore;
 import me.ghostdevelopment.kore.commands.impl.admin.CommandFly;
 import me.ghostdevelopment.kore.commands.impl.admin.CommandGod;
 import me.ghostdevelopment.kore.commands.impl.admin.CommandVanish;
-
 import org.bukkit.entity.Player;
 
-@SuppressWarnings({ "NullableProblems", "FieldCanBeLocal" })
+@SuppressWarnings({"NullableProblems", "FieldCanBeLocal"})
 public class RegisterPlaceholders extends PlaceholderExpansion {
 
     private final String pluginName = "kore";

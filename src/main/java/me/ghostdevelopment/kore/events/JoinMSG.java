@@ -10,18 +10,20 @@ import org.bukkit.event.player.PlayerQuitEvent;
 public class JoinMSG implements Listener {
 
     @EventHandler(priority = EventPriority.HIGH)
-    public void onPlayerJoin(PlayerJoinEvent event){
+    public void onPlayerJoin(PlayerJoinEvent event) {
 
-        if(Kore.getInstance().getConfig().getString("server.join-msg").isEmpty() || Kore.getInstance().getConfig().getString("server.join-msg") == null) return;
+        if (Kore.getInstance().getConfig().getString("server.join-msg").isEmpty() || Kore.getInstance().getConfig().getString("server.join-msg") == null)
+            return;
 
         event.setJoinMessage(Kore.getInstance().getConfig().getString("server.join-msg"));
 
     }
 
     @EventHandler(priority = EventPriority.HIGH)
-    public void onPlayerQuit(PlayerQuitEvent event){
+    public void onPlayerQuit(PlayerQuitEvent event) {
 
-        if(Kore.getInstance().getConfig().getString("server.join-msg").isEmpty() || Kore.getInstance().getConfig().getString("server.join-msg") == null) return;
+        if (Kore.getInstance().getConfig().getString("server.join-msg").isEmpty() || Kore.getInstance().getConfig().getString("server.join-msg") == null)
+            return;
 
         event.setQuitMessage(Kore.getInstance().getConfig().getString("server.leave-msg"));
 

@@ -5,109 +5,109 @@ command-disabled: "%prefix% &cCette commande est désactivée"
 invalid-target: "%prefix% &cJoueur introuvable."
 lang-name: "Français"
 messages:
-    successfully-set: "%prefix% &aFichier de langue changé avec succès en %lang%"
-    not-exist: "%prefix% &cImpossible de charger les langues car le fichier n'existe pas !"
+  successfully-set: "%prefix% &aFichier de langue changé avec succès en %lang%"
+  not-exist: "%prefix% &cImpossible de charger les langues car le fichier n'existe pas !"
 reload:
-    success: "%prefix% &aRechargement réussi !"
-    error: "%prefix% &cErreur interne. Vérifiez la console pour plus d'informations."
+  success: "%prefix% &aRechargement réussi !"
+  error: "%prefix% &cErreur interne. Vérifiez la console pour plus d'informations."
 gamemode:
-    changed: "%prefix% &aVotre mode de jeu a été modifié en &e&o%gamemode%"
-    changed-other: "%prefix% &aLe mode de jeu de %player% a été modifié en &e&o%gamemode%"
-    usage:
-        console: "%prefix% &cUtilisation: /gamemode <gamemode> <joueur>"
-        player: "%prefix% &cUtilisation: /gamemode <gamemode> &1[joueur]"
+  changed: "%prefix% &aVotre mode de jeu a été modifié en &e&o%gamemode%"
+  changed-other: "%prefix% &aLe mode de jeu de %player% a été modifié en &e&o%gamemode%"
+  usage:
+    console: "%prefix% &cUtilisation: /gamemode <gamemode> <joueur>"
+    player: "%prefix% &cUtilisation: /gamemode <gamemode> &1[joueur]"
 fly:
-    enabled: "%prefix% &aFly activé."
-    disabled: "%prefix% &cFly désactivé."
-    enabled-other: "%prefix% &aFly activé pour %player%."
-    disabled-other: "%prefix% &cFly désactivé pour %player%."
-    usage:
-        console: "%prefix% &cUtilisation: /fly <joueur>"
-        player: "%prefix% &cUtilisation: /fly &1[joueur]"
+  enabled: "%prefix% &aFly activé."
+  disabled: "%prefix% &cFly désactivé."
+  enabled-other: "%prefix% &aFly activé pour %player%."
+  disabled-other: "%prefix% &cFly désactivé pour %player%."
+  usage:
+    console: "%prefix% &cUtilisation: /fly <joueur>"
+    player: "%prefix% &cUtilisation: /fly &1[joueur]"
 teleport:
-    teleported: "%prefix% &aTéléporté à %loc%"
-    teleported-other: "%prefix% &aTéléporté %player% à %loc%"
-    usage:
-        player: "%prefix% &cUtilisation: /teleport <joueur| x y z > &1[joueur| x y z ]"
-        console: "%prefix% &cUtilisation: /teleport <joueur| x y z > <joueur>"
+  teleported: "%prefix% &aTéléporté à %loc%"
+  teleported-other: "%prefix% &aTéléporté %player% à %loc%"
+  usage:
+    player: "%prefix% &cUtilisation: /teleport <joueur| x y z > &1[joueur| x y z ]"
+    console: "%prefix% &cUtilisation: /teleport <joueur| x y z > <joueur>"
 god:
-    enabled: "%prefix% &aMode Dieu activé."
-    disabled: "%prefix% &cMode Dieu désactivé."
-    enabled-other: "%prefix% &aMode Dieu activé pour %player%."
-    disabled-other: "%prefix% &cMode Dieu désactivé pour %player%."
-    usage:
-        player: "%prefix% &cUtilisation: /god &1[joueur]"
-        console: "%prefix% &cUtilisation: /god <joueur>"
+  enabled: "%prefix% &aMode Dieu activé."
+  disabled: "%prefix% &cMode Dieu désactivé."
+  enabled-other: "%prefix% &aMode Dieu activé pour %player%."
+  disabled-other: "%prefix% &cMode Dieu désactivé pour %player%."
+  usage:
+    player: "%prefix% &cUtilisation: /god &1[joueur]"
+    console: "%prefix% &cUtilisation: /god <joueur>"
 heal:
-    healed: "%prefix% &aSoigné !"
-    healed-other: "%prefix% &a%player% a été soigné !"
-    usage:
-        player: "%prefix% &cUtilisation: /heal &1[joueur]"
-        console: "%prefix% &cUtilisation: /heal <joueur>"
+  healed: "%prefix% &aSoigné !"
+  healed-other: "%prefix% &a%player% a été soigné !"
+  usage:
+    player: "%prefix% &cUtilisation: /heal &1[joueur]"
+    console: "%prefix% &cUtilisation: /heal <joueur>"
 vanish:
-    enabled: "%prefix% &aDisparition activée."
-    disabled: "%prefix% &aDisparition désactivée."
-    enabled-other: "%prefix% &aDisparition activée pour &e&o%player%."
-    disabled-other: "%prefix% &aDisparition désactivée pour &e&o%player%."
-    usage:
-        player: "%prefix% &cUtilisation: /vanish &1[joueur]"
-        console: "%prefix% &cUtilisation: /vanish <joueur>"
+  enabled: "%prefix% &aDisparition activée."
+  disabled: "%prefix% &aDisparition désactivée."
+  enabled-other: "%prefix% &aDisparition activée pour &e&o%player%."
+  disabled-other: "%prefix% &aDisparition désactivée pour &e&o%player%."
+  usage:
+    player: "%prefix% &cUtilisation: /vanish &1[joueur]"
+    console: "%prefix% &cUtilisation: /vanish <joueur>"
 spawn:
-    set: "%prefix% &aLe point de spawn a été défini à %x% %y% %z%."
-    teleported: "%prefix% &aTéléporté au spawn"
-    teleported-other: "%prefix% &aTéléporté %player% au spawn"
-    nonexistent: "%prefix% &cLe point de spawn n'a pas encore été défini"
-    usage:
-        admin: "%prefix% &cUtilisation: /setspawn"
-        player: "%prefix% &cUtilisation: /spawn &1[joueur]"
-        console: "%prefix% &cUtilisation: /spawn <joueur>"
+  set: "%prefix% &aLe point de spawn a été défini à %x% %y% %z%."
+  teleported: "%prefix% &aTéléporté au spawn"
+  teleported-other: "%prefix% &aTéléporté %player% au spawn"
+  nonexistent: "%prefix% &cLe point de spawn n'a pas encore été défini"
+  usage:
+    admin: "%prefix% &cUtilisation: /setspawn"
+    player: "%prefix% &cUtilisation: /spawn &1[joueur]"
+    console: "%prefix% &cUtilisation: /spawn <joueur>"
 orbitalcannon:
-    shoot: "%prefix% &aLe canon orbital a tiré un coup à %coords%."
-    tell: "%prefix% &c&lVous avez été touché par un tir de canon orbital !"
-    usage: "%prefix% &cUtilisation: /orbitalcannon <joueur | x y z>"
+  shoot: "%prefix% &aLe canon orbital a tiré un coup à %coords%."
+  tell: "%prefix% &c&lVous avez été touché par un tir de canon orbital !"
+  usage: "%prefix% &cUtilisation: /orbitalcannon <joueur | x y z>"
 smite:
-    smited-player: "%prefix% &aFoudroyé %player%"
-    usage: "%prefix% &cUtilisation: /smite <joueur>"
+  smited-player: "%prefix% &aFoudroyé %player%"
+  usage: "%prefix% &cUtilisation: /smite <joueur>"
 kill:
-    killed: "%prefix% &a%player% a été tué."
-    usage:
-        player: "%prefix% &cUtilisation: /kill &1[joueur]"
-        console: "%prefix% &cUtilisation: /kill <joueur>"
+  killed: "%prefix% &a%player% a été tué."
+  usage:
+    player: "%prefix% &cUtilisation: /kill &1[joueur]"
+    console: "%prefix% &cUtilisation: /kill <joueur>"
 warp:
-    warped: "%prefix% &aVous avez été téléporté à %warp%"
-    warped-other: "%prefix% &aVous avez téléporté %player% à %warp%"
-    not-found: "%prefix% &cWarp introuvable."
+  warped: "%prefix% &aVous avez été téléporté à %warp%"
+  warped-other: "%prefix% &aVous avez téléporté %player% à %warp%"
+  not-found: "%prefix% &cWarp introuvable."
+  admin:
+    added: "%prefix% &a%warp% a été ajouté avec succès."
+    already-exist: "%prefix% &c%warp% existe déjà"
+    removed: "%prefix% &a%warp% a été supprimé avec succès."
+  usage:
+    player: "%prefix% &cUtilisation: /warp <nom> &1[joueur]"
+    console: "%prefix% &cUtilisation: /warp <nom> <joueur>"
     admin:
-        added: "%prefix% &a%warp% a été ajouté avec succès."
-        already-exist: "%prefix% &c%warp% existe déjà"
-        removed: "%prefix% &a%warp% a été supprimé avec succès."
-    usage:
-        player: "%prefix% &cUtilisation: /warp <nom> &1[joueur]"
-        console: "%prefix% &cUtilisation: /warp <nom> <joueur>"
-        admin:
-            add: "%prefix% &cUtilisation: /warp add <nom>"
-            remove: "%prefix% &cUtilisation: /warp remove <nom>"
+      add: "%prefix% &cUtilisation: /warp add <nom>"
+      remove: "%prefix% &cUtilisation: /warp remove <nom>"
 home:
-    teleported: "%prefix% &aVous avez été téléporté à votre domicile."
-    teleported-other: "%prefix% &aVous avez téléporté %player% à sa maison."
-    not-set: "%prefix% &cVous n'avez pas encore défini votre maison."
-    set: "%prefix% &aVotre maison a été définie à votre position."
-    removed: "%prefix% &cVotre maison a été supprimée."
-    usage: "%prefix% &cUtilisation:/home &1[set|remove]"
+  teleported: "%prefix% &aVous avez été téléporté à votre domicile."
+  teleported-other: "%prefix% &aVous avez téléporté %player% à sa maison."
+  not-set: "%prefix% &cVous n'avez pas encore défini votre maison."
+  set: "%prefix% &aVotre maison a été définie à votre position."
+  removed: "%prefix% &cVotre maison a été supprimée."
+  usage: "%prefix% &cUtilisation:/home &1[set|remove]"
 speed:
-    set: "%prefix% Votre vitesse a été réglée sur %speed%"
-    set-other: "%prefix% La vitesse de %player% a été réglée sur %speed%"
-    invalid-value: "%prefix% &cValeur de vitesse non valide"
-    invalid-type:
-        "%prefix% &cType de vitesse non valide. Types de vitesse: Walk ou Walking, Fly
+  set: "%prefix% Votre vitesse a été réglée sur %speed%"
+  set-other: "%prefix% La vitesse de %player% a été réglée sur %speed%"
+  invalid-value: "%prefix% &cValeur de vitesse non valide"
+  invalid-type:
+    "%prefix% &cType de vitesse non valide. Types de vitesse: Walk ou Walking, Fly
         ou Flight"
-    usage:
-        player: "%prefix% &cUtilisation: /speed <valeur> &1[joueur] [type]"
-        console: "%prefix% &cUtilisation: /speed <valeur> <joueur> <type>"
+  usage:
+    player: "%prefix% &cUtilisation: /speed <valeur> &1[joueur] [type]"
+    console: "%prefix% &cUtilisation: /speed <valeur> <joueur> <type>"
 killmobs:
-    killed: "%prefix% &aTous les mobs hostiles ont été tués"
-    usage: "%prefix% &cUtilisation: /killmobs"
+  killed: "%prefix% &aTous les mobs hostiles ont été tués"
+  usage: "%prefix% &cUtilisation: /killmobs"
 spawnmob:
-    spawned: '%prefix% &a%num% créatures ont été créées !'
-    invalid: '%prefix% &cEntité invalide'
-    usage: '%prefix% &cUtilisation : /spawnmob <créature> [nombre]'
+  spawned: '%prefix% &a%num% créatures ont été créées !'
+  invalid: '%prefix% &cEntité invalide'
+  usage: '%prefix% &cUtilisation : /spawnmob <créature> [nombre]'

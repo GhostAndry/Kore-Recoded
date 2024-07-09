@@ -1,8 +1,7 @@
 package me.ghostdevelopment.kore.commands.impl.admin.gamemodes;
 
-import me.ghostdevelopment.kore.utils.Color;
-import me.ghostdevelopment.kore.commands.KoreCommand;
 import me.ghostdevelopment.kore.commands.CommandInfo;
+import me.ghostdevelopment.kore.commands.KoreCommand;
 import me.ghostdevelopment.kore.files.LangFile;
 import me.ghostdevelopment.kore.files.SettingsFile;
 import org.bukkit.Bukkit;
@@ -20,20 +19,20 @@ public class CommandGamemode extends KoreCommand {
 
     @Override
     public void execute(CommandSender sender, String[] args) {
-        if(!(SettingsFile.getFile().getBoolean("gamemode.enabled"))){
+        if (!(SettingsFile.getFile().getBoolean("gamemode.enabled"))) {
             sender.sendMessage(LangFile.getString("command-disabled"));
             return;
         }
 
-        if(sender instanceof Player){
+        if (sender instanceof Player) {
 
             Player player = (Player) sender;
 
-            if(args.length==0){
+            if (args.length == 0) {
                 player.sendMessage(LangFile.getString("gamemode.usage.player"));
-            } else if (args.length==1) {
+            } else if (args.length == 1) {
                 String type = args[0];
-                if(type.equalsIgnoreCase("0")){
+                if (type.equalsIgnoreCase("0")) {
                     player.setGameMode(GameMode.SURVIVAL);
                     player.sendMessage(LangFile.getString("gamemode.changed")
                             .replaceAll("%gamemode%", player.getGameMode().name().toUpperCase())
@@ -74,12 +73,12 @@ public class CommandGamemode extends KoreCommand {
                             .replaceAll("%gamemode%", player.getGameMode().name().toUpperCase())
                     );
                 }
-            } else if (args.length==2) {
+            } else if (args.length == 2) {
                 String type = args[0];
                 Player target = Bukkit.getPlayer(args[1]);
 
-                try{
-                    if(type.equalsIgnoreCase("0")){
+                try {
+                    if (type.equalsIgnoreCase("0")) {
                         target.setGameMode(GameMode.SURVIVAL);
                         player.sendMessage(LangFile.getString("gamemode.changed")
                                 .replaceAll("%gamemode%", target.getGameMode().name().toUpperCase())
@@ -120,17 +119,17 @@ public class CommandGamemode extends KoreCommand {
                                 .replaceAll("%gamemode%", target.getGameMode().name().toUpperCase())
                         );
                     }
-                }catch (Exception e){
+                } catch (Exception e) {
                     player.sendMessage(LangFile.getString("invalid-target")
                     );
                 }
             }
-        }else{
-            try{
+        } else {
+            try {
                 String type = args[0];
                 Player target = Bukkit.getPlayer(args[1]);
 
-                if(type.equalsIgnoreCase("0")){
+                if (type.equalsIgnoreCase("0")) {
                     target.setGameMode(GameMode.SURVIVAL);
                     sender.sendMessage(LangFile.getString("gamemode.changed")
                             .replaceAll("%gamemode%", target.getGameMode().name().toUpperCase())
@@ -171,7 +170,7 @@ public class CommandGamemode extends KoreCommand {
                             .replaceAll("%gamemode%", target.getGameMode().name().toUpperCase())
                     );
                 }
-            }catch (Exception e){
+            } catch (Exception e) {
                 sender.sendMessage(LangFile.getString("invalid-target")
                 );
             }

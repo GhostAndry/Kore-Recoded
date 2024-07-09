@@ -44,7 +44,7 @@ public class CommandSpawnmob extends KoreCommand {
                     player.sendMessage(LangFile.getString("spawnmob.spawned")
                             .replaceAll("%num%", String.valueOf(1)));
                     return;
-                }catch (Exception e){
+                } catch (Exception e) {
                     player.sendMessage(LangFile.getString("spawnmob.invalid"));
                     return;
                 }
@@ -57,9 +57,9 @@ public class CommandSpawnmob extends KoreCommand {
                     Integer entityNum = Integer.valueOf(args[1]);
 
                     try {
-                        if(SettingsFile.getFile().getBoolean("spawnmob.async")){
+                        if (SettingsFile.getFile().getBoolean("spawnmob.async")) {
                             Bukkit.getScheduler().runTask(Kore.getInstance(), () -> {
-                                for(int i = 1; i <= entityNum; i++) {
+                                for (int i = 1; i <= entityNum; i++) {
                                     Entity entity = player.getWorld().spawn(player.getLocation(), entityType.getEntityClass());
                                 }
                                 player.sendMessage(LangFile.getString("spawnmob.spawned")
@@ -67,7 +67,7 @@ public class CommandSpawnmob extends KoreCommand {
                             });
                             return;
                         } else {
-                            for(int i = 1; i <= entityNum; i++) {
+                            for (int i = 1; i <= entityNum; i++) {
                                 Entity entity = player.getWorld().spawn(player.getLocation(), entityType.getEntityClass());
                             }
                             player.sendMessage(LangFile.getString("spawnmob.spawned")
@@ -77,7 +77,7 @@ public class CommandSpawnmob extends KoreCommand {
                     } catch (Exception e) {
                         Console.warning(e + "\n\nUnable to spawn entity");
                     }
-                }catch (Exception e){
+                } catch (Exception e) {
                     player.sendMessage(LangFile.getString("spawnmob.invalid"));
                     return;
                 }

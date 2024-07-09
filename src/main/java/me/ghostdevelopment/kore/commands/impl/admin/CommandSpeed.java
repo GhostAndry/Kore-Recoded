@@ -1,12 +1,10 @@
 package me.ghostdevelopment.kore.commands.impl.admin;
 
 import me.ghostdevelopment.kore.Functions;
-import me.ghostdevelopment.kore.utils.Color;
-import me.ghostdevelopment.kore.commands.KoreCommand;
 import me.ghostdevelopment.kore.commands.CommandInfo;
+import me.ghostdevelopment.kore.commands.KoreCommand;
 import me.ghostdevelopment.kore.files.LangFile;
 import me.ghostdevelopment.kore.files.SettingsFile;
-
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -102,7 +100,7 @@ public class CommandSpeed extends KoreCommand {
                                     .replaceAll("%speed%", String.valueOf(speed)));
                         }
                         return;
-                    }catch (Exception e){
+                    } catch (Exception e) {
                         sender.sendMessage(LangFile.getString("speed.invalid-value")
                                 .replaceAll("%prefix%", LangFile.getString("prefix")));
                         return;
@@ -151,7 +149,7 @@ public class CommandSpeed extends KoreCommand {
                                 player.sendMessage(LangFile.getString("speed.invalid-type")
                                         .replaceAll("%prefix%", LangFile.getString("prefix")));
                             }
-                        }catch (Exception e){
+                        } catch (Exception e) {
                             sender.sendMessage(LangFile.getString("speed.invalid-value")
                                     .replaceAll("%prefix%", LangFile.getString("prefix")));
                             return;
@@ -214,7 +212,7 @@ public class CommandSpeed extends KoreCommand {
                             sender.sendMessage(LangFile.getString("speed.invalid-type")
                                     .replaceAll("%prefix%", LangFile.getString("prefix")));
                         }
-                    }catch (Exception e){
+                    } catch (Exception e) {
                         sender.sendMessage(LangFile.getString("speed.invalid-value")
                                 .replaceAll("%prefix%", LangFile.getString("prefix")));
                         return;

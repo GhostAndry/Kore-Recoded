@@ -1,7 +1,5 @@
 package me.ghostdevelopment.kore.events;
 
-import lombok.Getter;
-import lombok.Setter;
 import me.ghostdevelopment.kore.Functions;
 import me.ghostdevelopment.kore.Kore;
 import me.ghostdevelopment.kore.files.SettingsFile;
@@ -18,19 +16,16 @@ public class Spawn implements Listener {
     private static final int defaultY = Kore.calculateY();
 
     @EventHandler(priority = EventPriority.HIGHEST)
-    public void onPlayerJoin(PlayerJoinEvent event)
-    {
-        if(StorageFile.getFile().contains("spawn.world")
-                ||StorageFile.getFile().contains("spawn.x")
-                ||StorageFile.getFile().contains("spawn.y")
-                ||StorageFile.getFile().contains("spawn.z")
-                ||StorageFile.getFile().contains("spawn.yaw")
-                ||StorageFile.getFile().contains("spawn.pitch")
-        ){
-            if(SettingsFile.getFile().getBoolean("spawn.enabled"))
-            {
-                if(SettingsFile.getFile().getBoolean("spawn.on-join"))
-                {
+    public void onPlayerJoin(PlayerJoinEvent event) {
+        if (StorageFile.getFile().contains("spawn.world")
+                || StorageFile.getFile().contains("spawn.x")
+                || StorageFile.getFile().contains("spawn.y")
+                || StorageFile.getFile().contains("spawn.z")
+                || StorageFile.getFile().contains("spawn.yaw")
+                || StorageFile.getFile().contains("spawn.pitch")
+        ) {
+            if (SettingsFile.getFile().getBoolean("spawn.enabled")) {
+                if (SettingsFile.getFile().getBoolean("spawn.on-join")) {
                     event.getPlayer().teleport(Functions.getSpawnLocation());
                 }
             }
@@ -38,19 +33,16 @@ public class Spawn implements Listener {
     }
 
     @EventHandler(priority = EventPriority.HIGHEST)
-    public void onPlayerDeath(PlayerRespawnEvent event)
-    {
-        if(StorageFile.getFile().contains("spawn.world")
-                ||StorageFile.getFile().contains("spawn.x")
-                ||StorageFile.getFile().contains("spawn.y")
-                ||StorageFile.getFile().contains("spawn.z")
-                ||StorageFile.getFile().contains("spawn.yaw")
-                ||StorageFile.getFile().contains("spawn.pitch")
-        ){
-            if(SettingsFile.getFile().getBoolean("spawn.enabled"))
-            {
-                if(SettingsFile.getFile().getBoolean("spawn.on-death"))
-                {
+    public void onPlayerDeath(PlayerRespawnEvent event) {
+        if (StorageFile.getFile().contains("spawn.world")
+                || StorageFile.getFile().contains("spawn.x")
+                || StorageFile.getFile().contains("spawn.y")
+                || StorageFile.getFile().contains("spawn.z")
+                || StorageFile.getFile().contains("spawn.yaw")
+                || StorageFile.getFile().contains("spawn.pitch")
+        ) {
+            if (SettingsFile.getFile().getBoolean("spawn.enabled")) {
+                if (SettingsFile.getFile().getBoolean("spawn.on-death")) {
                     event.getPlayer().teleport(Functions.getSpawnLocation());
                 }
             }
@@ -58,21 +50,17 @@ public class Spawn implements Listener {
     }
 
     @EventHandler(priority = EventPriority.HIGHEST)
-    public void onPlayerVoid(PlayerMoveEvent event)
-    {
-        if(StorageFile.getFile().contains("spawn.world")
-                ||StorageFile.getFile().contains("spawn.x")
-                ||StorageFile.getFile().contains("spawn.y")
-                ||StorageFile.getFile().contains("spawn.z")
-                ||StorageFile.getFile().contains("spawn.yaw")
-                ||StorageFile.getFile().contains("spawn.pitch")
-        ){
-            if(SettingsFile.getFile().getBoolean("spawn.enabled"))
-            {
-                if(SettingsFile.getFile().getBoolean("spawn.on-void"))
-                {
-                    if(event.getPlayer().getLocation().getY()<defaultY)
-                    {
+    public void onPlayerVoid(PlayerMoveEvent event) {
+        if (StorageFile.getFile().contains("spawn.world")
+                || StorageFile.getFile().contains("spawn.x")
+                || StorageFile.getFile().contains("spawn.y")
+                || StorageFile.getFile().contains("spawn.z")
+                || StorageFile.getFile().contains("spawn.yaw")
+                || StorageFile.getFile().contains("spawn.pitch")
+        ) {
+            if (SettingsFile.getFile().getBoolean("spawn.enabled")) {
+                if (SettingsFile.getFile().getBoolean("spawn.on-void")) {
+                    if (event.getPlayer().getLocation().getY() < defaultY) {
                         event.getPlayer().teleport(Functions.getSpawnLocation());
                     }
                 }

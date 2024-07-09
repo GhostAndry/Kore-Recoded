@@ -14,23 +14,29 @@ public class StorageFile {
     private static File file;
     private static FileConfiguration config;
 
-    public static void setUp(){
+    public static void setUp() {
         file = new File(Bukkit.getServer().getPluginManager().getPlugin("Kore").getDataFolder(), "storage.yml");
-        if(!(file.exists())){
+        if (!(file.exists())) {
             try {
                 file.createNewFile();
-            }catch (IOException e){
+            } catch (IOException e) {
             }
         }
         config = YamlConfiguration.loadConfiguration(file);
     }
 
-    public static FileConfiguration getFile(){return config;}
-    public static void reload(){config=YamlConfiguration.loadConfiguration(file);}
-    public static void save(){
+    public static FileConfiguration getFile() {
+        return config;
+    }
+
+    public static void reload() {
+        config = YamlConfiguration.loadConfiguration(file);
+    }
+
+    public static void save() {
         try {
             config.save(file);
-        }catch (Exception e){
+        } catch (Exception e) {
             Console.warning("&cCould not write on warps.yml file.");
         }
     }

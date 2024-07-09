@@ -1,8 +1,7 @@
 package me.ghostdevelopment.kore.commands.impl.admin;
 
-import me.ghostdevelopment.kore.utils.Color;
-import me.ghostdevelopment.kore.commands.KoreCommand;
 import me.ghostdevelopment.kore.commands.CommandInfo;
+import me.ghostdevelopment.kore.commands.KoreCommand;
 import me.ghostdevelopment.kore.files.LangFile;
 import me.ghostdevelopment.kore.files.SettingsFile;
 import org.bukkit.Bukkit;
@@ -19,16 +18,20 @@ public class CommandGod extends KoreCommand {
 
     private static ArrayList<Player> god = new ArrayList<>();
 
+    public static ArrayList<Player> getGod() {
+        return god;
+    }
+
     @Override
     public void execute(CommandSender sender, String[] args) {
-        if(!(SettingsFile.getFile().getBoolean("godmode.enabled"))){
+        if (!(SettingsFile.getFile().getBoolean("godmode.enabled"))) {
             sender.sendMessage(LangFile.getString("command-disabled"));
             return;
         }
 
-        if(sender instanceof Player){
+        if (sender instanceof Player) {
             Player player = (Player) sender;
-            if(args.length==0) {
+            if (args.length == 0) {
                 if (god.contains(player)) {
                     god.remove(player);
                     player.sendMessage(LangFile.getString("god.disabled"));
@@ -36,7 +39,7 @@ public class CommandGod extends KoreCommand {
                     god.add(player);
                     player.sendMessage(LangFile.getString("god.enabled"));
                 }
-            } else if (args.length==1) {
+            } else if (args.length == 1) {
                 try {
                     Player target = Bukkit.getPlayer(args[0]);
                     if (god.contains(target)) {
@@ -50,16 +53,16 @@ public class CommandGod extends KoreCommand {
                         player.sendMessage(LangFile.getString("god.enabled-other")
                                 .replaceAll("%player%", target.getName()));
                     }
-                }catch (Exception e){
+                } catch (Exception e) {
                     player.sendMessage(LangFile.getString("invalid-target"));
                     return;
                 }
-            }else{
+            } else {
                 player.sendMessage(LangFile.getString("god.usage.player"));
                 return;
             }
-        }else {
-            if (args.length==1) {
+        } else {
+            if (args.length == 1) {
                 Player target = Bukkit.getPlayer(args[0]);
                 if (god.contains(target)) {
                     god.remove(target);
@@ -72,7 +75,7 @@ public class CommandGod extends KoreCommand {
                     sender.sendMessage(LangFile.getString("god.enabled-other")
                             .replaceAll("%player%", target.getName()));
                 }
-            }else{
+            } else {
                 sender.sendMessage(LangFile.getString("god.usage.console"));
                 return;
             }
@@ -83,7 +86,7 @@ public class CommandGod extends KoreCommand {
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
         List<String> completions = new ArrayList<>();
 
-        if (args.length==1){
+        if (args.length == 1) {
             String partialName = args[0].toLowerCase();
             for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
                 String playerName = onlinePlayer.getName();
@@ -94,9 +97,5 @@ public class CommandGod extends KoreCommand {
         }
 
         return completions;
-    }
-
-    public static ArrayList<Player> getGod() {
-        return god;
     }
 }

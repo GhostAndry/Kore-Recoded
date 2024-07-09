@@ -6,23 +6,16 @@ import me.ghostdevelopment.kore.files.StorageFile;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
 @SuppressWarnings("ALL")
 public class Functions {
 
-    public static void reloadFiles(){
+    public static void reloadFiles() {
 
         try {
             Bukkit.getScheduler().runTask(Kore.getInstance(), () -> {
@@ -32,13 +25,14 @@ public class Functions {
             SettingsFile.reload();
             LangFile.reload();
             StorageFile.reload();
-        }catch (Exception ignored){}
+        } catch (Exception ignored) {
+        }
 
     }
 
 // /////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    public static void setSpawnLoc(Location loc){
+    public static void setSpawnLoc(Location loc) {
         StorageFile.getFile().set("spawn.world", loc.getWorld().getName());
         StorageFile.getFile().set("spawn.x", loc.getX());
         StorageFile.getFile().set("spawn.y", loc.getY());
@@ -47,7 +41,8 @@ public class Functions {
         StorageFile.getFile().set("spawn.yaw", loc.getYaw());
         StorageFile.save();
     }
-    public static Location getSpawnLocation(){
+
+    public static Location getSpawnLocation() {
         Location loc = new Location(
                 Bukkit.getWorld(StorageFile.getFile().getString("spawn.world")),
                 StorageFile.getFile().getDouble("spawn.x"),
@@ -61,51 +56,51 @@ public class Functions {
 
 // /////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    public static void addWarp(Location location, String warp_name){
-        warp_name=warp_name.toLowerCase();
+    public static void addWarp(Location location, String warp_name) {
+        warp_name = warp_name.toLowerCase();
 
-        StorageFile.getFile().set("warps."+warp_name+".world", location.getWorld().getName());
-        StorageFile.getFile().set("warps."+warp_name+".x", location.getX());
-        StorageFile.getFile().set("warps."+warp_name+".y", location.getY());
-        StorageFile.getFile().set("warps."+warp_name+".z", location.getZ());
-        StorageFile.getFile().set("warps."+warp_name+".yaw", location.getYaw());
-        StorageFile.getFile().set("warps."+warp_name+".pitch", location.getPitch());
+        StorageFile.getFile().set("warps." + warp_name + ".world", location.getWorld().getName());
+        StorageFile.getFile().set("warps." + warp_name + ".x", location.getX());
+        StorageFile.getFile().set("warps." + warp_name + ".y", location.getY());
+        StorageFile.getFile().set("warps." + warp_name + ".z", location.getZ());
+        StorageFile.getFile().set("warps." + warp_name + ".yaw", location.getYaw());
+        StorageFile.getFile().set("warps." + warp_name + ".pitch", location.getPitch());
         StorageFile.save();
 
     }
 
-    public static Location getWarpLoc(String warp_name){
-        warp_name=warp_name.toLowerCase();
+    public static Location getWarpLoc(String warp_name) {
+        warp_name = warp_name.toLowerCase();
         Location loc = new Location(
-                Bukkit.getWorld(StorageFile.getFile().getString("warps."+warp_name+".world")),
-                StorageFile.getFile().getDouble("warps."+warp_name+".x"),
-                StorageFile.getFile().getDouble("warps."+warp_name+".y"),
-                StorageFile.getFile().getDouble("warps."+warp_name+".z"),
-                (float) StorageFile.getFile().getDouble("warps."+warp_name+".yaw"),
-                (float) StorageFile.getFile().getDouble("warps."+warp_name+".pitch")
+                Bukkit.getWorld(StorageFile.getFile().getString("warps." + warp_name + ".world")),
+                StorageFile.getFile().getDouble("warps." + warp_name + ".x"),
+                StorageFile.getFile().getDouble("warps." + warp_name + ".y"),
+                StorageFile.getFile().getDouble("warps." + warp_name + ".z"),
+                (float) StorageFile.getFile().getDouble("warps." + warp_name + ".yaw"),
+                (float) StorageFile.getFile().getDouble("warps." + warp_name + ".pitch")
         );
         return loc;
     }
 
-    public static void delWarp(String warp_name){
-        warp_name=warp_name.toLowerCase();
+    public static void delWarp(String warp_name) {
+        warp_name = warp_name.toLowerCase();
 
-        StorageFile.getFile().set("warps."+warp_name+".world", null);
-        StorageFile.getFile().set("warps."+warp_name+".x", null);
-        StorageFile.getFile().set("warps."+warp_name+".y", null);
-        StorageFile.getFile().set("warps."+warp_name+".z", null);
-        StorageFile.getFile().set("warps."+warp_name+".yaw", null);
-        StorageFile.getFile().set("warps."+warp_name+".pitch", null);
-        StorageFile.getFile().set("warps."+warp_name, null);
+        StorageFile.getFile().set("warps." + warp_name + ".world", null);
+        StorageFile.getFile().set("warps." + warp_name + ".x", null);
+        StorageFile.getFile().set("warps." + warp_name + ".y", null);
+        StorageFile.getFile().set("warps." + warp_name + ".z", null);
+        StorageFile.getFile().set("warps." + warp_name + ".yaw", null);
+        StorageFile.getFile().set("warps." + warp_name + ".pitch", null);
+        StorageFile.getFile().set("warps." + warp_name, null);
         StorageFile.save();
 
     }
 
-    public static Boolean checkWarp(String warp_name){
-        warp_name=warp_name.toLowerCase();
-        if(StorageFile.getFile().contains("warps."+warp_name)){
+    public static Boolean checkWarp(String warp_name) {
+        warp_name = warp_name.toLowerCase();
+        if (StorageFile.getFile().contains("warps." + warp_name)) {
             return true;
-        }else{
+        } else {
             return false;
         }
 
@@ -113,66 +108,66 @@ public class Functions {
 
 // /////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    public static void addHome(Player player){
+    public static void addHome(Player player) {
 
-        String name= player.getName();
+        String name = player.getName();
         Location location = player.getLocation();
 
-        name=name.toLowerCase();
+        name = name.toLowerCase();
 
-        StorageFile.getFile().set("homes."+name+".world", location.getWorld().getName());
-        StorageFile.getFile().set("homes."+name+".x", location.getX());
-        StorageFile.getFile().set("homes."+name+".y", location.getY());
-        StorageFile.getFile().set("homes."+name+".z", location.getZ());
-        StorageFile.getFile().set("homes."+name+".yaw", location.getYaw());
-        StorageFile.getFile().set("homes."+name+".pitch", location.getPitch());
+        StorageFile.getFile().set("homes." + name + ".world", location.getWorld().getName());
+        StorageFile.getFile().set("homes." + name + ".x", location.getX());
+        StorageFile.getFile().set("homes." + name + ".y", location.getY());
+        StorageFile.getFile().set("homes." + name + ".z", location.getZ());
+        StorageFile.getFile().set("homes." + name + ".yaw", location.getYaw());
+        StorageFile.getFile().set("homes." + name + ".pitch", location.getPitch());
         StorageFile.save();
 
     }
 
-    public static void delHome(Player player){
+    public static void delHome(Player player) {
 
-        String name= player.getName();
+        String name = player.getName();
 
-        name=name.toLowerCase();
+        name = name.toLowerCase();
 
-        StorageFile.getFile().set("homes."+name+".world", null);
-        StorageFile.getFile().set("homes."+name+".x", null);
-        StorageFile.getFile().set("homes."+name+".y", null);
-        StorageFile.getFile().set("homes."+name+".z", null);
-        StorageFile.getFile().set("homes."+name+".yaw", null);
-        StorageFile.getFile().set("homes."+name+".pitch", null);
-        StorageFile.getFile().set("homes."+name, null);
+        StorageFile.getFile().set("homes." + name + ".world", null);
+        StorageFile.getFile().set("homes." + name + ".x", null);
+        StorageFile.getFile().set("homes." + name + ".y", null);
+        StorageFile.getFile().set("homes." + name + ".z", null);
+        StorageFile.getFile().set("homes." + name + ".yaw", null);
+        StorageFile.getFile().set("homes." + name + ".pitch", null);
+        StorageFile.getFile().set("homes." + name, null);
         StorageFile.save();
 
     }
 
-    public static Location getHomeLoc(Player player){
+    public static Location getHomeLoc(Player player) {
 
-        String name= player.getName();
+        String name = player.getName();
 
-        name=name.toLowerCase();
+        name = name.toLowerCase();
 
         Location loc = new Location(
-                Bukkit.getWorld(StorageFile.getFile().getString("homes."+name+".world")),
-                StorageFile.getFile().getDouble("homes."+name+".x"),
-                StorageFile.getFile().getDouble("homes."+name+".y"),
-                StorageFile.getFile().getDouble("homes."+name+".z"),
-                (float) StorageFile.getFile().getDouble("homes."+name+".yaw"),
-                (float) StorageFile.getFile().getDouble("homes."+name+".pitch")
+                Bukkit.getWorld(StorageFile.getFile().getString("homes." + name + ".world")),
+                StorageFile.getFile().getDouble("homes." + name + ".x"),
+                StorageFile.getFile().getDouble("homes." + name + ".y"),
+                StorageFile.getFile().getDouble("homes." + name + ".z"),
+                (float) StorageFile.getFile().getDouble("homes." + name + ".yaw"),
+                (float) StorageFile.getFile().getDouble("homes." + name + ".pitch")
         );
         return loc;
     }
 
-    public static Boolean checkHome(Player player){
+    public static Boolean checkHome(Player player) {
 
-        String name= player.getName();
+        String name = player.getName();
 
-        name=name.toLowerCase();
+        name = name.toLowerCase();
 
-        if(StorageFile.getFile().contains("homes."+name)){
+        if (StorageFile.getFile().contains("homes." + name)) {
             return true;
-        }else{
+        } else {
             return false;
         }
 
@@ -180,9 +175,9 @@ public class Functions {
 
 // /////////////////////////////////////////////////////////////////////////////
 
-    public static void setSpeed(Player player, String type, Float speed){
-    
-        if(type.equals("walk")){
+    public static void setSpeed(Player player, String type, Float speed) {
+
+        if (type.equals("walk")) {
 
             int speedInt = 0;
 
@@ -208,53 +203,55 @@ public class Functions {
                 speedInt = 10;
             }
 
-            if(speedInt==0) player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 1, speedInt, true, false), true);
-            else player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 999999999, speedInt-1, true, false), true);
+            if (speedInt == 0)
+                player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 1, speedInt, true, false), true);
+            else
+                player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 999999999, speedInt - 1, true, false), true);
         } else if (type.equals("fly") || type.equals("flight")) {
             player.setFlySpeed(speed / 10.0f);
         }
-    
+
     }
 
 // /////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    public static void addHologram(String name, Location location){
+    public static void addHologram(String name, Location location) {
 
-        String path = "holograms."+name+".";
+        String path = "holograms." + name + ".";
 
-        StorageFile.getFile().set(path+".x",location.getX());
-        StorageFile.getFile().set(path+".y",location.getY());
-        StorageFile.getFile().set(path+".z",location.getZ());
-        StorageFile.getFile().set(path+".world",String.valueOf(location.getWorld().getName()));
+        StorageFile.getFile().set(path + ".x", location.getX());
+        StorageFile.getFile().set(path + ".y", location.getY());
+        StorageFile.getFile().set(path + ".z", location.getZ());
+        StorageFile.getFile().set(path + ".world", String.valueOf(location.getWorld().getName()));
         List<String> lines = new ArrayList<>();
         lines.add(null);
-        for(String line : lines){
-            StorageFile.getFile().set(path+".lines", line);
+        for (String line : lines) {
+            StorageFile.getFile().set(path + ".lines", line);
         }
         StorageFile.save();
 
     }
 
-    public static void addLines(String name, List<String> lines){
+    public static void addLines(String name, List<String> lines) {
 
-        String path = "holograms."+name+".";
+        String path = "holograms." + name + ".";
 
         List<String> cfgLines = new ArrayList<>();
 
-        cfgLines = StorageFile.getFile().getStringList(path+".lines");
+        cfgLines = StorageFile.getFile().getStringList(path + ".lines");
 
-        for (String line : lines){
+        for (String line : lines) {
             cfgLines.add(line);
         }
 
-        StorageFile.getFile().set(path+".lines", cfgLines);
+        StorageFile.getFile().set(path + ".lines", cfgLines);
         StorageFile.save();
 
     }
 
-    public static void removeHolo(String name){
+    public static void removeHolo(String name) {
 
-        String path = "holograms."+name;
+        String path = "holograms." + name;
         StorageFile.getFile().set(path, null);
         StorageFile.save();
 

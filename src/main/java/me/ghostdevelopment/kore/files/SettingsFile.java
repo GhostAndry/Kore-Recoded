@@ -7,11 +7,20 @@ public class SettingsFile {
 
     private static final Kore main = Kore.getInstance();
 
-    public static void setUp(){
+    public static void setUp() {
         main.getConfig().options().copyDefaults(true);
         save();
     }
-    public static FileConfiguration getFile(){return main.getConfig();}
-    public static void reload(){main.reloadConfig();}
-    public static void save(){main.saveConfig();}
+
+    public static FileConfiguration getFile() {
+        return main.getConfig();
+    }
+
+    public static void reload() {
+        main.reloadConfig();
+    }
+
+    public static void save() {
+        main.saveConfig();
+    }
 }
