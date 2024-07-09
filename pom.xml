@@ -93,7 +93,7 @@
                             <goal>copy-resources</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory></outputDirectory>
+                            <outputDirectory>./server_test/plugins/</outputDirectory>
                             <resources>
                                 <resource>
                                     <directory>${project.build.directory}</directory>
