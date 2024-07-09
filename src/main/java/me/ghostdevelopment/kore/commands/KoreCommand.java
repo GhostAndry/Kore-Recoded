@@ -73,4 +73,5 @@ public abstract class KoreCommand implements CommandExecutor, TabCompleter {
         return new ArrayList<>();
     }
 
+
 }
