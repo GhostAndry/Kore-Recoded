@@ -1,3 +1,4 @@
 .idea
 target
 ./server_test/*
+./set_git.sh
