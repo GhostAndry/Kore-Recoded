@@ -19,52 +19,38 @@ public class CommandGMS extends KoreCommand {
 
     @Override
     public void execute(CommandSender sender, String[] args) {
-        if (!(SettingsFile.getFile().getBoolean("gamemode.enabled"))) {
+        if (!SettingsFile.getFile().getBoolean("gamemode.enabled")) {
             sender.sendMessage(LangFile.getString("command-disabled"));
             return;
         }
 
-        if (sender instanceof Player) {
-            Player player = (Player) sender;
+        if (args.length > 1) {
+            sender.sendMessage(LangFile.getString("gamemode.usage.console"));
+            return;
+        }
 
-            if (args.length == 0) {
-                player.setGameMode(GameMode.SURVIVAL);
-                player.sendMessage(LangFile.getString("gamemode.changed")
-                        .replaceAll("%gamemode%", player.getGameMode().name().toUpperCase())
-                );
-            } else if (args.length == 1) {
+        Player target = (args.length == 1) ? Bukkit.getPlayer(args[0]) : (sender instanceof Player ? (Player) sender : null);
 
-                try {
-                    Player target = Bukkit.getPlayer(args[0]);
+        if (target == null) {
+            sender.sendMessage(LangFile.getString("invalid-target"));
+            return;
+        }
 
-                    target.setGameMode(GameMode.SURVIVAL);
-                    player.sendMessage(LangFile.getString("gamemode.changed-other")
-                            .replaceAll("%gamemode%", target.getGameMode().name().toUpperCase())
-                            .replaceAll("%player%", target.getName())
-                    );
-                } catch (Exception e) {
-                    player.sendMessage(LangFile.getString("invalid-target")
-                    );
-                }
-            }
-        } else {
-            if (!(args.length == 1)) {
-                sender.sendMessage(LangFile.getString("gamemode.usage.console")
-                );
-                return;
-            }
-            try {
-                Player target = Bukkit.getPlayer(args[0]);
+        setGameMode(target, sender);
+    }
 
-                target.setGameMode(GameMode.SURVIVAL);
-                sender.sendMessage(LangFile.getString("gamemode.changed-other")
-                        .replaceAll("%gamemode%", target.getGameMode().name().toUpperCase())
-                        .replaceAll("%player%", target.getName())
-                );
-            } catch (Exception e) {
-                sender.sendMessage(LangFile.getString("invalid-target")
-                );
-            }
+    private void setGameMode(Player target, CommandSender sender) {
+        target.setGameMode(GameMode.SURVIVAL);
+        String messageKey = (sender instanceof Player && target != sender) ? "gamemode.changed-other" : "gamemode.changed";
+        String message = LangFile.getString(messageKey)
+                .replace("%gamemode%", target.getGameMode().name().toUpperCase())
+                .replace("%player%", target.getName());
+
+        sender.sendMessage(message);
+
+        if (target != sender) {
+            target.sendMessage(LangFile.getString("gamemode.changed")
+                    .replace("%gamemode%", target.getGameMode().name().toUpperCase()));
         }
     }
 

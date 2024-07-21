@@ -12,98 +12,80 @@ import org.bukkit.entity.Player;
 import java.util.ArrayList;
 import java.util.List;
 
-@SuppressWarnings("ALL")
 @CommandInfo(name = "vanish", permission = "kore.vanish", tabCompleter = true)
 public class CommandVanish extends KoreCommand {
 
-    private static ArrayList<Player> vanished = new ArrayList<>();
+    private static final List<Player> vanished = new ArrayList<>();
 
-    public static ArrayList<Player> getVanished() {
+    public static List<Player> getVanished() {
         return vanished;
     }
 
     @Override
     public void execute(CommandSender sender, String[] args) {
 
-        if (!(SettingsFile.getFile().getBoolean("vanish.enabled"))) {
-            sender.sendMessage(LangFile.getString("command-disabled"));
+        if (!SettingsFile.getFile().getBoolean("vanish.enabled")) {
+            sendMessage(sender, "command-disabled");
+            return;
+        }
+
+        if (args.length > 1) {
+            sendMessage(sender, "vanish.usage.player");
             return;
         }
 
         if (sender instanceof Player) {
             Player player = (Player) sender;
-
             if (args.length == 0) {
-                if (vanished.contains(player)) {
-                    vanished.remove(player);
-                    for (Player other : Bukkit.getOnlinePlayers()) {
-                        if (!(other.hasPermission("kore.vanish") || other.hasPermission("kore.*") || other.hasPermission("*") || other.isOp())) {
-                            other.showPlayer(player);
-                        }
-                    }
-                    player.sendMessage(LangFile.getString("vanish.disabled")
-                            .replaceAll("%prefix%", LangFile.getString("prefix")));
-                } else {
-                    vanished.add(player);
-                    for (Player other : Bukkit.getOnlinePlayers()) {
-                        if (!(other.hasPermission("kore.vanish") || other.hasPermission("kore.*") || other.hasPermission("*") || other.isOp())) {
-                            other.hidePlayer(player);
-                        }
-                    }
-                    player.sendMessage(LangFile.getString("vanish.enabled"));
-                }
-            } else if (args.length == 1) {
-                Player target = Bukkit.getPlayer(args[0]);
-                if (vanished.contains(target)) {
-                    vanished.remove(target);
-                    for (Player other : Bukkit.getOnlinePlayers()) {
-                        if (!(other.hasPermission("kore.vanish") || other.hasPermission("kore.*") || other.hasPermission("*") || other.isOp())) {
-                            other.showPlayer(target);
-                        }
-                    }
-                    player.sendMessage(LangFile.getString("vanish.disabled-other")
-                            .replaceAll("%player%", target.getName()));
-                } else {
-                    vanished.add(target);
-                    for (Player other : Bukkit.getOnlinePlayers()) {
-                        if (!(other.hasPermission("kore.vanish") || other.hasPermission("kore.*") || other.hasPermission("*") || other.isOp())) {
-                            other.hidePlayer(target);
-                        }
-                    }
-                    player.sendMessage(LangFile.getString("vanish.enabled-other")
-                            .replaceAll("%player%", target.getName()));
-                }
+                toggleVanish(player);
             } else {
-                player.sendMessage(LangFile.getString("vanish.usage.player"));
-                return;
+                Player target = Bukkit.getPlayer(args[0]);
+                if (target == null) {
+                    sendMessage(player, "invalid-target");
+                    return;
+                }
+                toggleVanish(target);
+                sendMessage(player, "vanish." + (vanished.contains(target) ? "enabled-other" : "disabled-other"), target.getName());
             }
         } else {
             if (args.length == 1) {
                 Player target = Bukkit.getPlayer(args[0]);
-
-                if (vanished.contains(target)) {
-                    vanished.remove(target);
-                    for (Player other : Bukkit.getOnlinePlayers()) {
-                        if (!(other.hasPermission("kore.vanish") || other.hasPermission("kore.*") || other.hasPermission("*") || other.isOp())) {
-                            other.showPlayer(target);
-                        }
-                    }
-                    sender.sendMessage(LangFile.getString("vanish.disabled-other")
-                            .replaceAll("%player%", target.getName()));
-                } else {
-                    vanished.add(target);
-                    for (Player other : Bukkit.getOnlinePlayers()) {
-                        if (!(other.hasPermission("kore.vanish") || other.hasPermission("kore.*") || other.hasPermission("*") || other.isOp())) {
-                            other.hidePlayer(target);
-                        }
-                    }
-                    sender.sendMessage(LangFile.getString("vanish.enabled-other")
-                            .replaceAll("%player%", target.getName()));
+                if (target == null) {
+                    sendMessage(sender, "invalid-target");
+                    return;
                 }
-
+                toggleVanish(target);
+                sendMessage(sender, "vanish." + (vanished.contains(target) ? "enabled-other" : "disabled-other"), target.getName());
             } else {
-                sender.sendMessage(LangFile.getString("vanish.usage.player"));
-                return;
+                sendMessage(sender, "vanish.usage.player");
+            }
+        }
+    }
+
+    private void toggleVanish(Player player) {
+        if (vanished.contains(player)) {
+            vanished.remove(player);
+            showPlayerToEveryone(player);
+            sendMessage(player, "vanish.disabled");
+        } else {
+            vanished.add(player);
+            hidePlayerFromEveryone(player);
+            sendMessage(player, "vanish.enabled");
+        }
+    }
+
+    private void showPlayerToEveryone(Player player) {
+        for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
+            if (!onlinePlayer.hasPermission("kore.vanish") && !onlinePlayer.hasPermission("kore.*") && !onlinePlayer.hasPermission("*") && !onlinePlayer.isOp()) {
+                onlinePlayer.showPlayer(player);
+            }
+        }
+    }
+
+    private void hidePlayerFromEveryone(Player player) {
+        for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
+            if (!onlinePlayer.hasPermission("kore.vanish") && !onlinePlayer.hasPermission("kore.*") && !onlinePlayer.hasPermission("*") && !onlinePlayer.isOp()) {
+                onlinePlayer.hidePlayer(player);
             }
         }
     }
@@ -115,9 +97,8 @@ public class CommandVanish extends KoreCommand {
         if (args.length == 1) {
             String partialName = args[0].toLowerCase();
             for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
-                String playerName = onlinePlayer.getName();
-                if (playerName.toLowerCase().startsWith(partialName)) {
-                    completions.add(playerName);
+                if (onlinePlayer.getName().toLowerCase().startsWith(partialName)) {
+                    completions.add(onlinePlayer.getName());
                 }
             }
         }

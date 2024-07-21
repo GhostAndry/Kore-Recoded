@@ -21,158 +21,112 @@ public class CommandKore extends KoreCommand {
 
     @Override
     public void execute(CommandSender sender, String[] args) {
-        if (sender instanceof Player) {
-            Player player = (Player) sender;
-
-            if (args.length == 0) {
-                player.sendMessage(Color.Color("\n&aThis server is running Kore v$ver\n".replace("$ver", Kore.getInstance().getDescription().getVersion())));
-            } else if (args.length == 1) {
-                if (args[0].equalsIgnoreCase("info")) {
-                    player.sendMessage(Color.Color(
-                            "&aKore $ver\n".replace("$ver", Kore.getInstance().getDescription().getVersion()) +
-                                    "&aAuthor: &7GhostAndry\n" +
-                                    "&aGitHub: &b&nhttps://github.com/GhostAndry/Kore-Recoded\n" +
-                                    "\n"));
-                } else if (args[0].equalsIgnoreCase("reload")) {
-
-                    if (!player.hasPermission("kore.reload")) {
-                        player.sendMessage(LangFile.getString("no-permissions"));
-                        return;
-                    }
-                    try {
-                        Functions.reloadFiles();
-                        sender.sendMessage(LangFile.getString("reload.success"));
-                    } catch (NullPointerException e) {
-                        Bukkit.getLogger().warning(e.getMessage());
-                        player.sendMessage(LangFile.getString("reload.error"));
-                    }
-                } else if (args[0].equalsIgnoreCase("help")) {
-                    player.sendMessage(Color.Color("\n" +
-                            "&c<mandatory> &1[optional]\n" +
-                            "&7/kore <help|reload|info|(lang|language)>\n" +
-                            "&7/gamemode &c<gamemode> &1[player]\n" +
-                            "&7/gmc &1[player]\n" +
-                            "&7/gms &1[player]\n" +
-                            "&7/gma &1[player]\n" +
-                            "&7/gmsp &1[player]\n" +
-                            "&7/fly &1[player]\n" +
-                            "&7/teleport /tp &c<player> &1[player]\n" +
-                            "&7/heal &1[player]\n" +
-                            "&7/god &1[player]\n" +
-                            "&7/vanish /v &1[player]\n" +
-                            "&7/setspawn\n" +
-                            "&7/spawn &1[player]\n" +
-                            "&7/trash /disposal\n" +
-                            "&7/orbitalcannon &c<player | x y z> \n" +
-                            "&7/smite &c<player>\n" +
-                            "&7/kill &1[player]\n" +
-                            "&7/warp &c<add|remove> <name>\n" +
-                            "&7/warp &c<name> &1[player]\n" +
-                            "&7/home &1[set|remove]\n" +
-                            "&7/speed &c<value> &1[player] [type]\n" +
-                            "&7/killmobs\n" +
-                            "&7/spawnmob &c<mob> &1[num]\n"));
-                } else {
-                    player.sendMessage(Color.Color("\n&aThis server is running Kore v$ver\n".replace("$ver", Kore.getInstance().getDescription().getVersion())));
-                }
-            } else if (args.length == 2) {
-
-                if (args[0].equalsIgnoreCase("lang") || args[0].equalsIgnoreCase("language")) {
-
-                    String lang = args[1];
-
-                    if (!LangFile.checkFileExists(lang)) {
-                        player.sendMessage(LangFile.getString("messages.not-exist"));
-                        return;
-                    }
-
-                    SettingsFile.getFile().set("messages", lang);
-                    SettingsFile.save();
-                    Functions.reloadFiles();
-
-                    player.sendMessage(LangFile.getString("messages.successfully-set")
-                            .replaceAll("%lang%", LangFile.getString("lang-name")));
-
-                } else {
-                    player.sendMessage(Color.Color("\n&aThis server is running Kore."));
-                }
-            }
-        } else {
-            if (args.length == 0) {
-                sender.sendMessage(Color.Color("\n&aThis server is running Kore."));
-            } else if (args.length == 1) {
-                if (args[0].equalsIgnoreCase("info")) {
-                    sender.sendMessage(Color.Color(
-                            "&aKore $ver\n".replace("$ver", Kore.getInstance().getDescription().getVersion()) +
-                                    "&aAuthor: &7GhostAndry\n" +
-                                    "&aGitHub: &b&nhttps://github.com/GhostAndry/Kore-Recoded\n" +
-                                    "\n"));
-                } else if (args[0].equalsIgnoreCase("reload")) {
-                    try {
-                        Functions.reloadFiles();
-                        sender.sendMessage(LangFile.getString("reload.success"));
-                    } catch (NullPointerException e) {
-                        Bukkit.getLogger().warning(e.getMessage());
-                        sender.sendMessage(LangFile.getString("reload.error"));
-                    }
-                } else if (args[0].equalsIgnoreCase("help")) {
-                    sender.sendMessage(Color.Color("\n" +
-                            "&call parameters are mandatory!" +
-                            "&7/kore <help|reload|info|(lang|language)>\n" +
-                            "&7/gamemode &c<gamemode> <player>\n" +
-                            "&7/gmc <player>\n" +
-                            "&7/gms <player>\n" +
-                            "&7/gma <player>\n" +
-                            "&7/gmsp <player>\n" +
-                            "&7/fly <player>\n" +
-                            "&7/teleport /tp &c<player> <player>\n" +
-                            "&7/heal <player>\n" +
-                            "&7/god <player>\n" +
-                            "&7/vanish /v <player>\n" +
-                            "&7/setspawn\n" +
-                            "&7/spawn &c<player>\n" +
-                            "&7/trash /disposal\n" +
-                            "&7/orbitalcannon &c<player | x y z> \n" +
-                            "&7/smite &c<player>\n" +
-                            "&7/kill <player>\n" +
-                            "&7/warp &c<add|remove> <name>\n" +
-                            "&7/warp &c<name> <player>\n" +
-                            "&7/home &c<set|remove>\n" +
-                            "&7/speed &c<value> <player> <type>\n" +
-                            "/killmobs\n" +
-                            "\n"));
-                } else {
-                    sender.sendMessage(Color.Color("\n&aThis server is running Kore."));
-                }
-            } else if (args.length == 2) {
-
-                if (args[0].equalsIgnoreCase("lang") || args[0].equalsIgnoreCase("language")) {
-
-                    String lang = args[1];
-
-                    if (!LangFile.checkFileExists(lang)) {
-                        sender.sendMessage(LangFile.getString("messages.not-exist"));
-                        return;
-                    }
-
-                    SettingsFile.getFile().set("messages", lang);
-                    SettingsFile.save();
-                    Functions.reloadFiles();
-
-                    sender.sendMessage(LangFile.getString("messages.successfully-set")
-                            .replaceAll("%lang%", LangFile.getString("lang-name")));
-
-                } else {
-                    sender.sendMessage(Color.Color("\n&aThis server is running Kore."));
-                }
-            }
+        if (args.length == 0) {
+            sendPluginInfo(sender);
+            return;
         }
+
+        String subCommand = args[0].toLowerCase();
+
+        switch (subCommand) {
+            case "info":
+                sendInfo(sender);
+                break;
+            case "reload":
+                handleReload(sender);
+                break;
+            case "help":
+                sendHelp(sender);
+                break;
+            case "lang":
+            case "language":
+                if (args.length == 2) {
+                    setLanguage(sender, args[1]);
+                } else {
+                    sendPluginInfo(sender);
+                }
+                break;
+            default:
+                sendPluginInfo(sender);
+                break;
+        }
+    }
+
+    private void sendPluginInfo(CommandSender sender) {
+        String version = Kore.getInstance().getDescription().getVersion();
+        sender.sendMessage(Color.Color("\n&aThis server is running Kore v" + version + "\n"));
+    }
+
+    private void sendInfo(CommandSender sender) {
+        String version = Kore.getInstance().getDescription().getVersion();
+        sender.sendMessage(Color.Color(
+                "&aKore " + version + "\n" +
+                        "&aAuthor: &7GhostAndry\n" +
+                        "&aGitHub: &b&nhttps://github.com/GhostAndry/Kore-Recoded\n"
+        ));
+    }
+
+    private void handleReload(CommandSender sender) {
+        if (sender instanceof Player && !sender.hasPermission("kore.reload")) {
+            sender.sendMessage(LangFile.getString("no-permissions"));
+            return;
+        }
+
+        try {
+            Functions.reloadFiles();
+            sender.sendMessage(LangFile.getString("reload.success"));
+        } catch (Exception e) {
+            Bukkit.getLogger().warning(e.getMessage());
+            sender.sendMessage(LangFile.getString("reload.error"));
+        }
+    }
+
+    private void sendHelp(CommandSender sender) {
+        sender.sendMessage(Color.Color("\n" +
+                "&c<mandatory> &1[optional]\n" +
+                "&7/kore <help|reload|info|(lang|language)>\n" +
+                "&7/gamemode &c<gamemode> &1[player]\n" +
+                "&7/gmc &1[player]\n" +
+                "&7/gms &1[player]\n" +
+                "&7/gma &1[player]\n" +
+                "&7/gmsp &1[player]\n" +
+                "&7/fly &1[player]\n" +
+                "&7/teleport /tp &c<player> &1[player]\n" +
+                "&7/heal &1[player]\n" +
+                "&7/god &1[player]\n" +
+                "&7/vanish /v &1[player]\n" +
+                "&7/setspawn\n" +
+                "&7/spawn &1[player]\n" +
+                "&7/trash /disposal\n" +
+                "&7/orbitalcannon &c<player | x y z> \n" +
+                "&7/smite &c<player>\n" +
+                "&7/kill &1[player]\n" +
+                "&7/warp &c<add|remove> <name>\n" +
+                "&7/warp &c<name> &1[player]\n" +
+                "&7/home &1[set|remove]\n" +
+                "&7/speed &c<value> &1[player] [type]\n" +
+                "&7/killmobs\n" +
+                "&7/spawnmob &c<mob> &1[num]\n"
+        ));
+    }
+
+    private void setLanguage(CommandSender sender, String lang) {
+        if (!LangFile.checkFileExists(lang)) {
+            sender.sendMessage(LangFile.getString("messages.not-exist"));
+            return;
+        }
+
+        SettingsFile.getFile().set("messages", lang);
+        SettingsFile.save();
+        Functions.reloadFiles();
+
+        sender.sendMessage(LangFile.getString("messages.successfully-set")
+                .replace("%lang%", LangFile.getString("lang-name")));
     }
 
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
         List<String> completions = new ArrayList<>();
-
         if (args.length == 1) {
             completions.add("info");
             completions.add("reload");
@@ -184,5 +138,4 @@ public class CommandKore extends KoreCommand {
         }
         return completions;
     }
-
 }

@@ -13,242 +13,125 @@ import org.bukkit.entity.Player;
 import java.util.ArrayList;
 import java.util.List;
 
-@SuppressWarnings("ALL")
 @CommandInfo(name = "speed", permission = "kore.speed", tabCompleter = true)
 public class CommandSpeed extends KoreCommand {
 
     @Override
     public void execute(CommandSender sender, String[] args) {
-        if (!(SettingsFile.getFile().getBoolean("speed.enabled"))) {
-            sender.sendMessage(LangFile.getString("command-disabled"));
+        if (!SettingsFile.getFile().getBoolean("speed.enabled")) {
+            sendMessage(sender, "command-disabled");
             return;
         }
 
-        if (sender instanceof Player) {
-
-            Player player = (Player) sender;
-
-            if (args.length == 1 || args.length == 2 || args.length == 3) {
-
-                if (args.length == 1) {
-
-                    float speed;
-
-                    try {
-                        speed = Float.valueOf(args[0]);
-                    } catch (NumberFormatException e) {
-                        player.sendMessage(LangFile.getString("speed.invalid-value")
-                                .replaceAll("%prefix%", LangFile.getString("prefix")));
-                        return;
-                    }
-                    if (speed > 10.0 || speed < 0.0) {
-                        player.sendMessage(LangFile.getString("speed.invalid-value")
-                                .replaceAll("%prefix%", LangFile.getString("prefix")));
-                        return;
-                    }
-
-                    if (player.isOnGround()) {
-                        Functions.setSpeed(player, "walk", speed);
-                        player.sendMessage(LangFile.getString("speed.set")
-                                .replaceAll("%prefix%", LangFile.getString("prefix"))
-                                .replaceAll("%speed%", String.valueOf(speed)));
-                    } else {
-                        Functions.setSpeed(player, "fly", speed);
-                        player.sendMessage(LangFile.getString("speed.set")
-                                .replaceAll("%prefix%", LangFile.getString("prefix"))
-                                .replaceAll("%speed%", String.valueOf(speed)));
-                    }
-
-                    return;
-                } else if (args.length == 2) {
-
-                    Player target = Bukkit.getPlayer(args[1]);
-                    float speed;
-
-                    try {
-
-                        try {
-                            speed = Float.valueOf(args[0]);
-                        } catch (NumberFormatException e) {
-                            player.sendMessage(LangFile.getString("speed.invalid-value")
-                                    .replaceAll("%prefix%", LangFile.getString("prefix")));
-                            return;
-                        }
-                        if (speed > 10.0 || speed < 0.0) {
-                            player.sendMessage(LangFile.getString("speed.invalid-value")
-                                    .replaceAll("%prefix%", LangFile.getString("prefix")));
-                            return;
-                        }
-
-                        if (target.isOnGround()) {
-                            Functions.setSpeed(target, "walk", speed);
-                            target.sendMessage(LangFile.getString("speed.set")
-                                    .replaceAll("%prefix%", LangFile.getString("prefix"))
-                                    .replaceAll("%speed%", String.valueOf(speed)));
-                            player.sendMessage(LangFile.getString("speed.set-other")
-                                    .replaceAll("%prefix%", LangFile.getString("prefix"))
-                                    .replaceAll("%player%", target.getName())
-                                    .replaceAll("%speed%", String.valueOf(speed)));
-                        } else {
-                            Functions.setSpeed(target, "fly", speed);
-                            target.sendMessage(LangFile.getString("speed.set")
-                                    .replaceAll("%prefix%", LangFile.getString("prefix"))
-                                    .replaceAll("%speed%", String.valueOf(speed)));
-                            player.sendMessage(LangFile.getString("speed.set-other")
-                                    .replaceAll("%prefix%", LangFile.getString("prefix"))
-                                    .replaceAll("%player%", target.getName())
-                                    .replaceAll("%speed%", String.valueOf(speed)));
-                        }
-                        return;
-                    } catch (Exception e) {
-                        sender.sendMessage(LangFile.getString("speed.invalid-value")
-                                .replaceAll("%prefix%", LangFile.getString("prefix")));
-                        return;
-                    }
-
-                } else if (args.length == 3) {
-
-                    try {
-                        String type = args[2];
-                        Player target = Bukkit.getPlayer(args[1]);
-                        float speed;
-
-                        try {
-                            try {
-                                speed = Float.valueOf(args[0]);
-                            } catch (NumberFormatException e) {
-                                player.sendMessage(LangFile.getString("speed.invalid-value")
-                                        .replaceAll("%prefix%", LangFile.getString("prefix")));
-                                return;
-                            }
-                            if (speed > 10.0 || speed < 0.0) {
-                                player.sendMessage(LangFile.getString("speed.invalid-value")
-                                        .replaceAll("%prefix%", LangFile.getString("prefix")));
-                                return;
-                            }
-
-                            if (type.equalsIgnoreCase("walk") || type.equalsIgnoreCase("walking")) {
-                                Functions.setSpeed(target, "walk", speed);
-                                target.sendMessage(LangFile.getString("speed.set")
-                                        .replaceAll("%prefix%", LangFile.getString("prefix"))
-                                        .replaceAll("%speed%", String.valueOf(speed)));
-                                player.sendMessage(LangFile.getString("speed.set-other")
-                                        .replaceAll("%prefix%", LangFile.getString("prefix"))
-                                        .replaceAll("%player%", target.getName())
-                                        .replaceAll("%speed%", String.valueOf(speed)));
-                            } else if (type.equalsIgnoreCase("fly") || type.equalsIgnoreCase("flight")) {
-                                Functions.setSpeed(target, "fly", speed);
-                                target.sendMessage(LangFile.getString("speed.set")
-                                        .replaceAll("%prefix%", LangFile.getString("prefix"))
-                                        .replaceAll("%speed%", String.valueOf(speed)));
-                                player.sendMessage(LangFile.getString("speed.set-other")
-                                        .replaceAll("%prefix%", LangFile.getString("prefix"))
-                                        .replaceAll("%player%", target.getName())
-                                        .replaceAll("%speed%", String.valueOf(speed)));
-                            } else {
-                                player.sendMessage(LangFile.getString("speed.invalid-type")
-                                        .replaceAll("%prefix%", LangFile.getString("prefix")));
-                            }
-                        } catch (Exception e) {
-                            sender.sendMessage(LangFile.getString("speed.invalid-value")
-                                    .replaceAll("%prefix%", LangFile.getString("prefix")));
-                            return;
-                        }
-                    } catch (Exception e) {
-                        player.sendMessage(LangFile.getString("invalid-target")
-                                .replaceAll("%prefix%", LangFile.getString("prefix")));
-                    }
-
-                    return;
-
-                }
-
-            } else {
-                player.sendMessage(LangFile.getString("speed.usage.player")
-                        .replaceAll("%prefix%", LangFile.getString("prefix")));
-                return;
-            }
-
-        } else {
-
-            if (args.length == 3) {
-                try {
-                    String type = args[2];
-                    Player target = Bukkit.getPlayer(args[1]);
-                    float speed;
-                    try {
-                        try {
-                            speed = Float.valueOf(args[0]);
-                        } catch (NumberFormatException e) {
-                            sender.sendMessage(LangFile.getString("speed.invalid-value")
-                                    .replaceAll("%prefix%", LangFile.getString("prefix")));
-                            return;
-                        }
-                        if (speed > 10.0 || speed < 0.0) {
-                            sender.sendMessage(LangFile.getString("speed.invalid-value")
-                                    .replaceAll("%prefix%", LangFile.getString("prefix")));
-                            return;
-                        }
-
-                        if (type.equalsIgnoreCase("walk") || type.equalsIgnoreCase("walking")) {
-                            Functions.setSpeed(target, "walk", speed);
-                            target.sendMessage(LangFile.getString("speed.set")
-                                    .replaceAll("%prefix%", LangFile.getString("prefix"))
-                                    .replaceAll("%speed%", String.valueOf(speed)));
-                            sender.sendMessage(LangFile.getString("speed.set-other")
-                                    .replaceAll("%prefix%", LangFile.getString("prefix"))
-                                    .replaceAll("%player%", target.getName())
-                                    .replaceAll("%speed%", String.valueOf(speed)));
-                        } else if (type.equalsIgnoreCase("fly") || type.equalsIgnoreCase("flight")) {
-                            Functions.setSpeed(target, "fly", speed);
-                            target.sendMessage(LangFile.getString("speed.set")
-                                    .replaceAll("%prefix%", LangFile.getString("prefix"))
-                                    .replaceAll("%speed%", String.valueOf(speed)));
-                            sender.sendMessage(LangFile.getString("speed.set-other")
-                                    .replaceAll("%prefix%", LangFile.getString("prefix"))
-                                    .replaceAll("%player%", target.getName())
-                                    .replaceAll("%speed%", String.valueOf(speed)));
-                        } else {
-                            sender.sendMessage(LangFile.getString("speed.invalid-type")
-                                    .replaceAll("%prefix%", LangFile.getString("prefix")));
-                        }
-                    } catch (Exception e) {
-                        sender.sendMessage(LangFile.getString("speed.invalid-value")
-                                .replaceAll("%prefix%", LangFile.getString("prefix")));
-                        return;
-                    }
-                } catch (Exception e) {
-                    sender.sendMessage(LangFile.getString("invalid-target")
-                            .replaceAll("%prefix%", LangFile.getString("prefix")));
-                }
-
-                return;
-
-            } else {
-                sender.sendMessage(LangFile.getString("speed.usage.console")
-                        .replaceAll("%prefix%", LangFile.getString("prefix")));
-                return;
-            }
+        if (args.length < 1 || args.length > 3) {
+            sendMessage(sender, sender instanceof Player ? "speed.usage.player" : "speed.usage.console");
+            return;
         }
+
+        String speedStr = args[0];
+        float speed;
+
+        try {
+            speed = Float.parseFloat(speedStr);
+            if (speed < 0.0 || speed > 10.0) {
+                throw new NumberFormatException();
+            }
+        } catch (NumberFormatException e) {
+            sendMessage(sender, "speed.invalid-value");
+            return;
+        }
+
+        switch (args.length) {
+            case 1:
+                if (sender instanceof Player) {
+                    handleSpeedChange((Player) sender, speed);
+                } else {
+                    sendMessage(sender, "speed.usage.console");
+                }
+                break;
+
+            case 2:
+                if (sender instanceof Player) {
+                    handleSpeedChange((Player) sender, speed, Bukkit.getPlayer(args[1]));
+                } else {
+                    handleSpeedChange(sender, speed, Bukkit.getPlayer(args[1]));
+                }
+                break;
+
+            case 3:
+                if (sender instanceof Player) {
+                    handleSpeedChange((Player) sender, speed, Bukkit.getPlayer(args[1]), args[2]);
+                } else {
+                    handleSpeedChange(sender, speed, Bukkit.getPlayer(args[1]), args[2]);
+                }
+                break;
+
+            default:
+                sendMessage(sender, sender instanceof Player ? "speed.usage.player" : "speed.usage.console");
+                break;
+        }
+    }
+
+    private void handleSpeedChange(Player sender, float speed) {
+        if (sender.isOnGround()) {
+            Functions.setSpeed(sender, "walk", speed);
+        } else {
+            Functions.setSpeed(sender, "fly", speed);
+        }
+        sendMessage(sender, "speed.set", String.valueOf(speed));
+    }
+
+    private void handleSpeedChange(CommandSender sender, float speed, Player target) {
+        if (target == null) {
+            sendMessage(sender, "invalid-target");
+            return;
+        }
+
+        if (target.isOnGround()) {
+            Functions.setSpeed(target, "walk", speed);
+        } else {
+            Functions.setSpeed(target, "fly", speed);
+        }
+        sendMessage(target, "speed.set", String.valueOf(speed));
+        sendMessage(sender, "speed.set-other", target.getName(), String.valueOf(speed));
+    }
+
+    private void handleSpeedChange(CommandSender sender, float speed, Player target, String type) {
+        if (target == null) {
+            sendMessage(sender, "invalid-target");
+            return;
+        }
+
+        String speedType = type.equalsIgnoreCase("walk") || type.equalsIgnoreCase("walking") ? "walk" : "fly";
+        if (!speedType.equals("walk") && !speedType.equals("fly")) {
+            sendMessage(sender, "speed.invalid-type");
+            return;
+        }
+
+        Functions.setSpeed(target, speedType, speed);
+        sendMessage(target, "speed.set", String.valueOf(speed));
+        sendMessage(sender, "speed.set-other", target.getName(), String.valueOf(speed));
     }
 
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
         List<String> completions = new ArrayList<>();
-
-        if (args.length == 1) {
-            for (float i = 0; i <= 10.0; i += 0.1) {
-                completions.add(String.format("%.1f", i));
-            }
-        } else if (args.length == 2) {
-            for (Player player : Bukkit.getOnlinePlayers()) {
-                completions.add(player.getName());
-            }
-        } else if (args.length == 3) {
-            completions.add("walk");
-            completions.add("fly");
+        switch (args.length) {
+            case 1:
+                for (float i = 0; i <= 10.0; i += 0.1) {
+                    completions.add(String.format("%.1f", i));
+                }
+                break;
+            case 2:
+                for (Player player : Bukkit.getOnlinePlayers()) {
+                    completions.add(player.getName());
+                }
+                break;
+            case 3:
+                completions.add("walk");
+                completions.add("fly");
+                break;
         }
-
         return completions;
     }
 }

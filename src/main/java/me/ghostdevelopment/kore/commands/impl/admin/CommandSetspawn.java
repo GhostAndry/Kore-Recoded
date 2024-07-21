@@ -8,35 +8,31 @@ import me.ghostdevelopment.kore.files.SettingsFile;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-@SuppressWarnings("ALL")
-
 @CommandInfo(name = "setspawn", permission = "kore.setspawn")
 public class CommandSetspawn extends KoreCommand {
 
     @Override
     public void execute(CommandSender sender, String[] args) {
-
-        if (!(SettingsFile.getFile().getBoolean("spawn.enabled"))) {
-            sender.sendMessage(LangFile.getString("command-disabled"));
+        if (!SettingsFile.getFile().getBoolean("spawn.enabled")) {
+            sendMessage(sender, "command-disabled");
             return;
         }
 
         if (sender instanceof Player) {
-
             Player player = (Player) sender;
 
             if (args.length == 0) {
                 Functions.setSpawnLoc(player.getLocation());
-                player.sendMessage(LangFile.getString("spawn.set")
-                        .replaceAll("%x%", String.valueOf(player.getLocation().getX()))
-                        .replaceAll("%y%", String.valueOf(player.getLocation().getY()))
-                        .replaceAll("%z%", String.valueOf(player.getLocation().getZ()))
+                sendMessage(player, "spawn.set",
+                        String.valueOf(player.getLocation().getX()),
+                        String.valueOf(player.getLocation().getY()),
+                        String.valueOf(player.getLocation().getZ())
                 );
                 return;
             }
-            player.sendMessage(LangFile.getString("spawn.usage.admin"));
+            sendMessage(player, "spawn.usage.admin");
         } else {
-            sender.sendMessage(LangFile.getString("only-players"));
+            sendMessage(sender, "only-players");
         }
     }
 }

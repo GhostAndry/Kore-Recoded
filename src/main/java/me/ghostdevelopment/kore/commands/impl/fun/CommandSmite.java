@@ -14,38 +14,37 @@ import org.bukkit.entity.Player;
 import java.util.ArrayList;
 import java.util.List;
 
-@SuppressWarnings("ALL")
 @CommandInfo(name = "smite", permission = "kore.smite", tabCompleter = true)
 public class CommandSmite extends KoreCommand {
 
     @Override
     public void execute(CommandSender sender, String[] args) {
 
-        if (!(SettingsFile.getFile().getBoolean("smite.enabled"))) {
-            sender.sendMessage(LangFile.getString("command-disabled"));
+        if (!SettingsFile.getFile().getBoolean("smite.enabled")) {
+            sendMessage(sender, "command-disabled");
             return;
         }
 
-        if (args.length == 1) {
+        if (args.length != 1) {
+            sendMessage(sender, "smite.usage");
+            return;
+        }
 
-            try {
+        Player target = Bukkit.getPlayer(args[0]);
 
-                Player target = Bukkit.getPlayer(args[0]);
+        if (target == null) {
+            sendMessage(sender, "invalid-target");
+            return;
+        }
 
-                Location location = target.getLocation();
-                World world = location.getWorld();
+        Location location = target.getLocation();
+        World world = location.getWorld();
 
-                world.strikeLightning(location);
-
-                sender.sendMessage(LangFile.getString("smite.smited-player")
-                        .replaceAll("%player%", target.getName()));
-
-            } catch (Exception e) {
-                sender.sendMessage(LangFile.getString("invalid-target"));
-            }
-
+        if (world != null) {
+            world.strikeLightning(location);
+            sendMessage(sender, "smite.smited-player", target.getName());
         } else {
-            sender.sendMessage(LangFile.getString("smite.usage"));
+            sendMessage(sender, "smite.error");
         }
     }
 

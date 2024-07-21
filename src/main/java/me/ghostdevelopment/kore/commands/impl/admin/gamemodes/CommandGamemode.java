@@ -11,169 +11,73 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @SuppressWarnings("ALL")
 @CommandInfo(name = "gamemode", permission = "kore.gamemode.*", permission2 = "kore.gamemode", tabCompleter = true)
 public class CommandGamemode extends KoreCommand {
 
+    private static final Map<String, GameMode> gameModes = new HashMap<>();
+
+    static {
+        gameModes.put("0", GameMode.SURVIVAL);
+        gameModes.put("1", GameMode.CREATIVE);
+        gameModes.put("2", GameMode.ADVENTURE);
+        gameModes.put("3", GameMode.SPECTATOR);
+        gameModes.put("survival", GameMode.SURVIVAL);
+        gameModes.put("creative", GameMode.CREATIVE);
+        gameModes.put("adventure", GameMode.ADVENTURE);
+        gameModes.put("spectator", GameMode.SPECTATOR);
+    }
+
     @Override
     public void execute(CommandSender sender, String[] args) {
-        if (!(SettingsFile.getFile().getBoolean("gamemode.enabled"))) {
+        if (!SettingsFile.getFile().getBoolean("gamemode.enabled")) {
             sender.sendMessage(LangFile.getString("command-disabled"));
             return;
         }
 
+        if (args.length == 0) {
+            sendUsageMessage(sender);
+            return;
+        }
+
+        String type = args[0];
+        Player target = (args.length == 2) ? Bukkit.getPlayer(args[1]) : (sender instanceof Player ? (Player) sender : null);
+
+        if (target == null && args.length == 2) {
+            sender.sendMessage(LangFile.getString("invalid-target"));
+            return;
+        }
+
+        GameMode gameMode = gameModes.get(type.toLowerCase());
+
+        if (gameMode == null) {
+            sendUsageMessage(sender);
+            return;
+        }
+
+        try {
+            target.setGameMode(gameMode);
+            String messageKey = (sender instanceof Player && args.length == 1) ? "gamemode.changed" : "gamemode.changed-other";
+            String message = LangFile.getString(messageKey).replace("%gamemode%", gameMode.name().toUpperCase());
+
+            sender.sendMessage(message);
+            if (target != sender) {
+                target.sendMessage(LangFile.getString("gamemode.changed").replace("%gamemode%", gameMode.name().toUpperCase()));
+            }
+        } catch (Exception e) {
+            sender.sendMessage(LangFile.getString("invalid-target"));
+        }
+    }
+
+    private void sendUsageMessage(CommandSender sender) {
         if (sender instanceof Player) {
-
-            Player player = (Player) sender;
-
-            if (args.length == 0) {
-                player.sendMessage(LangFile.getString("gamemode.usage.player"));
-            } else if (args.length == 1) {
-                String type = args[0];
-                if (type.equalsIgnoreCase("0")) {
-                    player.setGameMode(GameMode.SURVIVAL);
-                    player.sendMessage(LangFile.getString("gamemode.changed")
-                            .replaceAll("%gamemode%", player.getGameMode().name().toUpperCase())
-                    );
-                } else if (type.equalsIgnoreCase("1")) {
-                    player.setGameMode(GameMode.CREATIVE);
-                    player.sendMessage(LangFile.getString("gamemode.changed")
-                            .replaceAll("%gamemode%", player.getGameMode().name().toUpperCase())
-                    );
-                } else if (type.equalsIgnoreCase("2")) {
-                    player.setGameMode(GameMode.ADVENTURE);
-                    player.sendMessage(LangFile.getString("gamemode.changed")
-                            .replaceAll("%gamemode%", player.getGameMode().name().toUpperCase())
-                    );
-                } else if (type.equalsIgnoreCase("3")) {
-                    player.setGameMode(GameMode.SPECTATOR);
-                    player.sendMessage(LangFile.getString("gamemode.changed")
-                            .replaceAll("%gamemode%", player.getGameMode().name().toUpperCase())
-                    );
-                } else if (type.equalsIgnoreCase("survival")) {
-                    player.setGameMode(GameMode.SURVIVAL);
-                    player.sendMessage(LangFile.getString("gamemode.changed")
-                            .replaceAll("%gamemode%", player.getGameMode().name().toUpperCase())
-                    );
-                } else if (type.equalsIgnoreCase("creative")) {
-                    player.setGameMode(GameMode.CREATIVE);
-                    player.sendMessage(LangFile.getString("gamemode.changed")
-                            .replaceAll("%gamemode%", player.getGameMode().name().toUpperCase())
-                    );
-                } else if (type.equalsIgnoreCase("adventure")) {
-                    player.setGameMode(GameMode.ADVENTURE);
-                    player.sendMessage(LangFile.getString("gamemode.changed")
-                            .replaceAll("%gamemode%", player.getGameMode().name().toUpperCase())
-                    );
-                } else if (type.equalsIgnoreCase("spectator")) {
-                    player.setGameMode(GameMode.SPECTATOR);
-                    player.sendMessage(LangFile.getString("gamemode.changed")
-                            .replaceAll("%gamemode%", player.getGameMode().name().toUpperCase())
-                    );
-                }
-            } else if (args.length == 2) {
-                String type = args[0];
-                Player target = Bukkit.getPlayer(args[1]);
-
-                try {
-                    if (type.equalsIgnoreCase("0")) {
-                        target.setGameMode(GameMode.SURVIVAL);
-                        player.sendMessage(LangFile.getString("gamemode.changed")
-                                .replaceAll("%gamemode%", target.getGameMode().name().toUpperCase())
-                        );
-                    } else if (type.equalsIgnoreCase("1")) {
-                        target.setGameMode(GameMode.CREATIVE);
-                        player.sendMessage(LangFile.getString("gamemode.changed")
-                                .replaceAll("%gamemode%", target.getGameMode().name().toUpperCase())
-                        );
-                    } else if (type.equalsIgnoreCase("2")) {
-                        target.setGameMode(GameMode.ADVENTURE);
-                        player.sendMessage(LangFile.getString("gamemode.changed")
-                                .replaceAll("%gamemode%", target.getGameMode().name().toUpperCase())
-                        );
-                    } else if (type.equalsIgnoreCase("3")) {
-                        target.setGameMode(GameMode.SPECTATOR);
-                        player.sendMessage(LangFile.getString("gamemode.changed")
-                                .replaceAll("%gamemode%", target.getGameMode().name().toUpperCase())
-                        );
-                    } else if (type.equalsIgnoreCase("survival")) {
-                        target.setGameMode(GameMode.SURVIVAL);
-                        player.sendMessage(LangFile.getString("gamemode.changed")
-                                .replaceAll("%gamemode%", target.getGameMode().name().toUpperCase())
-                        );
-                    } else if (type.equalsIgnoreCase("creative")) {
-                        target.setGameMode(GameMode.CREATIVE);
-                        player.sendMessage(LangFile.getString("gamemode.changed")
-                                .replaceAll("%gamemode%", target.getGameMode().name().toUpperCase())
-                        );
-                    } else if (type.equalsIgnoreCase("adventure")) {
-                        target.setGameMode(GameMode.ADVENTURE);
-                        player.sendMessage(LangFile.getString("gamemode.changed")
-                                .replaceAll("%gamemode%", target.getGameMode().name().toUpperCase())
-                        );
-                    } else if (type.equalsIgnoreCase("spectator")) {
-                        target.setGameMode(GameMode.SPECTATOR);
-                        player.sendMessage(LangFile.getString("gamemode.changed")
-                                .replaceAll("%gamemode%", target.getGameMode().name().toUpperCase())
-                        );
-                    }
-                } catch (Exception e) {
-                    player.sendMessage(LangFile.getString("invalid-target")
-                    );
-                }
-            }
+            sender.sendMessage(LangFile.getString("gamemode.usage.player"));
         } else {
-            try {
-                String type = args[0];
-                Player target = Bukkit.getPlayer(args[1]);
-
-                if (type.equalsIgnoreCase("0")) {
-                    target.setGameMode(GameMode.SURVIVAL);
-                    sender.sendMessage(LangFile.getString("gamemode.changed")
-                            .replaceAll("%gamemode%", target.getGameMode().name().toUpperCase())
-                    );
-                } else if (type.equalsIgnoreCase("1")) {
-                    target.setGameMode(GameMode.CREATIVE);
-                    sender.sendMessage(LangFile.getString("gamemode.changed")
-                            .replaceAll("%gamemode%", target.getGameMode().name().toUpperCase())
-                    );
-                } else if (type.equalsIgnoreCase("2")) {
-                    target.setGameMode(GameMode.ADVENTURE);
-                    sender.sendMessage(LangFile.getString("gamemode.changed")
-                            .replaceAll("%gamemode%", target.getGameMode().name().toUpperCase())
-                    );
-                } else if (type.equalsIgnoreCase("3")) {
-                    target.setGameMode(GameMode.SPECTATOR);
-                    sender.sendMessage(LangFile.getString("gamemode.changed")
-                            .replaceAll("%gamemode%", target.getGameMode().name().toUpperCase())
-                    );
-                } else if (type.equalsIgnoreCase("survival")) {
-                    target.setGameMode(GameMode.SURVIVAL);
-                    sender.sendMessage(LangFile.getString("gamemode.changed")
-                            .replaceAll("%gamemode%", target.getGameMode().name().toUpperCase())
-                    );
-                } else if (type.equalsIgnoreCase("creative")) {
-                    target.setGameMode(GameMode.CREATIVE);
-                    sender.sendMessage(LangFile.getString("gamemode.changed")
-                            .replaceAll("%gamemode%", target.getGameMode().name().toUpperCase())
-                    );
-                } else if (type.equalsIgnoreCase("adventure")) {
-                    target.setGameMode(GameMode.ADVENTURE);
-                    sender.sendMessage(LangFile.getString("gamemode.changed")
-                            .replaceAll("%gamemode%", target.getGameMode().name().toUpperCase())
-                    );
-                } else if (type.equalsIgnoreCase("spectator")) {
-                    target.setGameMode(GameMode.SPECTATOR);
-                    sender.sendMessage(LangFile.getString("gamemode.changed")
-                            .replaceAll("%gamemode%", target.getGameMode().name().toUpperCase())
-                    );
-                }
-            } catch (Exception e) {
-                sender.sendMessage(LangFile.getString("invalid-target")
-                );
-            }
+            sender.sendMessage(LangFile.getString("gamemode.usage.console"));
         }
     }
 
@@ -183,13 +87,11 @@ public class CommandGamemode extends KoreCommand {
 
         if (args.length == 1) {
             String partialName = args[0].toLowerCase();
-            String[] gameModes = {"survival", "creative", "adventure", "spectator", "1", "0", "2", "3"};
-
-            for (String gameMode : gameModes) {
+            gameModes.keySet().forEach(gameMode -> {
                 if (gameMode.startsWith(partialName)) {
                     completions.add(gameMode);
                 }
-            }
+            });
         } else if (args.length == 2) {
             String partialName = args[1].toLowerCase();
             for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
@@ -202,12 +104,4 @@ public class CommandGamemode extends KoreCommand {
 
         return completions;
     }
-
 }
-
-/*
-           _
-       .__(.)< (MEOW)
-        \___)
- ~~~~~~~~~~~~~~~~~~
-*/

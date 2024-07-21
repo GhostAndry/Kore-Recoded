@@ -6,12 +6,14 @@ import me.ghostdevelopment.kore.commands.CommandInfo;
 import me.ghostdevelopment.kore.commands.KoreCommand;
 import me.ghostdevelopment.kore.files.LangFile;
 import me.ghostdevelopment.kore.files.SettingsFile;
+import me.ghostdevelopment.kore.utils.Color;
 import me.ghostdevelopment.kore.utils.Console;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,75 +22,66 @@ import java.util.List;
 public class CommandSpawnmob extends KoreCommand {
 
     @Getter
-    private static ArrayList<EntityType> entities = new ArrayList<>();
+    private static final ArrayList<EntityType> entities = new ArrayList<>();
 
     @Override
     public void execute(CommandSender sender, String[] args) {
 
-        if (!(SettingsFile.getFile().getBoolean("spawnmob.enabled"))) {
-            sender.sendMessage(LangFile.getString("command-disabled"));
+        if (!SettingsFile.getFile().getBoolean("spawnmob.enabled")) {
+            sendMessage(sender, "command-disabled");
             return;
         }
 
-        if (sender instanceof Player) {
+        if (!(sender instanceof Player)) {
+            sendMessage(sender, "only-players");
+            return;
+        }
 
-            Player player = (Player) sender;
+        Player player = (Player) sender;
 
-            if (args.length == 1) {
-                try {
-                    String entityString = args[0].toUpperCase();
-                    EntityType entityType = EntityType.valueOf(entityString);
+        if (args.length < 1 || args.length > 2) {
+            sendMessage(player, "spawnmob.usage");
+            return;
+        }
 
-                    Entity entity = player.getWorld().spawn(player.getLocation(), entityType.getEntityClass());
+        EntityType entityType;
+        try {
+            entityType = EntityType.valueOf(args[0].toUpperCase());
+        } catch (IllegalArgumentException e) {
+            sendMessage(player, "spawnmob.invalid");
+            return;
+        }
 
-                    player.sendMessage(LangFile.getString("spawnmob.spawned")
-                            .replaceAll("%num%", String.valueOf(1)));
-                    return;
-                } catch (Exception e) {
-                    player.sendMessage(LangFile.getString("spawnmob.invalid"));
-                    return;
-                }
-
-            } else if (args.length == 2) {
-
-                try {
-                    String entityString = args[0].toUpperCase();
-                    EntityType entityType = EntityType.valueOf(entityString);
-                    Integer entityNum = Integer.valueOf(args[1]);
-
-                    try {
-                        if (SettingsFile.getFile().getBoolean("spawnmob.async")) {
-                            Bukkit.getScheduler().runTask(Kore.getInstance(), () -> {
-                                for (int i = 1; i <= entityNum; i++) {
-                                    Entity entity = player.getWorld().spawn(player.getLocation(), entityType.getEntityClass());
-                                }
-                                player.sendMessage(LangFile.getString("spawnmob.spawned")
-                                        .replaceAll("%num%", String.valueOf(entityNum)));
-                            });
-                            return;
-                        } else {
-                            for (int i = 1; i <= entityNum; i++) {
-                                Entity entity = player.getWorld().spawn(player.getLocation(), entityType.getEntityClass());
-                            }
-                            player.sendMessage(LangFile.getString("spawnmob.spawned")
-                                    .replaceAll("%num%", String.valueOf(entityNum)));
-                            return;
-                        }
-                    } catch (Exception e) {
-                        Console.warning(e + "\n\nUnable to spawn entity");
-                    }
-                } catch (Exception e) {
-                    player.sendMessage(LangFile.getString("spawnmob.invalid"));
-                    return;
-                }
-
-            } else {
-                player.sendMessage(LangFile.getString("spawnmob.usage"));
+        int entityNum = 1;
+        if (args.length == 2) {
+            try {
+                entityNum = Integer.parseInt(args[1]);
+            } catch (NumberFormatException e) {
+                sendMessage(player, "spawnmob.invalid");
                 return;
             }
+        }
+
+        spawnEntities(player, entityType, entityNum);
+    }
+
+    private void spawnEntities(Player player, EntityType entityType, int entityNum) {
+        if (SettingsFile.getFile().getBoolean("spawnmob.async")) {
+            Bukkit.getScheduler().runTask(Kore.getInstance(), () -> spawnEntitiesSync(player, entityType, entityNum));
         } else {
-            sender.sendMessage(LangFile.getString("only-players"));
-            return;
+            spawnEntitiesSync(player, entityType, entityNum);
+        }
+    }
+
+    private void spawnEntitiesSync(Player player, EntityType entityType, int entityNum) {
+        try {
+            for (int i = 0; i < entityNum; i++) {
+                player.getWorld().spawn(player.getLocation(), entityType.getEntityClass());
+            }
+            sendMessage(player, "spawnmob.spawned", String.valueOf(entityNum));
+        } catch (Exception e) {
+            Console.warning(e + "\n\nUnable to spawn entity");
+            sendMessage(player, "spawnmob.error");
         }
     }
 
@@ -108,5 +101,4 @@ public class CommandSpawnmob extends KoreCommand {
 
         return completions;
     }
-
 }

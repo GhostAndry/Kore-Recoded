@@ -15,150 +15,138 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-@SuppressWarnings("ALL")
 @CommandInfo(name = "warp", permission = "kore.warp", tabCompleter = true)
 public class CommandWarp extends KoreCommand {
 
     @Override
     public void execute(CommandSender sender, String[] args) {
 
-        if (!(SettingsFile.getFile().getBoolean("warp.enabled"))) {
-            sender.sendMessage(LangFile.getString("command-disabled"));
+        if (!SettingsFile.getFile().getBoolean("warp.enabled")) {
+            sendMessage(sender, "command-disabled");
             return;
         }
 
-        if (sender instanceof Player) {
+        if (args.length < 1 || args.length > 2) {
+            sendMessage(sender, sender instanceof Player ? "warp.usage.player" : "warp.usage.console");
+            return;
+        }
 
-            Player player = (Player) sender;
+        String subCommand = args[0].toLowerCase();
+        switch (subCommand) {
+            case "add":
+                handleAddWarp(sender, args);
+                break;
+            case "remove":
+                handleRemoveWarp(sender, args);
+                break;
+            default:
+                handleWarp(sender, args);
+                break;
+        }
+    }
 
-            if (args.length == 1 || args.length == 2) {
-                if (args[0].equalsIgnoreCase("add")) {
-                    if (player.hasPermission("kore.warp.admin")) {
-                        try {
-                            String warp_name = args[1];
+    private void handleAddWarp(CommandSender sender, String[] args) {
+        if (!(sender instanceof Player)) {
+            sendMessage(sender, "warp.usage.console");
+            return;
+        }
 
-                            if (!Functions.checkWarp(warp_name)) {
-                                Functions.addWarp(player.getLocation(), warp_name);
+        Player player = (Player) sender;
+        if (!player.hasPermission("kore.warp.admin")) {
+            sendMessage(player, "no-permissions");
+            return;
+        }
 
-                                player.sendMessage(LangFile.getString("warp.admin.added")
-                                        .replaceAll("%warp%", warp_name));
-                                return;
-                            } else {
-                                player.sendMessage(LangFile.getString("warp.admin.already-exist")
-                                        .replaceAll("%warp%", warp_name));
-                                return;
-                            }
-                        } catch (Exception e) {
-                            player.sendMessage(LangFile.getString("warp.usage.admin"));
-                            return;
-                        }
-                    } else {
-                        player.sendMessage(LangFile.getString("no-permissions"));
-                        return;
-                    }
+        if (args.length != 2) {
+            sendMessage(player, "warp.usage.admin");
+            return;
+        }
 
-                } else if (args[0].equalsIgnoreCase("remove")) {
-                    if (player.hasPermission("kore.warp.admin") || player.isOp()) {
-                        try {
-                            String warp_name = args[1];
+        String warpName = args[1];
+        if (Functions.checkWarp(warpName)) {
+            sendMessage(player, "warp.admin.already-exist", warpName);
+            return;
+        }
 
-                            if (Functions.checkWarp(warp_name)) {
-                                Functions.delWarp(warp_name);
+        Functions.addWarp(player.getLocation(), warpName);
+        sendMessage(player, "warp.admin.added", warpName);
+    }
 
-                                player.sendMessage(LangFile.getString("warp.admin.removed")
-                                        .replaceAll("%warp%", warp_name));
-                                return;
-                            } else {
-                                player.sendMessage(LangFile.getString("warp.not-found"));
-                                return;
-                            }
-                        } catch (Exception e) {
-                            player.sendMessage(LangFile.getString("warp.usage.admin"));
-                            return;
-                        }
+    private void handleRemoveWarp(CommandSender sender, String[] args) {
+        if (!(sender instanceof Player)) {
+            sendMessage(sender, "warp.usage.console");
+            return;
+        }
 
-                    } else {
-                        player.sendMessage(LangFile.getString("no-permissions"));
-                        return;
-                    }
+        Player player = (Player) sender;
+        if (!player.hasPermission("kore.warp.admin") && !player.isOp()) {
+            sendMessage(player, "no-permissions");
+            return;
+        }
 
-                } else {
+        if (args.length != 2) {
+            sendMessage(player, "warp.usage.admin");
+            return;
+        }
 
-                    if (args.length == 1) {
-                        String warp_name = args[0];
+        String warpName = args[1];
+        if (!Functions.checkWarp(warpName)) {
+            sendMessage(player, "warp.not-found");
+            return;
+        }
 
-                        if (Functions.checkWarp(warp_name)) {
+        Functions.delWarp(warpName);
+        sendMessage(player, "warp.admin.removed", warpName);
+    }
 
-                            player.teleport(Functions.getWarpLoc(warp_name));
-                            player.sendMessage(LangFile.getString("warp.warped")
-                                    .replaceAll("%warp%", warp_name));
-                            return;
-                        } else {
-                            player.sendMessage(LangFile.getString("warp.not-found"));
-                            return;
-                        }
-
-                    } else {
-                        try {
-                            String warp_name = args[0];
-                            Player target = Bukkit.getPlayer(args[1]);
-
-                            if (Functions.checkWarp(warp_name)) {
-
-                                target.teleport(Functions.getWarpLoc(warp_name));
-                                target.sendMessage(LangFile.getString("warp.warped")
-                                        .replaceAll("%warp%", warp_name));
-                                player.sendMessage(LangFile.getString("warp.warped-other")
-                                        .replaceAll("%warp%", warp_name)
-                                        .replaceAll("%player%", target.getName()));
-                                return;
-                            } else {
-                                player.sendMessage(LangFile.getString("warp.not-found"));
-                                return;
-                            }
-                        } catch (Exception e) {
-                            player.sendMessage(LangFile.getString("invalid-target"));
-                            return;
-                        }
-
-                    }
-
-                }
-
-            } else {
-                player.sendMessage(LangFile.getString("warp.usage.player"));
+    private void handleWarp(CommandSender sender, String[] args) {
+        if (!(sender instanceof Player)) {
+            if (args.length != 2) {
+                sendMessage(sender, "warp.usage.console");
                 return;
             }
 
+            String warpName = args[0];
+            Player target = Bukkit.getPlayer(args[1]);
+            if (target == null) {
+                sendMessage(sender, "invalid-target");
+                return;
+            }
+
+            teleportToWarp(sender, target, warpName);
+            return;
+        }
+
+        Player player = (Player) sender;
+        if (args.length == 1) {
+            String warpName = args[0];
+            teleportToWarp(player, player, warpName);
+        } else if (args.length == 2) {
+            String warpName = args[0];
+            Player target = Bukkit.getPlayer(args[1]);
+            if (target == null) {
+                sendMessage(player, "invalid-target");
+                return;
+            }
+
+            teleportToWarp(player, target, warpName);
         } else {
+            sendMessage(player, "warp.usage.player");
+        }
+    }
 
-            if (args.length == 2) {
-                try {
-                    String warp_name = args[0];
-                    Player target = Bukkit.getPlayer(args[1]);
+    private void teleportToWarp(CommandSender sender, Player target, String warpName) {
+        if (!Functions.checkWarp(warpName)) {
+            sendMessage(sender, "warp.not-found");
+            return;
+        }
 
-                    if (Functions.checkWarp(warp_name)) {
-
-                        target.teleport(Functions.getWarpLoc(warp_name));
-                        target.sendMessage(LangFile.getString("warp.warped")
-                                .replaceAll("%warp%", warp_name));
-                        sender.sendMessage(LangFile.getString("warp.warped-other")
-                                .replaceAll("%warp%", warp_name)
-                                .replaceAll("%player%", target.getName()));
-                        return;
-                    } else {
-                        sender.sendMessage(LangFile.getString("warp.not-found"));
-                        return;
-                    }
-                } catch (Exception e) {
-                    sender.sendMessage(LangFile.getString("invalid-target"));
-                    return;
-                }
-
-            } else {
-                sender.sendMessage(LangFile.getString("warp.usage.console"));
-                return;
-            }
+        target.teleport(Functions.getWarpLoc(warpName));
+        sendMessage(target, "warp.warped", warpName);
+        if (sender instanceof Player) {
+            sendMessage((Player) sender, "warp.warped-other", warpName, target.getName());
+        } else {
+            sendMessage(sender, "warp.warped-other", warpName, target.getName());
         }
     }
 
@@ -167,12 +155,7 @@ public class CommandWarp extends KoreCommand {
         List<String> completions = new ArrayList<>();
 
         if (args.length == 1) {
-            if (sender.hasPermission("kore.warp.admin")
-                    || sender.hasPermission("kore.warp.*")
-                    || sender.hasPermission("kore.*")
-                    || sender.hasPermission("*")
-                    || sender.isOp()
-            ) {
+            if (sender.hasPermission("kore.warp.admin") || sender.hasPermission("kore.warp.*") || sender.hasPermission("kore.*") || sender.hasPermission("*") || sender.isOp()) {
                 completions.add("add");
                 completions.add("remove");
             }
@@ -185,31 +168,23 @@ public class CommandWarp extends KoreCommand {
             }
         } else if (args.length == 2) {
             String subCommand = args[0].toLowerCase();
-            if (subCommand.equals("add")
-                    && (sender.hasPermission("kore.warp.admin")
-                    || sender.hasPermission("kore.warp.*")
-                    || sender.hasPermission("kore.*")
-                    || sender.hasPermission("*")
-                    || sender.isOp())
-            ) {
-                String partialName = args[1].toLowerCase();
-                for (Player player : Bukkit.getOnlinePlayers()) {
-                    if (player.getName().toLowerCase().startsWith(partialName)) {
-                        completions.add(player.getName());
+            if ((subCommand.equals("add") || subCommand.equals("remove")) &&
+                    (sender.hasPermission("kore.warp.admin") || sender.hasPermission("kore.warp.*") || sender.hasPermission("kore.*") || sender.hasPermission("*") || sender.isOp())) {
+
+                if (subCommand.equals("add")) {
+                    String partialName = args[1].toLowerCase();
+                    for (Player player : Bukkit.getOnlinePlayers()) {
+                        if (player.getName().toLowerCase().startsWith(partialName)) {
+                            completions.add(player.getName());
+                        }
                     }
-                }
-            } else if (subCommand.equals("remove")
-                    && (sender.hasPermission("kore.warp.admin")
-                    || sender.hasPermission("kore.warp.*")
-                    || sender.hasPermission("kore.*")
-                    || sender.hasPermission("*")
-                    || sender.isOp())
-            ) {
-                Set<String> warps = StorageFile.getFile().getConfigurationSection("warps").getKeys(false);
-                String partialName = args[1].toLowerCase();
-                for (String warp : warps) {
-                    if (warp.toLowerCase().startsWith(partialName)) {
-                        completions.add(warp);
+                } else if (subCommand.equals("remove")) {
+                    Set<String> warps = StorageFile.getFile().getConfigurationSection("warps").getKeys(false);
+                    String partialName = args[1].toLowerCase();
+                    for (String warp : warps) {
+                        if (warp.toLowerCase().startsWith(partialName)) {
+                            completions.add(warp);
+                        }
                     }
                 }
             }

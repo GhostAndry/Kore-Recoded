@@ -16,55 +16,61 @@ import java.util.List;
 @CommandInfo(name = "heal", permission = "kore.heal", tabCompleter = true)
 public class CommandHeal extends KoreCommand {
 
+    private static final double FULL_HEALTH = 20.0;
+    private static final int FULL_FOOD_LEVEL = 40;
+
     @Override
     public void execute(CommandSender sender, String[] args) {
 
-        if (!(SettingsFile.getFile().getBoolean("heal.enabled"))) {
+        if (!SettingsFile.getFile().getBoolean("heal.enabled")) {
             sender.sendMessage(LangFile.getString("command-disabled"));
+            return;
+        }
+
+        if (args.length > 1) {
+            sendUsageMessage(sender);
             return;
         }
 
         if (sender instanceof Player) {
             Player player = (Player) sender;
-
-            if (args.length > 1) {
-                player.sendMessage(LangFile.getString("heal.usage.player"));
-                return;
-            }
             if (args.length == 0) {
-                player.setHealth(20);
-                player.setFoodLevel(40);
+                healPlayer(player);
                 player.sendMessage(LangFile.getString("heal.healed"));
-            } else if (args.length == 1) {
-                try {
-                    Player target = Bukkit.getPlayer(args[0]);
-
-                    target.setHealth(20);
-                    target.setFoodLevel(40);
-                    player.sendMessage(LangFile.getString("heal.healed-other")
-                            .replaceAll("%player%", target.getName()));
-                } catch (Exception e) {
-                    player.sendMessage(LangFile.getString("invalid-target"));
-                    return;
-                }
+            } else {
+                handleTargetHeal(sender, args[0]);
             }
         } else {
-            if (!(args.length == 1)) {
-                sender.sendMessage(LangFile.getString("heal.usage.console"));
-                return;
+            if (args.length == 1) {
+                handleTargetHeal(sender, args[0]);
+            } else {
+                sendUsageMessage(sender);
             }
+        }
+    }
 
-            try {
-                Player target = Bukkit.getPlayer(args[0]);
+    private void healPlayer(Player player) {
+        player.setHealth(FULL_HEALTH);
+        player.setFoodLevel(FULL_FOOD_LEVEL);
+    }
 
-                target.setFoodLevel(40);
-                target.setHealth(20);
-                sender.sendMessage(LangFile.getString("heal.healed-other")
-                        .replaceAll("%player%", target.getName()));
-            } catch (Exception e) {
-                sender.sendMessage(LangFile.getString("invalid-target"));
-                return;
-            }
+    private void handleTargetHeal(CommandSender sender, String targetName) {
+        Player target = Bukkit.getPlayer(targetName);
+
+        if (target != null) {
+            healPlayer(target);
+            sender.sendMessage(LangFile.getString("heal.healed-other")
+                    .replace("%player%", target.getName()));
+        } else {
+            sender.sendMessage(LangFile.getString("invalid-target"));
+        }
+    }
+
+    private void sendUsageMessage(CommandSender sender) {
+        if (sender instanceof Player) {
+            sender.sendMessage(LangFile.getString("heal.usage.player"));
+        } else {
+            sender.sendMessage(LangFile.getString("heal.usage.console"));
         }
     }
 

@@ -13,133 +13,139 @@ import org.bukkit.entity.Player;
 import java.util.ArrayList;
 import java.util.List;
 
-@SuppressWarnings("ALL")
 @CommandInfo(name = "teleport", permission = "kore.teleport", permission2 = "kore.tp", tabCompleter = true)
 public class CommandTeleport extends KoreCommand {
 
     @Override
     public void execute(CommandSender sender, String[] args) {
 
-        if (!(SettingsFile.getFile().getBoolean("teleport.enabled"))) {
-            sender.sendMessage(LangFile.getString("command-disabled"));
+        if (!SettingsFile.getFile().getBoolean("teleport.enabled")) {
+            sendMessage(sender, "command-disabled");
+            return;
+        }
+
+        if (args.length == 0) {
+            sendMessage(sender, sender instanceof Player ? "teleport.usage.player" : "teleport.usage.console");
             return;
         }
 
         if (sender instanceof Player) {
-
             Player player = (Player) sender;
-
-            if (args.length != 1 || args.length != 2 || args.length != 3 || args.length != 4) {
-
-                try {
-                    if (args.length == 1) {
-
-                        Player target = Bukkit.getPlayer(args[0]);
-
-                        player.teleport(target.getLocation());
-                        player.sendMessage(LangFile.getString("teleport.teleported")
-                                .replaceAll("%loc%", target.getName()));
-                        return;
-
-                    } else if (args.length == 2) {
-
-                        Player target = Bukkit.getPlayer(args[0]);
-                        Player target2 = Bukkit.getPlayer(args[1]);
-
-                        target.teleport(target2.getLocation());
-                        player.sendMessage(LangFile.getString("teleport.teleported-other")
-                                .replaceAll("%player%", target.getName())
-                                .replaceAll("%loc%", target2.getName()));
-                        return;
-
-                    } else if (args.length == 3) {
-
-                        double x = Double.valueOf(args[0]);
-                        double y = Double.valueOf(args[1]);
-                        double z = Double.valueOf(args[2]);
-
-                        Location loc = new Location(player.getLocation().getWorld(), x, y, z, player.getLocation().getYaw(), player.getLocation().getPitch());
-
-                        player.teleport(loc);
-
-                        String msgloc = x + " " + y + " " + z;
-                        player.sendMessage(LangFile.getString("teleport.teleported")
-                                .replaceAll("%loc%", msgloc));
-
-                        return;
-
-                    } else if (args.length == 4) {
-
-                        double x = Double.valueOf(args[1]);
-                        double y = Double.valueOf(args[2]);
-                        double z = Double.valueOf(args[3]);
-
-                        Player target = Bukkit.getPlayer(args[0]);
-
-                        Location loc = new Location(target.getLocation().getWorld(), x, y, z, target.getLocation().getYaw(), target.getLocation().getPitch());
-
-                        target.teleport(loc);
-
-                        String msgloc = x + " " + y + " " + z;
-                        player.sendMessage(LangFile.getString("teleport.teleported-other")
-                                .replaceAll("%player%", target.getName())
-                                .replaceAll("%loc%", msgloc));
-
-                        return;
-
-                    }
-
-                } catch (Exception e) {
-                    player.sendMessage(LangFile.getString("invalid-target"));
-                    return;
-                }
-
-            } else {
-                player.sendMessage(LangFile.getString("teleport.usage.player"));
-                return;
+            switch (args.length) {
+                case 1:
+                    handleTeleportPlayer(player, args[0]);
+                    break;
+                case 2:
+                    handleTeleportPlayerToPlayer(player, args[0], args[1]);
+                    break;
+                case 3:
+                    handleTeleportToLocation(player, args[0], args[1], args[2]);
+                    break;
+                case 4:
+                    handleTeleportPlayerToLocation(player, args[0], args[1], args[2], args[3]);
+                    break;
+                default:
+                    sendMessage(player, "teleport.usage.player");
             }
-
         } else {
             if (args.length == 2) {
-                try {
-                    Player target = Bukkit.getPlayer(args[0]);
-                    Player target2 = Bukkit.getPlayer(args[1]);
-                    target.teleport(target2);
-                    sender.sendMessage(LangFile.getString("teleport.teleported-other")
-                            .replaceAll("%player%", target.getName())
-                            .replaceAll("%loc%", target2.getName()));
-                    return;
-                } catch (Exception e) {
-                    sender.sendMessage(LangFile.getString("invalid-target"));
-                    return;
-                }
+                handleTeleportPlayerToPlayerConsole(sender, args[0], args[1]);
             } else {
-                sender.sendMessage(LangFile.getString("teleport.usage.console"));
-                return;
+                sendMessage(sender, "teleport.usage.console");
             }
+        }
+    }
+
+    private void handleTeleportPlayer(Player sender, String targetName) {
+        Player target = Bukkit.getPlayer(targetName);
+        if (target != null) {
+            sender.teleport(target.getLocation());
+            sendMessage(sender, "teleport.teleported", target.getName());
+        } else {
+            sendMessage(sender, "invalid-target");
+        }
+    }
+
+    private void handleTeleportPlayerToPlayer(Player sender, String targetName, String target2Name) {
+        Player target = Bukkit.getPlayer(targetName);
+        Player target2 = Bukkit.getPlayer(target2Name);
+        if (target != null && target2 != null) {
+            target.teleport(target2.getLocation());
+            sendMessage(sender, "teleport.teleported-other", target.getName(), target2.getName());
+        } else {
+            sendMessage(sender, "invalid-target");
+        }
+    }
+
+    private void handleTeleportToLocation(Player sender, String xStr, String yStr, String zStr) {
+        try {
+            double x = Double.parseDouble(xStr);
+            double y = Double.parseDouble(yStr);
+            double z = Double.parseDouble(zStr);
+            Location loc = new Location(sender.getWorld(), x, y, z, sender.getLocation().getYaw(), sender.getLocation().getPitch());
+            sender.teleport(loc);
+            sendMessage(sender, "teleport.teleported", x + " " + y + " " + z);
+        } catch (NumberFormatException e) {
+            sendMessage(sender, "invalid-number");
+        }
+    }
+
+    private void handleTeleportPlayerToLocation(Player sender, String targetName, String xStr, String yStr, String zStr) {
+        try {
+            Player target = Bukkit.getPlayer(targetName);
+            if (target != null) {
+                double x = Double.parseDouble(xStr);
+                double y = Double.parseDouble(yStr);
+                double z = Double.parseDouble(zStr);
+                Location loc = new Location(target.getWorld(), x, y, z, target.getLocation().getYaw(), target.getLocation().getPitch());
+                target.teleport(loc);
+                sendMessage(sender, "teleport.teleported-other", target.getName(), x + " " + y + " " + z);
+            } else {
+                sendMessage(sender, "invalid-target");
+            }
+        } catch (NumberFormatException e) {
+            sendMessage(sender, "invalid-number");
+        }
+    }
+
+    private void handleTeleportPlayerToPlayerConsole(CommandSender sender, String targetName, String target2Name) {
+        Player target = Bukkit.getPlayer(targetName);
+        Player target2 = Bukkit.getPlayer(target2Name);
+        if (target != null && target2 != null) {
+            target.teleport(target2);
+            sendMessage(sender, "teleport.teleported-other", target.getName(), target2.getName());
+        } else {
+            sendMessage(sender, "invalid-target");
         }
     }
 
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
         List<String> completions = new ArrayList<>();
-
-        if (args.length == 1) {
-            String partialName = args[0].toLowerCase();
-            for (Player player : Bukkit.getOnlinePlayers()) {
-                if (player.getName().startsWith(partialName)) {
-                    completions.add(player.getName());
+        switch (args.length) {
+            case 1:
+                String partialName1 = args[0].toLowerCase();
+                for (Player player : Bukkit.getOnlinePlayers()) {
+                    if (player.getName().toLowerCase().startsWith(partialName1)) {
+                        completions.add(player.getName());
+                    }
                 }
-            }
-        } else if (args.length == 2) {
-            String partialName = args[1].toLowerCase();
-            for (Player player : Bukkit.getOnlinePlayers()) {
-                if (player.getName().startsWith(partialName)) {
-                    completions.add(player.getName());
+                break;
+            case 2:
+                String partialName2 = args[1].toLowerCase();
+                for (Player player : Bukkit.getOnlinePlayers()) {
+                    if (player.getName().toLowerCase().startsWith(partialName2)) {
+                        completions.add(player.getName());
+                    }
                 }
-            }
+                break;
+            case 3:
+            case 4:
+                completions.add("<number>");
+                break;
+            default:
+                break;
         }
-
         return completions;
     }
 }

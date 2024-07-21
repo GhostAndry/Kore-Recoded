@@ -18,8 +18,8 @@ import org.reflections.Reflections;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
+import java.util.List;
 
-@SuppressWarnings("ALL")
 public final class Kore extends JavaPlugin {
 
     @Getter
@@ -27,17 +27,38 @@ public final class Kore extends JavaPlugin {
 
     public static int calculateY() {
         String serverVersion = Bukkit.getServer().getVersion();
-        String[] versionParts = serverVersion.split("\\.");
-        int majorVersion = Integer.parseInt(versionParts[1]);
-
-        if (majorVersion >= 18) return -64;
-        else return 0;
+        return Integer.parseInt(serverVersion) >= 18 ? -64 : 0;
     }
 
     @Override
     public void onEnable() {
         instance = this;
 
+        printBanner();
+
+        Metrics metrics = new Metrics(this, 18653);
+        metrics.addCustomChart(new Metrics.SimplePie("language", () -> SettingsFile.getFile().getString("messages")));
+
+        if (getServer().getPluginManager().getPlugin("PlaceholderAPI") != null) {
+            new RegisterPlaceholders().register();
+        } else {
+            Console.warning("PlaceholderAPI is absent in minecraft server. Placeholders won't work without it!");
+        }
+
+        saveDefaultConfig();
+        setupFiles();
+        addEntities();
+
+        try {
+            registerCommands();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        registerEvents();
+    }
+
+    private void printBanner() {
         System.out.println("\n\n" +
                 " _  __              \n" +
                 "| |/ /              \n" +
@@ -46,35 +67,6 @@ public final class Kore extends JavaPlugin {
                 "| . \\ (_) | | |  __/\n" +
                 "|_|\\_\\___/|_|  \\___|\n" +
                 "\n");
-
-        Metrics metrics = new Metrics(this, 18653);
-
-        metrics.addCustomChart(new Metrics.SimplePie("language", () -> {
-            return SettingsFile.getFile().getString("messages");
-        }));
-
-        if (getServer().getPluginManager().getPlugin("PlaceholderAPI") != null) {
-            new RegisterPlaceholders().register();
-        } else {
-            Console.warning("PlaceholderAPI is absent in minecraft server.\nPlaceholders won't work without it!");
-        }
-
-        saveDefaultConfig();
-        setupFiles();
-        addEntities();
-        try {
-            registerCommands();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-        registerEvents();
-
-        new UpdateChecker(this, 107023).getVersion(version -> {
-            if (!this.getDescription().getVersion().equals(version)) {
-                getLogger().info("There is a new update available.Version: " + version);
-            }
-        });
-
     }
 
     private void addEntities() {
@@ -87,83 +79,40 @@ public final class Kore extends JavaPlugin {
 
     private void registerCommands() throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
         String packageName = getClass().getPackage().getName();
-        for (Class<? extends KoreCommand> clazz : new Reflections(packageName + ".commands.impl").getSubTypesOf(KoreCommand.class)) {
+        Reflections reflections = new Reflections(packageName + ".commands.impl");
 
-            KoreCommand command = null;
-            try {
-                command = clazz.getDeclaredConstructor().newInstance();
-            } catch (InstantiationException e) {
-                throw new RuntimeException(e);
-            } catch (IllegalAccessException e) {
-                throw new RuntimeException(e);
-            } catch (InvocationTargetException e) {
-                throw new RuntimeException(e);
-            } catch (NoSuchMethodException e) {
-                throw new RuntimeException(e);
-            }
-            try {
+        for (Class<? extends KoreCommand> clazz : reflections.getSubTypesOf(KoreCommand.class)) {
+            KoreCommand command = clazz.getDeclaredConstructor().newInstance();
+            if (getCommand(command.getCommandInfo().name()) != null) {
                 getCommand(command.getCommandInfo().name()).setExecutor(command);
                 if (command.getCommandInfo().tabCompleter()) {
                     getCommand(command.getCommandInfo().name()).setTabCompleter(command);
                 }
-            } catch (Exception ignored) {
             }
         }
     }
 
     private void registerEvents() {
-        ArrayList<Listener> events = new ArrayList<>();
+        List<Listener> events = new ArrayList<>();
+        if (SettingsFile.getFile().getBoolean("godmode.enabled")) events.add(new GodMode());
+        if (SettingsFile.getFile().getBoolean("vanish.enabled")) events.add(new VanishPlayer());
+        if (SettingsFile.getFile().getBoolean("spawn.enabled") && SettingsFile.getFile().getBoolean("spawn.on-join")) events.add(new Spawn());
+        if (SettingsFile.getFile().getBoolean("chat.enabled")) events.add(new ChatManager());
+        if (SettingsFile.getFile().getBoolean("world-manipulator.enable")) events.add(new WorldManipulator());
+        if (getConfig().getString("server.join-msg") != null && !getConfig().getString("server.join-msg").isEmpty()) events.add(new JoinMSG());
 
-        if (SettingsFile.getFile().getBoolean("godmode.enabled")) {
-            events.add(new GodMode());
-        }
-        if (SettingsFile.getFile().getBoolean("vanish.enabled")) {
-            events.add(new VanishPlayer());
-        }
-        if (SettingsFile.getFile().getBoolean("spawn.enabled")) {
-            if (SettingsFile.getFile().getBoolean("spawn.on-join")) {
-                events.add(new Spawn());
-            }
-        }
-
-        if (SettingsFile.getFile().getBoolean("chat.enabled")) {
-            events.add(new ChatManager());
-        }
-
-        if (SettingsFile.getFile().getBoolean("world-manipulator.enable")) {
-            events.add(new WorldManipulator());
-        }
-
-        if (!(Kore.getInstance().getConfig().getString("server.join-msg") == null || Kore.getInstance().getConfig().getString("server.join-msg").isEmpty())) {
-            events.add(new JoinMSG());
-        }
-
-        for (Listener l : events) {
-            getServer().getPluginManager().registerEvents(l, this);
-        }
+        events.forEach(event -> getServer().getPluginManager().registerEvents(event, this));
     }
 
     private void setupFiles() {
-
-        SettingsFile.setUp();
-
-        LangFile.setUp();
-        LangFile.getFile().options().copyDefaults(true);
-        LangFile.save();
-
-        StorageFile.setUp();
-        StorageFile.getFile().options().copyDefaults(true);
-        StorageFile.save();
-
+        setupFile(SettingsFile::setUp);
+        setupFile(LangFile::setUp, LangFile::save);
+        setupFile(StorageFile::setUp, StorageFile::save);
     }
 
+    private void setupFile(Runnable... setupSteps) {
+        for (Runnable step : setupSteps) {
+            step.run();
+        }
+    }
 }
-
-
-/*
-
-TODO: TPA COMMAND
-TODO: Add weather command
-TODO: Add time command
-
-*/
