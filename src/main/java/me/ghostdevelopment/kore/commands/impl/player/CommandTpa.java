@@ -165,11 +165,11 @@ public class CommandTpa extends KoreCommand {
             return;
         }
 
-        sender.sendMessage(LangFile.getString("tpa.denied.from")
+        sender.sendMessage(LangFile.getString("tpa.denied.to")
                 .replaceAll("%player%", target.getName())
         );
 
-        target.sendMessage(LangFile.getString("tpa.denied.to")
+        target.sendMessage(LangFile.getString("tpa.denied.from")
                 .replaceAll("%player%", sender.getName())
         );
 
