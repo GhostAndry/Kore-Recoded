@@ -23,10 +23,10 @@ public class CommandSetspawn extends KoreCommand {
 
             if (args.length == 0) {
                 Functions.setSpawnLoc(player.getLocation());
-                sendMessage(player, "spawn.set",
-                        String.valueOf(player.getLocation().getX()),
-                        String.valueOf(player.getLocation().getY()),
-                        String.valueOf(player.getLocation().getZ())
+                player.sendMessage(LangFile.getString("spawn.set")
+                        .replaceAll("%x%", String.valueOf(player.getLocation().getX()))
+                        .replaceAll("%y%", String.valueOf(player.getLocation().getY()))
+                        .replaceAll("%z%", String.valueOf(player.getLocation().getZ()))
                 );
                 return;
             }

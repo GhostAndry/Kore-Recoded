@@ -27,7 +27,11 @@ public final class Kore extends JavaPlugin {
 
     public static int calculateY() {
         String serverVersion = Bukkit.getServer().getVersion();
-        return Integer.parseInt(serverVersion) >= 18 ? -64 : 0;
+        String[] versionParts = serverVersion.split("\\.");
+        int majorVersion = Integer.parseInt(versionParts[1]);
+
+        if (majorVersion >= 18) return -64;
+        else return 0;
     }
 
     @Override

@@ -1,5 +1,6 @@
 package me.ghostdevelopment.kore.commands.impl.admin;
 
+import lombok.Getter;
 import me.ghostdevelopment.kore.commands.CommandInfo;
 import me.ghostdevelopment.kore.commands.KoreCommand;
 import me.ghostdevelopment.kore.files.LangFile;
@@ -15,11 +16,8 @@ import java.util.List;
 @CommandInfo(name = "vanish", permission = "kore.vanish", tabCompleter = true)
 public class CommandVanish extends KoreCommand {
 
+    @Getter
     private static final List<Player> vanished = new ArrayList<>();
-
-    public static List<Player> getVanished() {
-        return vanished;
-    }
 
     @Override
     public void execute(CommandSender sender, String[] args) {
@@ -45,7 +43,17 @@ public class CommandVanish extends KoreCommand {
                     return;
                 }
                 toggleVanish(target);
-                sendMessage(player, "vanish." + (vanished.contains(target) ? "enabled-other" : "disabled-other"), target.getName());
+
+                if(getVanished().contains(target)) {
+                    player.sendMessage(LangFile.getString("vanish.disabled-other")
+                            .replaceAll("%player%", target.getName())
+                    );
+                }else{
+                    player.sendMessage(LangFile.getString("vanish.enabled-other")
+                           .replaceAll("%player%", target.getName())
+                    );
+                }
+
             }
         } else {
             if (args.length == 1) {
@@ -55,7 +63,15 @@ public class CommandVanish extends KoreCommand {
                     return;
                 }
                 toggleVanish(target);
-                sendMessage(sender, "vanish." + (vanished.contains(target) ? "enabled-other" : "disabled-other"), target.getName());
+                if(getVanished().contains(target)) {
+                    sender.sendMessage(LangFile.getString("vanish.disabled-other")
+                            .replaceAll("%player%", target.getName())
+                    );
+                }else{
+                    sender.sendMessage(LangFile.getString("vanish.enabled-other")
+                            .replaceAll("%player%", target.getName())
+                    );
+                }
             } else {
                 sendMessage(sender, "vanish.usage.player");
             }

@@ -60,7 +60,31 @@ public class WorldManipulator implements Listener {
 
         if (SettingsFile.getFile().getBoolean("world-manipulator.enable")) {
             if (SettingsFile.getFile().getBoolean("world-manipulator.rules.anti-mob-spawn")) {
-                if (event.getEntityType().equals(EntityType.DROPPED_ITEM)) return;
+                if (event.getEntityType().equals(EntityType.DROPPED_ITEM)
+                        || event.getEntityType().equals(EntityType.FALLING_BLOCK)
+                        || event.getEntityType().equals(EntityType.PRIMED_TNT)
+                        || event.getEntityType().equals(EntityType.PRIMED_TNT)
+                        || event.getEntityType().equals(EntityType.ITEM_FRAME)
+                        || event.getEntityType().equals(EntityType.ARMOR_STAND)
+                        || event.getEntityType().equals(EntityType.ENDER_CRYSTAL)
+                        || event.getEntityType().equals(EntityType.SPLASH_POTION)
+                        || event.getEntityType().equals(EntityType.ARROW)
+                        || event.getEntityType().equals(EntityType.SNOWBALL)
+                        || event.getEntityType().equals(EntityType.EGG)
+                        || event.getEntityType().equals(EntityType.FIREBALL)
+                        || event.getEntityType().equals(EntityType.SMALL_FIREBALL)
+                        || event.getEntityType().equals(EntityType.ENDER_PEARL)
+                        || event.getEntityType().equals(EntityType.WITHER_SKULL)
+                        || event.getEntityType().equals(EntityType.MINECART)
+                        || event.getEntityType().equals(EntityType.MINECART_CHEST)
+                        || event.getEntityType().equals(EntityType.MINECART_FURNACE)
+                        || event.getEntityType().equals(EntityType.MINECART_TNT)
+                        || event.getEntityType().equals(EntityType.MINECART_HOPPER)
+                        || event.getEntityType().equals(EntityType.MINECART_MOB_SPAWNER)
+                        || event.getEntityType().equals(EntityType.FIREWORK)
+                        || event.getEntityType().equals(EntityType.FISHING_HOOK)
+                        || event.getEntityType().equals(EntityType.LIGHTNING)
+                ) return;
                 event.setCancelled(true);
             }
         }

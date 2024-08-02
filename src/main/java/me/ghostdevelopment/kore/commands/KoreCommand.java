@@ -81,21 +81,6 @@ public abstract class KoreCommand implements CommandExecutor, TabCompleter {
         ));
     }
 
-    protected void sendMessage(@NotNull CommandSender sender, String message, String... replacements) {
-        String msg = LangFile.getString(message).replaceAll("%prefix%", LangFile.getString("prefix"));
-        for (int i = 0; i < replacements.length; i++) {
-            msg = msg.replaceAll("%arg" + (i + 1) + "%", replacements[i]);
-        }
-        sender.sendMessage(Color.Color(msg));
-    }
-
-    protected void sendMessage(@NotNull Player player, String message, String... replacements) {
-        String msg = LangFile.getString(message).replaceAll("%prefix%", LangFile.getString("prefix"));
-        for (int i = 0; i < replacements.length; i++) {
-            msg = msg.replaceAll("%arg" + (i + 1) + "%", replacements[i]);
-        }
-        player.sendMessage(Color.Color(msg));
-    }
 
     public abstract void execute(CommandSender sender, String[] args);
 

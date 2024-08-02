@@ -69,7 +69,9 @@ public class CommandSpawn extends KoreCommand {
             }
 
             target.teleport(spawn);
-            sendMessage(sender, "spawn.teleported-other");
+            sender.sendMessage(LangFile.getString("command.spawn.teleported")
+                    .replaceAll("%player%", target.getName())
+            );
         }
     }
 
@@ -86,17 +88,5 @@ public class CommandSpawn extends KoreCommand {
             }
         }
         return completions;
-    }
-
-    public void sendMessage(@NotNull CommandSender sender, String message) {
-        sender.sendMessage(Color.Color(LangFile.getString(message)
-                .replaceAll("%prefix%", LangFile.getString("prefix"))
-        ));
-    }
-
-    public void sendMessage(@NotNull Player player, String message) {
-        player.sendMessage(Color.Color(LangFile.getString(message)
-                .replaceAll("%prefix%", LangFile.getString("prefix"))
-        ));
     }
 }

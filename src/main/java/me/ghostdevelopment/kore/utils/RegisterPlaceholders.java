@@ -47,9 +47,9 @@ public class RegisterPlaceholders extends PlaceholderExpansion {
         if (params.equals("vanished"))
             return String.valueOf(CommandVanish.getVanished().contains(player));
         if (params.equals("flying"))
-            return String.valueOf(CommandFly.getFlying().contains(player));
+            return String.valueOf(CommandFly.getFlyingPlayers().contains(player));
         if (params.equals("godmode"))
-            return String.valueOf(CommandGod.getGod().contains(player));
+            return String.valueOf(CommandGod.getGodPlayers().contains(player));
 
         return null;
     }

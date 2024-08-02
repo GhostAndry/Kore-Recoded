@@ -23,12 +23,12 @@ public class CommandOrbitalcannon extends KoreCommand {
     public void execute(CommandSender sender, String[] args) {
 
         if (!SettingsFile.getFile().getBoolean("orbitalcannon.enabled")) {
-            sendMessage(sender, "command-disabled");
+            sender.sendMessage(LangFile.getString("command-disabled"));
             return;
         }
 
         if (args.length != 1 && args.length != 3) {
-            sendMessage(sender, "orbitalcannon.usage");
+            sender.sendMessage(LangFile.getString("orbitalcannon.usage"));
             return;
         }
 
@@ -36,12 +36,12 @@ public class CommandOrbitalcannon extends KoreCommand {
         if (args.length == 1) {
             Player target = Bukkit.getPlayer(args[0]);
             if (target == null) {
-                sendMessage(sender, "invalid-target");
+                sender.sendMessage(LangFile.getString("invalid-target"));
                 return;
             }
             location = target.getLocation();
             if (SettingsFile.getFile().getBoolean("orbitalcannon.tell-to-victim")) {
-                sendMessage(target, "orbitalcannon.tell");
+                target.sendMessage(LangFile.getString("orbitalcannon.tell"));
             }
         } else {
             World world = sender.getServer().getWorlds().get(0); // Default to the first world
@@ -51,7 +51,7 @@ public class CommandOrbitalcannon extends KoreCommand {
                 int z = Integer.parseInt(args[2]);
                 location = new Location(world, x, y, z);
             } catch (NumberFormatException e) {
-                sendMessage(sender, "orbitalcannon.invalid-coordinates");
+                sender.sendMessage(LangFile.getString("orbitalcannon.usage"));
                 return;
             }
         }
@@ -63,7 +63,7 @@ public class CommandOrbitalcannon extends KoreCommand {
                 world.createExplosion(location, EXPLOSION_RADIUS, false);
             }
         } else {
-            sendMessage(sender, "orbitalcannon.world-not-found");
+            sender.sendMessage(LangFile.getString("orbitalcannon.usage"));
         }
     }
 
@@ -73,15 +73,18 @@ public class CommandOrbitalcannon extends KoreCommand {
 
         if (args.length == 1) {
             String partialName = args[0].toLowerCase();
+
+            completions.add("<x>");
+            completions.add("<y>");
+            completions.add("<z>");
+
             for (Player player : Bukkit.getServer().getOnlinePlayers()) {
                 String playerName = player.getName();
                 if (playerName.toLowerCase().startsWith(partialName)) {
                     completions.add(playerName);
                 }
             }
-            completions.add("<x>");
-            completions.add("<y>");
-            completions.add("<z>");
+
         } else if (args.length == 2 || args.length == 3) {
             completions.add("<x>");
             completions.add("<y>");

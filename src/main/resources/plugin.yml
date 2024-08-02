@@ -1,7 +1,8 @@
 name: Kore
-version: 1.20
+version: 1.14
 main: me.ghostdevelopment.kore.Kore
 load: STARTUP
+api-version: 1.21
 
 commands:
   kore:
@@ -61,6 +62,8 @@ commands:
   spawnmob:
     description: ""
   sun:
+    description: ""
+  tpa:
     description: ""
 
 permissions:
@@ -123,5 +126,7 @@ permissions:
   kore.spawnmob:
     description: ""
   kore.sun:
+    description: ""
+  kore.tpa:
     description: ""
 

@@ -1,6 +1,3 @@
-commands:
-  asynchronously: false
-
 gamemode:
   enabled: true
 fly:
@@ -39,6 +36,10 @@ killmobs:
 spawnmob:
   enabled: true
   async: true #recomanded: true
+tpa:
+  enabled: true
+  expiration: 60 #in seconds
+
 chat:
   enabled: true
   format: "%sender%: %message%"
@@ -48,6 +49,7 @@ chat:
 messages: en
 
 server:
+  # Make it null if or leave it empty you want to disable join messages
   join-msg: "&8[&a+&8] &f%player%"
   leave-msg: "&8[&a+&8] &f%player%"
 

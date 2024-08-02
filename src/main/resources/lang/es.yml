@@ -109,3 +109,19 @@ spawnmob:
   spawned: '%prefix% &a¡Se han creado %num% criaturas!'
   invalid: '%prefix% &cEntidad inválida'
   usage: '%prefix% &cUso: /spawnmob <criatura> [num]'
+tpa:
+  request: |-
+    %prefix% &6%sender% ha solicitado teletransportarse a ti.
+    &7Escribe &e/tpa accept &7o &e/tpa deny.
+  accepted: "%prefix% &aSolicitud de teletransporte de %sender% aceptada."
+  denied:
+    from: "%prefix% &cSolicitud de teletransporte de %player% denegada."
+    to: "%prefix% &cSolicitud de teletransporte a %player% denegada."
+  already-requested: "%prefix% &cYa has solicitado un teletransporte."
+  usage: "%prefix% &cUso: /tpa <accept|deny|nombre_jugador>"
+  expired:
+    from: "%prefix% &cLa solicitud de teletransporte de %player% ha expirado."
+    to: "%prefix% &cLa solicitud de teletransporte a %player% ha expirado."
+  no-pending-request: "%prefix% &cNo tienes solicitudes de teletransporte pendientes."
+  player-not-found: "%prefix% &cEl jugador especificado no está en línea."
+  self-tpa-request: "%prefix% &c¡No puedes enviarte una solicitud a ti mismo!"

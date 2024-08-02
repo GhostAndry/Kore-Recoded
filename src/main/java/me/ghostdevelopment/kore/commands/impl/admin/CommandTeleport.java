@@ -60,7 +60,9 @@ public class CommandTeleport extends KoreCommand {
         Player target = Bukkit.getPlayer(targetName);
         if (target != null) {
             sender.teleport(target.getLocation());
-            sendMessage(sender, "teleport.teleported", target.getName());
+            sender.sendMessage(LangFile.getString("teleport.teleported")
+                    .replaceAll("%player%", target.getName())
+            );
         } else {
             sendMessage(sender, "invalid-target");
         }
@@ -71,7 +73,10 @@ public class CommandTeleport extends KoreCommand {
         Player target2 = Bukkit.getPlayer(target2Name);
         if (target != null && target2 != null) {
             target.teleport(target2.getLocation());
-            sendMessage(sender, "teleport.teleported-other", target.getName(), target2.getName());
+            sender.sendMessage(LangFile.getString("teleport.teleported-other")
+                    .replaceAll("%player%", target.getName())
+                    .replaceAll("%loc%", target2.getName())
+            );
         } else {
             sendMessage(sender, "invalid-target");
         }
@@ -84,7 +89,10 @@ public class CommandTeleport extends KoreCommand {
             double z = Double.parseDouble(zStr);
             Location loc = new Location(sender.getWorld(), x, y, z, sender.getLocation().getYaw(), sender.getLocation().getPitch());
             sender.teleport(loc);
-            sendMessage(sender, "teleport.teleported", x + " " + y + " " + z);
+            sender.sendMessage(LangFile.getString("teleport.teleported")
+                    .replaceAll("%player%", sender.getName())
+                    .replaceAll("%loc%", x + " " + y + " " + z)
+            );
         } catch (NumberFormatException e) {
             sendMessage(sender, "invalid-number");
         }
@@ -99,7 +107,10 @@ public class CommandTeleport extends KoreCommand {
                 double z = Double.parseDouble(zStr);
                 Location loc = new Location(target.getWorld(), x, y, z, target.getLocation().getYaw(), target.getLocation().getPitch());
                 target.teleport(loc);
-                sendMessage(sender, "teleport.teleported-other", target.getName(), x + " " + y + " " + z);
+                sender.sendMessage(LangFile.getString("teleport.teleported-other")
+                        .replaceAll("%player%", target.getName())
+                        .replaceAll("%loc%", x + " " + y + " " + z)
+                );
             } else {
                 sendMessage(sender, "invalid-target");
             }
@@ -113,7 +124,10 @@ public class CommandTeleport extends KoreCommand {
         Player target2 = Bukkit.getPlayer(target2Name);
         if (target != null && target2 != null) {
             target.teleport(target2);
-            sendMessage(sender, "teleport.teleported-other", target.getName(), target2.getName());
+            sender.sendMessage(LangFile.getString("teleport.teleported-other")
+                    .replaceAll("%player%", target.getName())
+                    .replaceAll("%loc%", target2.getName())
+            );
         } else {
             sendMessage(sender, "invalid-target");
         }

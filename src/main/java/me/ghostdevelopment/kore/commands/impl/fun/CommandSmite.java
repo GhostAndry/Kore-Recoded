@@ -21,19 +21,19 @@ public class CommandSmite extends KoreCommand {
     public void execute(CommandSender sender, String[] args) {
 
         if (!SettingsFile.getFile().getBoolean("smite.enabled")) {
-            sendMessage(sender, "command-disabled");
+            sender.sendMessage(LangFile.getString("command-disabled"));
             return;
         }
 
         if (args.length != 1) {
-            sendMessage(sender, "smite.usage");
+            sender.sendMessage(LangFile.getString("smite.usage"));
             return;
         }
 
         Player target = Bukkit.getPlayer(args[0]);
 
         if (target == null) {
-            sendMessage(sender, "invalid-target");
+            sender.sendMessage(LangFile.getString("invalid-target"));
             return;
         }
 
@@ -42,9 +42,9 @@ public class CommandSmite extends KoreCommand {
 
         if (world != null) {
             world.strikeLightning(location);
-            sendMessage(sender, "smite.smited-player", target.getName());
-        } else {
-            sendMessage(sender, "smite.error");
+            sender.sendMessage(LangFile.getString("smite.smited-player")
+                    .replaceAll("%player%", target.getName())
+            );
         }
     }
 

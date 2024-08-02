@@ -9,6 +9,7 @@ import me.ghostdevelopment.kore.files.StorageFile;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
@@ -64,12 +65,16 @@ public class CommandWarp extends KoreCommand {
 
         String warpName = args[1];
         if (Functions.checkWarp(warpName)) {
-            sendMessage(player, "warp.admin.already-exist", warpName);
+            player.sendMessage(LangFile.getString("warp.admin.already-exists")
+                    .replace("%warp%", warpName)
+            );
             return;
         }
 
         Functions.addWarp(player.getLocation(), warpName);
-        sendMessage(player, "warp.admin.added", warpName);
+        player.sendMessage(LangFile.getString("warp.admin.added")
+                .replace("%warp%", warpName)
+        );
     }
 
     private void handleRemoveWarp(CommandSender sender, String[] args) {
@@ -96,7 +101,9 @@ public class CommandWarp extends KoreCommand {
         }
 
         Functions.delWarp(warpName);
-        sendMessage(player, "warp.admin.removed", warpName);
+        player.sendMessage(LangFile.getString("warp.admin.removed")
+                .replace("%warp%", warpName)
+        );
     }
 
     private void handleWarp(CommandSender sender, String[] args) {
@@ -142,11 +149,19 @@ public class CommandWarp extends KoreCommand {
         }
 
         target.teleport(Functions.getWarpLoc(warpName));
-        sendMessage(target, "warp.warped", warpName);
+        target.sendMessage(LangFile.getString("warp.warped")
+                .replace("%warp%", warpName)
+        );
         if (sender instanceof Player) {
-            sendMessage((Player) sender, "warp.warped-other", warpName, target.getName());
+            sender.sendMessage(LangFile.getString("warp.warped-other")
+                    .replaceAll("%warp%", warpName)
+                    .replace("%player%", target.getName())
+            );
         } else {
-            sendMessage(sender, "warp.warped-other", warpName, target.getName());
+            sender.sendMessage(LangFile.getString("warp.warped-other")
+                    .replaceAll("%warp%", warpName)
+                    .replace("%player%", target.getName())
+            );
         }
     }
 
@@ -154,13 +169,22 @@ public class CommandWarp extends KoreCommand {
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
         List<String> completions = new ArrayList<>();
 
+        ConfigurationSection warpsSection = StorageFile.getFile().getConfigurationSection("warps");
+        if (warpsSection == null) {
+            Bukkit.getLogger().warning("Warp section is missing from configuration.");
+            return completions;
+        }
+
+        Set<String> warps = warpsSection.getKeys(false);
+
         if (args.length == 1) {
-            if (sender.hasPermission("kore.warp.admin") || sender.hasPermission("kore.warp.*") || sender.hasPermission("kore.*") || sender.hasPermission("*") || sender.isOp()) {
+            String partialName = args[0].toLowerCase();
+
+            if (sender.hasPermission("kore.warp.admin") || sender.hasPermission("kore.warp.*")) {
                 completions.add("add");
                 completions.add("remove");
             }
-            Set<String> warps = StorageFile.getFile().getConfigurationSection("warps").getKeys(false);
-            String partialName = args[0].toLowerCase();
+
             for (String warp : warps) {
                 if (warp.toLowerCase().startsWith(partialName)) {
                     completions.add(warp);
@@ -168,19 +192,18 @@ public class CommandWarp extends KoreCommand {
             }
         } else if (args.length == 2) {
             String subCommand = args[0].toLowerCase();
+            String partialName = args[1].toLowerCase();
+
             if ((subCommand.equals("add") || subCommand.equals("remove")) &&
-                    (sender.hasPermission("kore.warp.admin") || sender.hasPermission("kore.warp.*") || sender.hasPermission("kore.*") || sender.hasPermission("*") || sender.isOp())) {
+                    (sender.hasPermission("kore.warp.admin") || sender.hasPermission("kore.warp.*"))) {
 
                 if (subCommand.equals("add")) {
-                    String partialName = args[1].toLowerCase();
                     for (Player player : Bukkit.getOnlinePlayers()) {
                         if (player.getName().toLowerCase().startsWith(partialName)) {
                             completions.add(player.getName());
                         }
                     }
-                } else if (subCommand.equals("remove")) {
-                    Set<String> warps = StorageFile.getFile().getConfigurationSection("warps").getKeys(false);
-                    String partialName = args[1].toLowerCase();
+                } else {
                     for (String warp : warps) {
                         if (warp.toLowerCase().startsWith(partialName)) {
                             completions.add(warp);

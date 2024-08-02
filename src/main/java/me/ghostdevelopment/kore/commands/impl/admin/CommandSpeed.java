@@ -78,7 +78,9 @@ public class CommandSpeed extends KoreCommand {
         } else {
             Functions.setSpeed(sender, "fly", speed);
         }
-        sendMessage(sender, "speed.set", String.valueOf(speed));
+        sender.sendMessage(LangFile.getString("speed.set")
+                .replace("%speed%", String.valueOf(speed))
+        );
     }
 
     private void handleSpeedChange(CommandSender sender, float speed, Player target) {
@@ -92,8 +94,13 @@ public class CommandSpeed extends KoreCommand {
         } else {
             Functions.setSpeed(target, "fly", speed);
         }
-        sendMessage(target, "speed.set", String.valueOf(speed));
-        sendMessage(sender, "speed.set-other", target.getName(), String.valueOf(speed));
+        target.sendMessage(LangFile.getString("speed.set")
+                .replace("%speed%", String.valueOf(speed))
+        );
+        sender.sendMessage(LangFile.getString("speed.set-other")
+                .replace("%player%", target.getName())
+                .replace("%speed%", String.valueOf(speed))
+        );
     }
 
     private void handleSpeedChange(CommandSender sender, float speed, Player target, String type) {
@@ -109,8 +116,13 @@ public class CommandSpeed extends KoreCommand {
         }
 
         Functions.setSpeed(target, speedType, speed);
-        sendMessage(target, "speed.set", String.valueOf(speed));
-        sendMessage(sender, "speed.set-other", target.getName(), String.valueOf(speed));
+        target.sendMessage(LangFile.getString("speed.set")
+                .replace("%speed%", String.valueOf(speed))
+        );
+        sender.sendMessage(LangFile.getString("speed.set-other")
+                .replace("%player%", target.getName())
+                .replace("%speed%", String.valueOf(speed))
+        );
     }
 
     @Override

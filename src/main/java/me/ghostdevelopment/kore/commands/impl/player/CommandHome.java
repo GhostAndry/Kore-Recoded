@@ -82,16 +82,4 @@ public class CommandHome extends KoreCommand {
             sendMessage(player, "home.not-set");
         }
     }
-
-    public void sendMessage(@NotNull CommandSender sender, String message) {
-        sender.sendMessage(Color.Color(LangFile.getString(message)
-                .replaceAll("%prefix%", LangFile.getString("prefix"))
-        ));
-    }
-
-    public void sendMessage(@NotNull Player player, String message) {
-        player.sendMessage(Color.Color(LangFile.getString(message)
-                .replaceAll("%prefix%", LangFile.getString("prefix"))
-        ));
-    }
 }

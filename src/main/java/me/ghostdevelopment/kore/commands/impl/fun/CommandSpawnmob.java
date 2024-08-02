@@ -6,14 +6,11 @@ import me.ghostdevelopment.kore.commands.CommandInfo;
 import me.ghostdevelopment.kore.commands.KoreCommand;
 import me.ghostdevelopment.kore.files.LangFile;
 import me.ghostdevelopment.kore.files.SettingsFile;
-import me.ghostdevelopment.kore.utils.Color;
 import me.ghostdevelopment.kore.utils.Console;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,19 +25,19 @@ public class CommandSpawnmob extends KoreCommand {
     public void execute(CommandSender sender, String[] args) {
 
         if (!SettingsFile.getFile().getBoolean("spawnmob.enabled")) {
-            sendMessage(sender, "command-disabled");
+            sender.sendMessage(LangFile.getString("command-disabled"));
             return;
         }
 
         if (!(sender instanceof Player)) {
-            sendMessage(sender, "only-players");
+            sender.sendMessage(LangFile.getString("spawnmob.usage"));
             return;
         }
 
         Player player = (Player) sender;
 
         if (args.length < 1 || args.length > 2) {
-            sendMessage(player, "spawnmob.usage");
+            player.sendMessage(LangFile.getString("spawnmob.usage"));
             return;
         }
 
@@ -48,7 +45,7 @@ public class CommandSpawnmob extends KoreCommand {
         try {
             entityType = EntityType.valueOf(args[0].toUpperCase());
         } catch (IllegalArgumentException e) {
-            sendMessage(player, "spawnmob.invalid");
+            player.sendMessage(LangFile.getString("spawnmob.invalid"));
             return;
         }
 
@@ -57,7 +54,7 @@ public class CommandSpawnmob extends KoreCommand {
             try {
                 entityNum = Integer.parseInt(args[1]);
             } catch (NumberFormatException e) {
-                sendMessage(player, "spawnmob.invalid");
+                player.sendMessage(LangFile.getString("spawnmob.invalid"));
                 return;
             }
         }
@@ -78,10 +75,12 @@ public class CommandSpawnmob extends KoreCommand {
             for (int i = 0; i < entityNum; i++) {
                 player.getWorld().spawn(player.getLocation(), entityType.getEntityClass());
             }
-            sendMessage(player, "spawnmob.spawned", String.valueOf(entityNum));
+            player.sendMessage(LangFile.getString("spawnmob.spawned")
+                    .replaceAll("%num%", String.valueOf(entityNum))
+            );
         } catch (Exception e) {
             Console.warning(e + "\n\nUnable to spawn entity");
-            sendMessage(player, "spawnmob.error");
+            player.sendMessage(LangFile.getString("spawnmob.error"));
         }
     }
 

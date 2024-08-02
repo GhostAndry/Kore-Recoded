@@ -38,35 +38,35 @@ public class Functions {
     }
 
     public static void addWarp(Location location, String warpName) {
-        setLocation(WARPS_PATH + warpName.toLowerCase(), location);
+        setLocation(WARPS_PATH + "." + warpName.toLowerCase(), location);
     }
 
     public static Location getWarpLoc(String warpName) {
-        return getLocation(WARPS_PATH + warpName.toLowerCase());
+        return getLocation(WARPS_PATH + "." + warpName.toLowerCase());
     }
 
     public static void delWarp(String warpName) {
-        deleteLocation(WARPS_PATH + warpName.toLowerCase());
+        deleteLocation(WARPS_PATH + "." + warpName.toLowerCase());
     }
 
     public static boolean checkWarp(String warpName) {
-        return StorageFile.getFile().contains(WARPS_PATH + warpName.toLowerCase());
+        return StorageFile.getFile().contains(WARPS_PATH + "." + warpName.toLowerCase());
     }
 
     public static void addHome(Player player) {
-        setLocation(HOMES_PATH + player.getName().toLowerCase(), player.getLocation());
+        setLocation(HOMES_PATH + "." + player.getName().toLowerCase(), player.getLocation());
     }
 
     public static void delHome(Player player) {
-        deleteLocation(HOMES_PATH + player.getName().toLowerCase());
+        deleteLocation(HOMES_PATH + "." + player.getName().toLowerCase());
     }
 
     public static Location getHomeLoc(Player player) {
-        return getLocation(HOMES_PATH + player.getName().toLowerCase());
+        return getLocation(HOMES_PATH + "." + player.getName().toLowerCase());
     }
 
     public static boolean checkHome(Player player) {
-        return StorageFile.getFile().contains(HOMES_PATH + player.getName().toLowerCase());
+        return StorageFile.getFile().contains(HOMES_PATH + "." + player.getName().toLowerCase());
     }
 
     public static void setSpeed(Player player, String type, float speed) {
@@ -114,23 +114,23 @@ public class Functions {
     // Helper methods
 
     private static void setLocation(String path, Location loc) {
-        StorageFile.getFile().set(path + "world", loc.getWorld().getName());
-        StorageFile.getFile().set(path + "x", loc.getX());
-        StorageFile.getFile().set(path + "y", loc.getY());
-        StorageFile.getFile().set(path + "z", loc.getZ());
-        StorageFile.getFile().set(path + "pitch", loc.getPitch());
-        StorageFile.getFile().set(path + "yaw", loc.getYaw());
+        StorageFile.getFile().set(path + "." + "world", loc.getWorld().getName());
+        StorageFile.getFile().set(path + "." + "x", loc.getX());
+        StorageFile.getFile().set(path + "." + "y", loc.getY());
+        StorageFile.getFile().set(path + "." + "z", loc.getZ());
+        StorageFile.getFile().set(path + "." + "pitch", loc.getPitch());
+        StorageFile.getFile().set(path + "." + "yaw", loc.getYaw());
         StorageFile.save();
     }
 
     private static Location getLocation(String path) {
         return new Location(
-                Bukkit.getWorld(StorageFile.getFile().getString(path + "world")),
-                StorageFile.getFile().getDouble(path + "x"),
-                StorageFile.getFile().getDouble(path + "y"),
-                StorageFile.getFile().getDouble(path + "z"),
-                (float) StorageFile.getFile().getDouble(path + "yaw"),
-                (float) StorageFile.getFile().getDouble(path + "pitch")
+                Bukkit.getWorld(StorageFile.getFile().getString(path + "." + "world")),
+                StorageFile.getFile().getDouble(path + "." + "x"),
+                StorageFile.getFile().getDouble(path + "." + "y"),
+                StorageFile.getFile().getDouble(path + "." + "z"),
+                (float) StorageFile.getFile().getDouble(path + "." + "yaw"),
+                (float) StorageFile.getFile().getDouble(path + "." + "pitch")
         );
     }
 
