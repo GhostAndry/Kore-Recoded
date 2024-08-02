@@ -111,14 +111,16 @@ spawnmob:
   usage: '%prefix% &cИспользование: /spawnmob <моб> [кол-во]'
 tpa:
   request: |-
-    %prefix% &6%sender% запросил телепортацию к вам.
+    %prefix% &6%player% запросил телепортацию к вам.
     &7Введите &e/tpa accept &7или &e/tpa deny.
-  accepted: "%prefix% &aЗапрос на телепортацию от %sender% принят."
+  request-sent: |-
+    %prefix% &6Вы отправили запрос на телепортацию игроку %player%.
+  accepted: "%prefix% &aЗапрос на телепортацию от %player% принят."
   denied:
     from: "%prefix% &cЗапрос на телепортацию от %player% отклонен."
     to: "%prefix% &cЗапрос на телепортацию к %player% отклонен."
   already-requested: "%prefix% &cВы уже запросили телепортацию."
-  usage: "%prefix% &cИспользование: /tpa <accept|deny|имя_игрока>"
+  usage: "%prefix% &cИспользование: /tpa <accept|deny|player_name>"
   expired:
     from: "%prefix% &cЗапрос на телепортацию от %player% истек."
     to: "%prefix% &cЗапрос на телепортацию к %player% истек."

@@ -26,13 +26,26 @@ public final class Kore extends JavaPlugin {
     private static Kore instance;
 
     public static int calculateY() {
-        String serverVersion = Bukkit.getServer().getVersion();
-        String[] versionParts = serverVersion.split("\\.");
-        int majorVersion = Integer.parseInt(versionParts[1]);
 
-        if (majorVersion >= 18) return -64;
-        else return 0;
+        String serverVersion = Bukkit.getBukkitVersion();
+
+        String[] versionParts = serverVersion.split("\\.");
+
+        try {
+            int majorVersion = Integer.parseInt(versionParts[0]);
+            int minorVersion = Integer.parseInt(versionParts[1]);
+
+            if (majorVersion == 1 && minorVersion >= 18) {
+                return -64;
+            } else {
+                return 0;
+            }
+        } catch (NumberFormatException e) {
+            Console.warning(e.getMessage());
+            return 0;
+        }
     }
+
 
     @Override
     public void onEnable() {
@@ -43,13 +56,17 @@ public final class Kore extends JavaPlugin {
         Metrics metrics = new Metrics(this, 18653);
         metrics.addCustomChart(new Metrics.SimplePie("language", () -> SettingsFile.getFile().getString("messages")));
 
-        if (getServer().getPluginManager().getPlugin("PlaceholderAPI") != null) {
-            new RegisterPlaceholders().register();
-        } else {
+        try{
+            Class.forName("me.clip.placeholderapi.expansion.PlaceholderExpansion");
+            if (getServer().getPluginManager().getPlugin("PlaceholderAPI") != null) {
+                new RegisterPlaceholders().register();
+            } else {
+                Console.warning("PlaceholderAPI is absent in minecraft server. Placeholders won't work without it!");
+            }
+        } catch (ClassNotFoundException e) {
             Console.warning("PlaceholderAPI is absent in minecraft server. Placeholders won't work without it!");
         }
 
-        saveDefaultConfig();
         setupFiles();
         addEntities();
 
@@ -109,9 +126,12 @@ public final class Kore extends JavaPlugin {
     }
 
     private void setupFiles() {
-        setupFile(SettingsFile::setUp);
-        setupFile(LangFile::setUp, LangFile::save);
-        setupFile(StorageFile::setUp, StorageFile::save);
+        getConfig().options().copyDefaults(true);
+        saveDefaultConfig();
+
+        LangFile.setUp();
+        SettingsFile.setUp();
+        StorageFile.setUp();
     }
 
     private void setupFile(Runnable... setupSteps) {

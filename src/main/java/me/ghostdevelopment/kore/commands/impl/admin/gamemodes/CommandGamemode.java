@@ -62,11 +62,12 @@ public class CommandGamemode extends KoreCommand {
         try {
             target.setGameMode(gameMode);
             String messageKey = (sender instanceof Player && args.length == 1) ? "gamemode.changed" : "gamemode.changed-other";
-            String message = LangFile.getString(messageKey).replace("%gamemode%", gameMode.name().toUpperCase());
+            String message = LangFile.getString(messageKey);
 
-            sender.sendMessage(message);
+            sender.sendMessage(message.replaceAll("%gamemode%", gameMode.name().toUpperCase())
+                    .replaceAll("%player%", target.getName()));
             if (target != sender) {
-                target.sendMessage(LangFile.getString("gamemode.changed").replace("%gamemode%", gameMode.name().toUpperCase()));
+                target.sendMessage(LangFile.getString("gamemode.changed").replaceAll("%gamemode%", gameMode.name().toUpperCase()));
             }
         } catch (Exception e) {
             sender.sendMessage(LangFile.getString("invalid-target"));

@@ -73,7 +73,7 @@ public class CommandFly extends KoreCommand {
             flyingPlayers.add(target);
             target.setAllowFlight(true);
 
-            if (!notifier.getName().equalsIgnoreCase(target.getName())) notifier.sendMessage(LangFile.getString("fly.enabledstop-other") .replace("%player%", target.getName()));
+            if (!notifier.getName().equalsIgnoreCase(target.getName())) notifier.sendMessage(LangFile.getString("fly.enabled-other").replace("%player%", target.getName()));
             target.sendMessage(LangFile.getString("fly.enabled"));
         }
     }

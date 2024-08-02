@@ -166,11 +166,11 @@ public class CommandTpa extends KoreCommand {
         }
 
         sender.sendMessage(LangFile.getString("tpa.denied.from")
-                .replaceAll("%sender%", target.getName())
+                .replaceAll("%player%", target.getName())
         );
 
         target.sendMessage(LangFile.getString("tpa.denied.to")
-                .replaceAll("%sender%", sender.getName())
+                .replaceAll("%player%", sender.getName())
         );
 
         pendingRequests.remove(targetUUID);

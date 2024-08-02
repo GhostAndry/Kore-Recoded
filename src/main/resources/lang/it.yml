@@ -113,17 +113,19 @@ spawnmob:
   usage: "%prefix% &cUso: /spawnmobs <mob> [num]"
 tpa:
   request: |-
-    %prefix% &6%sender% ha richiesto di teletrasportarsi a te.
+    %prefix% &6%player% ha richiesto di teletrasportarsi da te.
     &7Digita &e/tpa accept &7o &e/tpa deny.
-  accepted: "%prefix% &aRichiesta di teletrasporto da %sender% accettata."
+  request-sent: |-
+    %prefix% &6Hai inviato una richiesta di teletrasporto a %player%.
+  accepted: "%prefix% &aRichiesta di teletrasporto da %player% accettata."
   denied:
     from: "%prefix% &cRichiesta di teletrasporto da %player% negata."
-    to: "%prefix% &cRichiesta di teletrasporto di %player% negata."
+    to: "%prefix% &cRichiesta di teletrasporto a %player% negata."
   already-requested: "%prefix% &cHai già richiesto un teletrasporto."
-  usage: "%prefix% &cUtilizzo: /tpa <accept|deny|nome_giocatore>"
+  usage: "%prefix% &cUso: /tpa <accept|deny|player_name>"
   expired:
     from: "%prefix% &cLa richiesta di teletrasporto da %player% è scaduta."
-    to: "%prefix% &cLa richiesta di teletrasporto di %player% è scaduta."
+    to: "%prefix% &cLa richiesta di teletrasporto a %player% è scaduta."
   no-pending-request: "%prefix% &cNon hai richieste di teletrasporto in sospeso."
   player-not-found: "%prefix% &cIl giocatore specificato non è online."
   self-tpa-request: "%prefix% &cNon puoi inviare una richiesta a te stesso!"

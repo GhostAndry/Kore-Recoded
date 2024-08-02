@@ -7,12 +7,16 @@ import me.ghostdevelopment.kore.files.LangFile;
 import me.ghostdevelopment.kore.files.SettingsFile;
 import me.ghostdevelopment.kore.utils.Color;
 import org.bukkit.Location;
+import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @SuppressWarnings("ALL")
-@CommandInfo(name = "home", permission = "kore.home")
+@CommandInfo(name = "home", permission = "kore.home", tabCompleter = true)
 public class CommandHome extends KoreCommand {
 
     @Override
@@ -81,5 +85,17 @@ public class CommandHome extends KoreCommand {
         } else {
             sendMessage(player, "home.not-set");
         }
+    }
+
+    @Override
+    public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
+        List<String> completions = new ArrayList<>();
+
+        if (args.length == 1) {
+            completions.add("set");
+            completions.add("remove");
+        }
+
+        return null;
     }
 }

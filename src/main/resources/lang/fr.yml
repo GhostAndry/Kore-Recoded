@@ -113,17 +113,19 @@ spawnmob:
   usage: '%prefix% &cUtilisation : /spawnmob <créature> [nombre]'
 tpa:
   request: |-
-    %prefix% &6%sender% a demandé à se téléporter vers vous.
+    %prefix% &6%player% a demandé à se téléporter vers vous.
     &7Tapez &e/tpa accept &7ou &e/tpa deny.
-  accepted: "%prefix% &aDemande de téléportation de %sender% acceptée."
+  request-sent: |-
+    %prefix% &6Vous avez envoyé une demande de téléportation à %player%.
+  accepted: "%prefix% &aDemande de téléportation de %player% acceptée."
   denied:
     from: "%prefix% &cDemande de téléportation de %player% refusée."
     to: "%prefix% &cDemande de téléportation à %player% refusée."
   already-requested: "%prefix% &cVous avez déjà demandé une téléportation."
-  usage: "%prefix% &cUtilisation : /tpa <accept|deny|nom_joueur>"
+  usage: "%prefix% &cUtilisation : /tpa <accept|deny|player_name>"
   expired:
     from: "%prefix% &cLa demande de téléportation de %player% a expiré."
     to: "%prefix% &cLa demande de téléportation à %player% a expiré."
-  no-pending-request: "%prefix% &cVous n'avez aucune demande de téléportation en attente."
+  no-pending-request: "%prefix% &cVous n'avez pas de demande de téléportation en attente."
   player-not-found: "%prefix% &cLe joueur spécifié n'est pas en ligne."
-  self-tpa-request: "%prefix% &cVous ne pouvez pas vous envoyer une demande à vous-même !"
+  self-tpa-request: "%prefix% &cVous ne pouvez pas envoyer une demande à vous-même !"

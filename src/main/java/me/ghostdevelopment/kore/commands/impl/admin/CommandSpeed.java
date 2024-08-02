@@ -41,6 +41,8 @@ public class CommandSpeed extends KoreCommand {
             return;
         }
 
+        if(speed > 1) sendMessage(sender, "speed.usage.player");
+
         switch (args.length) {
             case 1:
                 if (sender instanceof Player) {

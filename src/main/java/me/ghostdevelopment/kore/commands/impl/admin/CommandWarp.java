@@ -171,7 +171,10 @@ public class CommandWarp extends KoreCommand {
 
         ConfigurationSection warpsSection = StorageFile.getFile().getConfigurationSection("warps");
         if (warpsSection == null) {
-            Bukkit.getLogger().warning("Warp section is missing from configuration.");
+            if (sender.hasPermission("kore.warp.admin") || sender.hasPermission("kore.warp.*") || sender.hasPermission("kore.*") || sender.hasPermission("*") || sender.isOp()) {
+                completions.add("add");
+                completions.add("remove");
+            }
             return completions;
         }
 
@@ -180,7 +183,7 @@ public class CommandWarp extends KoreCommand {
         if (args.length == 1) {
             String partialName = args[0].toLowerCase();
 
-            if (sender.hasPermission("kore.warp.admin") || sender.hasPermission("kore.warp.*")) {
+            if (sender.hasPermission("kore.warp.admin") || sender.hasPermission("kore.warp.*") || sender.hasPermission("kore.*") || sender.hasPermission("*") || sender.isOp()) {
                 completions.add("add");
                 completions.add("remove");
             }
@@ -195,7 +198,7 @@ public class CommandWarp extends KoreCommand {
             String partialName = args[1].toLowerCase();
 
             if ((subCommand.equals("add") || subCommand.equals("remove")) &&
-                    (sender.hasPermission("kore.warp.admin") || sender.hasPermission("kore.warp.*"))) {
+                    (sender.hasPermission("kore.warp.admin") || sender.hasPermission("kore.warp.*") || sender.hasPermission("kore.*") || sender.hasPermission("*") || sender.isOp())) {
 
                 if (subCommand.equals("add")) {
                     for (Player player : Bukkit.getOnlinePlayers()) {

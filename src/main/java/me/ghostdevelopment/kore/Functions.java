@@ -70,11 +70,15 @@ public class Functions {
     }
 
     public static void setSpeed(Player player, String type, float speed) {
+        final float defaultSpeed = type=="fly"||type=="flight" ? 0.1f : 0.2f;
+        float maxSpeed = 1f;
+
+        final float ratio = ((speed - 1) / 9) * (maxSpeed - defaultSpeed);
+
         if ("walk".equalsIgnoreCase(type)) {
-            int speedLevel = getSpeedLevel(speed);
-            player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, speedLevel == 0 ? 1 : Integer.MAX_VALUE, speedLevel - 1, true, false), true);
+            player.setWalkSpeed(ratio+defaultSpeed);
         } else if ("fly".equalsIgnoreCase(type) || "flight".equalsIgnoreCase(type)) {
-            player.setFlySpeed(speed / 10.0f);
+            player.setFlySpeed(ratio+defaultSpeed);
         }
     }
 
@@ -137,19 +141,5 @@ public class Functions {
     private static void deleteLocation(String path) {
         StorageFile.getFile().set(path, null);
         StorageFile.save();
-    }
-
-    private static int getSpeedLevel(float speed) {
-        if (speed >= 0.1 && speed <= 1.0) return 1;
-        if (speed > 1.1 && speed <= 2.0) return 2;
-        if (speed > 2.1 && speed <= 3.0) return 3;
-        if (speed > 3.1 && speed <= 4.0) return 4;
-        if (speed > 4.1 && speed <= 5.0) return 5;
-        if (speed > 5.1 && speed <= 6.0) return 6;
-        if (speed > 6.1 && speed <= 7.0) return 7;
-        if (speed > 7.1 && speed <= 8.0) return 8;
-        if (speed > 8.1 && speed <= 9.0) return 9;
-        if (speed > 9.1 && speed <= 10.0) return 10;
-        return 0;
     }
 }

@@ -111,14 +111,16 @@ spawnmob:
   usage: '%prefix% &cUso: /spawnmob <criatura> [num]'
 tpa:
   request: |-
-    %prefix% &6%sender% ha solicitado teletransportarse a ti.
+    %prefix% &6%player% ha solicitado teletransportarse a ti.
     &7Escribe &e/tpa accept &7o &e/tpa deny.
-  accepted: "%prefix% &aSolicitud de teletransporte de %sender% aceptada."
+  request-sent: |-
+    %prefix% &6Has enviado una solicitud de teletransporte a %player%.
+  accepted: "%prefix% &aSolicitud de teletransporte de %player% aceptada."
   denied:
     from: "%prefix% &cSolicitud de teletransporte de %player% denegada."
     to: "%prefix% &cSolicitud de teletransporte a %player% denegada."
   already-requested: "%prefix% &cYa has solicitado un teletransporte."
-  usage: "%prefix% &cUso: /tpa <accept|deny|nombre_jugador>"
+  usage: "%prefix% &cUso: /tpa <accept|deny|player_name>"
   expired:
     from: "%prefix% &cLa solicitud de teletransporte de %player% ha expirado."
     to: "%prefix% &cLa solicitud de teletransporte a %player% ha expirado."

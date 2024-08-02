@@ -113,9 +113,11 @@ spawnmob:
   usage: "%prefix% &cUsage: /spawnmob <mob> [num]"
 tpa:
   request: |-
-    %prefix% &6%sender% has requested to teleport to you.
+    %prefix% &6%player% has requested to teleport to you.
     &7Type &e/tpa accept &7or &e/tpa deny.
-  accepted: "%prefix% &aTeleport request from %sender% accepted."
+  request-sent: |-
+    %prefix% &6You have sent a teleport request to %player%.
+  accepted: "%prefix% &aTeleport request from %player% accepted."
   denied:
     from: "%prefix% &cTeleport request from %player% denied."
     to: "%prefix% &cTeleport request to %player% denied."
