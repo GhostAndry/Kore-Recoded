@@ -66,13 +66,13 @@ public class CommandGod extends KoreCommand {
         if (godPlayers.contains(target)) {
             godPlayers.remove(target);
             target.sendMessage(LangFile.getString("god.disabled"));
-            notifier.sendMessage(LangFile.getString("god.disabled-other")
-                    .replace("%player%", target.getName()));
+//            notifier.sendMessage(LangFile.getString("god.disabled-other")
+//                    .replace("%player%", target.getName()));
         } else {
             godPlayers.add(target);
             target.sendMessage(LangFile.getString("god.enabled"));
-            notifier.sendMessage(LangFile.getString("god.enabled-other")
-                    .replace("%player%", target.getName()));
+//            notifier.sendMessage(LangFile.getString("god.enabled-other")
+//                    .replace("%player%", target.getName()));
         }
     }
 

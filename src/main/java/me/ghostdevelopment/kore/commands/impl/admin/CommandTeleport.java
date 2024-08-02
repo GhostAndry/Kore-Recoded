@@ -61,7 +61,7 @@ public class CommandTeleport extends KoreCommand {
         if (target != null) {
             sender.teleport(target.getLocation());
             sender.sendMessage(LangFile.getString("teleport.teleported")
-                    .replaceAll("%player%", target.getName())
+                    .replaceAll("%loc%", target.getName())
             );
         } else {
             sendMessage(sender, "invalid-target");

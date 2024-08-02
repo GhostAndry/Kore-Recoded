@@ -48,11 +48,6 @@ chat:
     - shit
 messages: en
 
-server:
-  # Make it null if or leave it empty you want to disable join messages
-  join-msg: "&8[&a+&8] &f%player%"
-  leave-msg: "&8[&a+&8] &f%player%"
-
 world-manipulator:
   enable: true
   rules:

@@ -69,7 +69,7 @@ public class CommandSpawn extends KoreCommand {
             }
 
             target.teleport(spawn);
-            sender.sendMessage(LangFile.getString("command.spawn.teleported")
+            sender.sendMessage(LangFile.getString("spawn.teleported-other")
                     .replaceAll("%player%", target.getName())
             );
         }

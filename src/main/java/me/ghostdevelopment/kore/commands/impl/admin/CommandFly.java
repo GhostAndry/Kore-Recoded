@@ -66,14 +66,14 @@ public class CommandFly extends KoreCommand {
         if (flyingPlayers.contains(target)) {
             flyingPlayers.remove(target);
             target.setAllowFlight(false);
-            notifier.sendMessage(LangFile.getString("fly.disabled-other")
-                    .replace("%player%", target.getName()));
+
+            if (!notifier.getName().equalsIgnoreCase(target.getName())) notifier.sendMessage(LangFile.getString("fly.disabled-other") .replace("%player%", target.getName()));
             target.sendMessage(LangFile.getString("fly.disabled"));
         } else {
             flyingPlayers.add(target);
             target.setAllowFlight(true);
-            notifier.sendMessage(LangFile.getString("fly.enabled-other")
-                    .replace("%player%", target.getName()));
+
+            if (!notifier.getName().equalsIgnoreCase(target.getName())) notifier.sendMessage(LangFile.getString("fly.enabledstop-other") .replace("%player%", target.getName()));
             target.sendMessage(LangFile.getString("fly.enabled"));
         }
     }
