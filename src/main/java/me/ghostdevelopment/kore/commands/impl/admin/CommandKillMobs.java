@@ -21,10 +21,31 @@ public class CommandKillMobs extends KoreCommand {
     private static final Set<EntityType> EXCLUDED_ENTITIES = new HashSet<>();
 
     static {
-        EXCLUDED_ENTITIES.add(EntityType.PLAYER);
-        EXCLUDED_ENTITIES.add(EntityType.PAINTING);
+        EXCLUDED_ENTITIES.add(EntityType.DROPPED_ITEM);
+        EXCLUDED_ENTITIES.add(EntityType.FALLING_BLOCK);
+        EXCLUDED_ENTITIES.add(EntityType.PRIMED_TNT);
+        EXCLUDED_ENTITIES.add(EntityType.ITEM_FRAME);
         EXCLUDED_ENTITIES.add(EntityType.ARMOR_STAND);
+        EXCLUDED_ENTITIES.add(EntityType.ENDER_CRYSTAL);
+        EXCLUDED_ENTITIES.add(EntityType.SPLASH_POTION);
+        EXCLUDED_ENTITIES.add(EntityType.ARROW);
+        EXCLUDED_ENTITIES.add(EntityType.SNOWBALL);
+        EXCLUDED_ENTITIES.add(EntityType.EGG);
+        EXCLUDED_ENTITIES.add(EntityType.FIREBALL);
+        EXCLUDED_ENTITIES.add(EntityType.SMALL_FIREBALL);
+        EXCLUDED_ENTITIES.add(EntityType.ENDER_PEARL);
+        EXCLUDED_ENTITIES.add(EntityType.WITHER_SKULL);
+        EXCLUDED_ENTITIES.add(EntityType.MINECART);
+        EXCLUDED_ENTITIES.add(EntityType.MINECART_CHEST);
+        EXCLUDED_ENTITIES.add(EntityType.MINECART_FURNACE);
+        EXCLUDED_ENTITIES.add(EntityType.MINECART_TNT);
+        EXCLUDED_ENTITIES.add(EntityType.MINECART_HOPPER);
+        EXCLUDED_ENTITIES.add(EntityType.MINECART_MOB_SPAWNER);
+        EXCLUDED_ENTITIES.add(EntityType.FIREWORK);
+        EXCLUDED_ENTITIES.add(EntityType.FISHING_HOOK);
+        EXCLUDED_ENTITIES.add(EntityType.LIGHTNING);
     }
+
 
     @Override
     public void execute(CommandSender sender, String[] args) {

@@ -103,6 +103,7 @@ public final class Kore extends JavaPlugin {
         if (SettingsFile.getFile().getBoolean("spawn.enabled") && SettingsFile.getFile().getBoolean("spawn.on-join")) events.add(new Spawn());
         if (SettingsFile.getFile().getBoolean("chat.enabled")) events.add(new ChatManager());
         if (SettingsFile.getFile().getBoolean("world-manipulator.enable")) events.add(new WorldManipulator());
+        if (getConfig().getString("server.join-msg") != null && !getConfig().getString("server.join-msg").isEmpty()) events.add(new JoinMSG());
 
         events.forEach(event -> getServer().getPluginManager().registerEvents(event, this));
     }
