@@ -35,6 +35,7 @@ Tested versions: 1.8, 1.9, 1.10, 1.11. 1.12, 1.13, 1.14, 1.15, 1.16, 1.17, 1.18,
 - /speed (value) [player] [type]
 - /killmobs
 - /spawnmob (mob) [number]
+- /tpa (accept|deny|player_name)
 
 ## Permissions
 
@@ -62,6 +63,7 @@ Tested versions: 1.8, 1.9, 1.10, 1.11. 1.12, 1.13, 1.14, 1.15, 1.16, 1.17, 1.18,
 - kore.kill
 - kore.warp
 - kore.home
+- kore.tpa
 - kore.tp
 - kore.*
 
@@ -84,65 +86,66 @@ Tested versions: 1.8, 1.9, 1.10, 1.11. 1.12, 1.13, 1.14, 1.15, 1.16, 1.17, 1.18,
 ### Config.yml
 
 ```yaml
-commands:
-    asynchronously: false
-
 gamemode:
-    enabled: true
+  enabled: true
 fly:
-    enabled: true
+  enabled: true
 teleport:
-    enabled: true
+  enabled: true
 godmode:
-    enabled: true
+  enabled: true
 heal:
-    enabled: true
+  enabled: true
 vanish:
-    enabled: true
+  enabled: true
 spawn:
-    enabled: true
-    on-join: true
-    on-death: true
-    on-void: true
+  enabled: true
+  on-join: true
+  on-death: true
+  on-void: true
 trash:
-    enabled: true
+  enabled: true
 orbitalcannon:
-    enabled: true
-    tell-to-victim: true
+  enabled: true
+  tell-to-victim: true
 smite:
-    enabled: true
+  enabled: true
 kill:
-    enabled: true
+  enabled: true
 warp:
-    enabled: true
+  enabled: true
 home:
-    enabled: true
+  enabled: true
 speed:
-    enabled: true
+  enabled: true
 killmobs:
-    enabled: true
-    async: true #recomanded: true
+  enabled: true
+  async: true #recomanded: true
 spawnmob:
-    enabled: true
-    async: true #recomanded: true
+  enabled: true
+  async: true #recomanded: true
+tpa:
+  enabled: true
+  expiration: 60 #in seconds
+
 chat:
-    enabled: true
-    format: "%sender%: %message%"
-    blacklist-words:
-        - fuck
-        - shit
+  enabled: true
+  format: "%sender%: %message%"
+  blacklist-words:
+    - fuck
+    - shit
 messages: en
 
 server:
-    join-msg: "&8[&a+&8] &f%player%"
-    leave-msg: "&8[&a+&8] &f%player%"
+  # Make it null if or leave it empty you want to disable join messages
+  join-msg: "&8[&a+&8] &f%player%"
+  leave-msg: "&8[&c-&8] &f%player%"
 
 world-manipulator:
-    enable: true
-    rules:
-        anti-hunger: true
-        anti-weather: true
-        anti-join-message: true
-        anti-mob-spawn: true
-
+  enable: false
+  rules:
+    anti-hunger: true
+    anti-weather: true
+    anti-join-message: true
+    anti-mob-spawn: true
 ```
