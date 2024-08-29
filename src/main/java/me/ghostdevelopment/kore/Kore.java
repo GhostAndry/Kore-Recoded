@@ -132,11 +132,17 @@ public final class Kore extends JavaPlugin {
         LangFile.setUp();
         SettingsFile.setUp();
         StorageFile.setUp();
-    }
 
-    private void setupFile(Runnable... setupSteps) {
-        for (Runnable step : setupSteps) {
-            step.run();
+        Spawn.setBlacklist(getConfig().getBoolean("spawn.worlds.blacklist"));
+        WorldManipulator.setBlacklist(getConfig().getBoolean("spawn.worlds.blacklist"));
+
+        for (String world : getConfig().getStringList("spawn.worlds.list")) {
+            Spawn.getWorlds().add(Bukkit.getWorld(world));
         }
+
+        for (String world : getConfig().getStringList("world-manipulator.worlds.list")) {
+            WorldManipulator.getWorlds().add(Bukkit.getWorld(world));
+        }
+
     }
 }

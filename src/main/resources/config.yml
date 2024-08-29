@@ -15,6 +15,13 @@ spawn:
   on-join: true
   on-death: true
   on-void: true
+
+  worlds:
+    blacklist: true
+    list:
+      - world1
+      - world2
+
 trash:
   enabled: true
 orbitalcannon:
@@ -60,5 +67,12 @@ world-manipulator:
     anti-weather: true
     anti-join-message: true
     anti-mob-spawn: true
+
+  worlds:
+    blacklist: true
+    list:
+      - world1
+      - world2
+
 
 
