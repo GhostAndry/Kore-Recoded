@@ -14,25 +14,29 @@ public class JoinMSG implements Listener {
     @EventHandler(priority = EventPriority.HIGH)
     public void onPlayerJoin(PlayerJoinEvent event) {
 
-        if (Kore.getInstance().getConfig().getString("server.join-msg").isEmpty() || Kore.getInstance().getConfig().getString("server.join-msg") == null)
+        if (Kore.getInstance().getConfig().getString("server.join-msg").isEmpty() 
+        || Kore.getInstance().getConfig().getString("server.join-msg") == null){
+            event.setJoinMessage(null);
             return;
+        }
 
         event.setJoinMessage(Color.Color(SettingsFile.getFile().getString("server.join-msg")
                 .replaceAll("%player%", event.getPlayer().getName())
         ));
-
     }
 
     @EventHandler(priority = EventPriority.HIGH)
     public void onPlayerQuit(PlayerQuitEvent event) {
 
-        if (Kore.getInstance().getConfig().getString("server.join-msg").isEmpty() || Kore.getInstance().getConfig().getString("server.join-msg") == null)
+        if (Kore.getInstance().getConfig().getString("server.join-msg").isEmpty() 
+        || Kore.getInstance().getConfig().getString("server.join-msg") == null){
+            event.setQuitMessage(null);
             return;
+        }
 
         event.setQuitMessage(Color.Color(SettingsFile.getFile().getString("server.leave-msg")
                 .replaceAll("%player%", event.getPlayer().getName())
         ));
-
     }
 
 }

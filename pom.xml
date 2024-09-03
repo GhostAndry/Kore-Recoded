@@ -6,7 +6,7 @@
 
     <groupId>me.ghostdevelopment</groupId>
     <artifactId>Kore</artifactId>
-    <version>1.14.1</version>
+    <version>1.14.2</version>
     <packaging>jar</packaging>
 
     <name>KoreRecoded</name>
@@ -89,7 +89,7 @@
                             <goal>copy-resources</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>/run/media/andrea/2TB Drive/Servers/BedWars_Funny/spigot/plugins</outputDirectory>
+                            <outputDirectory>/run/media/andrea/2TB Drive/Servers/BedWars_Funny/bwlobby-01/plugins</outputDirectory>
                             <resources>
                                 <resource>
                                     <directory>${project.build.directory}</directory>

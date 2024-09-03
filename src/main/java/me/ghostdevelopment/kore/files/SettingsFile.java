@@ -21,6 +21,6 @@ public class SettingsFile {
     }
 
     public static void save() {
-        main.saveConfig();
+        main.saveDefaultConfig();
     }
 }

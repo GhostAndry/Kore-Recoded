@@ -29,9 +29,9 @@ public class Spawn implements Listener {
     public void onPlayerJoin(PlayerJoinEvent event) {
 
         if(blacklist) {
-            if(worlds.contains(event.getPlayer().getWorld()))return;
+            if(getWorlds().contains(event.getPlayer().getWorld()))return;
         }else{
-            if(worlds.contains(event.getPlayer().getWorld())){
+            if(getWorlds().contains(event.getPlayer().getWorld())){
                 if (StorageFile.getFile().contains("spawn.world")
                 || StorageFile.getFile().contains("spawn.x")
                 || StorageFile.getFile().contains("spawn.y")
@@ -54,9 +54,9 @@ public class Spawn implements Listener {
     public void onPlayerDeath(PlayerRespawnEvent event) {
 
         if(blacklist) {
-            if(worlds.contains(event.getPlayer().getWorld()))return;
+            if(getWorlds().contains(event.getPlayer().getWorld()))return;
         }else{
-            if(worlds.contains(event.getPlayer().getWorld())){
+            if(getWorlds().contains(event.getPlayer().getWorld())){
 
                 if (StorageFile.getFile().contains("spawn.world")
                         || StorageFile.getFile().contains("spawn.x")
@@ -79,9 +79,9 @@ public class Spawn implements Listener {
     public void onPlayerVoid(PlayerMoveEvent event) {
 
         if(blacklist) {
-            if(worlds.contains(event.getPlayer().getWorld()))return;
+            if(getWorlds().contains(event.getPlayer().getWorld()))return;
         }else{
-            if(worlds.contains(event.getPlayer().getWorld())){
+            if(getWorlds().contains(event.getPlayer().getWorld())){
 
                 if (StorageFile.getFile().contains("spawn.world")
                         || StorageFile.getFile().contains("spawn.x")

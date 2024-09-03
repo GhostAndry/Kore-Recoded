@@ -129,4 +129,3 @@ tpa:
   no-pending-request: "%prefix% &cNon hai richieste di teletrasporto in sospeso."
   player-not-found: "%prefix% &cIl giocatore specificato non è online."
   self-tpa-request: "%prefix% &cNon puoi inviare una richiesta a te stesso!"
-
