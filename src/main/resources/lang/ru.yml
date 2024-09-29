@@ -127,3 +127,9 @@ tpa:
   no-pending-request: "%prefix% &cУ вас нет ожидающих запросов на телепортацию."
   player-not-found: "%prefix% &cУказанный игрок не в сети."
   self-tpa-request: "%prefix% &cВы не можете отправить запрос самому себе!"
+item:
+  usage: "&eИспользование: /item <материал> [количество]"
+  invalid-material: "&cНеверный материал: &e%material%"
+  invalid-quantity: "&cКоличество должно быть положительным числом."
+  invalid-quantity-format: "&cНеверный формат числа для количества."
+  success: "&aВы получили &e%quantity% &aиз &e%material%."
