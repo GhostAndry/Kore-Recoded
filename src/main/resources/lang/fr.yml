@@ -129,3 +129,9 @@ tpa:
   no-pending-request: "%prefix% &cVous n'avez pas de demande de téléportation en attente."
   player-not-found: "%prefix% &cLe joueur spécifié n'est pas en ligne."
   self-tpa-request: "%prefix% &cVous ne pouvez pas envoyer une demande à vous-même !"
+item:
+  usage: "&eUtilisation: /item <matériau> [quantité]"
+  invalid-material: "&cMatériau invalide: &e%material%"
+  invalid-quantity: "&cLa quantité doit être un nombre positif."
+  invalid-quantity-format: "&cFormat de nombre invalide pour la quantité."
+  success: "&aVous avez reçu &e%quantity% &ade &e%material%."

@@ -29,9 +29,7 @@ public class CommandTrash extends KoreCommand {
 
             Inventory inventory = Bukkit.createInventory(player, 54, Color.Color("&cTrash"));
 
-            Bukkit.getScheduler().runTaskAsynchronously(Kore.getInstance(), () -> {
-                player.openInventory(inventory);
-            });
+            player.openInventory(inventory);
 
         } else {
             sender.sendMessage(LangFile.getString("only-players"));

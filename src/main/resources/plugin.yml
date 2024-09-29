@@ -10,127 +10,212 @@ softdepend:
 
 commands:
   kore:
-    description: ""
+    description: "Main command for the Kore plugin."
 
   gmc:
-    description: ""
+    description: "Switch your game mode to Creative."
   gms:
-    description: ""
+    description: "Switch your game mode to Survival."
   gma:
-    description: ""
+    description: "Switch your game mode to Adventure."
   gmsp:
-    description: ""
+    description: "Switch your game mode to Spectator."
   gamemode:
-    description: ""
+    description: "Change your or another player's game mode."
     aliases:
       - gm
 
   fly:
-    description: ""
+    description: "Toggle flight mode on or off for yourself or others."
 
   teleport:
-    description: ""
+    description: "Teleport to a player or coordinates."
     aliases:
       - tp
       - tpto
+
   god:
-    description: ""
+    description: "Enable or disable god mode for yourself or others."
+
   heal:
-    description: ""
+    description: "Fully restore health and hunger for yourself or others."
+
   vanish:
-    description: ""
+    description: "Toggle invisibility mode."
     aliases:
       - v
+
   setspawn:
-    description: ""
+    description: "Set the world's spawn location."
+
   spawn:
-    description: ""
+    description: "Teleport to the world's spawn location."
+
   trash:
-    description: ""
+    description: "Open a trash (disposal) inventory to discard items."
     aliases:
       - disposal
+
   orbitalcannon:
-    description: ""
+    description: "Use an orbital cannon to smite targets from the sky."
+
   smite:
-    description: ""
+    description: "Strike a player with lightning."
+
   kill:
-    description: ""
+    description: "Kill a player or mob instantly."
+
   warp:
-    description: ""
+    description: "Teleport to a predefined location (warp point)."
+
   home:
-    description: ""
+    description: "Teleport to your home or set a home location."
+
   speed:
-    description: ""
+    description: "Adjust your flying or walking speed."
+
   killmobs:
-    description: ""
+    description: "Kill all mobs in the area."
+
   spawnmob:
-    description: ""
+    description: "Spawn a specified type of mob."
+
   sun:
-    description: ""
+    description: "Set the weather to clear."
+
   tpa:
-    description: ""
+    description: "Send a teleport request to another player."
+
+  item:
+    description: "Give yourself or another player an item."
+    aliases:
+      - i
 
 permissions:
   kore.*:
-    description: ""
-  kore.reload:
-    description: ""
-  kore.teleport:
-    description: ""
-  kore.tp:
-    description: ""
-  kore.gamemode:
-    description: ""
-  kore.gamemode.*:
-    description: ""
-  kore.gamemode.creative:
-    description: ""
-  kore.gamemode.survival:
-    description: ""
-  kore.gamemode.adventure:
-    description: ""
-  kore.gamemode.spectator:
-    description: ""
-  kore.godmode:
-    description: ""
-  kore.heal:
-    description: ""
-  kore.vanish:
-    description: ""
-  kore.setspawn:
-    description: ""
-  kore.spawn:
-    description: ""
-  kore.spawn.other:
-    description: ""
-  kore.trash:
-    description: ""
-  kore.chatbypass:
-    description: ""
-  kore.orbitalcannon:
-    description: ""
-  kore.smite:
-    description: ""
-  kore.kill:
-    description: ""
-  kore.warp:
-    description: ""
-  kore.warp.admin:
-    description: ""
-  kore.home:
-    description: ""
-  kore.speed:
-    description: ""
-  kore.weather:
-    description: ""
-  kore.chatcolor:
-    description: ""
-  kore.killmobs:
-    description: ""
-  kore.spawnmob:
-    description: ""
-  kore.sun:
-    description: ""
-  kore.tpa:
-    description: ""
+    default: op
+    description: "Grants access to all Kore commands and features."
 
+  kore.reload:
+    default: op
+    description: "Permission to reload the plugin configuration."
+
+  kore.teleport:
+    default: op
+    description: "Permission to teleport to a player or coordinates."
+
+  kore.tp:
+    default: op
+    description: "Alias permission for teleport commands."
+
+  kore.gamemode:
+    default: op
+    description: "Permission to change your or others' game mode."
+
+  kore.gamemode.*:
+    default: op
+    description: "Grants access to all game mode commands."
+
+  kore.gamemode.creative:
+    default: op
+    description: "Permission to switch to Creative mode."
+
+  kore.gamemode.survival:
+    default: op
+    description: "Permission to switch to Survival mode."
+
+  kore.gamemode.adventure:
+    default: op
+    description: "Permission to switch to Adventure mode."
+
+  kore.gamemode.spectator:
+    default: op
+    description: "Permission to switch to Spectator mode."
+
+  kore.godmode:
+    default: op
+    description: "Permission to enable or disable god mode."
+
+  kore.heal:
+    default: op
+    description: "Permission to heal yourself or others."
+
+  kore.vanish:
+    default: op
+    description: "Permission to toggle invisibility mode."
+
+  kore.setspawn:
+    default: op
+    description: "Permission to set the spawn location."
+
+  kore.spawn:
+    default: op
+    description: "Permission to teleport to the spawn location."
+
+  kore.spawn.other:
+    default: op
+    description: "Permission to teleport other players to spawn."
+
+  kore.trash:
+    default: op
+    description: "Permission to use the trash (disposal) inventory."
+
+  kore.chatbypass:
+    default: op
+    description: "Permission to bypass chat restrictions."
+
+  kore.orbitalcannon:
+    default: op
+    description: "Permission to use the orbital cannon."
+
+  kore.smite:
+    default: op
+    description: "Permission to smite other players with lightning."
+
+  kore.kill:
+    default: op
+    description: "Permission to instantly kill players or mobs."
+
+  kore.warp:
+    default: op
+    description: "Permission to teleport to warp points."
+
+  kore.warp.admin:
+    default: op
+    description: "Permission to create, modify, or delete warp points."
+
+  kore.home:
+    default: op
+    description: "Permission to set or teleport to home locations."
+
+  kore.speed:
+    default: op
+    description: "Permission to adjust walking or flying speed."
+
+  kore.weather:
+    default: op
+    description: "Permission to change the weather."
+
+  kore.chatcolor:
+    default: op
+    description: "Permission to use color codes in chat."
+
+  kore.killmobs:
+    default: op
+    description: "Permission to kill all mobs in the area."
+
+  kore.spawnmob:
+    default: op
+    description: "Permission to spawn mobs."
+
+  kore.sun:
+    default: op
+    description: "Permission to set the weather to clear."
+
+  kore.tpa:
+    default: op
+    description: "Permission to send or accept teleport requests."
+
+  kore.item:
+    default: op
+    description: "Permission to give yourself or others items."

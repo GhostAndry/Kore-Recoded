@@ -46,6 +46,8 @@ spawnmob:
 tpa:
   enabled: true
   expiration: 60 #in seconds
+item:
+  enabled: true
 
 chat:
   enabled: true

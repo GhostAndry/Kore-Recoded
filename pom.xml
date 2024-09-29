@@ -89,7 +89,7 @@
                             <goal>copy-resources</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>/run/media/andrea/2TB Drive/Servers/BedWars_Funny/bwlobby-01/plugins</outputDirectory>
+                            <outputDirectory>./server_test/plugins</outputDirectory>
                             <resources>
                                 <resource>
                                     <directory>${project.build.directory}</directory>

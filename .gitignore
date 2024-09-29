@@ -1,4 +1,4 @@
 .idea
 target
-./server_test/plugins/
+server_test
 ./credenziali.sh

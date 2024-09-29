@@ -127,3 +127,9 @@ tpa:
   no-pending-request: "%prefix% &cNo tienes solicitudes de teletransporte pendientes."
   player-not-found: "%prefix% &cEl jugador especificado no está en línea."
   self-tpa-request: "%prefix% &c¡No puedes enviarte una solicitud a ti mismo!"
+item:
+  usage: "&eUso: /item <material> [cantidad]"
+  invalid-material: "&cMaterial inválido: &e%material%"
+  invalid-quantity: "&cLa cantidad debe ser un número positivo."
+  invalid-quantity-format: "&cFormato de número inválido para la cantidad."
+  success: "&aHas recibido &e%quantity% &ade &e%material%."
