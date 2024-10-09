@@ -75,10 +75,9 @@ public class CommandItem extends KoreCommand {
                 }
             }
         } else if (args.length == 2) {
-            completions.add("1");
-            completions.add("16");
-            completions.add("32");
-            completions.add("64");
+            for (int i = 1; i < 65; i++) {
+                completions.add(String.valueOf(i));
+            }
         }
 
         return completions;
